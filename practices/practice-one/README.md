@@ -1,27 +1,101 @@
-# React + TypeScript + Vite
+# React training - Practice one
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This application is using React to a web application User Information application
 
-Currently, two official plugins are available:
+# Targets:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Apply the knowledge after reading TypeScript + React document
+- Setup & build a React app
+- Split & build component can reusable
+- Use hooks
+- Use CSS module
 
-## Expanding the ESLint configuration
+# Requirements:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Users can add new users like name, email, phone number, image, state
+- Users can delete a user with a confirmation popup
+- Users can edit a information user
+- Users can search a user by name
+- Show error messages when the form is invalid and has confirmed
 
-- Configure the top-level `parserOptions` property like this:
+# Developer tool:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+- pnpm
+- eslint
+- prettier
+- husky
+- commitlint
+
+# Design on figma:
+
+- Design via [Figma](https://www.figma.com/file/xyVeUQ1gNu7WJv2mlvHans/Table-Design-system-(Community)?type=design&node-id=29-1222&mode=design&t=GYlhJBkTLkNLCF6n-0)
+
+# Information:
+
+- Editor: Visual Studio Code
+
+# Team size:
+
+- ngan.do <[ngan.do@asnet.com.vn](ngan.do@asnet.com.vn)>
+
+# Folder structure
+
+```
+├── .husky
+├── .storybook
+├── json-server
+├── public
+├── src
+    ├── assets
+    ├── stories
+    ├── components
+    ├── constants
+    ├── layouts
+    ├── services
+    ├── App.tsx
+    └── main.tsx
+├── .editorconfig
+├── .eslintrc.cjs
+├── .gitignore
+├── .prettierignore
+├── .prettierrc
+├── index.html
+├── commitlint.config.js
+├── package.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── README.md
+└── vite.config.ts
+
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+# Getting started:
+
+Step by step to get started this app at your location
+
+## Clone repository with SSH:
+
+```bash
+git clone git@gitlab.asoft-python.com:ngan.do/react-training.git
+```
+
+## Install necessary packages:
+
+Make sure you are stay at the root of application (`practice-one`), execute the command
+to install package dependencies
+
+```bash
+pnpm run init
+```
+
+## Start the web server:
+
+Execute the following command to start the web server and json-server
+
+```bash
+pnpm start
+```
+
+Happy path: Open the web server http://localhost:3000
+
+_Note that the default port is 3000, you can custom it!_
