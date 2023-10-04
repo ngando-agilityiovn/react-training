@@ -1,4 +1,4 @@
-# React training - Practice one
+# React Basic - Practice one
 
 This application is using React to a web application User Information application
 
@@ -6,17 +6,24 @@ This application is using React to a web application User Information applicatio
 
 - Apply the knowledge after reading TypeScript + React document
 - Setup & build a React app
-- Split & build component can reusable
-- Use hooks
+- Split & build components can reusable
+- Use hooks: useMemo, useCallback, useState, useEffect
 - Use CSS module
 
 # Requirements:
 
 - Users can add new users like name, email, phone number, image, state
 - Users can delete a user with a confirmation popup
-- Users can edit a information user
 - Users can search a user by name
 - Show error messages when the form is invalid and has confirmed
+
+# Technical stack
+- React v18.2.15
+- Typescript v5.0.2
+- Vite v4.4.5
+- Storybook v7.4.5
+- Prettier v3.0.3
+- Eslint v8.45.0
 
 # Developer tool:
 
@@ -44,16 +51,18 @@ This application is using React to a web application User Information applicatio
 ├── .husky
 ├── .storybook
 ├── json-server
-├── public
 ├── src
     ├── assets
-    ├── stories
     ├── components
     ├── constants
     ├── layouts
+    ├── pages
+
     ├── services
     ├── App.tsx
     └── main.tsx
+├── .env
+├── .env.example
 ├── .editorconfig
 ├── .eslintrc.cjs
 ├── .gitignore
