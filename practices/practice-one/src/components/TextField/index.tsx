@@ -1,7 +1,7 @@
 // styles
-import inputStyles from './index.module.css';
+import textFieldStyles from './index.module.css';
 
-interface IconProps {
+interface textFieldProps {
   label?: string;
   type?: string;
   value?: string;
@@ -12,7 +12,7 @@ interface IconProps {
   size?: number;
 }
 
-const Icon: React.FC<IconProps> = ({
+const TextField: React.FC<textFieldProps> = ({
   label,
   type,
   value,
@@ -24,9 +24,9 @@ const Icon: React.FC<IconProps> = ({
   ...props
 }) => {
   return (
-    <form className={`${inputStyles.form}`}>
+    <div className={`${textFieldStyles.textField}`}>
       <label>
-        {label} <span className={`${inputStyles.obligatoryIcon}`}>*</span>
+        {label} <span className={`${textFieldStyles.obligatoryIcon}`}>*</span>
       </label>
       <input
         name={name}
@@ -35,11 +35,11 @@ const Icon: React.FC<IconProps> = ({
         placeholder={placeholder}
         onChange={onChange}
         size={size}
-        className={`${inputStyles.input}`}
+        className={`${textFieldStyles.input}`}
         {...props}
       />
-    </form>
+    </div>
   );
 };
 
-export default Icon;
+export default TextField;

@@ -1,14 +1,14 @@
 // UserInformation.stories.tsx
 import { StoryObj, Meta } from '@storybook/react';
 
-import Input from './';
+import TextField from '.';
 
 export default {
-  title: 'Components/Input',
-  component: Input
+  title: 'Components/TextField',
+  component: TextField
 } as Meta;
 
-type Story = StoryObj<typeof Input>;
+type Story = StoryObj<typeof TextField>;
 
 export const Default: Story = {
   args: {
