@@ -4,4 +4,4 @@
 /* Base */
 @import url(./bases/font.module.css);
 @import url(./bases/global.module.css);
-@import url(./bases/reset.module.css);
+@import url(./bases/reset.css);
