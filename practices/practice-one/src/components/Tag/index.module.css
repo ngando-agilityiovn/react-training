@@ -1,0 +1,31 @@
+.tag {
+  width: 83px;
+  height: 28px;
+  border-radius: 12px;
+  padding: 4px 24px;
+}
+
+.purple {
+  color: #605DEC;
+  background-color: #EDEDFE;
+}
+
+.green {
+  color: #31AA27;
+  background-color: #EBF6EB;
+}
+
+.yellow {
+  color: #E99518;
+  background-color: #FFF4E4;
+}
+
+.red {
+  color: #F93232;
+  background-color: #FFF0F0;
+}
+
+.gray {
+  color: #BDBCDB;
+  background-color: #F8F9FB;
+}

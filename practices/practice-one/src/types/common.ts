@@ -4,3 +4,11 @@ export enum BUTTON_VARIENT {
   WARNING = 'warning',
   ICON = 'icon'
 }
+
+export enum TAG_COLORS {
+  PURPLE = 'purple',
+  GREEN = 'green',
+  YELLOW = 'yellow',
+  RED = 'red',
+  GRAY = 'gray'
+}
