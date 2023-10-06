@@ -17,9 +17,8 @@ const Button: React.FC<ButtonProps> = ({
   children,
   className,
   onClick,
-  ...props
 }) => (
-  <button onClick={onClick} className={`${buttonStyles.btn} ${buttonStyles[varient]} ${className}`} {...props}>
+  <button onClick={onClick} className={`${buttonStyles.btn} ${buttonStyles[varient]} ${className}`}>
     {children}
   </button>
 );
