@@ -9,9 +9,9 @@ interface TagProps {
   title?: string;
 }
 
-const Tag: React.FC<TagProps> = ({ color = TAG_COLORS.PURPLE, title, ...props }) => {
+const Tag: React.FC<TagProps> = ({ color = TAG_COLORS.PURPLE, title }) => {
   return (
-    <div className={`${tagStyles.tag} ${tagStyles[color]}`} {...props}>
+    <div className={`${tagStyles.tag} ${tagStyles[color]}`}>
       {title}
     </div>
   );
