@@ -9,7 +9,7 @@ interface ButtonProps {
   children: ReactNode;
   varient: BUTTON_VARIENT;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
