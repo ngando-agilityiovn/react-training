@@ -1,0 +1,28 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 20px 20px;
+  border: 1px solid black;
+  z-index: 1;
+  overflow: auto;
+  transform: translate(-50%, -50%);
+}
+
+.modalHeader {
+  display: flex;
+}
+
+.title {
+  font-family: var(--primary-font);
+  font-size: var(--md-font);
+  margin-right: auto;
+}
+
+.modalFooter {
+  margin-top: 50px;
+}
+
+.btn {
+  margin-right: 20px;
+}

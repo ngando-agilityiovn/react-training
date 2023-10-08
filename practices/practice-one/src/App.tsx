@@ -1,12 +1,25 @@
-import { Button, TextField } from './components';
-import { BUTTON_VARIENT } from './types';
+import Modal from './components/Modal';
+
+import { BUTTON_VARIANT } from '~/types';
 
 const App = () => {
   return (
     <div>
       Hello World
-      <TextField label='Avartar' name='url' type='url' placeholder='Image...' />
-      <Button varient={BUTTON_VARIENT.SECONDARY} children='Confirm' />
+      <Modal
+        className='dd'
+        title='Add user'
+        variantNegative={BUTTON_VARIANT.SECONDARY}
+        negativeLabel='Cancel'
+        variantPosition={BUTTON_VARIANT.PRIMARY}
+        positiveLabel='Confirm'
+        onClose={() => {
+          alert('Button component');
+        }}
+        onSubmit={() => {
+          alert('Button component');
+        }}
+      />
     </div>
   );
 };
