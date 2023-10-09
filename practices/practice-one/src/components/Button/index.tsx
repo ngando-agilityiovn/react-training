@@ -3,23 +3,23 @@ import { ReactNode } from 'react';
 import buttonStyles from './index.module.css';
 
 // enums
-import { BUTTON_VARIENT } from '~/types';
+import { BUTTON_VARIANT } from '~/types';
 
 interface ButtonProps {
   children: ReactNode;
-  varient: BUTTON_VARIENT;
+  variant: BUTTON_VARIANT;
   className?: string;
   onClick: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  varient = BUTTON_VARIENT.PRIMARY,
+  variant = BUTTON_VARIANT.PRIMARY,
   children,
   className,
   onClick,
   ...props
 }) => (
-  <button onClick={onClick} className={`${buttonStyles.btn} ${buttonStyles[varient]} ${className}`} {...props}>
+  <button onClick={onClick} className={`${buttonStyles.btn} ${buttonStyles[variant]} ${className}`} {...props}>
     {children}
   </button>
 );
