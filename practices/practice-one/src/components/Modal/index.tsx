@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { Button } from '..';
 import { BUTTON_VARIANT } from '~/types';
 import styles from './index.module.css';
+import Button from '../Button';
 
 interface ModalProps {
   children?: ReactNode;
@@ -50,20 +50,3 @@ const Modal = ({
 };
 
 export default Modal;
-
-{
-  /* <Modal
- title=Delete"
- actions={
-  varriantNegative: BUTTON_VARIANT,
-  varriantPositive: BUTTON_VARIANT,
-  negativeLabel: "Yes",
-  positiveLabel: "No" ,
-  }
-
-  actionsanhno={
-    <Button variant="BUTTON_VARIAN">Yes</Button>
-    <Button variant="BUTTON_VARIAN">No</Button>
-  }
-/> */
-}

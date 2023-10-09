@@ -5,6 +5,7 @@
   padding: 20px 20px;
   border: 1px solid black;
   z-index: 1;
+  width: 50%;
   overflow: auto;
   transform: translate(-50%, -50%);
 }
@@ -21,6 +22,7 @@
 
 .modalFooter {
   margin-top: 50px;
+  text-align: center;
 }
 
 .btn {
