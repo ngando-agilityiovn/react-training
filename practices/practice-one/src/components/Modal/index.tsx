@@ -26,25 +26,28 @@ const Modal = ({
   positiveLabel
 }: ModalProps) => {
   return (
-    <div
-      className={`${styles.modal}`}
-      onClick={() => {
-        onClose();
-      }}
-    >
-      <div className={`${styles.modalHeader}`}>
-        <h2 className={`${styles.title}`}>{title}</h2>
-        <div>x</div>
-      </div>
+    <div>
+      <div
+        className={`${styles.modal}`}
+        onClick={() => {
+          onClose();
+        }}
+      >
+        <div className={`${styles.modalHeader}`}>
+          <h2 className={`${styles.title}`}>{title}</h2>
+          <div>x</div>
+        </div>
 
-      {children}
+        {children}
 
-      <div className={`${styles.modalFooter}`}>
-        <Button className={`${styles.btn}`} onClick={onSubmit} variant={variantNegative}>
-          {negativeLabel}
-        </Button>
-        <Button variant={variantPosition}>{positiveLabel}</Button>
+        <div className={`${styles.modalFooter}`}>
+          <Button className={`${styles.btn}`} onClick={onSubmit} variant={variantNegative}>
+            {negativeLabel}
+          </Button>
+          <Button variant={variantPosition}>{positiveLabel}</Button>
+        </div>
       </div>
+      <div className={`${styles.overlay}`}></div>
     </div>
   );
 };

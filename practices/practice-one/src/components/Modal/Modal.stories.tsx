@@ -51,3 +51,29 @@ export const ModalPrimary: Story = {
     }
   }
 };
+
+export const ModalSecondary: Story = {
+  args: {
+    className: 'dd',
+    title: 'Update information user',
+    variantNegative: BUTTON_VARIANT.PRIMARY,
+    negativeLabel: 'Cancel',
+    variantPosition: BUTTON_VARIANT.SECONDARY,
+    positiveLabel: 'Confirm',
+    children: (
+      <div>
+        <TextField label='User Name' name='name' type='text' placeholder='Your name...' size={100}></TextField>
+        <TextField label='Email' name='email' type='email' placeholder='example@domain.com' size={80}></TextField>
+        <TextField label='Phone Number' name='tel' type='tel' placeholder='Your phone...' size={80}></TextField>
+        <TextField label='Avatar' name='avatar' type='url' placeholder='Image...' size={80}></TextField>
+        <TextField label='Status' name='status' type='text' placeholder='Choose status' size={80}></TextField>
+      </div>
+    ),
+    onClose: () => {
+      alert('Button component');
+    },
+    onSubmit: () => {
+      alert('Button component');
+    }
+  }
+};
