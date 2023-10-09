@@ -20,12 +20,12 @@ const TextField: React.FC<textFieldProps> = ({
   onChange,
   placeholder,
   defaultValue,
-  size,
+  size
 }) => {
   return (
-    <div className={`${textFieldStyles.textField}`}>
+    <div className={textFieldStyles.textField}>
       <label>
-        {label} <span className={`${textFieldStyles.obligatoryIcon}`}>*</span>
+        {label} <span className={textFieldStyles.obligatoryIcon}>*</span>
       </label>
       <input
         name={name}
@@ -34,7 +34,7 @@ const TextField: React.FC<textFieldProps> = ({
         placeholder={placeholder}
         onChange={onChange}
         size={size}
-        className={`${textFieldStyles.input}`}
+        className={textFieldStyles.input}
       />
     </div>
   );
