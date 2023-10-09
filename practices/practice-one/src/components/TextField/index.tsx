@@ -20,7 +20,7 @@ const TextField: React.FC<textFieldProps> = ({
   onChange,
   placeholder,
   defaultValue,
-  size,
+  size
 }) => {
   return (
     <div className={`${textFieldStyles.textField}`}>
