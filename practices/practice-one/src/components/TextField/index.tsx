@@ -6,7 +6,7 @@ interface textFieldProps {
   type?: string;
   value?: string;
   name?: string;
-  onChange: () => void;
+  onChange?: () => void;
   placeholder?: string;
   defaultValue?: string;
   size?: number;
@@ -21,7 +21,6 @@ const TextField: React.FC<textFieldProps> = ({
   placeholder,
   defaultValue,
   size,
-  ...props
 }) => {
   return (
     <div className={`${textFieldStyles.textField}`}>
@@ -36,7 +35,6 @@ const TextField: React.FC<textFieldProps> = ({
         onChange={onChange}
         size={size}
         className={`${textFieldStyles.input}`}
-        {...props}
       />
     </div>
   );
