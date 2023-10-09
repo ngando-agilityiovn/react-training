@@ -40,6 +40,7 @@ export const WarningColor: Story = {
   args: {
     variant: BUTTON_VARIANT.WARNING,
     children: 'Delete',
+    disabled: true,
     onClick: () => {
       alert('Button component');
     }
@@ -51,6 +52,7 @@ export const IconEdit: Story = {
     children: <Edit />,
     variant: BUTTON_VARIANT.ICON,
     className: 'secondary',
+    disabled: true,
     onClick: () => {
       alert('Button component');
     }
@@ -62,6 +64,7 @@ export const IconDelete: Story = {
     children: <Delete />,
     variant: BUTTON_VARIANT.ICON,
     className: 'secondary',
+    disabled: true,
     onClick: () => {
       alert('Button component');
     }
@@ -73,6 +76,7 @@ export const IconFilter: Story = {
     children: <Filter />,
     variant: BUTTON_VARIANT.ICON,
     className: 'secondary',
+    disabled: true,
     onClick: () => {
       alert('Button component');
     }
