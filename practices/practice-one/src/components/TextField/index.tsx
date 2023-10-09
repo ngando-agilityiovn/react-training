@@ -6,7 +6,7 @@ interface textFieldProps {
   type?: string;
   value?: string;
   name?: string;
-  onChange: () => void;
+  onChange?: () => void;
   placeholder?: string;
   defaultValue?: string;
   size?: number;
