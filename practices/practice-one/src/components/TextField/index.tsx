@@ -29,7 +29,8 @@ const TextField: React.FC<textFieldProps> = ({
       </label>
       <input
         name={name}
-        value={defaultValue ? defaultValue : value}
+        value={value}
+        defaultValue={defaultValue}
         type={type}
         placeholder={placeholder}
         onChange={onChange}
