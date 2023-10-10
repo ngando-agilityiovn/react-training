@@ -1,19 +1,18 @@
-// styles
 import { ButtonHTMLAttributes, ReactNode } from 'react';
+
+// styles
 import buttonStyles from './index.module.css';
 
-// enums
-import { BUTTON_VARIANT } from '~/types';
-
+// type
+type variant = 'primary' | 'secondary' | 'warning' | 'icon';
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: BUTTON_VARIANT;
+  variant?: variant;
+  disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ variant = BUTTON_VARIANT.PRIMARY, children, className, ...rest }) => {
+const Button: React.FC<ButtonProps> = ({ variant = 'primary', children, className }) => {
   return (
-    <button className={`${buttonStyles.btn} ${buttonStyles[variant]} ${className}`} {...rest}>
-      {children as ReactNode}
-    </button>
+    <button className={`${buttonStyles.btn} ${buttonStyles[variant]} ${className}`}>{children as ReactNode}</button>
   );
 };
 
