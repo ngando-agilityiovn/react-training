@@ -1,6 +1,7 @@
 import Modal from './components/Modal';
 
 import { BUTTON_VARIANT } from '~/types';
+import Homepage from './pages/Homepage';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           alert('Button component');
         }}
       />
+      <Homepage />
     </div>
   );
 };
