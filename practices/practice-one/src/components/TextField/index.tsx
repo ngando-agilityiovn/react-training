@@ -3,13 +3,13 @@ import textFieldStyles from './index.module.css';
 
 interface textFieldProps {
   label?: string;
-  type?: string;
-  value?: string;
-  name?: string;
+  type: string;
+  value: string;
+  name: string;
   onChange?: () => void;
   placeholder?: string;
   defaultValue?: string;
-  size?: number;
+  size: number;
 }
 
 const TextField: React.FC<textFieldProps> = ({
