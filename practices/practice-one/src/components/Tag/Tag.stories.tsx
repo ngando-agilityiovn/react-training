@@ -3,8 +3,6 @@ import { StoryObj, Meta } from '@storybook/react';
 
 import Tag from './';
 
-import { TAG_COLORS } from '~/types';
-
 export default {
   title: 'Components/Tag',
   component: Tag
@@ -14,35 +12,35 @@ type Story = StoryObj<typeof Tag>;
 
 export const Default: Story = {
   args: {
-    color: TAG_COLORS.PURPLE,
+    color: 'green',
     title: 'Status'
   }
 };
 
 export const PrimaryStatus: Story = {
   args: {
-    color: TAG_COLORS.RED,
+    color: 'red',
     title: 'Status'
   }
 };
 
 export const SecondaryStatus: Story = {
   args: {
-    color: TAG_COLORS.YELLOW,
+    color: 'yellow',
     title: 'Status'
   }
 };
 
 export const DarkStatus: Story = {
   args: {
-    color: TAG_COLORS.GRAY,
+    color: 'gray',
     title: 'Status'
   }
 };
 
 export const TertiaryStatus: Story = {
   args: {
-    color: TAG_COLORS.GREEN,
+    color: 'green',
     title: 'Status'
   }
 };
