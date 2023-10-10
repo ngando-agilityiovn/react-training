@@ -1,0 +1,29 @@
+.btn {
+  border-radius: 8px;
+  border: none;
+  padding: 10px 24px;
+  cursor: pointer;
+  color: var(--color-white);
+  font-weight: var(--bold);
+}
+
+.icon {
+  background-color: unset;
+  border: unset;
+}
+
+.btn:hover {
+  opacity: 0.7;
+}
+
+.primary {
+  background-color: var(--color-secondary);
+}
+
+.secondary {
+  background-color: var(--color-light-blue);
+}
+
+.warning {
+  background-color: var(--color-warning);
+}
