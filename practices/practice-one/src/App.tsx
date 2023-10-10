@@ -1,5 +1,7 @@
+import { Button } from '@/components';
+
 const App = () => {
-  return <>Hello World</>;
+  return <Button>Lorem ipsum dolor sit.</Button>;
 };
 
 export default App;

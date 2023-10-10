@@ -1,14 +1,10 @@
 import { StoryObj, Meta } from '@storybook/react';
 
-// components
-import Button from './';
+// Components
+import Button from '../Button';
 
-// types
-
-import { BUTTON_VARIANT } from '~/types';
-
-// icons
-import { Edit, Delete, Filter } from '~/assets/icons';
+// Icons
+import { Edit, Delete, Filter } from '../icons';
 
 export default {
   title: 'Components/Button',
@@ -28,7 +24,7 @@ export const Default: Story = {
 
 export const SecondaryColor: Story = {
   args: {
-    variant: BUTTON_VARIANT.SECONDARY,
+    variant: 'secondary',
     children: 'Confirm',
     onClick: () => {
       alert('Button component');
@@ -38,7 +34,7 @@ export const SecondaryColor: Story = {
 
 export const WarningColor: Story = {
   args: {
-    variant: BUTTON_VARIANT.WARNING,
+    variant: 'warning',
     children: 'Delete',
     disabled: true,
     onClick: () => {
@@ -50,7 +46,7 @@ export const WarningColor: Story = {
 export const IconEdit: Story = {
   args: {
     children: <Edit />,
-    variant: BUTTON_VARIANT.ICON,
+    variant: 'icon',
     className: 'secondary',
     disabled: true,
     onClick: () => {
@@ -62,7 +58,7 @@ export const IconEdit: Story = {
 export const IconDelete: Story = {
   args: {
     children: <Delete />,
-    variant: BUTTON_VARIANT.ICON,
+    variant: 'icon',
     className: 'secondary',
     disabled: true,
     onClick: () => {
@@ -74,7 +70,7 @@ export const IconDelete: Story = {
 export const IconFilter: Story = {
   args: {
     children: <Filter />,
-    variant: BUTTON_VARIANT.ICON,
+    variant: 'icon',
     className: 'secondary',
     disabled: true,
     onClick: () => {
