@@ -1,17 +1,13 @@
-// styles
 import { InputHTMLAttributes } from 'react';
+
+// styles
 import textFieldStyles from './index.module.css';
 
-interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
-  value: string;
-  name: string;
-  onChange?: () => void;
-  placeholder: string;
-  defaultValue?: string;
 }
 
-const TextField: React.FC<TextFieldProps> = ({ label, value, name, onChange, placeholder, defaultValue }) => {
+const TextField: React.FC<IProps> = ({ label, value, name, onChange, placeholder, defaultValue }) => {
   return (
     <div className={textFieldStyles.textField}>
       <label>
