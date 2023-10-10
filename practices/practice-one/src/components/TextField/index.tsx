@@ -2,7 +2,7 @@
 import textFieldStyles from './index.module.css';
 
 interface textFieldProps {
-  label?: string;
+  label: string;
   type?: string;
   value?: string;
   name?: string;
