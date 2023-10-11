@@ -1,12 +1,12 @@
-import { TAG_COLORS } from "~/types";
-import { Tag } from "..";
+import { TAG_COLORS } from '~/types';
+import { Tag } from '..';
 
 // Styles
-import styles from './index.module.css'; 
+import styles from './index.module.css';
 
 // Icons
-import { Edit } from "~/assets/icons";
-import { Delete } from "~/assets/icons/delete";
+import { Edit } from '~/assets/icons';
+import { Delete } from '~/assets/icons';
 
 const tag = [
   {
@@ -61,17 +61,28 @@ export const Status: React.FC = () => {
     <div>
       <h2>Status</h2>
       <div className={styles.main}>
+        <p>
+          {tag.map(({ id, title, color }) => (
+            <Tag key={id} color={color} title={title} />
+          ))}
+        </p>
 
-        <p>{tag.map(({ id, title, color }) => (
-          <Tag key={id} color={color} title={title} />))}</p>
+        <p>
+          {editButton.map(({ id, icon }) => (
+            <p className={styles.spaceEdit} key={id}>
+              {icon}
+            </p>
+          ))}
+        </p>
 
-        <p>{editButton.map(({ id, icon }) => (
-          <p className={styles.spaceEdit} key={id}>{icon}</p>))}</p>
-
-        <p>{deleteButton.map(({ id, icon }) => (
-          <p className={styles.spaceEdit} key={id}>{icon}</p>))}</p>
-
+        <p>
+          {deleteButton.map(({ id, icon }) => (
+            <p className={styles.spaceEdit} key={id}>
+              {icon}
+            </p>
+          ))}
+        </p>
       </div>
     </div>
-  )
-}
+  );
+};

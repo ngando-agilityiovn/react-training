@@ -21,8 +21,10 @@ export const Phone: React.FC = (): JSX.Element => {
     <>
       <h2>Phone</h2>
       {phone.map(({ id, phone }) => (
-        <p key={id} className={styles.phone}>{phone}</p> ))}
+        <p key={id} className={styles.phone}>
+          {phone}
+        </p>
+      ))}
     </>
   );
 };
-  

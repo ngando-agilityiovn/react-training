@@ -3,6 +3,7 @@
   font-family: var(--primary-font);
   font-weight: var(--normal);
   line-height: 20px;
+  margin: 8px 0px;
 }
 
 .img {

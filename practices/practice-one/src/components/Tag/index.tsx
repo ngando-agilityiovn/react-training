@@ -10,10 +10,6 @@ interface TagProps {
   className?: string;
 }
 
-export const Tag: React.FC<TagProps> = ({ color = TAG_COLORS.PURPLE, title}) => {
-  return (
-    <div className={`${tagStyles.tag} ${tagStyles[color]}`}>
-      {title}
-    </div>
-  );
+export const Tag: React.FC<TagProps> = ({ color = TAG_COLORS.PURPLE, title }) => {
+  return <div className={`${tagStyles.tag} ${tagStyles[color]}`}> {title} </div>;
 };

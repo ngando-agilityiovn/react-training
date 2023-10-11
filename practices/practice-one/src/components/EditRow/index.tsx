@@ -1,4 +1,4 @@
-import { Edit } from "~/assets/icons";
+import { Edit } from '~/assets/icons';
 
 const editButton = [
   {
@@ -20,8 +20,8 @@ export const EditRow: React.FC = (): JSX.Element => {
     <>
       <h2>Email</h2>
       {editButton.map(({ id, icon }) => (
-        <p key={id}>{icon}</p>))}
+        <p key={id}>{icon}</p>
+      ))}
     </>
   );
 };
-  

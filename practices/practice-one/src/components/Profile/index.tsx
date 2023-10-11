@@ -1,4 +1,4 @@
-import { UserInformation } from "..";
+import { UserInformation } from '..';
 
 const profileUser = [
   {
@@ -29,9 +29,13 @@ const profileUser = [
 
 export const Profile: React.FC = (): JSX.Element => {
   return (
-		<>
-			<h2>User</h2><p>{profileUser.map(({ id, image, title, alt, description }) => (
-			<UserInformation key={id} image={image} title={title} alt={alt} description={description} /> ))}</p>
-		</>
-  )
-}
+    <>
+      <h2>User</h2>
+      <p>
+        {profileUser.map(({ id, image, title, alt, description }) => (
+          <UserInformation key={id} image={image} title={title} alt={alt} description={description} />
+        ))}
+      </p>
+    </>
+  );
+};

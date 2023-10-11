@@ -20,7 +20,10 @@ export const EmailInformation: React.FC = (): JSX.Element => {
     <>
       <h2>Email</h2>
       {email.map(({ id, email }) => (
-        <p key={id} className={styles.email}>{email}</p>))}
+        <p key={id} className={styles.email}>
+          {email}
+        </p>
+      ))}
     </>
-  )
-}
+  );
+};

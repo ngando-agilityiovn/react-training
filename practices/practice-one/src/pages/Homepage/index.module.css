@@ -1,5 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
 .home {
   width: 90%;
   border: 2px solid var(--color-secondary);
   padding: 18px 16px;
+}
+
+.card {
+  font-family: var(--primary-font);
+  font-size: var(--xs-font);
+  font-weight: var(--normal);
+  line-height: 20px;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 320px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
 }
