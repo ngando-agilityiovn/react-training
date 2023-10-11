@@ -1,7 +1,7 @@
 import { StoryObj, Meta } from '@storybook/react';
 
 // Components
-import Button from '../Button';
+import { Button } from '@/components';
 
 // Icons
 import { Edit, Delete, Filter } from '../icons';
