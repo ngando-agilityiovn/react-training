@@ -8,16 +8,14 @@ interface InformationUserProps {
   description?: string;
 }
 
-const UserInformation: React.FC<InformationUserProps> = ({ image, title, alt, description }) => {
+export const UserInformation: React.FC<InformationUserProps> = ({ image, title, alt, description }) => {
   return (
-    <div className={`${styles.wrap}`}>
-      <img className={`${styles.img}`} src={image} alt={alt} />
+    <div className={styles.wrap}>
+      <img className={styles.img} src={image} alt={alt} />
       <div>
-        <div className={`${styles.title}`}>{title}</div>
-        <div className={`${styles.description}`}>{description}</div>
+        <div className={styles.title}>{title}</div>
+        <div className={styles.description}>{description}</div>
       </div>
     </div>
   );
 };
-
-export default UserInformation;

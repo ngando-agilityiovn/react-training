@@ -7,14 +7,13 @@ import { TAG_COLORS } from '~/types';
 interface TagProps {
   color?: TAG_COLORS;
   title?: string;
+  className?: string;
 }
 
-const Tag: React.FC<TagProps> = ({ color = TAG_COLORS.PURPLE, title, ...props }) => {
+export const Tag: React.FC<TagProps> = ({ color = TAG_COLORS.PURPLE, title}) => {
   return (
-    <div className={`${tagStyles.tag} ${tagStyles[color]}`} {...props}>
+    <div className={`${tagStyles.tag} ${tagStyles[color]}`}>
       {title}
     </div>
   );
 };
-
-export default Tag;

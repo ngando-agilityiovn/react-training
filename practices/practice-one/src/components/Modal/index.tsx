@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { BUTTON_VARIANT } from '~/types';
 import styles from './index.module.css';
-import Button from '../Button';
+import { Button } from '..';
 
 interface ModalProps {
   children?: ReactNode;
@@ -15,7 +15,7 @@ interface ModalProps {
   onSubmit: () => void;
 }
 
-const Modal = ({
+export const Modal = ({
   children,
   title,
   onClose,
@@ -51,5 +51,3 @@ const Modal = ({
     </div>
   );
 };
-
-export default Modal;

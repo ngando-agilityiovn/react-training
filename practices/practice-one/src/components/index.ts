@@ -1,7 +1,10 @@
-export { default as TextField } from './TextField';
-export { default as Button } from './Button';
-export { default as Tag } from './Tag';
-export { default as UserInformation } from './InformationUser';
-export { default as Modal } from './Modal';
-export { default as Header } from './Header';
-export { default as Info } from './Info';
+export * from './TextField';
+export * from './Button';
+export * from './Tag';
+export * from './InformationUser';
+export * from './Modal';
+export * from './Profile';
+export * from './EmailInformation';
+export * from './Phone';
+export * from './Status';
+export * from './EditRow';
