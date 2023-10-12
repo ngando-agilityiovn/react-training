@@ -7,7 +7,7 @@
     "skipLibCheck": true,
     "baseUrl": "./src/",
     "paths": {
-      "@/components": ["components/index.ts"],
+      "@/components": ["components/*"],
       "@/assets/*": ["assets/*"],
       "@/customHooks/*": ["customHooks/*"],
       "@/services/*": ["services/*"],
