@@ -9,6 +9,6 @@ interface IProps {
   title?: string;
 }
 
-export const Tag: React.FC<IProps> = ({ color = TAG_COLORS.PURPLE, title }) => {
+export const Tag: React.FC<IProps> = ({ color = TAG_COLORS.PRIMARY, title }) => {
   return <div className={`${tagStyles.tag} ${tagStyles[color]}`}>{title}</div>;
 };
