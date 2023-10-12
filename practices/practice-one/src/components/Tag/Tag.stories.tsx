@@ -1,9 +1,10 @@
-// UserInformation.stories.tsx
 import { StoryObj, Meta } from '@storybook/react';
 
+// Components
 import Tag from './';
 
-import { TAG_COLORS } from '~/types';
+// Types
+import { TAG_COLORS } from '@/types/common';
 
 export default {
   title: 'Components/Tag',

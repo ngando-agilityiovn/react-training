@@ -25,5 +25,5 @@
 }
 
 .warning {
-  background-color: var(--color-red);
+  background-color: var(--color-warning);
 }

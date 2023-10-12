@@ -1,6 +1,6 @@
 import Modal from './components/Modal';
 
-import { BUTTON_VARIANT } from '~/types';
+import { BUTTON_VARIANT } from '@/types';
 
 const App = () => {
   return (

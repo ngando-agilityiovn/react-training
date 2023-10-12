@@ -1,7 +1,12 @@
 import { StoryObj, Meta } from '@storybook/react';
+
+// Components
 import Modal from '.';
-import { BUTTON_VARIANT } from '~/types';
 import { TextField } from '..';
+
+// Types
+import { BUTTON_VARIANT } from '@/types/index';
+
 export default {
   title: 'Components/Modal',
   component: Modal

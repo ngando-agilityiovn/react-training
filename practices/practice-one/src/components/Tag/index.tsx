@@ -2,7 +2,7 @@
 import tagStyles from './index.module.css';
 
 // enums
-import { TAG_COLORS } from '~/types';
+import { TAG_COLORS } from '@/types/index';
 
 interface TagProps {
   color?: TAG_COLORS;

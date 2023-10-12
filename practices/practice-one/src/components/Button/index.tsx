@@ -1,9 +1,10 @@
-// styles
 import { ReactNode } from 'react';
+
+// styles
 import buttonStyles from './index.module.css';
 
 // enums
-import { BUTTON_VARIANT } from '~/types';
+import { BUTTON_VARIANT } from '@/types/index';
 
 interface ButtonProps {
   children: ReactNode;
