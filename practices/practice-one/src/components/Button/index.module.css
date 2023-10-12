@@ -3,7 +3,7 @@
   border: none;
   padding: 10px 24px;
   cursor: pointer;
-  color: var(--color-white);
+  color: var(--color-light);
   font-weight: var(--bold);
 }
 
