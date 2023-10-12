@@ -1,8 +1,8 @@
 // Styles
 import tagStyles from './index.module.css';
 
-// Types
-import { TAG_COLORS } from '@/types/index';
+// enums
+import { TAG_COLORS } from '@/types';
 
 interface IProps {
   color?: TAG_COLORS;

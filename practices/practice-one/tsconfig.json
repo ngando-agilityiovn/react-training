@@ -5,13 +5,9 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "baseUrl": "./src/",
+    "baseUrl": "src",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/assets/*": ["assets/*"],
-      "@/services/*": ["services/*"],
-      "@/types/*": ["types/*"],
-      "@/pages/*": ["pages/*"]
+      "@/*": ["./*"]
     },
 
     /* Bundler mode */

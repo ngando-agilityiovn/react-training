@@ -5,7 +5,7 @@ import { Button } from '.';
 import { Edit, Delete, Filter } from '../Icons';
 
 // Types
-import { BUTTON_VARIANT } from '@/types/index';
+import { BUTTON_VARIANT } from '@/types';
 
 export default {
   title: 'Components/Button',
