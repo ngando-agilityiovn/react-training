@@ -7,9 +7,8 @@
     "skipLibCheck": true,
     "baseUrl": "./src/",
     "paths": {
-      "@/components": ["components/*"],
+      "@/components/*": ["components/*"],
       "@/assets/*": ["assets/*"],
-      "@/customHooks/*": ["customHooks/*"],
       "@/services/*": ["services/*"],
       "@/types/*": ["types/*"],
       "@/pages/*": ["pages/*"]

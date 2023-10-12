@@ -1,20 +1,14 @@
-// styles
+// Styles
 import tagStyles from './index.module.css';
 
-// enums
+// Types
 import { TAG_COLORS } from '@/types/index';
 
-interface TagProps {
+interface IProps {
   color?: TAG_COLORS;
   title?: string;
 }
 
-const Tag: React.FC<TagProps> = ({ color = TAG_COLORS.PURPLE, title, ...props }) => {
-  return (
-    <div className={`${tagStyles.tag} ${tagStyles[color]}`} {...props}>
-      {title}
-    </div>
-  );
+export const Tag: React.FC<IProps> = ({ color = TAG_COLORS.PURPLE, title }) => {
+  return <div className={`${tagStyles.tag} ${tagStyles[color]}`}>{title}</div>;
 };
-
-export default Tag;

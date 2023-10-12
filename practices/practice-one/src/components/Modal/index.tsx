@@ -1,9 +1,15 @@
 import { ReactNode } from 'react';
-import { BUTTON_VARIANT } from '~/types';
-import styles from './index.module.css';
-import Button from '../Button';
 
-interface ModalProps {
+// Styles
+import styles from './index.module.css';
+
+// Components
+import { Button } from '..';
+
+// Types
+import { BUTTON_VARIANT } from '@/types/index';
+
+interface IProps {
   children?: ReactNode;
   title: string;
   className: string;
@@ -15,7 +21,7 @@ interface ModalProps {
   onSubmit: () => void;
 }
 
-const Modal = ({
+export const Modal = ({
   children,
   title,
   onClose,
@@ -24,32 +30,30 @@ const Modal = ({
   variantPosition,
   negativeLabel,
   positiveLabel
-}: ModalProps) => {
+}: IProps) => {
   return (
     <div>
       <div
-        className={`${styles.modal}`}
+        className={styles.modal}
         onClick={() => {
           onClose();
         }}
       >
-        <div className={`${styles.modalHeader}`}>
-          <h2 className={`${styles.title}`}>{title}</h2>
+        <div className={styles.modalHeader}>
+          <h2 className={styles.title}>{title}</h2>
           <div>x</div>
         </div>
 
         {children}
 
-        <div className={`${styles.modalFooter}`}>
-          <Button className={`${styles.btn}`} onClick={onSubmit} variant={variantNegative}>
+        <div className={styles.modalFooter}>
+          <Button className={styles.btn} onClick={onSubmit} variant={variantNegative}>
             {negativeLabel}
           </Button>
           <Button variant={variantPosition}>{positiveLabel}</Button>
         </div>
       </div>
-      <div className={`${styles.overlay}`}></div>
+      <div className={styles.overlay}></div>
     </div>
   );
 };
-
-export default Modal;

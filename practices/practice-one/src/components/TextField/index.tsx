@@ -1,13 +1,13 @@
 import { InputHTMLAttributes } from 'react';
 
-// styles
+// Styles
 import textFieldStyles from './index.module.css';
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
 }
 
-const TextField: React.FC<IProps> = ({ label, value, name, onChange, placeholder, defaultValue }) => {
+export const TextField: React.FC<IProps> = ({ label, value, name, onChange, placeholder, defaultValue }) => {
   return (
     <div className={textFieldStyles.textField}>
       <label>
@@ -24,5 +24,3 @@ const TextField: React.FC<IProps> = ({ label, value, name, onChange, placeholder
     </div>
   );
 };
-
-export default TextField;

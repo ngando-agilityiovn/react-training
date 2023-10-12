@@ -1,8 +1,7 @@
 import { StoryObj, Meta } from '@storybook/react';
 
 // Components
-import Modal from '.';
-import { TextField } from '..';
+import { Modal, TextField } from '..';
 
 // Types
 import { BUTTON_VARIANT } from '@/types/index';
@@ -16,7 +15,7 @@ type Story = StoryObj<typeof Modal>;
 
 export const Default: Story = {
   args: {
-    className: 'dd',
+    className: '',
     title: 'Do you want to delete this user ?',
     variantNegative: BUTTON_VARIANT.WARNING,
     negativeLabel: 'No',
@@ -33,7 +32,7 @@ export const Default: Story = {
 
 export const ModalPrimary: Story = {
   args: {
-    className: 'dd',
+    className: '',
     title: 'Add new user',
     variantNegative: BUTTON_VARIANT.PRIMARY,
     negativeLabel: 'Cancel',
@@ -59,7 +58,7 @@ export const ModalPrimary: Story = {
 
 export const ModalSecondary: Story = {
   args: {
-    className: 'dd',
+    className: '',
     title: 'Update information user',
     variantNegative: BUTTON_VARIANT.PRIMARY,
     negativeLabel: 'Cancel',

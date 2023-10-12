@@ -1,9 +1,8 @@
 import { StoryObj, Meta } from '@storybook/react';
 
 // Components
-
+import { Button } from '.';
 import { Edit, Delete, Filter } from '../Icons';
-import Button from '.';
 
 // Types
 import { BUTTON_VARIANT } from '@/types/index';
