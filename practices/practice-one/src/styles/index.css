@@ -1,7 +1,7 @@
 /* Abstract */
-@import url(./abstracts/variables.module.css);
+@import url(./abstracts/variables.css);
 
 /* Base */
-@import url(./bases/font.module.css);
-@import url(./bases/global.module.css);
+@import url(./bases/font.css);
+@import url(./bases/global.css);
 @import url(./bases/reset.css);
