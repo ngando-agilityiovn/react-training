@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import buttonStyles from './index.module.css';
 
 // enums
-import { BUTTON_VARIANT } from '~/types';
+import { BUTTON_VARIANT } from '@/types/index';
 
 interface ButtonProps {
   children: ReactNode;
@@ -13,14 +13,8 @@ interface ButtonProps {
   onClick: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({
-  variant = BUTTON_VARIANT.PRIMARY,
-  children,
-  className,
-  onClick,
-  ...props
-}) => (
-  <button onClick={onClick} className={`${buttonStyles.btn} ${buttonStyles[variant]} ${className}`} {...props}>
+export const Button: React.FC<ButtonProps> = ({ variant = BUTTON_VARIANT.PRIMARY, children, className, onClick }) => (
+  <button onClick={onClick} className={`${buttonStyles.btn} ${buttonStyles[variant]} ${className}`}>
     {children}
   </button>
 );
