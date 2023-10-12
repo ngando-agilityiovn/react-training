@@ -1,29 +1,7 @@
-// Components
-import { Modal } from '@/components/index';
-
-// Types
-import { BUTTON_VARIANT } from '@/types/index';
+import { Button } from '@/components/index';
 
 const App = () => {
-  return (
-    <div>
-      Hello World
-      <Modal
-        className='dd'
-        title='Add user'
-        variantNegative={BUTTON_VARIANT.SECONDARY}
-        negativeLabel='Cancel'
-        variantPosition={BUTTON_VARIANT.PRIMARY}
-        positiveLabel='Confirm'
-        onClose={() => {
-          alert('Button component');
-        }}
-        onSubmit={() => {
-          alert('Button component');
-        }}
-      />
-    </div>
-  );
+  return <Button>Lorem ipsum dolor sit.</Button>;
 };
 
 export default App;
