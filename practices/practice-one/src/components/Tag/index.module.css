@@ -1,0 +1,31 @@
+.tag {
+  width: 83px;
+  height: 28px;
+  border-radius: 12px;
+  padding: 4px 24px;
+}
+
+.primary {
+  color: #605DEC;
+  background-color: #EDEDFE;
+}
+
+.secondary {
+  color: #31AA27;
+  background-color: #EBF6EB;
+}
+
+.light {
+  color: #E99518;
+  background-color: #FFF4E4;
+}
+
+.warning {
+  color: #F93232;
+  background-color: #FFF0F0;
+}
+
+.dark {
+  color: #BDBCDB;
+  background-color: #F8F9FB;
+}
