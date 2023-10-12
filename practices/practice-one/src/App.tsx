@@ -1,9 +1,9 @@
-import { Button } from '@components';
-import { BUTTON_VARIANT } from '@types';
+import { Button } from '@/components';
+import { BUTTON_VARIANT } from '@/types';
 
-export const App = () => {
+const App = () => {
   return (
-    <div>
+    <>
       <Button
         variant={BUTTON_VARIANT.WARNING}
         onClick={() => {
@@ -12,6 +12,8 @@ export const App = () => {
       >
         Lorem ipsum dolor sit.
       </Button>
-    </div>
+    </>
   );
 };
+
+export default App;
