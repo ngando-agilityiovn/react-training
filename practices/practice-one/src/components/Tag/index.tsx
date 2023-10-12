@@ -2,14 +2,14 @@
 import tagStyles from './index.module.css';
 
 // type
-type variant = 'purple' | 'green' | 'yellow' | 'red' | 'gray';
+import { TAG_COLORS } from '~/types';
 
 interface IProps {
-  color?: variant;
+  color?: TAG_COLORS;
   title?: string;
 }
 
-const Tag: React.FC<IProps> = ({ color = 'purple', title }) => {
+const Tag: React.FC<IProps> = ({ color = TAG_COLORS.PRIMARY, title }) => {
   return <div className={`${tagStyles.tag} ${tagStyles[color]}`}>{title}</div>;
 };
 

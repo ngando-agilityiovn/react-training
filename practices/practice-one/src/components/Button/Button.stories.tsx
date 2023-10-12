@@ -4,7 +4,7 @@ import { Edit } from '~/assets/icons';
 
 import Button from './';
 
-import { BUTTON_VARIENT } from '~/types';
+import { BUTTON_VARIANT } from '~/types';
 
 export default {
   title: 'Components/Button',
@@ -24,7 +24,7 @@ export const Default: Story = {
 
 export const SecondaryColor: Story = {
   args: {
-    varient: BUTTON_VARIENT.SECONDARY,
+    variant: BUTTON_VARIANT.SECONDARY,
     children: 'Confirm',
     onClick: () => {
       alert('Button component');
@@ -34,7 +34,7 @@ export const SecondaryColor: Story = {
 
 export const WarningColor: Story = {
   args: {
-    varient: BUTTON_VARIENT.WARNING,
+    variant: BUTTON_VARIANT.WARNING,
     children: 'Delete',
     onClick: () => {
       alert('Button component');
@@ -45,7 +45,7 @@ export const WarningColor: Story = {
 export const Icon: Story = {
   args: {
     children: <Edit />,
-    varient: BUTTON_VARIENT.ICON,
+    variant: BUTTON_VARIANT.ICON,
     className: 'secondary',
     onClick: () => {
       alert('Button component');
