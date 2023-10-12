@@ -1,0 +1,23 @@
+.wrap {
+  display: flex;
+  font-family: var(--primary-font);
+  font-weight: var(--normal);
+  line-height: 20px;
+}
+
+.img {
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+  border-radius: 50%;
+}
+
+.title {
+  margin-bottom: 5px;
+  font-size: var(--xs-font);
+}
+
+.description {
+  color: var(--color-secondary);
+  font-size: var(--xss-font);
+}
