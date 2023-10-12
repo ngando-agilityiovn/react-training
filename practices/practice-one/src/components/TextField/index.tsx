@@ -12,7 +12,7 @@ interface textFieldProps {
   size?: number;
 }
 
-const TextField: React.FC<textFieldProps> = ({
+export const TextField: React.FC<textFieldProps> = ({
   label,
   type,
   value,
@@ -41,5 +41,3 @@ const TextField: React.FC<textFieldProps> = ({
     </div>
   );
 };
-
-export default TextField;
