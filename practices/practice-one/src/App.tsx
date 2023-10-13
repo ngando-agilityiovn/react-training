@@ -1,14 +1,18 @@
-import { Table } from './components/Table';
-// import Homepage from './pages/Homepage';
+import { Button } from '@/components';
+import { BUTTON_VARIANT } from '@/types';
 
 const App = () => {
   return (
-    <div>
-      <div>
-        {/* <Homepage /> */}
-        <Table />
-      </div>
-    </div>
+    <>
+      <Button
+        variant={BUTTON_VARIANT.WARNING}
+        onClick={() => {
+          alert('Button component');
+        }}
+      >
+        Lorem ipsum dolor sit.
+      </Button>
+    </>
   );
 };
 

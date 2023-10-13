@@ -5,27 +5,27 @@
   padding: 4px 24px;
 }
 
-.purple {
+.primary {
   color: #605DEC;
   background-color: #EDEDFE;
 }
 
-.green {
+.secondary {
   color: #31AA27;
   background-color: #EBF6EB;
 }
 
-.yellow {
+.light {
   color: #E99518;
   background-color: #FFF4E4;
 }
 
-.red {
+.warning {
   color: #F93232;
   background-color: #FFF0F0;
 }
 
-.gray {
+.dark {
   color: #BDBCDB;
   background-color: #F8F9FB;
 }

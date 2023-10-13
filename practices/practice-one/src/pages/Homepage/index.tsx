@@ -2,7 +2,7 @@
 import homeStyles from './index.module.css';
 
 // Components
-import { Table } from '~/components/Table';
+import { Table } from '@/components/Table';
 
 const Homepage: React.FC = (): JSX.Element => {
   return (

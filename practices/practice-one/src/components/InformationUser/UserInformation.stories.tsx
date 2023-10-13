@@ -1,7 +1,7 @@
-// UserInformation.stories.tsx
 import { StoryObj, Meta } from '@storybook/react';
-import { UserInformation } from '.';
 
+// Components
+import { UserInformation } from '.';
 
 export default {
   title: 'Components/UserInformation',

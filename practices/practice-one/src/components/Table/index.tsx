@@ -1,8 +1,7 @@
 // Styles
-import { TAG_COLORS } from '~/types';
-import { Tag } from '..';
+import { TAG_COLORS } from '@/types';
+import { Delete, Edit, Tag } from '..';
 import styles from './index.module.css';
-import { Delete, Edit } from '~/assets/icons';
 
 export const Table: React.FC = (): JSX.Element => {
   return (
@@ -42,7 +41,7 @@ export const Table: React.FC = (): JSX.Element => {
               <b className={styles.title}>Status</b>
             </div>
             <div className={styles.divCell}>
-              <Tag color={TAG_COLORS.YELLOW} title='Status' />
+              <Tag color={TAG_COLORS.LIGHT} title='Status' />
             </div>
           </div>
           <div className={styles.divCell}>

@@ -1,7 +1,7 @@
-// UserInformation.stories.tsx
 import { StoryObj, Meta } from '@storybook/react';
 
-import TextField from '.';
+// Components
+import { TextField } from '.';
 
 export default {
   title: 'Components/TextField',

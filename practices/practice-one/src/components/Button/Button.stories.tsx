@@ -1,10 +1,11 @@
 import { StoryObj, Meta } from '@storybook/react';
 
-import { Edit } from '~/assets/icons';
+// Components
+import { Button } from '.';
 
-import Button from './';
-
-import { BUTTON_VARIANT } from '~/types';
+// Types
+import { BUTTON_VARIANT } from '@/types/common';
+import { Delete, Edit, Filter } from '..';
 
 export default {
   title: 'Components/Button',
@@ -42,9 +43,31 @@ export const WarningColor: Story = {
   }
 };
 
-export const Icon: Story = {
+export const IconEdit: Story = {
   args: {
     children: <Edit />,
+    variant: BUTTON_VARIANT.ICON,
+    className: 'secondary',
+    onClick: () => {
+      alert('Button component');
+    }
+  }
+};
+
+export const IconDelete: Story = {
+  args: {
+    children: <Delete />,
+    variant: BUTTON_VARIANT.ICON,
+    className: 'secondary',
+    onClick: () => {
+      alert('Button component');
+    }
+  }
+};
+
+export const IconFilter: Story = {
+  args: {
+    children: <Filter />,
     variant: BUTTON_VARIANT.ICON,
     className: 'secondary',
     onClick: () => {

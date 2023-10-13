@@ -1,14 +1,14 @@
-// styles
+// Styles
 import styles from './index.module.css';
 
-interface InformationUserProps {
+interface IProps {
   image: string;
   title: string;
   alt: string;
   description?: string;
 }
 
-export const UserInformation: React.FC<InformationUserProps> = ({ image, title, alt, description }) => {
+export const UserInformation: React.FC<IProps> = ({ image, title, alt, description }) => {
   return (
     <div className={styles.wrap}>
       <img className={styles.img} src={image} alt={alt} />
