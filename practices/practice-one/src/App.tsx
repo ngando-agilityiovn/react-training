@@ -1,10 +1,12 @@
-import Homepage from './pages/Homepage';
+import { Table } from './components/Table';
+// import Homepage from './pages/Homepage';
 
 const App = () => {
   return (
     <div>
       <div>
-        <Homepage />
+        {/* <Homepage /> */}
+        <Table />
       </div>
     </div>
   );
