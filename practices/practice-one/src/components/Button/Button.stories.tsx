@@ -1,11 +1,11 @@
 import { StoryObj, Meta } from '@storybook/react';
 
 // Components
-import { Edit, Delete, Filter } from '../Icons';
 import { Button } from '.';
+import { Edit, Delete, Filter } from '../Icons';
 
 // Types
-import { BUTTON_VARIANT } from '@/types/common';
+import { BUTTON_VARIANT } from '@/types';
 
 export default {
   title: 'Components/Button',

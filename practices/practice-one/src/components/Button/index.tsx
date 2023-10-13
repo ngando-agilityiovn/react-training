@@ -1,20 +1,20 @@
 import { ReactNode } from 'react';
 
-// styles
-import buttonStyles from './index.module.css';
+// Styles
+import styles from './index.module.css';
 
-// enums
-import { BUTTON_VARIANT } from '@/types/index';
+// Types
+import { BUTTON_VARIANT } from '@/types';
 
-interface ButtonProps {
+interface IProps {
   children: ReactNode;
   variant: BUTTON_VARIANT;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({ variant = BUTTON_VARIANT.PRIMARY, children, className, onClick }) => (
-  <button onClick={onClick} className={`${buttonStyles.btn} ${buttonStyles[variant]} ${className}`}>
+export const Button: React.FC<IProps> = ({ variant = BUTTON_VARIANT.PRIMARY, children, className, onClick }) => (
+  <button onClick={onClick} className={`${styles.btn} ${styles[variant]} ${className}`}>
     {children}
   </button>
 );
