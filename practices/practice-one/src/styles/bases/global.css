@@ -1,15 +1,4 @@
 * {
   box-sizing: border-box;
-}
-
-@media only screen and (max-width: 1440px) {
-  .container {
-    padding: 0 158px;
-  }
-}
-
-@media only screen and (max-width: 375px) {
-  .container {
-    padding: 0 16px;
-  }
+  font-family: var(--primary-font);
 }

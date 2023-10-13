@@ -1,7 +1,9 @@
 .divTable {
-  width: 800px;
-  border: 1px solid black;
   position: fixed;
+  width: 90%;
+  padding: 18px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--color-secondary);
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -10,6 +12,8 @@
 .headerRow {
   display: flex;
   border-bottom: 1px solid black;
+  padding-bottom: 18px;
+  padding-right: 170px;
 }
 
 .headerRow:last-child {
@@ -18,6 +22,19 @@
 
 .divCell {
   width: calc(100% / 5);
+  font-family: Nunito Sans;
+  font-size: var(--xs-font);
+  font-weight: var(--normal);
+  line-height: 20px;
+  padding-top: 18px;
+}
+
+.title {
+  font-family: var(--primary-font);
+}
+
+.area {
+  border-bottom: 1px solid black;
 }
 
 .wrap {
@@ -25,7 +42,6 @@
   font-family: var(--primary-font);
   font-weight: var(--normal);
   line-height: 20px;
-  margin: 8px 0px;
 }
 
 .img {
@@ -35,7 +51,7 @@
   border-radius: 50%;
 }
 
-.title {
+.name {
   margin-bottom: 5px;
   font-size: var(--xs-font);
 }
@@ -45,12 +61,35 @@
   font-size: var(--xss-font);
 }
 
+.button {
+  display: flex;
+  padding-top: 35px;
+}
+
 @media only screen and (max-width: 600px) {
+  .divTable {
+    width: 50%;
+    top: 20%;
+    left: 50%;
+    border: none;
+    transform: translate(-50%, -50%);
+  }
+  
   .headerRow {
     display: block;
+    border-bottom: 1px solid var(--color-primary);
   }
 
-  .active {
-    display: none;
+  .divCell {
+    display: flex;
   }
+
+  .area {
+    border-bottom: none;
+  }
+
+  .title {
+    /* margin-left: 50px; */
+  }
+
 }

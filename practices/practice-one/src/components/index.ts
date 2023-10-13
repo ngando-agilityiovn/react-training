@@ -3,8 +3,3 @@ export * from './Button';
 export * from './Tag';
 export * from './InformationUser';
 export * from './Modal';
-export * from './Profile';
-export * from './EmailInformation';
-export * from './Phone';
-export * from './Status';
-export * from './EditRow';
