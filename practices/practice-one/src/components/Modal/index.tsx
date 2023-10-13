@@ -1,59 +1,38 @@
-import { ReactNode } from 'react';
-
-// Styles
-import styles from './index.module.css';
-
-// Components
-import { Button } from '..';
+import { ReactNode, memo, useRef } from 'react';
 
 // Types
 import { BUTTON_VARIANT } from '@/types';
 
-interface ModalProps {
-  children?: ReactNode;
+// Styles
+import styles from './index.module.css';
+import { useOutsideClick } from '@/hooks/useOutsideClick';
+import { Button } from '..';
+import { Close } from '../Icons';
+
+// Components
+
+interface IProps {
   title: string;
-  className: string;
-  variantNegative: BUTTON_VARIANT;
-  variantPosition: BUTTON_VARIANT;
-  negativeLabel: string;
-  positiveLabel: string;
+  children?: ReactNode;
   onClose: () => void;
-  onSubmit: () => void;
 }
 
-export const Modal = ({
-  children,
-  title,
-  variantNegative,
-  variantPosition,
-  negativeLabel,
-  positiveLabel,
-  onClose,
-  onSubmit
-}: ModalProps) => {
+export const Modal: React.FC<IProps> = memo(({ children, title, onClose }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  useOutsideClick(ref, onClose);
+
   return (
     <div>
-      <div
-        className={`${styles.modal}`}
-        onClick={() => {
-          onClose();
-        }}
-      >
-        <div className={`${styles.modalHeader}`}>
-          <h2 className={`${styles.title}`}>{title}</h2>
-          <div>x</div>
-        </div>
-
-        {children}
-
-        <div className={`${styles.modalFooter}`}>
-          <Button className={`${styles.btn}`} onClick={onSubmit} variant={variantNegative}>
-            {negativeLabel}
+      <div ref={ref} className={styles.modal}>
+        <div className={styles.modalHeader}>
+          <h2 className={styles.title}>{title}</h2>
+          <Button className={styles.btnClose} variant={BUTTON_VARIANT.ICON} onClick={onClose}>
+            <Close />
           </Button>
-          <Button variant={variantPosition}>{positiveLabel}</Button>
         </div>
+        {children}
       </div>
-      <div className={`${styles.overlay}`}></div>
+      <div className={styles.overlay}></div>
     </div>
   );
-};
+});

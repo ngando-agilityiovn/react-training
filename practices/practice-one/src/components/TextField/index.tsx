@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from 'react';
 
-// styles
+// Styles
 import textFieldStyles from './index.module.css';
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {

@@ -1,7 +1,9 @@
-import { StoryObj, Meta } from '@storybook/react';
+import { Meta } from '@storybook/react';
+import { useCallback, useState } from 'react';
 
 // Components
-import { Modal, TextField } from '..';
+import { Modal } from '.';
+import { Button } from '..';
 
 // Types
 import { BUTTON_VARIANT } from '@/types';
@@ -11,73 +13,32 @@ export default {
   component: Modal
 } as Meta;
 
-type Story = StoryObj<typeof Modal>;
+const ModalWithHooks = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-export const Default: Story = {
-  args: {
-    className: 'dd',
-    title: 'Do you want to delete this user ?',
-    variantNegative: BUTTON_VARIANT.WARNING,
-    negativeLabel: 'No',
-    variantPosition: BUTTON_VARIANT.SECONDARY,
-    positiveLabel: 'Yes',
-    onClose: () => {
-      alert('Button component');
-    },
-    onSubmit: () => {
-      alert('Button component');
-    }
-  }
+  const handleClick = useCallback(() => {
+    setIsOpen(true);
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
+  return (
+    <div>
+      <Button variant={BUTTON_VARIANT.PRIMARY} onClick={handleClick}>
+        Open Modal
+      </Button>
+
+      {isOpen && (
+        <Modal onClose={handleClose} title={'Do you want to delete this user?'}>
+          <div className=''>Content Modal</div>
+        </Modal>
+      )}
+    </div>
+  );
 };
 
-export const ModalPrimary: Story = {
-  args: {
-    className: 'dd',
-    title: 'Add new user',
-    variantNegative: BUTTON_VARIANT.PRIMARY,
-    negativeLabel: 'Cancel',
-    variantPosition: BUTTON_VARIANT.SECONDARY,
-    positiveLabel: 'Confirm',
-    children: (
-      <div>
-        <TextField label='User Name' name='name' type='text' placeholder='Your name...' size={100}></TextField>
-        <TextField label='Email' name='email' type='email' placeholder='example@domain.com' size={80}></TextField>
-        <TextField label='Phone Number' name='tel' type='tel' placeholder='Your phone...' size={80}></TextField>
-        <TextField label='Avatar' name='avatar' type='url' placeholder='Image...' size={80}></TextField>
-        <TextField label='Status' name='status' type='text' placeholder='Choose status' size={80}></TextField>
-      </div>
-    ),
-    onClose: () => {
-      alert('Button component');
-    },
-    onSubmit: () => {
-      alert('Button component');
-    }
-  }
-};
-
-export const ModalSecondary: Story = {
-  args: {
-    className: 'dd',
-    title: 'Update information user',
-    variantNegative: BUTTON_VARIANT.PRIMARY,
-    negativeLabel: 'Cancel',
-    variantPosition: BUTTON_VARIANT.SECONDARY,
-    positiveLabel: 'Confirm',
-    children: (
-      <div>
-        <TextField label='User Name' name='name' type='text' placeholder='Your name...' size={100}></TextField>
-        <TextField label='Email' name='email' type='email' placeholder='example@domain.com' size={80}></TextField>
-        <TextField label='Phone Number' name='tel' type='tel' placeholder='Your phone...' size={80}></TextField>
-        <TextField label='Avatar' name='avatar' type='url' placeholder='Image...' size={80}></TextField>
-        <TextField label='Status' name='status' type='text' placeholder='Choose status' size={80}></TextField>
-      </div>
-    ),
-    onClose: () => {
-      alert('Button component');
-    },
-    onSubmit: () => {
-      alert('Button component');
-    }
-  }
+export const Default = {
+  render: () => ModalWithHooks()
 };
