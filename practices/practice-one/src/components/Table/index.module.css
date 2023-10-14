@@ -1,7 +1,17 @@
-.divTable {
+.main {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.heading {
+  font-weight: var(--bold);
+  font-size: 48px;
+}
+
+.table {
   position: fixed;
   width: 90%;
-  padding: 18px 16px;
   border-radius: 8px;
   border: 1px solid var(--color-secondary);
   top: 30%;
@@ -10,31 +20,38 @@
 }
 
 .headerRow {
+  padding: 14px 18px;
+  width: 100%;
   display: flex;
   border-bottom: 1px solid black;
-  padding-bottom: 18px;
-  padding-right: 170px;
 }
 
 .headerRow:last-child {
   border: none;
 }
 
-.divCell {
-  width: calc(100% / 5);
+.cell {
   font-family: Nunito Sans;
   font-size: var(--xs-font);
   font-weight: var(--normal);
   line-height: 20px;
-  padding-top: 18px;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(2) {
+  width: 30%;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(4),
+.cell:nth-child(5) {
+  width: calc(40% / 3);
 }
 
 .title {
   font-family: var(--primary-font);
-}
-
-.area {
-  border-bottom: 1px solid black;
+  font-weight: var(--bold);
+  font-size: var(--sm-font);
 }
 
 .wrap {
@@ -44,7 +61,7 @@
   line-height: 20px;
 }
 
-.img {
+.image {
   width: 40px;
   height: 40px;
   margin-right: 12px;
@@ -63,33 +80,52 @@
 
 .button {
   display: flex;
-  padding-top: 35px;
 }
 
-@media only screen and (max-width: 600px) {
-  .divTable {
-    width: 50%;
-    top: 20%;
-    left: 50%;
-    border: none;
-    transform: translate(-50%, -50%);
+.icon {
+  margin-right: 10px;
+}
+
+.titleCell {
+  display: none;
+}
+
+@media only screen and (max-width: 375px) {
+  .main {
+    margin: 0 auto;
+    padding: 10px 0;
   }
-  
+
+  .table {
+    position: fixed;
+    width: 90%;
+    border: none;
+  }
+
   .headerRow {
     display: block;
-    border-bottom: 1px solid var(--color-primary);
+    padding: 0px;
   }
 
-  .divCell {
+  .cell {
     display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
 
-  .area {
-    border-bottom: none;
+  .cell:nth-child(1),
+  .cell:nth-child(2),
+  .cell:nth-child(3),
+  .cell:nth-child(4),
+  .cell:nth-child(5) {
+    width: 100%;
   }
 
-  .title {
-    /* margin-left: 50px; */
+  .titleCell {
+    display: block;
   }
 
+  .active {
+    display: none;
+  }
 }
