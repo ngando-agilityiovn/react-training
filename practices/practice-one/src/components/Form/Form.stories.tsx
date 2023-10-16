@@ -24,19 +24,19 @@ export const Default = () => {
         <p>Status</p>
         <select className={styles.input}>
           <option>
-            <Tag color={TAG_COLORS.PRIMARY} title='Status' />
+            <Tag color={TAG_COLORS.PRIMARY} title='Closed' />
           </option>
           <option>
-            <Tag color={TAG_COLORS.PRIMARY} title='Status' />
+            <Tag color={TAG_COLORS.PRIMARY} title='Pending' />
           </option>
           <option>
-            <Tag color={TAG_COLORS.PRIMARY} title='Status' />
+            <Tag color={TAG_COLORS.PRIMARY} title='Active' />
           </option>
           <option>
-            <Tag color={TAG_COLORS.PRIMARY} title='Status' />
+            <Tag color={TAG_COLORS.PRIMARY} title='Warning' />
           </option>
           <option>
-            <Tag color={TAG_COLORS.PRIMARY} title='Status' />
+            <Tag color={TAG_COLORS.PRIMARY} title='Trial' />
           </option>
         </select>
       </div>
