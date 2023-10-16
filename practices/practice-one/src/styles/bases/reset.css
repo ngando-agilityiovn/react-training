@@ -37,6 +37,8 @@ footer, header, hgroup, menu, nav, section {
 
 body {
 	line-height: 1;
+  font-family: var(--primary-font);
+  color: var(--color-primary);
 }
 
 ol, ul {
@@ -45,6 +47,11 @@ ol, ul {
 
 blockquote, q {
 	quotes: none;
+}
+
+p {
+  font-weight: 700;
+  line-height: 20px;
 }
 
 blockquote:before, blockquote:after,
@@ -56,4 +63,34 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+h2 {
+  font-size: var(--xxl-font);
+  line-height: 58px;
+}
+
+h1 {
+  font-size: 58px;
+  line-height: 70px;
+}
+
+h3 {
+  font-size: 29px;
+  line-height: 46px;
+}
+
+h4 {
+  font-size: 28px;
+  line-height: 35px;
+}
+
+h5 {
+  font-size: 19px;
+  line-height: 23px;
+}
+
+h6 {
+  font-size: 10px;
+  line-height: 12px;
 }
