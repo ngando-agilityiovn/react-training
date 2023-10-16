@@ -6,10 +6,10 @@
   --color-light-blue: #0000ff;
   --color-warning: #ff0000;
   --color-bg: #9bcae1;
-
+  --color-border: #e4e4ef;
 
   /* font families */
-  --primary-font: 'Nunito Sans';
+  --primary-font: 'Nunito Sans', sans-serif;
 
   /* font-sizes */
   --xss-font: 12px;

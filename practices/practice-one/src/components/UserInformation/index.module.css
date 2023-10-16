@@ -1,0 +1,38 @@
+.userInformation {
+  display: flex;
+  font-family: var(--primary-font);
+  font-weight: var(--normal);
+  gap: 12px;
+  width: 100%;
+
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.userInformation .userInformationContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.name {
+  font-size: var(--xs-font);
+}
+
+.description {
+  color: var(--color-secondary);
+  font-size: var(--xss-font);
+}
+
+@media (min-width: 1130px) {
+  .userInformation {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}

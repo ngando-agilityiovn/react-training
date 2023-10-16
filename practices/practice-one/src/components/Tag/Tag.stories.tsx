@@ -13,14 +13,14 @@ type Story = StoryObj<typeof Tag>;
 
 export const Default: Story = {
   args: {
-    color: TAG_COLORS.PRIMARY,
+    color: TAG_COLORS.INFO,
     title: 'Status'
   }
 };
 
 export const PrimaryStatus: Story = {
   args: {
-    color: TAG_COLORS.SECONDARY,
+    color: TAG_COLORS.DISABLED,
     title: 'Status'
   }
 };
@@ -34,14 +34,14 @@ export const SecondaryStatus: Story = {
 
 export const DarkStatus: Story = {
   args: {
-    color: TAG_COLORS.LIGHT,
+    color: TAG_COLORS.ERROR,
     title: 'Status'
   }
 };
 
 export const TertiaryStatus: Story = {
   args: {
-    color: TAG_COLORS.DARK,
+    color: TAG_COLORS.SUCCESS,
     title: 'Status'
   }
 };

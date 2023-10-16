@@ -2,7 +2,7 @@ import { StoryObj, Meta } from '@storybook/react';
 
 // Components
 import { Button } from '.';
-import { Edit, Delete, Filter } from '../Icons';
+import { Edit, Delete, Filter, ArrowDown } from '../Icons';
 
 // Types
 import { BUTTON_VARIANT } from '@/types';
@@ -68,6 +68,17 @@ export const IconDelete: Story = {
 export const IconFilter: Story = {
   args: {
     children: <Filter />,
+    variant: BUTTON_VARIANT.ICON,
+    className: 'secondary',
+    onClick: () => {
+      alert('Button component');
+    }
+  }
+};
+
+export const IconArrowDown: Story = {
+  args: {
+    children: <ArrowDown />,
     variant: BUTTON_VARIANT.ICON,
     className: 'secondary',
     onClick: () => {

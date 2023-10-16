@@ -6,9 +6,9 @@ export enum BUTTON_VARIANT {
 }
 
 export enum TAG_COLORS {
-  PRIMARY = 'primary',
-  SECONDARY = 'secondary',
-  LIGHT = 'light',
+  INFO = 'info',
+  SUCCESS = 'success',
   WARNING = 'warning',
-  DARK = 'dark'
+  ERROR = 'error',
+  DISABLED = 'disabled'
 }
