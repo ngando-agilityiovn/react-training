@@ -1,10 +1,8 @@
 import { StoryObj, Meta } from '@storybook/react';
 
-// Components
-import { Tag } from '.';
+import { Tag } from './';
 
-// Types
-import { TAG_COLORS } from '@/types/index';
+import { TAG_COLORS } from '@/types';
 
 export default {
   title: 'Components/Tag',

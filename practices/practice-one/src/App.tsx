@@ -1,19 +1,7 @@
-import { Button } from '@/components';
-import { BUTTON_VARIANT } from '@/types';
+import { Button } from '@/components/index';
 
 const App = () => {
-  return (
-    <>
-      <Button
-        variant={BUTTON_VARIANT.WARNING}
-        onClick={() => {
-          alert('Button component');
-        }}
-      >
-        Lorem ipsum dolor sit.
-      </Button>
-    </>
-  );
+  return <Button>Lorem ipsum dolor sit.</Button>;
 };
 
 export default App;
