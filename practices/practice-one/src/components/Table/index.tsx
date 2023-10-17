@@ -11,6 +11,7 @@ import { ArrowDown } from '../Icons';
 interface TableHeader {
   label: string;
   width?: string;
+  icon?: boolean;
 }
 
 interface TableProps<T> {
@@ -24,15 +25,17 @@ export const Table: React.FC<TableProps<any>> = ({ tableHeader, tableData, custo
   return (
     <div className={styles.mainTable}>
       <div className={styles.tableHeader}>
-        {tableHeader.map(({ label, width }) => {
+        {tableHeader.map(({ label, width, icon }) => {
           return (
             <div key={label} style={{ flex: width }} className={styles.tableHeaderContent}>
               <p key={label}>{label}</p>
-              <div className={styles.sorting}>
-                <Button variant={BUTTON_VARIANT.ICON}>
-                  <ArrowDown />
-                </Button>
-              </div>
+              {icon && (
+                <div className={styles.sorting}>
+                  <Button variant={BUTTON_VARIANT.ICON}>
+                    <ArrowDown />
+                  </Button>
+                </div>
+              )}
             </div>
           );
         })}

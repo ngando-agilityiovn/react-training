@@ -53,19 +53,23 @@ const users = [
 const tableHeader = [
   {
     label: 'User',
-    width: '30%'
+    width: '30%',
+    icon: true
   },
   {
     label: 'Email address',
-    width: '30%'
+    width: '30%',
+    icon: false
   },
   {
     label: 'Phone number',
-    width: '15%'
+    width: '15%',
+    icon: false
   },
   {
     label: 'Status',
-    width: '15%'
+    width: '15%',
+    icon: false
   }
 ];
 
