@@ -28,7 +28,7 @@ const users = [
     description: 'Developer',
     email: 'john@steam.com',
     phoneNumber: '123456789',
-    status: 'disabled'
+    status: 'pending'
   },
   {
     id: 1,
@@ -37,7 +37,7 @@ const users = [
     description: 'Developer',
     email: 'john@steam.com',
     phoneNumber: '123456789',
-    status: 'disabled'
+    status: 'trial'
   },
   {
     id: 2,
@@ -46,7 +46,7 @@ const users = [
     description: 'Developer',
     email: 'john@steam.com',
     phoneNumber: '123456789',
-    status: 'disabled'
+    status: 'active'
   }
 ];
 
