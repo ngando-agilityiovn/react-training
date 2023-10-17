@@ -1,0 +1,13 @@
+.mobile-only {
+  display: block;
+}
+
+.text-copy {
+  color: var(--color-secondary);
+}
+
+@media (min-width: 1130px) {
+  .mobile-only {
+    display: none;
+  }
+}

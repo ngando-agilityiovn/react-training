@@ -1,32 +1,81 @@
-.card {
-  font-family: var(--primary-font);
+.homePage {
+  background-color: #f8f9fb;
+  padding-bottom: 80px;
+}
+
+.homePage .tableContainer {
+  padding: 0;
+}
+
+.homePage .heading {
+  margin-bottom: 40px;
+}
+
+.homePage .userInformationRow {
+  display: flex;
+  width: 100%;
+}
+
+.homePage .tableHeaderContent {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.homePage .copyText {
   font-size: var(--xs-font);
-  font-weight: var(--normal);
-  line-height: 20px;
+  color: var(--color-secondary);
 }
 
-/* Float four columns side by side */
-.column {
-  float: left;
-  width: 25%;
-  padding: 0 10px;
+.homePage .userInfo {
+  order: 1;
 }
 
-/* Remove extra left and right margins, due to padding */
-.row {margin: 0 -5px;}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.homePage .tableActions {
+  display: flex;
+  justify-content: flex-end;
+  order: -1;
 }
 
-/* Responsive columns */
-@media screen and (max-width: 320px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
+.tableActions button {
+  margin-left: 22px;
+}
+
+.mobileAction {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.mobileAction .sortingOptions {
+  position: absolute;
+  right: 0;
+  top: 25px;
+}
+
+@media (min-width: 1130px) {
+  .homePage {
+    background-color: var(--color-light);
+  }
+
+  .homePage .tableActions {
+    width: 10%;
+    justify-content: space-around;
+    order: unset;
+  }
+
+  .tableActions button {
+    margin-left: unset;
+  }
+
+  .homePage .userInfo {
+    order: unset;
+  }
+
+  .mobileAction {
+    display: none;
   }
 }

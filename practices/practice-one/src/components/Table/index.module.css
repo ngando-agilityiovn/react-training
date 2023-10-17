@@ -1,131 +1,56 @@
-.main {
-  width: 1200px;
-  margin: 0 auto;
-  padding: 30px 0;
-}
-
-.heading {
-  font-weight: var(--bold);
-  font-size: 48px;
-}
-
-.table {
-  position: fixed;
-  width: 90%;
-  border-radius: 8px;
-  border: 1px solid var(--color-secondary);
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.headerRow {
-  padding: 14px 18px;
+.mainTable {
   width: 100%;
-  display: flex;
-  border-bottom: 1px solid black;
-}
-
-.headerRow:last-child {
   border: none;
 }
 
-.cell {
-  font-family: Nunito Sans;
-  font-size: var(--xs-font);
-  font-weight: var(--normal);
-  line-height: 20px;
-}
-
-.cell:nth-child(1),
-.cell:nth-child(2) {
-  width: 30%;
-}
-
-.cell:nth-child(3),
-.cell:nth-child(4),
-.cell:nth-child(5) {
-  width: calc(40% / 3);
-}
-
-.title {
-  font-family: var(--primary-font);
-  font-weight: var(--bold);
+.mainTable .tableHeader {
   font-size: var(--sm-font);
-}
-
-.wrap {
-  display: flex;
-  font-family: var(--primary-font);
-  font-weight: var(--normal);
-  line-height: 20px;
-}
-
-.image {
-  width: 40px;
-  height: 40px;
-  margin-right: 12px;
-  border-radius: 50%;
-}
-
-.name {
-  margin-bottom: 5px;
-  font-size: var(--xs-font);
-}
-
-.description {
-  color: var(--color-secondary);
-  font-size: var(--xss-font);
-}
-
-.button {
-  display: flex;
-}
-
-.icon {
-  margin-right: 10px;
-}
-
-.titleCell {
   display: none;
 }
 
-@media only screen and (max-width: 375px) {
-  .main {
-    margin: 0 auto;
-    padding: 10px 0;
+.mainTable .tableHeaderContent {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mainTable .tableContent {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainTable .tableRow {
+  display: flex;
+  font-size: var(--sm-font);
+
+  flex-direction: column-reverse;
+  background-color: var(--color-light);
+}
+
+.mainTable .sorting {
+  position: relative;
+}
+
+@media (min-width: 1130px) {
+  .mainTable {
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
   }
 
-  .table {
-    position: fixed;
-    width: 90%;
-    border: none;
-  }
-
-  .headerRow {
-    display: block;
-    padding: 0px;
-  }
-
-  .cell {
+  .mainTable .tableHeader {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    border-bottom: 1px solid var(--color-border);
   }
 
-  .cell:nth-child(1),
-  .cell:nth-child(2),
-  .cell:nth-child(3),
-  .cell:nth-child(4),
-  .cell:nth-child(5) {
-    width: 100%;
+  .mainTable .tableRow {
+    flex-direction: row;
+    background-color: transparent;
+    border-bottom: 1px solid var(--color-border);
   }
 
-  .titleCell {
-    display: block;
-  }
-
-  .active {
-    display: none;
+  .mainTable .tableContent {
+    gap: 0;
   }
 }

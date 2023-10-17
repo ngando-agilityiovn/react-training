@@ -8,3 +8,4 @@ export * from './Form';
 export * from './Heading';
 export * from './SelectOption';
 export * from './Container';
+export * from './Table';
