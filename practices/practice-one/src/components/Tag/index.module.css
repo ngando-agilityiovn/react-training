@@ -5,27 +5,27 @@
   padding: 4px 24px;
 }
 
-.primary {
-  color: #605DEC;
-  background-color: #EDEDFE;
+.info {
+  color: #605dec;
+  background-color: #ededfe;
 }
 
-.secondary {
-  color: #31AA27;
-  background-color: #EBF6EB;
-}
-
-.light {
-  color: #E99518;
-  background-color: #FFF4E4;
+.success {
+  color: #31aa27;
+  background-color: #ebf6eb;
 }
 
 .warning {
-  color: #F93232;
-  background-color: #FFF0F0;
+  color: #e99518;
+  background-color: #fff4e4;
 }
 
-.dark {
-  color: #BDBCDB;
-  background-color: #F8F9FB;
+.error {
+  color: #f93232;
+  background-color: #fff0f0;
+}
+
+.disabled {
+  color: #bdbcdb;
+  background-color: #f8f9fb;
 }

@@ -1,15 +1,39 @@
-* {
-  box-sizing: border-box;
+body {
+  font-family: var(--primary-font);
+  color: var(--color-primary);
 }
 
-@media only screen and (max-width: 1440px) {
-  .container {
-    padding: 0 158px;
-  }
+.p {
+  font-weight: 700;
+  line-height: 20px;
 }
 
-@media only screen and (max-width: 375px) {
-  .container {
-    padding: 0 16px;
-  }
+h2 {
+  font-size: var(--xxl-font);
+  line-height: 58px;
+}
+
+h1 {
+  font-size: 58px;
+  line-height: 70px;
+}
+
+h3 {
+  font-size: 29px;
+  line-height: 46px;
+}
+
+h4 {
+  font-size: 28px;
+  line-height: 35px;
+}
+
+h5 {
+  font-size: 19px;
+  line-height: 23px;
+}
+
+h6 {
+  font-size: 10px;
+  line-height: 12px;
 }
