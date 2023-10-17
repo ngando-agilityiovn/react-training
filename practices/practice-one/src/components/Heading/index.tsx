@@ -12,11 +12,11 @@ interface HeadingProps {
   className?: string;
 }
 
-export const Heading = ({ title, as, className }: HeadingProps) =>
+export const Heading = ({ title, as }: HeadingProps) =>
   createElement(
     as ?? 'h2',
     {
-      className: combineClasses([className, styles.heading])
+      className: combineClasses([styles.heading])
     },
     title
   );
