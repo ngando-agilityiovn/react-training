@@ -1,13 +1,39 @@
-.mobile-only {
-  display: block;
+body {
+  font-family: var(--primary-font);
+  color: var(--color-primary);
 }
 
-.text-copy {
-  color: var(--color-secondary);
+.p {
+  font-weight: 700;
+  line-height: 20px;
 }
 
-@media (min-width: 1130px) {
-  .mobile-only {
-    display: none;
-  }
+h2 {
+  font-size: var(--xxl-font);
+  line-height: 58px;
+}
+
+h1 {
+  font-size: 58px;
+  line-height: 70px;
+}
+
+h3 {
+  font-size: 29px;
+  line-height: 46px;
+}
+
+h4 {
+  font-size: 28px;
+  line-height: 35px;
+}
+
+h5 {
+  font-size: 19px;
+  line-height: 23px;
+}
+
+h6 {
+  font-size: 10px;
+  line-height: 12px;
 }
