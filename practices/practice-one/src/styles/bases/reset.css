@@ -37,8 +37,6 @@ footer, header, hgroup, menu, nav, section {
 
 body {
 	line-height: 1;
-  font-family: var(--primary-font);
-  color: var(--color-primary);
 }
 
 ol, ul {
@@ -47,11 +45,6 @@ ol, ul {
 
 blockquote, q {
 	quotes: none;
-}
-
-p {
-  font-weight: 700;
-  line-height: 20px;
 }
 
 blockquote:before, blockquote:after,
