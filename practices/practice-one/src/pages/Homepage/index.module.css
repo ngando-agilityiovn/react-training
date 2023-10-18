@@ -1,5 +1,5 @@
 .homePage {
-  background-color: #f8f9fb;
+  background-color: var(--color-tertiary);
   padding-bottom: 80px;
 }
 

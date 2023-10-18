@@ -50,8 +50,8 @@
   width: 7px;
   height: 3px;
   content: '';
-  border-right: solid 2px #fff;
-  border-top: solid 2px #fff;
+  border-right: solid 2px var(--color-light);
+  border-top: solid 2px var(--color-light);
   border-top-right-radius: 2px;
   left: 4px;
   top: 7px;
