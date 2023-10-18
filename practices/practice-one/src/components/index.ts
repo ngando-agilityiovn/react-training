@@ -1,5 +1,6 @@
 export * from './TextField';
 export * from './Button';
+export * from './Icons';
 export * from './Tag';
 export * from './UserInformation';
 export * from './Modal';
