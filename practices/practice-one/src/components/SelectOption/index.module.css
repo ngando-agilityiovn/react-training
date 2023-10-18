@@ -1,6 +1,6 @@
 .selectOption {
   padding: 15px;
-  background-color: #979797;
+  background-color: var(--color-secondary);
   border-radius: 5px;
   z-index: 1;
 }
