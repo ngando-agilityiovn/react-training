@@ -2,22 +2,22 @@ import { ReactNode, memo, useRef } from 'react';
 
 // Types
 import { BUTTON_VARIANT } from '@/types';
+import { useOutsideClick } from '@/hooks/useOutsideClick';
 
 // Styles
 import styles from './index.module.css';
-import { useOutsideClick } from '@/hooks/useOutsideClick';
+
+// Components
 import { Button } from '..';
 import { Close } from '../Icons';
 
-// Components
-
-interface IProps {
+interface IModalProps {
   title: string;
   children?: ReactNode;
   onClose: () => void;
 }
 
-export const Modal: React.FC<IProps> = memo(({ children, title, onClose }) => {
+export const Modal: React.FC<IModalProps> = memo(({ children, title, onClose }) => {
   const ref = useRef<HTMLDivElement>(null);
   useOutsideClick(ref, onClose);
 

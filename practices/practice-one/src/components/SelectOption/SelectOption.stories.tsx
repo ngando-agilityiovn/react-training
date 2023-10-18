@@ -2,7 +2,7 @@ import { StoryObj, Meta } from '@storybook/react';
 import { useState } from 'react';
 
 // Components
-import SelectOption from '.';
+import { SelectOption } from '.';
 
 const optionsData = [
   {
