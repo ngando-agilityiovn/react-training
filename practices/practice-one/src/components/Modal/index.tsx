@@ -11,13 +11,13 @@ import { Button } from '..';
 
 // Components
 
-interface IProps {
+interface IModalProps {
   title: string;
   children?: ReactNode;
   onClose: () => void;
 }
 
-export const Modal: React.FC<IProps> = memo(({ children, title, onClose }) => {
+export const Modal: React.FC<IModalProps> = memo(({ children, title, onClose }) => {
   const ref = useRef<HTMLDivElement>(null);
   useOutsideClick(ref, onClose);
 

@@ -7,11 +7,11 @@ import tagStyles from './index.module.css';
 // enums
 import { TAG_COLORS } from '@/types';
 
-interface IProps {
+interface ITagProps {
   color?: TAG_COLORS;
   title?: string;
 }
 
-export const Tag: React.FC<IProps> = ({ color = TAG_COLORS.INFO, title }) => {
-  return <div className={combineClasses([tagStyles.tag, tagStyles[color]])}>{title}</div>;
-};
+export const Tag: React.FC<ITagProps> = ({ color = TAG_COLORS.INFO, title }) => (
+  <div className={combineClasses([tagStyles.tag, tagStyles[color]])}>{title}</div>
+);
