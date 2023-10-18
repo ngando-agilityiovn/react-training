@@ -3,42 +3,55 @@
   padding-bottom: 80px;
 }
 
-.homePage .tableContainer {
+.tableContainer {
   padding: 0;
 }
 
-.homePage .heading {
+.heading {
   margin-bottom: 40px;
 }
 
-.homePage .userInformationRow {
+.userInformationRow {
   display: flex;
   width: 100%;
 }
 
-.homePage .tableHeaderContent {
+.tableHeaderContent {
   padding: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.homePage .copyText {
+.copyText {
   font-size: var(--xs-font);
   color: var(--color-secondary);
 }
 
-.homePage .userInfo {
+.userInfo {
+  flex: 30%;
   order: 1;
 }
 
-.homePage .tableActions {
+.userEmail {
+  flex: 30%;
+}
+
+.userPhone {
+  flex: 15%;
+}
+
+.status {
+  flex: 15%;
+}
+
+.tableActions {
   display: flex;
   justify-content: flex-end;
   order: -1;
 }
 
-.tableActions button {
+button {
   margin-left: 22px;
 }
 
@@ -50,7 +63,7 @@
   position: relative;
 }
 
-.mobileAction .sortingOptions {
+.sortingOptions {
   position: absolute;
   right: 0;
   top: 25px;
@@ -61,17 +74,17 @@
     background-color: var(--color-light);
   }
 
-  .homePage .tableActions {
+  .tableActions {
     width: 10%;
     justify-content: space-around;
     order: unset;
   }
 
-  .tableActions button {
+  button {
     margin-left: unset;
   }
 
-  .homePage .userInfo {
+  .userInfo {
     order: unset;
   }
 
