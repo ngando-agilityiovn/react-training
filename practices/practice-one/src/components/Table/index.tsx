@@ -14,14 +14,14 @@ interface TableHeader {
   icon?: boolean;
 }
 
-interface TableProps<T> {
+interface ITableProps<T> {
   tableHeader: TableHeader[];
   tableData?: T[];
   customRender?: (data: T, width?: number) => JSX.Element;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const Table: React.FC<TableProps<any>> = ({ tableHeader, tableData, customRender }) => {
+export const Table: React.FC<ITableProps<any>> = ({ tableHeader, tableData, customRender }) => {
   return (
     <div className={styles.mainTable}>
       <div className={styles.tableHeader}>
