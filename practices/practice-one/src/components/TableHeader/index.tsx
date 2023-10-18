@@ -19,7 +19,6 @@ interface IHeaderProps {
   tableHeader: TableHeader[];
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const TableHeader: React.FC<IHeaderProps> = ({ tableHeader }) => (
   <div>
     <div className={styles.tableHeader}>
