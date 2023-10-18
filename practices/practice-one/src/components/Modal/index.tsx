@@ -2,14 +2,14 @@ import { ReactNode, memo, useRef } from 'react';
 
 // Types
 import { BUTTON_VARIANT } from '@/types';
+import { useOutsideClick } from '@/hooks/useOutsideClick';
 
 // Styles
 import styles from './index.module.css';
-import { useOutsideClick } from '@/hooks/useOutsideClick';
-import { Close } from '../Icons';
-import { Button } from '..';
 
 // Components
+import { Button } from '..';
+import { Close } from '../Icons';
 
 interface IModalProps {
   title: string;

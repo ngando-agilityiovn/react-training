@@ -2,6 +2,8 @@ import { createElement } from 'react';
 
 // Styles
 import styles from './index.module.css';
+
+// Utilities
 import { combineClasses } from '@/utils';
 
 type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
