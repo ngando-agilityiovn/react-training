@@ -11,7 +11,7 @@ import { BUTTON_VARIANT, Status } from '@/types';
 import { Button } from '../Button';
 import { Delete, Edit } from '../Icons';
 
-interface ICustomRenderProps {
+interface ITableContentProps {
   name: string;
   avatarUrl: string;
   description: string;
@@ -28,7 +28,7 @@ const colorStatusMapping = {
   [Status.PENDING]: 'warning'
 };
 
-export const CustomRender: React.FC<ICustomRenderProps> = ({
+export const RenderTableContent: React.FC<ITableContentProps> = ({
   name,
   avatarUrl,
   description,
