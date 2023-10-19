@@ -11,7 +11,7 @@ import { combineClasses } from '@/utils';
 
 interface IButtonProps {
   children: ReactNode;
-  variant: BUTTON_VARIANT;
+  variant?: BUTTON_VARIANT;
   className?: string;
   onClick?: () => void;
 }
