@@ -2,10 +2,6 @@
   background-color: var(--color-tertiary);
 }
 
-.tableContainer {
-  padding: 0;
-}
-
 .heading {
   margin-bottom: 40px;
 }

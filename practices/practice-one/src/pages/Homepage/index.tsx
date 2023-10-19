@@ -81,7 +81,7 @@ export const Homepage: React.FC = (): JSX.Element => (
         </Button>
       </div>
     </Container>
-    <Container className={homeStyles.tableContainer}>
+    <Container>
       <Table>
         <TableHeader tableHeader={tableHeader} />
         <TableBody
