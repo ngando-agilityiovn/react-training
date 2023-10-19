@@ -17,7 +17,7 @@ interface IModalProps {
   onClose: () => void;
 }
 
-export const Modal: React.FC<IModalProps> = memo(({ children, title, onClose }) => {
+export const Modal = memo(({ children, title, onClose }: IModalProps) => {
   const ref = useRef<HTMLDivElement>(null);
   useOutsideClick(ref, onClose);
 

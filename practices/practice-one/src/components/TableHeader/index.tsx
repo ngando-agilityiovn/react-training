@@ -11,7 +11,7 @@ import { Button } from '../Button';
 // Utilities
 import { combineClasses } from '@/utils';
 
-interface TableHeader {
+export interface TableHeader {
   label: string;
   width?: string;
   icon?: boolean;
@@ -21,7 +21,7 @@ interface IHeaderProps {
   tableHeader: TableHeader[];
 }
 
-export const TableHeader: React.FC<IHeaderProps> = ({ tableHeader }) => (
+export const TableHeader = ({ tableHeader }: IHeaderProps) => (
   <div className={styles.tableHeader}>
     {tableHeader?.map(({ label, width, icon }) => {
       return (

@@ -2,7 +2,7 @@
 import homeStyles from './index.module.css';
 
 // Components
-import { Button, Container, Filter, Heading, RenderTableContent, Table, TableBody, TableHeader } from '@/components';
+import { Button, Container, Filter, Heading, Table, UserRow } from '@/components';
 
 // Types
 import { BUTTON_VARIANT, Status } from '@/types';
@@ -17,7 +17,7 @@ export interface User {
   status: Status;
 }
 
-const users = [
+const users: User[] = [
   {
     id: 0,
     avatarUrl: 'https://picsum.photos/40/40',
@@ -25,7 +25,7 @@ const users = [
     description: 'Developer',
     email: 'john@steam.com',
     phoneNumber: '123456789',
-    status: 'pending'
+    status: Status.ACTIVE
   },
   {
     id: 1,
@@ -34,7 +34,7 @@ const users = [
     description: 'Developer',
     email: 'john@steam.com',
     phoneNumber: '123456789',
-    status: 'trial'
+    status: Status.CLOSED
   },
   {
     id: 2,
@@ -43,7 +43,7 @@ const users = [
     description: 'Developer',
     email: 'john@steam.com',
     phoneNumber: '123456789',
-    status: 'active'
+    status: Status.PENDING
   }
 ];
 
@@ -81,20 +81,16 @@ export const Homepage: React.FC = (): JSX.Element => (
         </Button>
       </div>
     </Container>
-    <Container>
-      <Table>
-        <TableHeader tableHeader={tableHeader} />
-        <TableBody
-          tableData={users}
-          customRender={({ name, avatarUrl, description, email, phoneNumber, status }: User) => {
-            return (
-              <>
-                <RenderTableContent {...{ name, avatarUrl, description, email, phoneNumber, status }} />
-              </>
-            );
-          }}
+    <Container className={homeStyles.tableContainer}>
+      {users.length ? (
+        <Table<User>
+          tableHeader={tableHeader}
+          dataTable={users}
+          renderBody={(dataTable) => <UserRow {...dataTable} />}
         />
-      </Table>
+      ) : (
+        <div>No data found</div>
+      )}
     </Container>
   </main>
 );

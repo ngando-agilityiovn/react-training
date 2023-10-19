@@ -2,40 +2,26 @@
 import { combineClasses, uppercaseFirstLetter } from '@/utils';
 
 // Components
-import { UserInformation } from '../UserInformation';
+import { Button, Tag, Delete, Edit, UserInformation } from '@/components';
+
+// Types
+import { BUTTON_VARIANT, Status, TAG_COLORS } from '@/types';
+
+// Pages
+import { User } from '@/pages/Homepage';
 
 // Styles
 import styles from './index.module.css';
-import { ITagProps, Tag } from '../Tag';
-import { BUTTON_VARIANT, Status } from '@/types';
-import { Button } from '../Button';
-import { Delete, Edit } from '../Icons';
-
-interface ITableContentProps {
-  name: string;
-  avatarUrl: string;
-  description: string;
-  email: string;
-  phoneNumber: string;
-  status: Status;
-}
 
 const colorStatusMapping = {
-  [Status.CLOSED]: 'error',
-  [Status.DISABLED]: 'disabled',
-  [Status.ACTIVE]: 'success',
-  [Status.TRIAL]: 'info',
-  [Status.PENDING]: 'warning'
+  [Status.CLOSED]: TAG_COLORS.INFO,
+  [Status.DISABLED]: TAG_COLORS.DISABLED,
+  [Status.ACTIVE]: TAG_COLORS.SUCCESS,
+  [Status.TRIAL]: TAG_COLORS.INFO,
+  [Status.PENDING]: TAG_COLORS.WARNING
 };
 
-export const RenderTableContent: React.FC<ITableContentProps> = ({
-  name,
-  avatarUrl,
-  description,
-  email,
-  phoneNumber,
-  status
-}) => (
+export const UserRow = ({ name, avatarUrl, description, email, phoneNumber, status }: User) => (
   <>
     <div className={combineClasses([styles.tableHeaderContent, styles.userInfo])}>
       <UserInformation name={name} image={avatarUrl} description={description} />
@@ -50,7 +36,7 @@ export const RenderTableContent: React.FC<ITableContentProps> = ({
     </div>
     <div className={combineClasses([styles.tableHeaderContent, styles.status])}>
       <p className='mobile-only text-copy'>Status</p>
-      <Tag title={uppercaseFirstLetter(status)} variant={colorStatusMapping[status] as ITagProps['variant']} />
+      <Tag title={uppercaseFirstLetter(status)} variant={colorStatusMapping[status] as TAG_COLORS} />
     </div>
     <div className={combineClasses([styles.tableHeaderContent, styles.tableActions])}>
       <Button variant={BUTTON_VARIANT.ICON}>

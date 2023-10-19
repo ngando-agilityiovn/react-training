@@ -16,7 +16,7 @@ interface IButtonProps {
   onClick?: () => void;
 }
 
-export const Button: React.FC<IButtonProps> = ({ variant = BUTTON_VARIANT.PRIMARY, children, onClick }) => (
+export const Button = ({ variant = BUTTON_VARIANT.PRIMARY, children, onClick }: IButtonProps) => (
   <button onClick={onClick} className={combineClasses([styles.btn, styles[variant]])}>
     {children}
   </button>

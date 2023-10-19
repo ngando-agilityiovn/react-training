@@ -14,7 +14,7 @@ interface IHeadingProps {
   className?: string;
 }
 
-export const Heading: React.FC<IHeadingProps> = ({ title, as }) =>
+export const Heading = ({ title, as }: IHeadingProps) =>
   createElement(
     as ?? 'h2',
     {

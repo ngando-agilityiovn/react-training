@@ -11,4 +11,4 @@ export * from './Container';
 export * from './Table';
 export * from './TableHeader';
 export * from './TableBody';
-export * from './RenderTableContent';
+export * from './UserRow';

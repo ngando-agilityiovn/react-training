@@ -7,7 +7,7 @@ interface IUserInformationProps {
   description?: string;
 }
 
-export const UserInformation: React.FC<IUserInformationProps> = ({ image, name, description }) => (
+export const UserInformation = ({ image, name, description }: IUserInformationProps) => (
   <div className={styles.userInformation}>
     <img className={styles.userAvatar} src={image} alt={name} />
     <div className={styles.userInformationContent}>

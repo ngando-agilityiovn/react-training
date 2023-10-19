@@ -6,15 +6,13 @@ interface ITableBodyProps<T> {
   customRender?: (data: T) => JSX.Element;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const TableBody: React.FC<ITableBodyProps<any>> = ({ tableData, customRender }) => (
+export const TableBody = <T,>({ tableData, customRender }: ITableBodyProps<T>) => (
   <div className={styles.tableContent}>
-    {tableData?.map((dataItem) => {
-      return (
-        <div key={dataItem.id} className={styles.tableRow}>
+    {tableData?.length &&
+      tableData.map((dataItem, index) => (
+        <div key={`table-${index}`} className={styles.tableRow}>
           {customRender?.(dataItem)}
         </div>
-      );
-    })}
+      ))}
   </div>
 );
