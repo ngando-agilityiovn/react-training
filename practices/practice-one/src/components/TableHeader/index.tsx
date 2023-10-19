@@ -4,9 +4,11 @@ import styles from './index.module.css';
 // Types
 import { BUTTON_VARIANT } from '@/types';
 
-// Styles
+// Components
 import { ArrowDown } from '../Icons';
 import { Button } from '../Button';
+
+// Utilities
 import { combineClasses } from '@/utils';
 
 interface TableHeader {
