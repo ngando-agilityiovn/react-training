@@ -24,7 +24,7 @@ interface IHeaderProps {
 export const TableHeader: React.FC<IHeaderProps> = ({ tableHeader }) => (
   <div>
     <div className={styles.tableHeader}>
-      {tableHeader.map(({ label, width, icon }) => {
+      {tableHeader?.map(({ label, width, icon }) => {
         return (
           <div key={label} style={{ flex: width }} className={styles.tableHeaderContent}>
             <p key={label}>{label}</p>

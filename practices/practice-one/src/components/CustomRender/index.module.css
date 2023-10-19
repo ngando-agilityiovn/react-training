@@ -1,0 +1,57 @@
+.tableHeaderContent {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userInfo {
+  flex: 30%;
+  order: 1;
+}
+
+.userEmail {
+  flex: 30%;
+}
+
+.userPhone {
+  flex: 15%;
+}
+
+.status {
+  flex: 15%;
+}
+
+.tableActions {
+  display: flex;
+  justify-content: flex-end;
+  order: -1;
+}
+
+button {
+  margin-left: 22px;
+}
+
+@media (min-width: 1130px) {
+  .homePage {
+    background-color: var(--color-light);
+  }
+
+  .tableActions {
+    width: 10%;
+    justify-content: space-around;
+    order: unset;
+  }
+
+  button {
+    margin-left: unset;
+  }
+
+  .userInfo {
+    order: unset;
+  }
+
+  .mobileAction {
+    display: none;
+  }
+}

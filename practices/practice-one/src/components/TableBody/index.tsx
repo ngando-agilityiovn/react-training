@@ -3,7 +3,7 @@ import styles from './index.module.css';
 
 interface ITableBodyProps<T> {
   tableData?: T[];
-  customRender?: (data: T, width?: number) => JSX.Element;
+  customRender?: (data: T) => JSX.Element;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

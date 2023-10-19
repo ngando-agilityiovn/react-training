@@ -1,24 +1,8 @@
 // Styles
 import homeStyles from './index.module.css';
 
-// Utilities
-import { combineClasses, uppercaseFirstLetter } from '@/utils';
-
 // Components
-import {
-  Button,
-  Container,
-  Delete,
-  Edit,
-  Filter,
-  Heading,
-  ITagProps,
-  Table,
-  TableBody,
-  TableHeader,
-  Tag,
-  UserInformation
-} from '@/components';
+import { Button, Container, CustomRender, Filter, Heading, Table, TableBody, TableHeader } from '@/components';
 
 // Types
 import { BUTTON_VARIANT, Status } from '@/types';
@@ -86,14 +70,6 @@ const tableHeader = [
   }
 ];
 
-const colorStatusMapping = {
-  [Status.CLOSED]: 'error',
-  [Status.DISABLED]: 'disabled',
-  [Status.ACTIVE]: 'success',
-  [Status.TRIAL]: 'info',
-  [Status.PENDING]: 'warning'
-};
-
 export const Homepage: React.FC = (): JSX.Element => (
   <main className={homeStyles.homePage}>
     <Container>
@@ -113,32 +89,7 @@ export const Homepage: React.FC = (): JSX.Element => (
           customRender={({ name, avatarUrl, description, email, phoneNumber, status }: User) => {
             return (
               <>
-                <div className={combineClasses([homeStyles.tableHeaderContent, homeStyles.userInfo])}>
-                  <UserInformation name={name} image={avatarUrl} description={description} />
-                </div>
-                <div className={combineClasses([homeStyles.tableHeaderContent, homeStyles.userEmail])}>
-                  <p className='mobile-only text-copy'>Email address</p>
-                  <p>{email}</p>
-                </div>
-                <div className={combineClasses([homeStyles.tableHeaderContent, homeStyles.userPhone])}>
-                  <p className='mobile-only text-copy'>Phone number</p>
-                  <p>{phoneNumber}</p>
-                </div>
-                <div className={combineClasses([homeStyles.tableHeaderContent, homeStyles.status])}>
-                  <p className='mobile-only text-copy'>Status</p>
-                  <Tag
-                    title={uppercaseFirstLetter(status)}
-                    variant={colorStatusMapping[status] as ITagProps['variant']}
-                  />
-                </div>
-                <div className={combineClasses([homeStyles.tableHeaderContent, homeStyles.tableActions])}>
-                  <Button variant={BUTTON_VARIANT.ICON}>
-                    <Edit />
-                  </Button>
-                  <Button variant={BUTTON_VARIANT.ICON}>
-                    <Delete />
-                  </Button>
-                </div>
+                <CustomRender {...{ name, avatarUrl, description, email, phoneNumber, status }} />
               </>
             );
           }}
