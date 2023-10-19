@@ -2,7 +2,7 @@
 import homeStyles from './index.module.css';
 
 // Components
-import { Button, Container, CustomRender, Filter, Heading, Table, TableBody, TableHeader } from '@/components';
+import { Button, Container, Filter, Heading, RenderTableContent, Table, TableBody, TableHeader } from '@/components';
 
 // Types
 import { BUTTON_VARIANT, Status } from '@/types';
@@ -89,7 +89,7 @@ export const Homepage: React.FC = (): JSX.Element => (
           customRender={({ name, avatarUrl, description, email, phoneNumber, status }: User) => {
             return (
               <>
-                <CustomRender {...{ name, avatarUrl, description, email, phoneNumber, status }} />
+                <RenderTableContent {...{ name, avatarUrl, description, email, phoneNumber, status }} />
               </>
             );
           }}
