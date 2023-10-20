@@ -21,22 +21,22 @@ const colorStatusMapping = {
   [Status.PENDING]: TAG_COLORS.WARNING
 };
 
-export const UserRow = ({ name, avatarUrl, description, email, phoneNumber, status }: User) => (
+export const UserRow = (user: User) => (
   <>
     <div className={combineClasses([styles.tableHeaderContent, styles.userInfo])}>
-      <UserInformation name={name} image={avatarUrl} description={description} />
+      <UserInformation name={user.name} image={user.avatarUrl} description={user.description} />
     </div>
     <div className={combineClasses([styles.tableHeaderContent, styles.userEmail])}>
       <p className='mobile-only text-copy'>Email address</p>
-      <p className={styles.rowContent}>{email}</p>
+      <p className={styles.rowContent}>{user.email}</p>
     </div>
     <div className={combineClasses([styles.tableHeaderContent, styles.userPhone])}>
       <p className='mobile-only text-copy'>Phone number</p>
-      <p className={styles.rowContent}>{phoneNumber}</p>
+      <p className={styles.rowContent}>{user.phoneNumber}</p>
     </div>
     <div className={combineClasses([styles.tableHeaderContent, styles.status])}>
       <p className='mobile-only text-copy'>Status</p>
-      <Tag title={uppercaseFirstLetter(status)} variant={colorStatusMapping[status]} />
+      <Tag title={uppercaseFirstLetter(status)} variant={colorStatusMapping[user.status]} />
     </div>
     <div className={combineClasses([styles.tableHeaderContent, styles.tableActions])}>
       <Button variant={BUTTON_VARIANT.ICON}>
