@@ -1,11 +1,14 @@
+.mobile-only {
+  display: block;
+}
+
+.text-copy {
+  color: var(--color-secondary);
+}
+
 body {
   font-family: var(--primary-font);
   color: var(--color-primary);
-}
-
-.p {
-  font-weight: 700;
-  line-height: 20px;
 }
 
 h2 {
@@ -36,4 +39,10 @@ h5 {
 h6 {
   font-size: 10px;
   line-height: 12px;
+}
+
+@media (min-width: 1130px) {
+  .mobile-only {
+    display: none;
+  }
 }

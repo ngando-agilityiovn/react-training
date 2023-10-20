@@ -7,4 +7,4 @@ interface IFromProps {
   children: ReactNode;
 }
 
-export const Form: React.FC<IFromProps> = ({ children }) => <div className={styles.form}>{children}</div>;
+export const Form = ({ children }: IFromProps) => <div className={styles.form}>{children}</div>;

@@ -11,12 +11,12 @@ import { combineClasses } from '@/utils';
 
 interface IButtonProps {
   children: ReactNode;
-  variant: BUTTON_VARIANT;
+  variant?: BUTTON_VARIANT;
   className?: string;
   onClick?: () => void;
 }
 
-export const Button: React.FC<IButtonProps> = ({ variant = BUTTON_VARIANT.PRIMARY, children, onClick }) => (
+export const Button = ({ variant = BUTTON_VARIANT.PRIMARY, children, onClick }: IButtonProps) => (
   <button onClick={onClick} className={combineClasses([styles.btn, styles[variant]])}>
     {children}
   </button>

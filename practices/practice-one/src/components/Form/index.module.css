@@ -8,8 +8,6 @@
 }
 
 .input {
-  width: 70%;
-  height: 20%;
   border: 2px solid var(--color-primary);
   padding: 8px 10px;
   margin-top: 10px;

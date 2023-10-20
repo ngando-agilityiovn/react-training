@@ -1,17 +1,22 @@
 // Styles
-import { combineClasses } from '@/utils';
-
-// Utilities
 import tagStyles from './index.module.css';
 
-// enums
+// Utilities
+import { combineClasses } from '@/utils';
+
+// Types
 import { TAG_COLORS } from '@/types';
 
-interface ITagProps {
-  color?: TAG_COLORS;
+export interface ITagProps {
+  variant?: TAG_COLORS;
   title?: string;
+  className?: string;
 }
 
-export const Tag: React.FC<ITagProps> = ({ color = TAG_COLORS.INFO, title }) => (
-  <div className={combineClasses([tagStyles.tag, tagStyles[color]])}>{title}</div>
-);
+export const Tag = ({ variant = TAG_COLORS.INFO, title }: ITagProps) => {
+  return (
+    <div className={combineClasses([tagStyles.tag, tagStyles[variant]])}>
+      <p className={tagStyles.tagTitle}>{title}</p>
+    </div>
+  );
+};

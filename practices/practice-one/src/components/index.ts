@@ -8,3 +8,7 @@ export * from './Form';
 export * from './Heading';
 export * from './SelectOption';
 export * from './Container';
+export * from './Table';
+export * from './TableHeader';
+export * from './TableBody';
+export * from './UserRow';

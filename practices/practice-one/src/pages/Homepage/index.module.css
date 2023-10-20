@@ -1,0 +1,46 @@
+.homePage {
+  background-color: var(--color-tertiary);
+}
+
+.heading {
+  margin-bottom: 40px;
+}
+
+.userInformationRow {
+  display: flex;
+  width: 100%;
+}
+
+.copyText {
+  font-size: var(--xs-font);
+  color: var(--color-secondary);
+}
+
+.mobileAction {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.sortingOptions {
+  position: absolute;
+  right: 0;
+  top: 25px;
+}
+
+.dataMessage {
+  font-size: var(--sm-font);
+  color: var(--color-warning);
+}
+
+@media (min-width: 1130px) {
+  .homePage {
+    background-color: var(--color-light);
+  }
+
+  .mobileAction {
+    display: none;
+  }
+}

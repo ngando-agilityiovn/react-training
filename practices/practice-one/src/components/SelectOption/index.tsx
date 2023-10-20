@@ -12,7 +12,7 @@ interface ISelectOptionProps {
   onChange: (value: string) => void;
 }
 
-export const SelectOption: React.FC<ISelectOptionProps> = ({ title, value, options, onChange }) => (
+export const SelectOption = ({ title, value, options, onChange }: ISelectOptionProps) => (
   <div className={styles.selectOption}>
     <label className={styles.label}>{title}</label>
 

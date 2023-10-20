@@ -2,13 +2,22 @@
   /* Colors */
   --color-primary: #1a1a1a;
   --color-secondary: #808080;
+  --color-tertiary: #f8f9fb;
   --color-light: #fff;
-  --color-light-blue: #0000ff;
-  --color-warning: #ff0000;
+  --color-light-blue: #0078ff;
+  --color-danger: #e53e3e;
   --color-bg: #9bcae1;
   --color-border: #e4e4ef;
-
-  /* font families */
+  --color-warning: #dd6b20;
+  --color-success-subtle: #ebf6eb;
+  --color-light-subtle: #ededfe;
+  --color-info-subtle: #605dec;
+  --color-success: #38a169;
+  --color-gradient: #fff4e4;
+  --color-light-gradient: #fff0f0;
+  --color-info-gradient: #bdbcdb;
+  
+  /* font-families */
   --primary-font: 'Nunito Sans', sans-serif;
 
   /* font-sizes */
@@ -18,8 +27,12 @@
   --md-font: 24px;
   --xxl-font: 48px;
 
-  /* font weights */
+  /* font-weights */
   --normal: 400;
   --semi-bold: 600;
   --bold: 700;
+
+  /* line-height */
+  --lh-base: 20px;
+  --lh-sm: 14px;
 }
