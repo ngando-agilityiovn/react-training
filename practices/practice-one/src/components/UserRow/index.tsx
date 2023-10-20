@@ -36,7 +36,7 @@ export const UserRow = (user: User) => (
     </div>
     <div className={combineClasses([styles.tableHeaderContent, styles.status])}>
       <p className='mobile-only text-copy'>Status</p>
-      <Tag title={uppercaseFirstLetter(status)} variant={colorStatusMapping[user.status]} />
+      <Tag title={uppercaseFirstLetter(user.status)} variant={colorStatusMapping[user.status]} />
     </div>
     <div className={combineClasses([styles.tableHeaderContent, styles.tableActions])}>
       <Button variant={BUTTON_VARIANT.ICON}>
