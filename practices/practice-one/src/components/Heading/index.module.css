@@ -1,4 +1,4 @@
 .heading {
-  font-weight: 600;
+  font-weight: var(--semi-bold);
   color: var(--color-primary);
 }

@@ -30,6 +30,11 @@
   top: 25px;
 }
 
+.dataMessage {
+  font-size: var(--sm-font);
+  color: var(--color-warning);
+}
+
 @media (min-width: 1130px) {
   .homePage {
     background-color: var(--color-light);

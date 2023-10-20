@@ -1,10 +1,10 @@
 // Styles
-import { combineClasses } from '@/utils';
-
-// Utilities
 import tagStyles from './index.module.css';
 
-// enums
+// Utilities
+import { combineClasses } from '@/utils';
+
+// Types
 import { TAG_COLORS } from '@/types';
 
 export interface ITagProps {

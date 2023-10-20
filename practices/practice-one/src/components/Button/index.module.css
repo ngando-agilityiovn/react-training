@@ -5,7 +5,7 @@
   border: none;
   padding: 13px 24px;
   cursor: pointer;
-  line-height: 14px;
+  line-height: var(--lh-sm);
   font-size: var(--primary-font);
 }
 

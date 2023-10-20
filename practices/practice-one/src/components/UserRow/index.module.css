@@ -28,8 +28,11 @@
   order: -1;
 }
 
-button {
-  margin-left: 22px;
+.rowContent {
+  color: var(--color-primary);
+  font-size: var(--xs-font);
+  line-height: var(--lh-base);
+  font-weight: var(--normal);
 }
 
 @media (min-width: 1130px) {
@@ -41,10 +44,6 @@ button {
     width: 10%;
     justify-content: space-around;
     order: unset;
-  }
-
-  button {
-    margin-left: unset;
   }
 
   .userInfo {

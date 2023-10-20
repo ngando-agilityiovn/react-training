@@ -28,15 +28,15 @@ export const UserRow = ({ name, avatarUrl, description, email, phoneNumber, stat
     </div>
     <div className={combineClasses([styles.tableHeaderContent, styles.userEmail])}>
       <p className='mobile-only text-copy'>Email address</p>
-      <p>{email}</p>
+      <p className={styles.rowContent}>{email}</p>
     </div>
     <div className={combineClasses([styles.tableHeaderContent, styles.userPhone])}>
       <p className='mobile-only text-copy'>Phone number</p>
-      <p>{phoneNumber}</p>
+      <p className={styles.rowContent}>{phoneNumber}</p>
     </div>
     <div className={combineClasses([styles.tableHeaderContent, styles.status])}>
       <p className='mobile-only text-copy'>Status</p>
-      <Tag title={uppercaseFirstLetter(status)} variant={colorStatusMapping[status] as TAG_COLORS} />
+      <Tag title={uppercaseFirstLetter(status)} variant={colorStatusMapping[status]} />
     </div>
     <div className={combineClasses([styles.tableHeaderContent, styles.tableActions])}>
       <Button variant={BUTTON_VARIANT.ICON}>

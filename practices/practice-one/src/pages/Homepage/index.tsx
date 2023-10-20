@@ -1,6 +1,9 @@
 // Styles
 import homeStyles from './index.module.css';
 
+// Constants
+import { DATA_NOT_FOUND } from '@/constants';
+
 // Components
 import { Button, Container, Filter, Heading, Table, UserRow } from '@/components';
 
@@ -82,14 +85,14 @@ export const Homepage: React.FC = (): JSX.Element => (
       </div>
     </Container>
     <Container className={homeStyles.tableContainer}>
-      {users.length ? (
+      {users.length === 0 ? (
+        <div className={homeStyles.dataMessage}>{DATA_NOT_FOUND}</div>
+      ) : (
         <Table<User>
           tableHeader={tableHeader}
           dataTable={users}
           renderBody={(dataTable) => <UserRow {...dataTable} />}
         />
-      ) : (
-        <div>No data found</div>
       )}
     </Container>
   </main>
