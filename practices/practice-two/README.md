@@ -60,6 +60,7 @@ This application is using React to a web application Project Information applica
     ├── layouts
     ├── pages
     ├── services
+    ├── utils
     ├── App.tsx
     └── main.tsx
 ├── .env
@@ -67,10 +68,10 @@ This application is using React to a web application Project Information applica
 ├── .editorconfig
 ├── .eslintrc.cjs
 ├── .gitignore
-├── .prettierignore
+├── .huskyrc
+├── .lintstagedrc
 ├── .prettierrc
 ├── index.html
-├── commitlint.config.js
 ├── package.json
 ├── tsconfig.json
 ├── tsconfig.node.json
