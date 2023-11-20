@@ -7,13 +7,13 @@ export const Text = defineStyleConfig({
   variants: {
     primary: {
       fontSize: 'sm',
-      color: 'textPrimary',
+      color: 'primary',
       fontWeight: 'medium',
       lineHeight: 'shoter',
     },
 
     secondary: {
-      color: 'textSecondary',
+      color: 'secondary',
       fontWeight: 'normal',
       lineHeight: 'base',
       letterSpacing: 'extraShorter',

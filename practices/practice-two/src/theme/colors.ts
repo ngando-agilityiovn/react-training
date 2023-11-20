@@ -1,6 +1,6 @@
-export default {
-  textPrimary: '#5e5adb',
-  textSecondary: '#464f60',
+export const colors = {
+  primary: '#5e5adb',
+  secondary: '#464f60',
   textTertiary: '#171c26',
   textWarning: '#aa5b00',
   textDanger: '#d1293d',
@@ -10,4 +10,5 @@ export default {
   backgroundInfo: '#e1fcef',
   backgrounDanger: '#ffedef',
   backgroundWarning: '#fcf2e6',
+  colorDark: '#e9edf5',
 }
