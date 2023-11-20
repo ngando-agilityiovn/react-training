@@ -1,9 +1,6 @@
-const primaryColor = ' #464f60'
-const secondaryColor = '#5e5adb'
-
 export default {
-  primary: primaryColor,
-  secondary: secondaryColor,
+  textPrimary: '#5e5adb',
+  textSecondary: '#464f60',
   textTertiary: '#171c26',
   textWarning: '#aa5b00',
   textDanger: '#d1293d',

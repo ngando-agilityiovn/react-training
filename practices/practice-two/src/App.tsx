@@ -1,13 +1,12 @@
-import { ChakraProvider, Text, extendTheme } from '@chakra-ui/react'
+import { ChakraProvider, Text } from '@chakra-ui/react'
 
-import themeConfiguration from '@/theme'
-
-const defaultTheme = extendTheme(themeConfiguration.default)
+// Theme
+import { theme } from '@/theme'
 
 export const App = () => {
   return (
     <>
-      <ChakraProvider theme={defaultTheme}>
+      <ChakraProvider theme={theme}>
         <Text>Hello</Text>
       </ChakraProvider>
     </>
