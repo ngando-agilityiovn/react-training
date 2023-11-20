@@ -7,8 +7,14 @@ import '@fontsource/inter/700.css'
 // Fonts
 const primary = "'Inter', sans-serif"
 
-export default {
+// Custom fonts
+export const fonts = {
   heading: primary,
   body: primary,
   mono: primary,
+}
+
+// Custom line-height
+export const lineHeights = {
+  shorter: 1.125,
 }
