@@ -25,6 +25,7 @@ This application is using React to a web application Project Information applica
 - [Storybook](https://storybook.js.org/) v7.4.5 (Storybook is a frontend workshop for building UI components and pages in isolation. Thousands of teams use it for UI development, testing, and documentation. It’s open source and free.)
 - [Prettier](https://storybook.js.org/) v3.0.3 (Prettier is an opinionated code formatter, supports many languages, integrates with most editors)
 - [Eslint](https://eslint.org/) v8.45.0 (ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs.)
+- [Chakra UI](https://chakra-ui.com/) v2.8.2 (Chakra UI is a simple, modular and accessible component library that gives you the building blocks you need to build your React applications.)
 - [Node](https://nodejs.org/en/) v18.18.0 (Node.js® is an open-source, cross-platform JavaScript runtime environment.)
 
 # Developer tool
