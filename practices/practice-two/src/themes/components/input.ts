@@ -8,7 +8,6 @@ export const Input = defineStyleConfig({
       boxShadow: 'primary',
     },
   },
-
   variants: {
     primary: {
       field: {
