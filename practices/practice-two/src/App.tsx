@@ -1,7 +1,7 @@
 import { ChakraProvider, Text } from '@chakra-ui/react'
 
 // Theme
-import { theme } from '@/theme'
+import { theme } from '@/themes'
 
 export const App = () => {
   return (

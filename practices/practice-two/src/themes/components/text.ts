@@ -11,15 +11,11 @@ export const Text = defineStyleConfig({
       fontWeight: 'medium',
       lineHeight: 'shoter',
     },
-
     secondary: {
       color: 'secondary',
       fontWeight: 'normal',
       lineHeight: 'base',
       letterSpacing: 'extraShorter',
     },
-  },
-  defaultProps: {
-    variant: 'primary',
   },
 })

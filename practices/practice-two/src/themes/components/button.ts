@@ -6,13 +6,14 @@ export const Button = defineStyleConfig({
     fontWeight: 'medium',
     lineHeight: 'shorter',
     fontSize: 'sm',
-    backgroundColor: 'primary',
   },
   variants: {
+    default: {},
     solid: {
+      color: 'textLight',
+      background: 'primary',
       px: '0.75rem',
       py: '0.375rem',
-      color: 'textLight',
       _hover: {
         borderColor: 'textWarning',
         backgroundColor: 'textWarning',
@@ -33,5 +34,8 @@ export const Button = defineStyleConfig({
         backgroundColor: 'colorDark',
       },
     },
+  },
+  defaultProps: {
+    variant: 'solid',
   },
 })

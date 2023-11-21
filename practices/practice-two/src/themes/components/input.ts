@@ -1,6 +1,6 @@
-import { ComponentStyleConfig } from '@chakra-ui/react'
+import { defineStyleConfig } from '@chakra-ui/react'
 
-export const Input: ComponentStyleConfig = {
+export const Input = defineStyleConfig({
   baseStyle: {
     field: {
       borderRadius: '0.375rem',
@@ -21,4 +21,4 @@ export const Input: ComponentStyleConfig = {
       },
     },
   },
-}
+})

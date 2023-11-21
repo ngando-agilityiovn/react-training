@@ -22,4 +22,5 @@ export const lineHeights = {
 // Custom letter-spacing
 export const letterSpacing = {
   wider: '0.018rem',
+  wide: '0.023rem',
 }

@@ -13,4 +13,5 @@ export const colors = {
   backgroundWarning: '#fcf2e6',
   colorDark: '#e9edf5',
   colorGray: '#868fa0',
+  colorDarkEmphasis: '#5a6376',
 }
