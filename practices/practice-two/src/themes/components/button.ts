@@ -34,6 +34,10 @@ export const Button = defineStyleConfig({
         backgroundColor: 'colorDark',
       },
     },
+    error: {
+      color: 'textLight',
+      backgroundColor: 'textDanger',
+    },
   },
   defaultProps: {
     variant: 'solid',
