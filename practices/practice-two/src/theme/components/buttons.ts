@@ -6,10 +6,10 @@ export const Button = defineStyleConfig({
     fontWeight: 'medium',
     lineHeight: 'shorter',
     fontSize: 'sm',
+    backgroundColor: 'primary',
   },
   variants: {
     solid: {
-      backgroundColor: 'primary',
       px: '0.75rem',
       py: '0.375rem',
       color: 'textLight',

@@ -10,6 +10,8 @@ import { shadows } from './shadow'
 // Components theme
 import { Text } from './components/texts'
 import { Button } from './components/buttons'
+import { Input } from './components/input'
+
 export const theme = extendTheme({
   fonts,
   colors,
@@ -18,5 +20,6 @@ export const theme = extendTheme({
   components: {
     Text,
     Button,
+    Input,
   },
 })

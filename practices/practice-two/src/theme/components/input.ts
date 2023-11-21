@@ -1,0 +1,24 @@
+import { ComponentStyleConfig } from '@chakra-ui/react'
+
+export const Input: ComponentStyleConfig = {
+  baseStyle: {
+    field: {
+      borderRadius: '0.375rem',
+      backgroundColor: 'textLight',
+      boxShadow: 'primary',
+    },
+  },
+
+  variants: {
+    primary: {
+      field: {
+        borderRadius: '0.375rem',
+        _placeholder: {
+          color: 'textDarkEmphasis',
+        },
+        px: '0.75rem',
+        py: '0.375rem',
+      },
+    },
+  },
+}

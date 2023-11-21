@@ -7,8 +7,10 @@ export const colors = {
   textDark: '#14804a',
   textInfo: '#1a2240',
   textLight: '#fff',
+  textDarkEmphasis: '#a1a9b8',
   backgroundInfo: '#e1fcef',
   backgrounDanger: '#ffedef',
   backgroundWarning: '#fcf2e6',
   colorDark: '#e9edf5',
+  colorGray: '#868fa0',
 }
