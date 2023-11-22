@@ -16,7 +16,7 @@ export const fonts = {
 
 // Custom line-height
 export const lineHeights = {
-  extraShorter: '1.125rem',
+  extraShort: '1.125rem',
 }
 
 // Custom letter-spacing
