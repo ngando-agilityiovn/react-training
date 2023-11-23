@@ -19,6 +19,7 @@ interface IInputProps {
   isReadOnly?: boolean
   errorBorderColor?: string
   children?: string
+  width: string
 }
 
 export const InputField = ({
@@ -33,6 +34,7 @@ export const InputField = ({
   isReadOnly,
   errorBorderColor,
   children,
+  width,
 }: IInputProps) => {
   return (
     <>
@@ -68,14 +70,14 @@ export const InputField = ({
             aria-label="Input label"
             placeholder={placeholder}
             errorBorderColor={errorBorderColor}
-            width="25rem"
             paddingLeft="3.25rem"
+            width={width}
           />
         </InputGroup>
 
         {/* {Error message} */}
         {errorMessage && (
-          <FormErrorMessage color="textDanger">{errorMessage}</FormErrorMessage>
+          <FormErrorMessage color="textError">{errorMessage}</FormErrorMessage>
         )}
       </FormControl>
     </>
