@@ -19,7 +19,7 @@ interface IInputProps {
   isReadOnly?: boolean
   errorBorderColor?: string
   children?: string
-  width: string
+  width?: string
 }
 
 export const InputField = ({
@@ -34,7 +34,6 @@ export const InputField = ({
   isReadOnly,
   errorBorderColor,
   children,
-  width,
 }: IInputProps) => {
   return (
     <>
@@ -71,7 +70,7 @@ export const InputField = ({
             placeholder={placeholder}
             errorBorderColor={errorBorderColor}
             paddingLeft="3.25rem"
-            width={width}
+            width="100%"
           />
         </InputGroup>
 
