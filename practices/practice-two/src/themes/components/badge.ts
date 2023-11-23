@@ -11,8 +11,8 @@ export const Badge = defineStyleConfig({
   variants: {
     default: {},
     primary: {
-      backgroundColor: 'colorDark',
-      color: 'colorDarkEmphasis',
+      backgroundColor: 'backgroundInactive',
+      color: 'textInactive',
       px: '6px',
     },
   },

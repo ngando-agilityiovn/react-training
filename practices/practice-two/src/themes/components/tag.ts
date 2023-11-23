@@ -12,16 +12,16 @@ export const Tag = defineStyleConfig({
   },
   variants: {
     solid: {
-      backgroundColor: 'colorDark',
+      backgroundColor: 'backgroundInactive',
       color: 'secondary',
     },
     outline: {
-      backgroundColor: 'textLight',
+      backgroundColor: 'white',
       color: 'secondary',
     },
     ghost: {
       _focus: {
-        backgroundColor: 'textLight',
+        backgroundColor: 'white',
         color: 'primary',
       },
     },
