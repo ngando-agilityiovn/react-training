@@ -34,6 +34,7 @@ export const InputField = ({
   isReadOnly,
   errorBorderColor,
   children,
+  width = '100%',
 }: IInputProps) => {
   return (
     <FormControl isRequired isInvalid={!!errorMessage}>
@@ -69,7 +70,7 @@ export const InputField = ({
           placeholder={placeholder}
           errorBorderColor={errorBorderColor}
           paddingLeft="3.25rem"
-          width="100%"
+          width={width}
         />
       </InputGroup>
 

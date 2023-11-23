@@ -1,4 +1,5 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
+import { ReactElement } from 'react'
 
 export interface ItemList {
   id: string
@@ -9,8 +10,8 @@ interface IMenuProps {
   title?: string
   width?: string
   itemList?: ItemList[]
-  leftIcon?: React.ReactElement
-  rightIcon?: React.ReactElement
+  leftIcon?: ReactElement
+  rightIcon?: ReactElement
 }
 
 export const MenuSelect = ({
