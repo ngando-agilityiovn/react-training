@@ -12,7 +12,6 @@ export const Tag = defineStyleConfig({
       color: 'textInactive',
       px: '0.5rem',
       py: '0.063rem',
-      borderColor: 'yellow',
     },
   },
   variants: {
