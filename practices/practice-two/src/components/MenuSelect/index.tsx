@@ -1,6 +1,9 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 
-export type ItemList = string
+export interface ItemList {
+  id: string
+  text: string
+}
 
 interface IMenuProps {
   title?: string
@@ -13,6 +16,7 @@ interface IMenuProps {
 export const MenuSelect = ({
   itemList,
   title,
+  width,
   leftIcon,
   rightIcon,
 }: IMenuProps) => {
@@ -24,14 +28,15 @@ export const MenuSelect = ({
         gap="0.3rem"
         color="secondary"
         fontSize="sm"
+        width={width}
         leftIcon={leftIcon}
         rightIcon={rightIcon}
       >
         {title}
       </MenuButton>
       <MenuList>
-        {itemList?.map((item) => {
-          return <MenuItem>{item}</MenuItem>
+        {itemList?.map(({ id, text }) => {
+          return <MenuItem key={id}>{text}</MenuItem>
         })}
       </MenuList>
     </Menu>

@@ -4,8 +4,26 @@ import { Dropdown, Filter } from '..'
 import { DragHandleIcon } from '@chakra-ui/icons'
 
 const itemList = {
-  listDropdown: ['Project name', 'Last update'],
-  listMenu: ['Edit', 'Delete'],
+  listDropdown: [
+    {
+      id: '0',
+      text: 'Project name',
+    },
+    {
+      id: '1',
+      text: 'Last update',
+    },
+  ],
+  listMenu: [
+    {
+      id: '0',
+      text: 'Edit',
+    },
+    {
+      id: '1',
+      text: 'Delete',
+    },
+  ],
 }
 
 export default {
