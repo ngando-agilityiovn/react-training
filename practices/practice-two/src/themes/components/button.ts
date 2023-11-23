@@ -40,6 +40,6 @@ export const Button = defineStyleConfig({
     },
   },
   defaultProps: {
-    variant: 'solid',
+    variant: 'default',
   },
 })
