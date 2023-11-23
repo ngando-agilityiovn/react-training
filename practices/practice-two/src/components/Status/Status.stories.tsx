@@ -27,27 +27,27 @@ export const Success: Story = {
 
 export const Error: Story = {
   args: {
+    ...Success.args,
     text: 'At risk',
     variant: 'error',
-    isDot: true,
     background: 'textError',
   },
 }
 
 export const Warning: Story = {
   args: {
+    ...Success.args,
     text: 'Potential risk',
     variant: 'warning',
-    isDot: true,
     background: 'textWarning',
   },
 }
 
 export const Ghost: Story = {
   args: {
+    ...Success.args,
     text: 'On hold',
     variant: 'default',
-    isDot: true,
     background: 'secondary',
   },
 }
