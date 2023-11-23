@@ -4,7 +4,7 @@ export const Input = defineStyleConfig({
   baseStyle: {
     field: {
       borderRadius: '0.375rem',
-      backgroundColor: 'textLight',
+      backgroundColor: 'white',
       boxShadow: 'primary',
     },
   },
@@ -13,7 +13,7 @@ export const Input = defineStyleConfig({
       field: {
         borderRadius: '0.375rem',
         _placeholder: {
-          color: 'textDarkEmphasis',
+          color: 'textPlaceholder',
         },
         px: '0.75rem',
         py: '0.375rem',

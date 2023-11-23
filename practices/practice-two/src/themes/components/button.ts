@@ -10,7 +10,7 @@ export const Button = defineStyleConfig({
   variants: {
     default: {},
     solid: {
-      color: 'textLight',
+      color: 'white',
       background: 'primary',
       px: '0.75rem',
       py: '0.375rem',
@@ -20,23 +20,23 @@ export const Button = defineStyleConfig({
       },
     },
     outline: {
-      borderColor: 'colorDark',
+      borderColor: 'backgroundInactive',
       color: 'secondary',
       px: '0.5rem',
       py: '0.125rem',
       _hover: {
-        backgroundColor: 'colorDark',
+        backgroundColor: 'backgroundInactive',
       },
     },
     ghost: {
       color: 'secondary',
       _hover: {
-        backgroundColor: 'colorDark',
+        backgroundColor: 'backgroundInactive',
       },
     },
     error: {
-      color: 'textLight',
-      backgroundColor: 'textDanger',
+      color: 'white',
+      backgroundColor: 'textError',
     },
   },
   defaultProps: {
