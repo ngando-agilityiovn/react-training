@@ -34,51 +34,50 @@ export const InputField = ({
   isReadOnly,
   errorBorderColor,
   children,
+  width = '100%',
 }: IInputProps) => {
   return (
-    <>
-      <FormControl isRequired isInvalid={!!errorMessage}>
-        <FormLabel
+    <FormControl isRequired isInvalid={!!errorMessage}>
+      <FormLabel
+        fontSize="sm"
+        letterSpacing="wider"
+        fontWeight="medium"
+        lineHeight="shorter"
+        color="secondary"
+      >
+        {label}
+      </FormLabel>
+      <InputGroup gap="0.5rem">
+        <InputLeftElement
+          pointerEvents="none"
+          color="colorGray"
           fontSize="sm"
-          letterSpacing="wider"
           fontWeight="medium"
           lineHeight="shorter"
-          color="secondary"
-        >
-          {label}
-        </FormLabel>
-        <InputGroup gap="0.5rem">
-          <InputLeftElement
-            pointerEvents="none"
-            color="colorGray"
-            fontSize="sm"
-            fontWeight="medium"
-            lineHeight="shorter"
-            letterSpacing="wider"
-            children={children}
-            px="2rem"
-          />
-          <Input
-            as={variant}
-            readOnly={isReadOnly}
-            variant="primary"
-            name={name}
-            value={value}
-            onChange={onChange}
-            type={type}
-            aria-label="Input label"
-            placeholder={placeholder}
-            errorBorderColor={errorBorderColor}
-            paddingLeft="3.25rem"
-            width="100%"
-          />
-        </InputGroup>
+          letterSpacing="wider"
+          children={children}
+          px="2rem"
+        />
+        <Input
+          as={variant}
+          readOnly={isReadOnly}
+          variant="primary"
+          name={name}
+          value={value}
+          onChange={onChange}
+          type={type}
+          aria-label="Input label"
+          placeholder={placeholder}
+          errorBorderColor={errorBorderColor}
+          paddingLeft="3.25rem"
+          width={width}
+        />
+      </InputGroup>
 
-        {/* {Error message} */}
-        {errorMessage && (
-          <FormErrorMessage color="textError">{errorMessage}</FormErrorMessage>
-        )}
-      </FormControl>
-    </>
+      {/* {Error message} */}
+      {errorMessage && (
+        <FormErrorMessage color="textError">{errorMessage}</FormErrorMessage>
+      )}
+    </FormControl>
   )
 }
