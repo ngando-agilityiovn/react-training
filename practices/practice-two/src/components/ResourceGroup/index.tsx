@@ -1,4 +1,4 @@
-import { Box, Flex, Tag, Text } from '@chakra-ui/react'
+import { Flex, Tag, Text } from '@chakra-ui/react'
 
 export interface TagGroup {
   id: string
@@ -13,7 +13,7 @@ interface IResourceProps {
 
 export const ResourceGroup = ({ title, variant, tagGroup }: IResourceProps) => {
   return (
-    <Box>
+    <>
       <Text>{title}</Text>
       <Flex gap="0.625rem" mt="0.5rem">
         {tagGroup.map(({ id, text }) => (
@@ -22,6 +22,6 @@ export const ResourceGroup = ({ title, variant, tagGroup }: IResourceProps) => {
           </Tag>
         ))}
       </Flex>
-    </Box>
+    </>
   )
 }
