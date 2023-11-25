@@ -20,6 +20,7 @@ interface IInputProps {
   errorBorderColor?: string
   children?: string
   width?: string
+  marginBot?: string
 }
 
 export const InputField = ({
@@ -34,10 +35,11 @@ export const InputField = ({
   isReadOnly,
   errorBorderColor,
   children,
+  marginBot,
   width = '100%',
 }: IInputProps) => {
   return (
-    <FormControl isRequired isInvalid={!!errorMessage}>
+    <FormControl isRequired isInvalid={!!errorMessage} mb={marginBot}>
       <FormLabel
         fontSize="sm"
         letterSpacing="wider"
@@ -48,16 +50,19 @@ export const InputField = ({
         {label}
       </FormLabel>
       <InputGroup gap="0.5rem">
-        <InputLeftElement
-          pointerEvents="none"
-          color="colorGray"
-          fontSize="sm"
-          fontWeight="medium"
-          lineHeight="shorter"
-          letterSpacing="wider"
-          children={children}
-          px="2rem"
-        />
+        {children ? (
+          <InputLeftElement
+            pointerEvents="none"
+            color="colorGray"
+            fontSize="sm"
+            fontWeight="medium"
+            lineHeight="shorter"
+            letterSpacing="wider"
+            children={children}
+          />
+        ) : (
+          <></>
+        )}
         <Input
           as={variant}
           readOnly={isReadOnly}
@@ -69,7 +74,6 @@ export const InputField = ({
           aria-label="Input label"
           placeholder={placeholder}
           errorBorderColor={errorBorderColor}
-          paddingLeft="3.25rem"
           width={width}
         />
       </InputGroup>
