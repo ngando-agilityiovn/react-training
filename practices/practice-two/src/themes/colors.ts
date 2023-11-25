@@ -7,6 +7,7 @@ export const colors = {
   textSuccess: '#14804a',
   textInfo: '#1a2240',
   textInactive: '#5a6376',
+  textHeader: '#222834',
   dark: '#868fa0',
   white: '#fff',
   textPlaceholder: '#a1a9b8',
@@ -14,4 +15,6 @@ export const colors = {
   backgroundError: '#ffedef',
   backgroundWarning: '#fcf2e6',
   backgroundInactive: '#e9edf5',
+  backgroundSnavbar: '#151357',
+  backgroundHeader: '#F7F9FC',
 }

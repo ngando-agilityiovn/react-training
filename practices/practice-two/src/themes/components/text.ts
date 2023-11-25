@@ -17,5 +17,12 @@ export const Text = defineStyleConfig({
       lineHeight: 'base',
       letterSpacing: 'extraShorter',
     },
+    tertiary: {
+      fontsize: '2xl',
+      color: 'textHeader',
+      fontWeight: 'bold',
+      lineHeight: 'taller',
+      letterSpacing: 'extraShorter',
+    },
   },
 })
