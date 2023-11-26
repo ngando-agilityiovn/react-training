@@ -12,7 +12,7 @@ export const Badge = defineStyleConfig({
     default: {},
     primary: {
       backgroundColor: 'backgroundInactive',
-      color: 'textInactive',
+      color: '#5E5ADB',
     },
   },
   defaultProps: {

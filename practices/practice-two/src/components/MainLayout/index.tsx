@@ -8,6 +8,7 @@ import {
   Notification,
   Search,
   Snavbar,
+  StatusGroup,
 } from '..'
 import { AddIcon } from '@chakra-ui/icons'
 
@@ -65,7 +66,7 @@ export const MainLayout = () => {
             />
           </Flex>
         </Flex>
-        <Flex mt="20px" mx="20px" justifyContent="space-between">
+        <Flex mt="20px" mb="28px" mx="20px" justifyContent="space-between">
           <Flex w="370px" border="2px solid #E2E8F0" borderRadius="6px">
             <MenuSelect
               leftIcon={<Filter />}
@@ -79,6 +80,7 @@ export const MainLayout = () => {
             Add project
           </Button>
         </Flex>
+        <StatusGroup />
       </Box>
     </Container>
   )

@@ -5,13 +5,13 @@ import { ChevronRightIcon } from '@chakra-ui/icons'
 import { Box, FormLabel, HStack, Text } from '@chakra-ui/react'
 import { DatePicker } from 'chakra-ui-date-input'
 
-type Timeline = {
+export type Timeline = {
   start: string
   end: string
 }
 
-interface ITimelineProps {
-  title: string
+export interface ITimelineProps {
+  title?: string
   startDateIcon?: ReactNode
   endDateIcon?: ReactNode
   onChange: (date: Timeline) => void

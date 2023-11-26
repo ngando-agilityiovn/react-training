@@ -1,6 +1,6 @@
 import { Box, Tag, TagLabel } from '@chakra-ui/react'
 
-interface IStatusProps {
+export interface IStatusProps {
   text: string
   variant: string
   isDot?: boolean
