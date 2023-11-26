@@ -1,5 +1,38 @@
-import { Box, Container, Flex, Img, Text } from '@chakra-ui/react'
-import { Active, Help, Notification, Snavbar } from '..'
+import { Box, Button, Container, Flex, Img, Text } from '@chakra-ui/react'
+import {
+  Active,
+  Dropdown,
+  Filter,
+  Help,
+  MenuSelect,
+  Notification,
+  Search,
+  Snavbar,
+} from '..'
+import { AddIcon } from '@chakra-ui/icons'
+
+const itemList = {
+  listDropdown: [
+    {
+      id: '0',
+      text: 'Project name',
+    },
+    {
+      id: '1',
+      text: 'Last update',
+    },
+  ],
+  listMenu: [
+    {
+      id: '0',
+      text: 'Edit',
+    },
+    {
+      id: '1',
+      text: 'Delete',
+    },
+  ],
+}
 
 export const MainLayout = () => {
   return (
@@ -32,7 +65,20 @@ export const MainLayout = () => {
             />
           </Flex>
         </Flex>
-        <Box></Box>
+        <Flex mt="20px" mx="20px" justifyContent="space-between">
+          <Flex w="370px" border="2px solid #E2E8F0" borderRadius="6px">
+            <MenuSelect
+              leftIcon={<Filter />}
+              rightIcon={<Dropdown />}
+              title="All"
+              itemList={itemList.listDropdown}
+            />
+            <Search />
+          </Flex>
+          <Button leftIcon={<AddIcon />} variant="solid">
+            Add project
+          </Button>
+        </Flex>
       </Box>
     </Container>
   )
