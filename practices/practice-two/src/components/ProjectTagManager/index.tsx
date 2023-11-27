@@ -29,6 +29,7 @@ export const ProjectTagManager = ({ title, tagsList }: ITagGroupProps) => {
                 color: 'primary',
                 bg: 'white',
                 boxShadow: 'secondary',
+                borderRadius: '0.375rem',
               }}
             >
               {text}
