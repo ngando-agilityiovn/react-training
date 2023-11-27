@@ -12,6 +12,7 @@ export const Text = defineStyleConfig({
       lineHeight: 'shoter',
     },
     secondary: {
+      fontSize: 'sm',
       color: 'secondary',
       fontWeight: 'normal',
       lineHeight: 'base',

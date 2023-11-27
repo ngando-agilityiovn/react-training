@@ -27,7 +27,9 @@ export const ModalCustom = (props: IModalProps): JSX.Element => {
 
         <ModalCloseButton />
 
-        <ModalBody overflow="hidden">{children}</ModalBody>
+        <ModalBody px="0px" overflow="hidden">
+          {children}
+        </ModalBody>
       </ModalContent>
     </Modal>
   )

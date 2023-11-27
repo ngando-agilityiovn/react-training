@@ -1,4 +1,6 @@
 import { Box, Button, Flex, FormControl } from '@chakra-ui/react'
+
+// Components
 import { InputField, ProjectTagManager, ResourceGroup, Timeline } from '..'
 
 const tagGroup = [
@@ -50,31 +52,33 @@ const tagsList = [
 export const Form = () => {
   return (
     <FormControl>
-      <Box mb="1.25rem">
-        <InputField
-          label="Project name"
-          name="name"
-          type="text"
-          placeholder=""
-          marginBot="1.563rem"
-        />
-        <ProjectTagManager title="Project manager (PM)" tagsList={tagsList} />
-        <ResourceGroup
-          title="Resources"
-          variant="outline"
-          tagGroup={tagGroup}
-        />
-        <Timeline title="Timeline project" onChange={() => console.log('ss')} />
-        <InputField
-          label="Estimation"
-          name="name"
-          type="number"
-          placeholder="00.00"
-          children="US$"
-        />
+      <Box bg="#F7F8FA" py="1rem">
+        <Box px="24px">
+          <InputField
+            label="Project name"
+            name="name"
+            type="text"
+            placeholder=""
+            marginBot="1.563rem"
+          />
+          <ProjectTagManager title="Project manager (PM)" tagsList={tagsList} />
+          <ResourceGroup
+            title="Resources"
+            variant="outline"
+            tagGroup={tagGroup}
+          />
+          <Timeline title="Timeline project" />
+          <InputField
+            label="Estimation"
+            name="name"
+            type="number"
+            placeholder="00.00"
+            children="US$"
+          />
+        </Box>
       </Box>
 
-      <Flex justifyContent="flex-end" gap="1.25rem" mt="1rem">
+      <Flex px="24px" justifyContent="flex-end" gap="1.25rem" mt="2rem">
         <Button variant="outline" children="Cancel" />
         <Button variant="solid" children="Add project" />
       </Flex>
