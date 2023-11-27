@@ -1,4 +1,9 @@
 import { Box, Button, Container, Flex, Img, Text } from '@chakra-ui/react'
+
+// Icon
+import { AddIcon } from '@chakra-ui/icons'
+
+// Components
 import {
   Active,
   Dropdown,
@@ -9,8 +14,7 @@ import {
   Search,
   Snavbar,
   StatusGroup,
-} from '../../components'
-import { AddIcon } from '@chakra-ui/icons'
+} from '@/components'
 
 const itemList = {
   listDropdown: [
