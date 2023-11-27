@@ -11,23 +11,23 @@ export const Logo = () => (
         <path
           id="Vector 124"
           d="M26.6667 37L33.3333 35L20 1L26.6667 37Z"
-          fill="#D0CFFC"
+          fill="#d0cffc"
         />
         <path
           id="Vector 123"
           d="M13.3334 37L20 39L26.6667 37L20 1L13.3334 37Z"
-          fill="#EDEDFC"
+          fill="#ededfc"
         />
         <path
           id="Vector 122"
           d="M6.66663 35L13.3333 37L20 1L6.66663 35Z"
-          fill="#D0CFFC"
+          fill="#d0cffc"
         />
         <path id="Vector 121" d="M0 35L20 1L6.66667 37L0 35Z" fill="#9E9BF5" />
         <path
           id="Vector 120"
           d="M40 35L20 1L33.3333 37L40 35Z"
-          fill="#9E9BF5"
+          fill="#9e9bf5"
         />
       </g>
     </g>

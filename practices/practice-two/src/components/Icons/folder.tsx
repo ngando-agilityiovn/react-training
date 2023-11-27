@@ -12,8 +12,8 @@ export const Folder = () => (
       width="39"
       height="39"
       rx="5.5"
-      fill="#0D0B45"
-      stroke="#2A278F"
+      fill="#0d0b45"
+      stroke="#2a278f"
     />
     <path
       fill-rule="evenodd"

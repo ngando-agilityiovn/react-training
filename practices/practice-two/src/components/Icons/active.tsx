@@ -7,7 +7,7 @@ export const Active = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <g id="Ellipse 246" filter="url(#filter0_dd_347_1969)">
-      <circle cx="6" cy="6" r="4" fill="#5E5ADB" />
+      <circle cx="6" cy="6" r="4" fill="#5e5adb" />
     </g>
     <defs>
       <filter
