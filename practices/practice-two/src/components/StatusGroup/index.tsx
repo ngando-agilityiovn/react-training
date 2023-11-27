@@ -8,70 +8,75 @@ import {
   Text,
 } from '@chakra-ui/react'
 
-import { TableBody, TableProject } from '..'
+import { Project, ProjectStatus, TableProject } from '..'
 
 const tableHeader = [
   {
-    label: 'project name',
+    label: '#',
   },
   {
     label: 'project name',
   },
   {
-    label: 'project name',
+    label: 'pm',
   },
   {
-    label: 'project name',
+    label: 'status',
   },
   {
-    label: 'project name',
+    label: 'last update',
   },
   {
-    label: 'project name',
+    label: 'resources',
   },
   {
-    label: 'project name',
+    label: 'project timeline',
   },
   {
-    label: 'project name',
+    label: 'estimation',
   },
 ]
 
-enum Status {
-  OnTrack = "ON_TRACK",
-  OnHold = "ON_HOLD",
-  AtRisk = "AT_RISK",
-  PotentialRisk = "POTENTIAL_RISK",
-}
-
-export type Timeline = {
-  start: string
-  end: string
-}
-
-interface Project {
-  id: string
-  projectName: string
-  projectManager: string
-  status: Status
-  update: number
-  resource: string
-  timeline: Timeline
-  estimation: string
-}
-
-const tableBody: Project[] = [
+export const projects: Project[] = [
+  {
+    id: '0',
+    name: 'HTML-CSS project',
+    manager: 'John Smith',
+    status: ProjectStatus.AT_RISK,
+    updatedAt: 123456,
+    resource: 4,
+    timeline: {
+      start: 123456,
+      end: 123456,
+    },
+    estimation: 4,
+  },
   {
     id: '1',
-    projectName: "HEllo",
-    projectManager: 'ndd',
-    status: Status.AtRisk,
-    update: '15 Mar 2021, 12:47 PM',
-    resource: 'Frontend',
-    timeline: Timeline.
-    estimation: '10.4k'
-
-  }
+    name: 'JS project',
+    manager: 'John Alan',
+    status: ProjectStatus.ON_HOLD,
+    updatedAt: 123456,
+    resource: 4,
+    timeline: {
+      start: 123456,
+      end: 123456,
+    },
+    estimation: 4,
+  },
+  {
+    id: '2',
+    name: 'Python project',
+    manager: 'Alan Smith',
+    status: ProjectStatus.POTENTIAL_RISK,
+    updatedAt: 123456,
+    resource: 4,
+    timeline: {
+      start: 123456,
+      end: 123456,
+    },
+    estimation: 4,
+  },
 ]
 
 export const StatusGroup = () => {
@@ -80,7 +85,7 @@ export const StatusGroup = () => {
       <TabList>
         <Tab>
           <Text
-            _selected={{ color: '#5E5ADB', fontWeight: 'bold' }}
+            _selected={{ color: 'primary', fontWeight: 'bold' }}
             fontWeight="medium"
             mr="6px"
             lineHeight="20px"
@@ -89,7 +94,7 @@ export const StatusGroup = () => {
             All
           </Text>
           <Badge
-            _selected={{ color: '#5E5ADB', fontWeight: 'bold' }}
+            _selected={{ color: 'primary', fontWeight: 'bold' }}
             variant="primary"
             color="b"
             h="29px"
@@ -99,7 +104,7 @@ export const StatusGroup = () => {
         </Tab>
         <Tab>
           <Text
-            _selected={{ color: '#5E5ADB', fontWeight: 'bold' }}
+            _selected={{ color: 'primary', fontWeight: 'bold' }}
             fontWeight="medium"
             mr="6px"
             lineHeight="20px"
@@ -108,7 +113,7 @@ export const StatusGroup = () => {
             Risk
           </Text>
           <Badge
-            _selected={{ color: '#5E5ADB', fontWeight: 'bold' }}
+            _selected={{ color: 'primary', fontWeight: 'bold' }}
             variant="primary"
             color="b"
             h="29px"
@@ -118,7 +123,7 @@ export const StatusGroup = () => {
         </Tab>
         <Tab>
           <Text
-            _selected={{ color: '#5E5ADB', fontWeight: 'bold' }}
+            _selected={{ color: 'primary', fontWeight: 'bold' }}
             fontWeight="medium"
             mr="6px"
             lineHeight="20px"
@@ -127,7 +132,7 @@ export const StatusGroup = () => {
             On hold
           </Text>
           <Badge
-            _selected={{ color: '#5E5ADB', fontWeight: 'bold' }}
+            _selected={{ color: 'primary', fontWeight: 'bold' }}
             variant="primary"
             color="b"
             h="29px"
@@ -137,7 +142,7 @@ export const StatusGroup = () => {
         </Tab>
         <Tab>
           <Text
-            _selected={{ color: '#5E5ADB', fontWeight: 'bold' }}
+            _selected={{ color: 'primary', fontWeight: 'bold' }}
             fontWeight="medium"
             mr="6px"
             lineHeight="20px"
@@ -146,7 +151,7 @@ export const StatusGroup = () => {
             Potential risk
           </Text>
           <Badge
-            _selected={{ color: '#5E5ADB', fontWeight: 'bold' }}
+            _selected={{ color: 'primary', fontWeight: 'bold' }}
             variant="primary"
             color="b"
             h="29px"
@@ -156,7 +161,7 @@ export const StatusGroup = () => {
         </Tab>
         <Tab>
           <Text
-            _selected={{ color: '#5E5ADB', fontWeight: 'bold' }}
+            _selected={{ color: 'primary', fontWeight: 'bold' }}
             fontWeight="medium"
             mr="6px"
             lineHeight="20px"
@@ -165,7 +170,7 @@ export const StatusGroup = () => {
             On track
           </Text>
           <Badge
-            _selected={{ color: '#5E5ADB', fontWeight: 'bold' }}
+            _selected={{ color: 'primary', fontWeight: 'bold' }}
             variant="primary"
             color="b"
             h="29px"
@@ -177,7 +182,7 @@ export const StatusGroup = () => {
 
       <TabPanels>
         <TabPanel>
-          <TableProject tableHeader={tableHeader} tableBody={tableB} />
+          <TableProject tableHeader={tableHeader} tableBody={projects} />
         </TabPanel>
         <TabPanel>
           <p>two!</p>

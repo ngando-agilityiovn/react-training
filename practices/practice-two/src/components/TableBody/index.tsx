@@ -1,20 +1,27 @@
-import { Tbody, Td, Tr } from '@chakra-ui/react'
-import { IStatusProps, Status, Timeline } from '..'
+import { Tag, Tbody, Td, Tr } from '@chakra-ui/react'
 
-export interface TableBody {
+export enum ProjectStatus {
+  ON_TRACK = 'On Track',
+  AT_RISK = 'At Risk',
+  POTENTIAL_RISK = 'Potential Risk',
+  ON_HOLD = 'On Hold',
+}
+export interface Project {
   id: string
-  numeric: number
-  projectName: string
-  projectManager: string
-  status: IStatusProps
-  update: number
-  resource: string
-  timeline: Timeline
-  estimation: string
+  name: string
+  manager: string
+  status: ProjectStatus
+  updatedAt: number
+  resource: number
+  timeline: {
+    start: number
+    end: number
+  }
+  estimation: number
 }
 
 export interface IBodyProps {
-  tableBody: TableBody[]
+  tableBody: Project[]
 }
 
 export const TableBody = ({ tableBody }: IBodyProps) => {
@@ -23,11 +30,10 @@ export const TableBody = ({ tableBody }: IBodyProps) => {
       {tableBody?.length &&
         tableBody.map(
           ({
-            numeric,
-            projectName,
-            projectManager,
+            name,
+            manager,
             status,
-            update,
+            updatedAt,
             resource,
             timeline,
             estimation,
@@ -35,21 +41,15 @@ export const TableBody = ({ tableBody }: IBodyProps) => {
           }) => {
             return (
               <Tr key={id}>
-                <Td>{numeric}</Td>
-                <Td>{projectName}</Td>
-                <Td>{projectManager}</Td>
-                <Td>
-                  <Status
-                    text={status.text}
-                    variant={status.variant}
-                    isDot={status.isDot}
-                    background={status.background}
-                  />
-                </Td>
-                <Td>{update}</Td>
+                <Td>{id}</Td>
+                <Td>{name}</Td>
+                <Td>{manager}</Td>
+                <Td>{status}</Td>
+                <Td>{updatedAt}</Td>
                 <Td>{resource}</Td>
                 <Td>
-                  <Timeline onChange={timeline.onChange} />
+                  <Tag>{timeline.end}</Tag>
+                  <Tag variant="ghost">{timeline.start}</Tag>
                 </Td>
                 <Td>{estimation}</Td>
               </Tr>
