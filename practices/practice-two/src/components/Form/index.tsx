@@ -52,8 +52,8 @@ const tagsList = [
 export const Form = () => {
   return (
     <FormControl>
-      <Box bg="#F7F8FA" py="1rem">
-        <Box px="24px">
+      <Box bg="darkToLight" py="1rem">
+        <Box px="1.5rem">
           <InputField
             label="Project name"
             name="name"
@@ -78,7 +78,7 @@ export const Form = () => {
         </Box>
       </Box>
 
-      <Flex px="24px" justifyContent="flex-end" gap="1.25rem" mt="2rem">
+      <Flex px="1.5rem" justifyContent="flex-end" gap="1.25rem" mt="2rem">
         <Button variant="outline" children="Cancel" />
         <Button variant="solid" children="Add project" />
       </Flex>

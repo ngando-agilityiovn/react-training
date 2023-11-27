@@ -18,11 +18,10 @@ export const ProjectTagManager = ({ title, tagsList }: ITagGroupProps) => {
       >
         {title}
       </Text>
-      <Tabs mt="0.5rem" bg="backgroundInactive">
-        <TabList border="0px">
+      <Tabs mt="0.5rem" bg="backgroundInactive" borderRadius="0.375rem">
+        <TabList>
           {tagsList.map(({ id, text }) => (
             <Tab
-              border="0px"
               m="0.125rem"
               key={id}
               _selected={{
