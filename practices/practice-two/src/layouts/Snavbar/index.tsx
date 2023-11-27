@@ -1,5 +1,5 @@
 import { Box, Flex } from '@chakra-ui/react'
-import { Folder, Logo, Setting } from '..'
+import { Folder, Logo, Setting } from '../../components'
 
 export const Snavbar = () => {
   return (

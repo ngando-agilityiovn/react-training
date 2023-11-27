@@ -9,7 +9,7 @@ import {
   Search,
   Snavbar,
   StatusGroup,
-} from '..'
+} from '../../components'
 import { AddIcon } from '@chakra-ui/icons'
 
 const itemList = {

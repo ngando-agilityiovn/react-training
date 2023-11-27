@@ -1,40 +1,26 @@
-import { ReactNode, memo, useCallback, useState } from 'react'
+import { ChangeEvent, memo, useState } from 'react'
 
 import { ChevronRightIcon } from '@chakra-ui/icons'
 
-import { Box, FormLabel, HStack, Text } from '@chakra-ui/react'
-import { DatePicker } from 'chakra-ui-date-input'
+// Components
+import { Box, FormLabel, HStack, Input, Text } from '@chakra-ui/react'
 
-export type Timeline = {
-  start: string
-  end: string
+interface ITimelineProps {
+  title: string
 }
 
-export interface ITimelineProps {
-  title?: string
-  startDateIcon?: ReactNode
-  endDateIcon?: ReactNode
-  onChange: (date: Timeline) => void
-}
+export const Timeline = memo(({ title }: ITimelineProps) => {
+  const [fromDateTime, setFromDateTime] = useState<string>('')
+  const [toDateTime, setToDateTime] = useState<string>('')
 
-export const Timeline = memo(({ title, onChange }: ITimelineProps) => {
-  const [timeline, setTimeline] = useState({ start: '', end: '' })
-
-  const handleChangeStartDate = useCallback(
-    (date: string) => {
-      setTimeline((prevTimeline) => ({ ...prevTimeline, start: date }))
-      onChange({ ...timeline, start: date })
-    },
-    [onChange, timeline],
-  )
-
-  const handleChangEndDate = useCallback(
-    (date: string) => {
-      setTimeline((prevTimeline) => ({ ...prevTimeline, end: date }))
-      onChange({ ...timeline, end: date })
-    },
-    [onChange, timeline],
-  )
+  // This function will implement change value when user choose date
+  const handleDateTimeChange = (
+    event: ChangeEvent<HTMLInputElement>,
+    setDateTime: React.Dispatch<React.SetStateAction<string>>,
+  ) => {
+    const { value } = event.target
+    setDateTime(value)
+  }
 
   return (
     <Box w="100%" mb="2rem">
@@ -46,13 +32,12 @@ export const Timeline = memo(({ title, onChange }: ITimelineProps) => {
           <Text variant="secondary" mb="0.563rem">
             From
           </Text>
-          <DatePicker
-            placeholder="DD/MM/YYYY"
+          <Input
+            value={fromDateTime}
+            onChange={(e) => handleDateTimeChange(e, setFromDateTime)}
+            placeholder="Select Date and Time"
             size="md"
-            width="50"
-            pl="1.25rem"
-            defaultValue={timeline.start}
-            onChange={handleChangeStartDate}
+            type="date"
           />
         </Box>
         <ChevronRightIcon w="10%" mt="1.875rem" />
@@ -60,18 +45,15 @@ export const Timeline = memo(({ title, onChange }: ITimelineProps) => {
           <Text variant="secondary" mb="0.563rem">
             To
           </Text>
-          <DatePicker
-            placeholder="DD/MM/YYYY"
+          <Input
+            value={toDateTime}
+            onChange={(e) => handleDateTimeChange(e, setToDateTime)}
+            placeholder="Select Date and Time"
             size="md"
-            width="50"
-            pl="1.25rem"
-            defaultValue={timeline.end}
-            onChange={handleChangEndDate}
+            type="date"
           />
         </Box>
       </HStack>
     </Box>
   )
 })
-
-Timeline.displayName = 'Timeline'

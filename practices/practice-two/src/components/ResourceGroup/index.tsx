@@ -1,3 +1,4 @@
+// Components
 import { Box, Flex, Tag, Text } from '@chakra-ui/react'
 
 export interface TagGroup {
