@@ -143,7 +143,11 @@ export const TableBody = ({ tableBody }: IBodyProps) => {
                   lineHeight="5"
                   textAlign="center"
                 >
-                  <Flex marginLeft="4" justifyContent="space-between">
+                  <Flex
+                    marginLeft="4"
+                    justifyContent="space-between"
+                    alignItems="center"
+                  >
                     <Flex>
                       <Text mr="1">US$</Text>
                       {estimation}

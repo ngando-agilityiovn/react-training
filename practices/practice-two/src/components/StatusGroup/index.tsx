@@ -125,17 +125,17 @@ const StatusGroup = () => {
           <Text
             _selected={{ color: 'primary', fontWeight: 'bold' }}
             fontWeight="medium"
-            mr="6px"
-            lineHeight="20px"
-            letterSpacing="0.28px"
+            mr="1.5"
+            lineHeight="5"
+            letterSpacing="wider"
           >
             All
           </Text>
           <Badge
             _selected={{ color: 'primary', fontWeight: 'bold' }}
             variant="primary"
-            color="b"
-            h="29px"
+            color="secondary"
+            h="1.8rem"
           >
             29
           </Badge>
@@ -144,9 +144,9 @@ const StatusGroup = () => {
           <Text
             _selected={{ color: 'primary', fontWeight: 'bold' }}
             fontWeight="medium"
-            mr="6px"
-            lineHeight="20px"
-            letterSpacing="0.28px"
+            mr="1.5"
+            lineHeight="5"
+            letterSpacing="wider"
           >
             Risk
           </Text>
@@ -154,7 +154,7 @@ const StatusGroup = () => {
             _selected={{ color: 'primary', fontWeight: 'bold' }}
             variant="primary"
             color="b"
-            h="29px"
+            h="1.8rem"
           >
             9
           </Badge>
@@ -163,17 +163,17 @@ const StatusGroup = () => {
           <Text
             _selected={{ color: 'primary', fontWeight: 'bold' }}
             fontWeight="medium"
-            mr="6px"
-            lineHeight="20px"
-            letterSpacing="0.28px"
+            mr="1.5"
+            lineHeight="5"
+            letterSpacing="wider"
           >
             On hold
           </Text>
           <Badge
             _selected={{ color: 'primary', fontWeight: 'bold' }}
             variant="primary"
-            color="b"
-            h="29px"
+            color="secondary"
+            h="1.8rem"
           >
             4
           </Badge>
@@ -182,9 +182,9 @@ const StatusGroup = () => {
           <Text
             _selected={{ color: 'primary', fontWeight: 'bold' }}
             fontWeight="medium"
-            mr="6px"
-            lineHeight="20px"
-            letterSpacing="0.28px"
+            mr="1.5"
+            lineHeight="5"
+            letterSpacing="wider"
           >
             Potential risk
           </Text>
@@ -192,7 +192,7 @@ const StatusGroup = () => {
             _selected={{ color: 'primary', fontWeight: 'bold' }}
             variant="primary"
             color="b"
-            h="29px"
+            h="1.8rem"
           >
             9
           </Badge>
@@ -201,17 +201,17 @@ const StatusGroup = () => {
           <Text
             _selected={{ color: 'primary', fontWeight: 'bold' }}
             fontWeight="medium"
-            mr="6px"
-            lineHeight="20px"
-            letterSpacing="0.28px"
+            mr="1.5"
+            lineHeight="5"
+            letterSpacing="wider"
           >
             On track
           </Text>
           <Badge
             _selected={{ color: 'primary', fontWeight: 'bold' }}
             variant="primary"
-            color="b"
-            h="29px"
+            color="secondary"
+            h="1.8rem"
           >
             10
           </Badge>
