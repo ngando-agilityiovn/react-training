@@ -1,16 +1,15 @@
-import { ChakraProvider, Text } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
 
 // Theme
 import { theme } from '@/themes'
+
+// Components
 import { MainLayout } from '@/components'
 
 export const App = () => {
   return (
-    <>
-      <ChakraProvider theme={theme}>
-        <Text>Hello</Text>
-        <MainLayout />
-      </ChakraProvider>
-    </>
+    <ChakraProvider theme={theme}>
+      <MainLayout />
+    </ChakraProvider>
   )
 }
