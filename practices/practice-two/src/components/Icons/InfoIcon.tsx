@@ -1,4 +1,4 @@
-export const InfoIcon = () => (
+const InfoIcon = () => (
   <svg
     width="16"
     height="16"
@@ -17,3 +17,5 @@ export const InfoIcon = () => (
     </g>
   </svg>
 )
+
+export default InfoIcon

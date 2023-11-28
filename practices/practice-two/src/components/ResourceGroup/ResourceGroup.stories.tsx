@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import ResourceGroup from '.'
 
 // Components
-import { ResourceGroup } from '.'
 
 const tagGroup = [
   {

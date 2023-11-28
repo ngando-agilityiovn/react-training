@@ -14,7 +14,7 @@ interface IMenuProps {
   rightIcon?: ReactElement
 }
 
-export const MenuSelect = ({
+const MenuSelect = ({
   options,
   title,
   width,
@@ -41,3 +41,5 @@ export const MenuSelect = ({
     </MenuList>
   </Menu>
 )
+
+export default MenuSelect

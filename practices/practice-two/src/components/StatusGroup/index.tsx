@@ -9,10 +9,11 @@ import {
 } from '@chakra-ui/react'
 
 // Components
-import { Project, TableProject } from '..'
+import { TableProject } from '..'
 
 // Types
 import { ProjectStatus } from '@/types'
+import { Project } from '../TableBody'
 
 const tableHeader = [
   {
@@ -116,7 +117,7 @@ export const projects: Project[] = [
   },
 ]
 
-export const StatusGroup = () => {
+const StatusGroup = () => {
   return (
     <Tabs>
       <TabList>
@@ -231,3 +232,5 @@ export const StatusGroup = () => {
     </Tabs>
   )
 }
+
+export default StatusGroup

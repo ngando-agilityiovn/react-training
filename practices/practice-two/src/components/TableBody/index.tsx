@@ -15,8 +15,8 @@ import { ChevronRightIcon } from '@chakra-ui/icons'
 import { ProjectStatus, TAGS_COLORS, TAGS_VARIANT } from '@/types'
 
 // Components
-import { Status } from '../Status'
 import { NoteIcon } from '../Icons'
+import Status from '../Status'
 
 export interface Project {
   id: string

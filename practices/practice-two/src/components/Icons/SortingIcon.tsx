@@ -1,4 +1,4 @@
-export const SortingIcon = () => (
+const SortingIcon = () => (
   <svg
     width="16"
     height="16"
@@ -20,3 +20,5 @@ export const SortingIcon = () => (
     </g>
   </svg>
 )
+
+export default SortingIcon

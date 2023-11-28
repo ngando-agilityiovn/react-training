@@ -1,5 +1,7 @@
 import { Table, TableContainer } from '@chakra-ui/react'
-import { TableHeader } from '..'
+
+// Components
+import { TableHeader } from '../TableHeader'
 import { Project, TableBody } from '../TableBody'
 
 interface ITableProps {
@@ -7,7 +9,7 @@ interface ITableProps {
   tableBody: Project[]
 }
 
-export const TableProject = ({ tableHeader, tableBody }: ITableProps) => {
+const TableProject = ({ tableHeader, tableBody }: ITableProps) => {
   return (
     <TableContainer>
       <Table variant="simple">
@@ -17,3 +19,5 @@ export const TableProject = ({ tableHeader, tableBody }: ITableProps) => {
     </TableContainer>
   )
 }
+
+export default TableProject

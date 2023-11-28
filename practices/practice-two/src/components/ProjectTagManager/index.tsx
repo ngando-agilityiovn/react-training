@@ -1,12 +1,12 @@
 import { Box, Tab, TabList, Tabs, Text } from '@chakra-ui/react'
-import { TagGroup } from '..'
+import { TagGroup } from '../ResourceGroup'
 
 interface ITagGroupProps {
   title: string
   tagsList: TagGroup[]
 }
 
-export const ProjectTagManager = ({ title, tagsList }: ITagGroupProps) => {
+const ProjectTagManager = ({ title, tagsList }: ITagGroupProps) => {
   return (
     <Box mb="2rem">
       <Text
@@ -39,3 +39,5 @@ export const ProjectTagManager = ({ title, tagsList }: ITagGroupProps) => {
     </Box>
   )
 }
+
+export default ProjectTagManager

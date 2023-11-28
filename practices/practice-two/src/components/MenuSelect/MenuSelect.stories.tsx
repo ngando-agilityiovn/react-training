@@ -1,7 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { MenuSelect } from '.'
-import { Dropdown, Filter } from '..'
 import { DragHandleIcon } from '@chakra-ui/icons'
+
+// Components
+import MenuSelect from '.'
+import { DropdownIcon, FilterIcon } from '../Icons'
 
 const options = {
   sortOptions: [
@@ -35,8 +37,8 @@ type Story = StoryObj<typeof MenuSelect>
 
 export const Default: Story = {
   args: {
-    leftIcon: <Filter />,
-    rightIcon: <Dropdown />,
+    leftIcon: <FilterIcon />,
+    rightIcon: <DropdownIcon />,
     title: 'All',
     options: options.sortOptions,
   },

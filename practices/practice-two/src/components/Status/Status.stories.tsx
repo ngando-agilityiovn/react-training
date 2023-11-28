@@ -1,5 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { Status } from '.'
+
+// Components
+import Status from '.'
 
 export default {
   title: 'Component/Status',

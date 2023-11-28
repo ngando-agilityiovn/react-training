@@ -1,6 +1,7 @@
 import { SearchIcon } from '@chakra-ui/icons'
 import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
-export const Search = () => {
+
+const Search = () => {
   return (
     <InputGroup w="280px">
       <InputLeftElement pointerEvents="none">
@@ -15,3 +16,5 @@ export const Search = () => {
     </InputGroup>
   )
 }
+
+export default Search

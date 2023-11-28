@@ -9,7 +9,7 @@ interface ITimelineProps {
   title: string
 }
 
-export const Timeline = memo(({ title }: ITimelineProps) => {
+const Timeline = memo(({ title }: ITimelineProps) => {
   const [fromDateTime, setFromDateTime] = useState<string>('')
   const [toDateTime, setToDateTime] = useState<string>('')
 
@@ -57,3 +57,5 @@ export const Timeline = memo(({ title }: ITimelineProps) => {
     </Box>
   )
 })
+
+export default Timeline

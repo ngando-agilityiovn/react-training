@@ -1,5 +1,7 @@
 import { Flex, Text, Th, Thead, Tr } from '@chakra-ui/react'
-import { InfoIcon, SortingIcon } from '..'
+
+// Components
+import { InfoIcon, SortingIcon } from '../Icons'
 
 export interface TableHeader {
   id: string

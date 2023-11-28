@@ -1,6 +1,8 @@
 import { Input } from '@chakra-ui/react'
 import { Meta, StoryObj } from '@storybook/react'
-import { InputField } from '.'
+
+// Components
+import InputField from '.'
 
 export default {
   title: 'Component/Input',

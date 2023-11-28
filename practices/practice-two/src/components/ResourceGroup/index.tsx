@@ -12,7 +12,7 @@ interface IResourceProps {
   tagGroup: TagGroup[]
 }
 
-export const ResourceGroup = ({ title, variant, tagGroup }: IResourceProps) => {
+const ResourceGroup = ({ title, variant, tagGroup }: IResourceProps) => {
   return (
     <Box mb="2rem">
       <Text
@@ -34,3 +34,5 @@ export const ResourceGroup = ({ title, variant, tagGroup }: IResourceProps) => {
     </Box>
   )
 }
+
+export default ResourceGroup

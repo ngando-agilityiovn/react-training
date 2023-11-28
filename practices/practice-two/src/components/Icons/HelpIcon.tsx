@@ -1,4 +1,4 @@
-export const HelpIcon = () => (
+const HelpIcon = () => (
   <svg
     width="24"
     height="24"
@@ -17,3 +17,5 @@ export const HelpIcon = () => (
     </g>
   </svg>
 )
+
+export default HelpIcon

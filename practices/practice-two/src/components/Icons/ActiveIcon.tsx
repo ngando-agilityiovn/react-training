@@ -1,4 +1,4 @@
-export const ActiveIcon = () => (
+const ActiveIcon = () => (
   <svg
     width="12"
     height="13"
@@ -69,3 +69,5 @@ export const ActiveIcon = () => (
     </defs>
   </svg>
 )
+
+export default ActiveIcon

@@ -1,4 +1,4 @@
-export const DropdownIcon = () => (
+const DropdownIcon = () => (
   <svg
     width="16"
     height="16"
@@ -18,3 +18,5 @@ export const DropdownIcon = () => (
     </g>
   </svg>
 )
+
+export default DropdownIcon

@@ -1,4 +1,4 @@
-export const FolderIcon = () => (
+const FolderIcon = () => (
   <svg
     width="40"
     height="40"
@@ -23,3 +23,5 @@ export const FolderIcon = () => (
     />
   </svg>
 )
+
+export default FolderIcon

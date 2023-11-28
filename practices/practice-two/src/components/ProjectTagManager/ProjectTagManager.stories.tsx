@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import ProjectTagManager from '.'
 
 // Components
-import { ProjectTagManager } from '.'
 
 const taglist = [
   {

@@ -49,7 +49,7 @@ const tagsList = [
   },
 ]
 
-export const Form = () => {
+const Form = () => {
   return (
     <FormControl>
       <Box bg="darkToLight" py="1rem">
@@ -73,15 +73,17 @@ export const Form = () => {
             name="name"
             type="number"
             placeholder="00.00"
-            children="US$"
+            addOn="US$"
           />
         </Box>
       </Box>
 
       <Flex px="1.5rem" justifyContent="flex-end" gap="1.25rem" mt="2rem">
-        <Button variant="outline" children="Cancel" />
-        <Button variant="solid" children="Add project" />
+        <Button variant="outline">Cancel</Button>
+        <Button variant="solid">Add project</Button>
       </Flex>
     </FormControl>
   )
 }
+
+export default Form
