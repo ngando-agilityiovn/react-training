@@ -1,5 +1,5 @@
 import { Flex, Text, Th, Thead, Tr } from '@chakra-ui/react'
-import { Info, Sorting } from '..'
+import { InfoIcon, SortingIcon } from '..'
 
 export interface TableHeader {
   id: string
@@ -19,10 +19,10 @@ export const TableHeader = ({ tableHeader }: IHeaderProps) => {
           const renderIcon = () => {
             switch (typeIcon) {
               case 'info':
-                return <Info />
+                return <InfoIcon />
 
               case 'sorting':
-                return <Sorting />
+                return <SortingIcon />
             }
           }
 

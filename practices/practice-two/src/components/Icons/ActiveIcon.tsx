@@ -1,4 +1,4 @@
-export const Active = () => (
+export const ActiveIcon = () => (
   <svg
     width="12"
     height="13"

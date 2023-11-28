@@ -1,4 +1,4 @@
-export const Folder = () => (
+export const FolderIcon = () => (
   <svg
     width="40"
     height="40"

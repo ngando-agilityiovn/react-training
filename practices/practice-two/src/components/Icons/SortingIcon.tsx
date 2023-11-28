@@ -1,4 +1,4 @@
-export const Sorting = () => (
+export const SortingIcon = () => (
   <svg
     width="16"
     height="16"

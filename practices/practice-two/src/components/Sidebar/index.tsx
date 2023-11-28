@@ -1,7 +1,7 @@
 import { Box, Flex } from '@chakra-ui/react'
 
 // Components
-import { Folder, Logo, Setting } from '..'
+import { FolderIcon, LogoIcon, SettingIcon } from '..'
 
 const Sidebar = () => (
   <Box
@@ -15,13 +15,13 @@ const Sidebar = () => (
     bg="backgroundSidebar"
   >
     <Box mb="10">
-      <Logo />
+      <LogoIcon />
     </Box>
     <Box mb="2.5">
-      <Folder />
+      <FolderIcon />
     </Box>
     <Flex alignItems="center" direction="column">
-      <Setting />
+      <SettingIcon />
     </Flex>
   </Box>
 )

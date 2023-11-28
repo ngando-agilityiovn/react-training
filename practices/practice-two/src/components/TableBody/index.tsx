@@ -1,6 +1,22 @@
+import {
+  Avatar,
+  Badge,
+  Flex,
+  Img,
+  Tag,
+  Tbody,
+  Td,
+  Text,
+  Tr,
+} from '@chakra-ui/react'
+import { ChevronRightIcon } from '@chakra-ui/icons'
+
+// Types
 import { ProjectStatus, TAGS_COLORS, TAGS_VARIANT } from '@/types'
-import { Avatar, Img, Tag, Tbody, Td, Tr } from '@chakra-ui/react'
+
+// Components
 import { Status } from '../Status'
+import { NoteIcon } from '../Icons'
 
 export interface Project {
   id: string
@@ -72,13 +88,53 @@ export const TableBody = ({ tableBody }: IBodyProps) => {
                     background={colorStatusMapping[status]}
                   />
                 </Td>
-                <Td>{updatedAt}</Td>
-                <Td>{resource}</Td>
-                <Td>
-                  <Tag>{timeline.end}</Tag>
-                  <Tag variant="ghost">{timeline.start}</Tag>
+                <Td
+                  fontSize="sm"
+                  color="textTertiary"
+                  fontWeight="normal"
+                  lineHeight="5"
+                  letterSpacing="wider"
+                >
+                  <Flex gap="1.5">
+                    <NoteIcon />
+                    {updatedAt}
+                  </Flex>
                 </Td>
-                <Td>{estimation}</Td>
+                <Td
+                  fontSize="sm"
+                  color="secondary"
+                  fontWeight="normal"
+                  lineHeight="5"
+                  letterSpacing="wider"
+                >
+                  <Badge marginLeft="5" variant="primary">
+                    {resource}
+                  </Badge>
+                </Td>
+                <Td
+                  fontSize="xs"
+                  color="secondary"
+                  fontWeight="medium"
+                  lineHeight="extraShort"
+                  letterSpacing="wider"
+                >
+                  <Tag>{timeline.start}</Tag>
+                  <ChevronRightIcon mx="1.5" />
+                  <Tag>{timeline.end}</Tag>
+                </Td>
+                <Td
+                  fontSize="sm"
+                  color="textTertiary"
+                  fontWeight="normal"
+                  lineHeight="5"
+                  textAlign="center"
+                >
+                  <Flex marginLeft="4">
+                    <Text mr="1">US$</Text>
+                    {estimation}
+                    <Text>k</Text>
+                  </Flex>
+                </Td>
               </Tr>
             )
           },

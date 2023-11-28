@@ -1,4 +1,4 @@
-export const Note = () => (
+export const NoteIcon = () => (
   <svg
     width="16"
     height="16"

@@ -1,4 +1,4 @@
-export const Dropdown = () => (
+export const DropdownIcon = () => (
   <svg
     width="16"
     height="16"
@@ -11,9 +11,9 @@ export const Dropdown = () => (
         id="icon"
         d="M5 6.5L8 9.5L11 6.5"
         stroke="#464F60"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </g>
   </svg>

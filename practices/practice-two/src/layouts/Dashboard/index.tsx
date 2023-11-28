@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react'
 
 // Components
-import { Active, Help, Notification, Sidebar } from '@/components'
+import { ActiveIcon, HelpIcon, NotificationIcon, Sidebar } from '@/components'
 
 interface DashboardProps {
   title: string
@@ -41,13 +41,13 @@ const Dashboard = ({ title, titleNumeric, children }: DashboardProps) => {
           </HStack>
           <Flex>
             <Box pos="relative">
-              <Notification />
+              <NotificationIcon />
               <Box pos="absolute" top="0" right="0">
-                <Active />
+                <ActiveIcon />
               </Box>
             </Box>
             <Box mx="6">
-              <Help />
+              <HelpIcon />
             </Box>
             <Avatar boxSize="6" icon={<Img src={avatar} />} />
           </Flex>
