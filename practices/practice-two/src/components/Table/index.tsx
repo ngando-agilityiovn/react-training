@@ -1,10 +1,10 @@
 import { Table, TableContainer } from '@chakra-ui/react'
 import { TableHeader } from '..'
-import { TableBody } from '../TableBody'
+import { Project, TableBody } from '../TableBody'
 
 interface ITableProps {
   tableHeader: TableHeader[]
-  tableBody: TableBody[]
+  tableBody: Project[]
 }
 
 export const TableProject = ({ tableHeader, tableBody }: ITableProps) => {
