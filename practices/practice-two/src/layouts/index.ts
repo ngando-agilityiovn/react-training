@@ -1,2 +1,1 @@
-export * from './Snavbar'
-export * from '../pages/Home'
+export * from './Sidebar'
