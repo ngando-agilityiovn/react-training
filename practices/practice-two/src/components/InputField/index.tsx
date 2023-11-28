@@ -18,7 +18,7 @@ interface IInputProps {
   errorMessage?: string
   isReadOnly?: boolean
   errorBorderColor?: string
-  children?: string
+  addOn?: string
   width?: string
   marginBot?: string
 }
@@ -34,7 +34,7 @@ export const InputField = ({
   errorMessage,
   isReadOnly,
   errorBorderColor,
-  children,
+  addOn,
   marginBot,
   width = '100%',
 }: IInputProps) => {
@@ -50,7 +50,7 @@ export const InputField = ({
         {label}
       </FormLabel>
       <InputGroup gap="0.5rem">
-        {children ? (
+        {addOn?.length && (
           <InputLeftElement
             pointerEvents="none"
             color="colorGray"
@@ -58,10 +58,9 @@ export const InputField = ({
             fontWeight="medium"
             lineHeight="shorter"
             letterSpacing="wider"
-            children={children}
-          />
-        ) : (
-          <></>
+          >
+            {addOn}
+          </InputLeftElement>
         )}
         <Input
           as={variant}
