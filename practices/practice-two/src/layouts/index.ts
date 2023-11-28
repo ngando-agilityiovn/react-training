@@ -1,1 +1,1 @@
-export * from './Sidebar'
+export { default as DashboardLayout } from './Dashboard'

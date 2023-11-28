@@ -42,7 +42,15 @@ export const TableBody = ({ tableBody }: IBodyProps) => {
             return (
               <Tr key={id}>
                 <Td>{id}</Td>
-                <Td>{name}</Td>
+                <Td
+                  fontSize="sm"
+                  color="primary"
+                  fontWeight="medium"
+                  lineHeight="5"
+                  letterSpacing="wider"
+                >
+                  {name}
+                </Td>
                 <Td>{manager}</Td>
                 <Td>{status}</Td>
                 <Td>{updatedAt}</Td>

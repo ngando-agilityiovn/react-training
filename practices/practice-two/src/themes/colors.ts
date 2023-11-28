@@ -21,6 +21,9 @@ export const colors = {
   backgroundError: '#ffedef',
   backgroundWarning: '#fcf2e6',
   backgroundInactive: '#e9edf5',
-  backgroundSnavbar: '#151357',
-  backgroundHeader: '#F7F9FC',
+  backgroundSidebar: '#151357',
+  backgroundHeader: '#f7f9fc',
+
+  // Badge background
+  badgeBackground: '#ededfc',
 }

@@ -2,7 +2,7 @@ import { defineStyleConfig } from '@chakra-ui/react'
 
 export const Badge = defineStyleConfig({
   baseStyle: {
-    fontSize: '0.625rem',
+    fontSize: '12',
     fontWeight: 'medium',
     color: 'secondary',
     borderWidth: '0.438rem',
