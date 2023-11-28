@@ -3,24 +3,24 @@ import { MenuSelect } from '.'
 import { Dropdown, Filter } from '..'
 import { DragHandleIcon } from '@chakra-ui/icons'
 
-const itemList = {
-  listDropdown: [
+const options = {
+  sortOptions: [
     {
-      id: '0',
+      value: 'name',
       text: 'Project name',
     },
     {
-      id: '1',
+      value: 'updatedAt',
       text: 'Last update',
     },
   ],
-  listMenu: [
+  menuOptions: [
     {
-      id: '0',
+      value: 'edit',
       text: 'Edit',
     },
     {
-      id: '1',
+      value: 'delete',
       text: 'Delete',
     },
   ],
@@ -38,13 +38,13 @@ export const Default: Story = {
     leftIcon: <Filter />,
     rightIcon: <Dropdown />,
     title: 'All',
-    itemList: itemList.listDropdown,
+    options: options.sortOptions,
   },
 }
 
 export const Primary: Story = {
   args: {
     leftIcon: <DragHandleIcon />,
-    itemList: itemList.listMenu,
+    options: options.menuOptions,
   },
 }

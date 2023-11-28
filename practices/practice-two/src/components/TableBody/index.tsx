@@ -1,11 +1,7 @@
-import { Tag, Tbody, Td, Tr } from '@chakra-ui/react'
+import { ProjectStatus, TAGS_COLORS, TAGS_VARIANT } from '@/types'
+import { Avatar, Img, Tag, Tbody, Td, Tr } from '@chakra-ui/react'
+import { Status } from '../Status'
 
-export enum ProjectStatus {
-  ON_TRACK = 'On Track',
-  AT_RISK = 'At Risk',
-  POTENTIAL_RISK = 'Potential Risk',
-  ON_HOLD = 'On Hold',
-}
 export interface Project {
   id: string
   name: string
@@ -22,6 +18,20 @@ export interface Project {
 
 export interface IBodyProps {
   tableBody: Project[]
+}
+
+const variantStatusMapping = {
+  [ProjectStatus.ON_TRACK]: TAGS_VARIANT.TRACK,
+  [ProjectStatus.AT_RISK]: TAGS_VARIANT.RISK,
+  [ProjectStatus.POTENTIAL_RISK]: TAGS_VARIANT.POTENTIAL,
+  [ProjectStatus.ON_HOLD]: TAGS_VARIANT.HOLD,
+}
+
+const colorStatusMapping = {
+  [ProjectStatus.ON_TRACK]: TAGS_COLORS.SUCCESS,
+  [ProjectStatus.AT_RISK]: TAGS_COLORS.ERROR,
+  [ProjectStatus.POTENTIAL_RISK]: TAGS_COLORS.WARNING,
+  [ProjectStatus.ON_HOLD]: TAGS_COLORS.HOLD,
 }
 
 export const TableBody = ({ tableBody }: IBodyProps) => {
@@ -51,8 +61,17 @@ export const TableBody = ({ tableBody }: IBodyProps) => {
                 >
                   {name}
                 </Td>
-                <Td>{manager}</Td>
-                <Td>{status}</Td>
+                <Td>
+                  <Avatar boxSize="6" icon={<Img src={manager} />} />
+                </Td>
+                <Td>
+                  <Status
+                    isDot={true}
+                    variant={variantStatusMapping[status]}
+                    text={status}
+                    background={colorStatusMapping[status]}
+                  />
+                </Td>
                 <Td>{updatedAt}</Td>
                 <Td>{resource}</Td>
                 <Td>

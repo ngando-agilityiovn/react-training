@@ -25,7 +25,7 @@ export const Success: Story = {
   },
 }
 
-export const Error: Story = {
+export const ErrorTag: Story = {
   args: {
     ...Success.args,
     text: 'At risk',
@@ -34,7 +34,7 @@ export const Error: Story = {
   },
 }
 
-export const Warning: Story = {
+export const WarningTag: Story = {
   args: {
     ...Success.args,
     text: 'Potential risk',
@@ -43,7 +43,7 @@ export const Warning: Story = {
   },
 }
 
-export const Ghost: Story = {
+export const HoldTag: Story = {
   args: {
     ...Success.args,
     text: 'On hold',
