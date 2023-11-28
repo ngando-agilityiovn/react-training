@@ -2,13 +2,8 @@ import { AddIcon } from '@chakra-ui/icons'
 import { Box, Button, Flex } from '@chakra-ui/react'
 
 // Components
-import {
-  DropdownIcon,
-  FilterIcon,
-  MenuSelect,
-  Search,
-  StatusGroup,
-} from '@/components'
+import { MenuSelect, Search, StatusGroup } from '@/components'
+import { DropdownIcon, FilterIcon } from '@/components/Icons'
 
 const sortOptions = [
   {

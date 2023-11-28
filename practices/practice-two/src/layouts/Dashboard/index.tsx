@@ -11,7 +11,8 @@ import {
 } from '@chakra-ui/react'
 
 // Components
-import { ActiveIcon, HelpIcon, NotificationIcon, Sidebar } from '@/components'
+import { Sidebar } from '@/components'
+import { ActiveIcon, HelpIcon, NotificationIcon } from '@/components/Icons'
 
 interface DashboardProps {
   title: string

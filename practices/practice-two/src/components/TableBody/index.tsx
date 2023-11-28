@@ -9,13 +9,14 @@ import {
   Text,
   Tr,
 } from '@chakra-ui/react'
-import { ChevronRightIcon } from '@chakra-ui/icons'
+import { ChevronRightIcon, DragHandleIcon } from '@chakra-ui/icons'
 
 // Types
 import { ProjectStatus, TAGS_COLORS, TAGS_VARIANT } from '@/types'
 
 // Components
 import { NoteIcon } from '../Icons'
+import MenuSelect from '../MenuSelect'
 import Status from '../Status'
 
 export interface Project {
@@ -30,6 +31,19 @@ export interface Project {
     end: number
   }
   estimation: number
+}
+
+const options = {
+  menuOptions: [
+    {
+      value: 'edit',
+      text: 'Edit',
+    },
+    {
+      value: 'delete',
+      text: 'Delete',
+    },
+  ],
 }
 
 export interface IBodyProps {
@@ -129,10 +143,16 @@ export const TableBody = ({ tableBody }: IBodyProps) => {
                   lineHeight="5"
                   textAlign="center"
                 >
-                  <Flex marginLeft="4">
-                    <Text mr="1">US$</Text>
-                    {estimation}
-                    <Text>k</Text>
+                  <Flex marginLeft="4" justifyContent="space-between">
+                    <Flex>
+                      <Text mr="1">US$</Text>
+                      {estimation}
+                      <Text>k</Text>
+                    </Flex>
+                    <MenuSelect
+                      leftIcon={<DragHandleIcon />}
+                      options={options.menuOptions}
+                    />
                   </Flex>
                 </Td>
               </Tr>
