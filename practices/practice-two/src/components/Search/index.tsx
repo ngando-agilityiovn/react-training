@@ -1,19 +1,25 @@
 import { SearchIcon } from '@chakra-ui/icons'
-import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
+import { Box, Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
 
-const Search = () => {
+interface ISearchProps {
+  width: string
+}
+
+const Search = ({ width }: ISearchProps) => {
   return (
-    <InputGroup w="280px">
-      <InputLeftElement pointerEvents="none">
-        <SearchIcon color="dark" />
-      </InputLeftElement>
-      <Input
-        borderWidth="thin"
-        type="search"
-        placeholder="Search"
-        borderRadius="0"
-      />
-    </InputGroup>
+    <Box w={width}>
+      <InputGroup>
+        <InputLeftElement pointerEvents="none">
+          <SearchIcon color="dark" />
+        </InputLeftElement>
+        <Input
+          borderWidth="thin"
+          type="search"
+          placeholder="Search"
+          borderRadius="0"
+        />
+      </InputGroup>
+    </Box>
   )
 }
 

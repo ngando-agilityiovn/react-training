@@ -50,7 +50,7 @@ const InputField = ({
         {label}
       </FormLabel>
       <InputGroup gap="0.5rem">
-        {addOn?.length && (
+        {Boolean(addOn?.length) && (
           <InputLeftElement
             pointerEvents="none"
             color="colorGray"

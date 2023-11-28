@@ -19,13 +19,13 @@ export const TableHeader = ({ tableHeader }: IHeaderProps) => {
       <Tr>
         {tableHeader?.map(({ label, typeIcon, id }) => {
           const renderIcon = () => {
-            switch (typeIcon) {
-              case 'info':
-                return <InfoIcon />
-
-              case 'sorting':
-                return <SortingIcon />
+            if (typeIcon === 'info') {
+              return <InfoIcon />
+            } else if (typeIcon === 'sorting') {
+              return <SortingIcon />
             }
+
+            return null
           }
 
           return (

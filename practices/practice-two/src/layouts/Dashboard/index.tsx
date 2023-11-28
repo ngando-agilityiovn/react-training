@@ -14,14 +14,14 @@ import {
 import { Sidebar } from '@/components'
 import { ActiveIcon, HelpIcon, NotificationIcon } from '@/components/Icons'
 
+// Constants
+import { AVATAR } from '@/constants'
+
 interface DashboardProps {
   title: string
   titleNumeric?: number
   children: ReactNode
 }
-
-const avatar =
-  'https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatar.png?alt=media&token=81b6abe0-23b2-4e79-b3e1-77050c86baaf'
 
 const Dashboard = ({ title, titleNumeric, children }: DashboardProps) => {
   return (
@@ -38,7 +38,9 @@ const Dashboard = ({ title, titleNumeric, children }: DashboardProps) => {
         >
           <HStack>
             <Text variant="tertiary">{title}</Text>
-            {titleNumeric && <Badge variant="primary">{titleNumeric}</Badge>}
+            {Boolean(titleNumeric) && (
+              <Badge variant="primary">{titleNumeric}</Badge>
+            )}
           </HStack>
           <Flex>
             <Box pos="relative">
@@ -50,7 +52,7 @@ const Dashboard = ({ title, titleNumeric, children }: DashboardProps) => {
             <Box mx="6">
               <HelpIcon />
             </Box>
-            <Avatar boxSize="6" icon={<Img src={avatar} />} />
+            <Avatar boxSize="6" icon={<Img src={AVATAR} />} />
           </Flex>
         </Flex>
 

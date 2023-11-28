@@ -5,16 +5,8 @@ import { Box, Button, Flex } from '@chakra-ui/react'
 import { MenuSelect, Search, StatusGroup } from '@/components'
 import { DropdownIcon, FilterIcon } from '@/components/Icons'
 
-const sortOptions = [
-  {
-    value: 'name',
-    text: 'Project name',
-  },
-  {
-    value: 'updatedAt',
-    text: 'Last update',
-  },
-]
+// Constants
+import { sortOptions } from '@/constants'
 
 const ProjectsPages = () => {
   return (
@@ -27,7 +19,7 @@ const ProjectsPages = () => {
             title="All"
             options={sortOptions}
           />
-          <Search />
+          <Search width="17.5rem" />
         </Flex>
         <Button leftIcon={<AddIcon />} variant="solid">
           Add project

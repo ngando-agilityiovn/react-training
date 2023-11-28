@@ -19,6 +19,9 @@ import { NoteIcon } from '../Icons'
 import MenuSelect from '../MenuSelect'
 import Status from '../Status'
 
+// Constants
+import { options } from '@/constants'
+
 export interface Project {
   id: string
   name: string
@@ -31,19 +34,6 @@ export interface Project {
     end: number
   }
   estimation: number
-}
-
-const options = {
-  menuOptions: [
-    {
-      value: 'edit',
-      text: 'Edit',
-    },
-    {
-      value: 'delete',
-      text: 'Delete',
-    },
-  ],
 }
 
 export interface IBodyProps {
@@ -67,7 +57,7 @@ const colorStatusMapping = {
 export const TableBody = ({ tableBody }: IBodyProps) => {
   return (
     <Tbody>
-      {tableBody?.length &&
+      {Boolean(tableBody?.length) &&
         tableBody.map(
           ({
             name,

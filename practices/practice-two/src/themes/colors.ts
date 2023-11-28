@@ -25,5 +25,5 @@ export const colors = {
   backgroundHeader: '#f7f9fc',
 
   // Badge background
-  badgeBackground: '#ededfc',
+  backgroundBadge: '#ededfc',
 }

@@ -11,9 +11,9 @@ export const Badge = defineStyleConfig({
   variants: {
     default: {},
     primary: {
-      backgroundColor: 'badgeBackground',
-      borderColor: 'badgeBackground',
-      color: 'primary',
+      backgroundColor: 'backgroundBadge',
+      borderColor: 'backgroundBadge',
+      color: 'secondary',
     },
   },
   defaultProps: {
