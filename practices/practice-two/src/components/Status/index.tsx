@@ -1,13 +1,13 @@
 import { Box, Tag, TagLabel } from '@chakra-ui/react'
 
-interface IStatusProps {
+export interface IStatusProps {
   text: string
   variant: string
   isDot?: boolean
   background?: string
 }
 
-export const Status = ({ text, variant, isDot, background }: IStatusProps) => {
+const Status = ({ text, variant, isDot, background }: IStatusProps) => {
   return (
     <Tag variant={variant} borderRadius="0.25rem" gap="0.375rem">
       {isDot && (
@@ -22,3 +22,5 @@ export const Status = ({ text, variant, isDot, background }: IStatusProps) => {
     </Tag>
   )
 }
+
+export default Status

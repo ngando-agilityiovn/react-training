@@ -1,14 +1,20 @@
-import { ChakraProvider, Text } from '@chakra-ui/react'
-
+import { ChakraProvider } from '@chakra-ui/react'
 // Theme
 import { theme } from '@/themes'
 
-export const App = () => {
-  return (
-    <>
-      <ChakraProvider theme={theme}>
-        <Text>Hello</Text>
-      </ChakraProvider>
-    </>
-  )
-}
+// Components
+import { DashboardLayout } from '@/layouts'
+
+// Pages
+import { ProjectsPages } from '@/pages'
+
+const App = () => (
+  <ChakraProvider theme={theme}>
+    <DashboardLayout title="Projects" titleNumeric={9}>
+      {/* NOTE: Add more pages bellow or react router here */}
+      <ProjectsPages />
+    </DashboardLayout>
+  </ChakraProvider>
+)
+
+export default App

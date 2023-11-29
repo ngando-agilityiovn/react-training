@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 // Components
-import { ModalCustom } from '.'
+import ModalCustom from '.'
 
 export default {
   title: 'Component/ModalCustom',

@@ -1,26 +1,28 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { MenuSelect } from '.'
-import { Dropdown, Filter } from '..'
 import { DragHandleIcon } from '@chakra-ui/icons'
 
-const itemList = {
-  listDropdown: [
+// Components
+import MenuSelect from '.'
+import { DropdownIcon, FilterIcon } from '../Icons'
+
+const options = {
+  sortOptions: [
     {
-      id: '0',
+      value: 'name',
       text: 'Project name',
     },
     {
-      id: '1',
+      value: 'updatedAt',
       text: 'Last update',
     },
   ],
-  listMenu: [
+  menuOptions: [
     {
-      id: '0',
+      value: 'edit',
       text: 'Edit',
     },
     {
-      id: '1',
+      value: 'delete',
       text: 'Delete',
     },
   ],
@@ -35,16 +37,16 @@ type Story = StoryObj<typeof MenuSelect>
 
 export const Default: Story = {
   args: {
-    leftIcon: <Filter />,
-    rightIcon: <Dropdown />,
+    leftIcon: <FilterIcon />,
+    rightIcon: <DropdownIcon />,
     title: 'All',
-    itemList: itemList.listDropdown,
+    options: options.sortOptions,
   },
 }
 
 export const Primary: Story = {
   args: {
     leftIcon: <DragHandleIcon />,
-    itemList: itemList.listMenu,
+    options: options.menuOptions,
   },
 }

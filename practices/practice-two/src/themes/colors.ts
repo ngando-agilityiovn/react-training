@@ -2,6 +2,7 @@ export const colors = {
   // Base colors
   primary: '#5e5adb',
   secondary: '#464f60',
+  tertiary: '#687182',
   dark: '#868fa0',
   white: '#fff',
   darkToLight: '#f7f8fa',
@@ -20,4 +21,9 @@ export const colors = {
   backgroundError: '#ffedef',
   backgroundWarning: '#fcf2e6',
   backgroundInactive: '#e9edf5',
+  backgroundSidebar: '#151357',
+  backgroundHeader: '#f7f9fc',
+
+  // Badge background
+  backgroundBadge: '#ededfc',
 }

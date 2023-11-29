@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 // Components
-import { Timeline } from '.'
+import Timeline from '.'
 
 export default {
   title: 'Component/Timeline',

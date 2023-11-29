@@ -23,7 +23,7 @@ interface IInputProps {
   marginBot?: string
 }
 
-export const InputField = ({
+const InputField = ({
   variant = 'input',
   name,
   label,
@@ -50,7 +50,7 @@ export const InputField = ({
         {label}
       </FormLabel>
       <InputGroup gap="0.5rem">
-        {addOn?.length && (
+        {Boolean(addOn?.length) && (
           <InputLeftElement
             pointerEvents="none"
             color="colorGray"
@@ -58,9 +58,8 @@ export const InputField = ({
             fontWeight="medium"
             lineHeight="shorter"
             letterSpacing="wider"
-          >
-            {addOn}
-          </InputLeftElement>
+            children={addOn}
+          />
         )}
         <Input
           as={variant}
@@ -84,3 +83,5 @@ export const InputField = ({
     </FormControl>
   )
 }
+
+export default InputField

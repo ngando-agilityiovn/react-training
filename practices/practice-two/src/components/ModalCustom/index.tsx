@@ -16,7 +16,7 @@ interface IModalProps {
   onClose: () => void
 }
 
-export const ModalCustom = (props: IModalProps): JSX.Element => {
+const ModalCustom = (props: IModalProps): JSX.Element => {
   const { children, title, ...rest } = props
 
   return (
@@ -34,3 +34,5 @@ export const ModalCustom = (props: IModalProps): JSX.Element => {
     </Modal>
   )
 }
+
+export default ModalCustom
