@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import {
   Badge,
   Tab,
@@ -13,9 +14,20 @@ import { TableProject } from '..'
 
 // Constants
 import { tableHeader } from '@/constants'
-import { projects } from '@/mock-data'
 
 const StatusGroup = () => {
+  const [projects, setProjects] = useState([])
+
+  const getData = async () => {
+    const responce = await fetch(`http://localhost:3000/projects`)
+
+    setProjects(await responce.json())
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <Tabs>
       <TabList>
