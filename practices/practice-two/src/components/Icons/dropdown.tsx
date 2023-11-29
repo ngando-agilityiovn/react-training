@@ -10,7 +10,7 @@ export const Dropdown = () => (
       <path
         id="icon"
         d="M5 6.5L8 9.5L11 6.5"
-        stroke="#464F60"
+        stroke="secondary"
         stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"
