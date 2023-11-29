@@ -2,22 +2,25 @@ import { Table, TableContainer } from '@chakra-ui/react'
 
 // Components
 import { TableHeader } from '../TableHeader'
-import { Project, TableBody } from '../TableBody'
+import { TableBody } from '../TableBody'
 
-interface ITableProps {
+interface ITableProps<T> {
   tableHeader: TableHeader[]
-  tableBody: Project[]
+  dataTable: T[]
+  renderBody: (data: T) => JSX.Element
 }
 
-const TableProject = ({ tableHeader, tableBody }: ITableProps) => {
-  return (
-    <TableContainer>
-      <Table variant="simple">
-        <TableHeader tableHeader={tableHeader} />
-        <TableBody tableBody={tableBody} />
-      </Table>
-    </TableContainer>
-  )
-}
+export const TableProject = <T,>({
+  tableHeader,
+  dataTable,
+  renderBody,
+}: ITableProps<T>) => (
+  <TableContainer>
+    <Table>
+      <TableHeader tableHeader={tableHeader} />
+      <TableBody<T> tableData={dataTable} customRender={renderBody} />
+    </Table>
+  </TableContainer>
+)
 
 export default TableProject

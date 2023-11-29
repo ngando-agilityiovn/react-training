@@ -10,16 +10,31 @@ import {
 } from '@chakra-ui/react'
 
 // Components
-import { TableProject } from '..'
+import { ProjectRow, TableProject } from '..'
 
 // Constants
-import { tableHeader } from '@/constants'
+import { API, tableHeader } from '@/constants'
+import { Project } from '@/types'
+interface IStatusGroupProps {
+  allQuanity?: number
+  riskQuanity?: number
+  holdQuanity?: number
+  potentialQuanity?: number
+  trackQuanity?: number
+}
 
-const StatusGroup = () => {
+console.log('123', `${API.BASE_URL}${API.PROJECT_COLLECTION}`)
+const StatusGroup = ({
+  allQuanity = 0,
+  riskQuanity = 0,
+  holdQuanity = 0,
+  potentialQuanity = 0,
+  trackQuanity = 0,
+}: IStatusGroupProps) => {
   const [projects, setProjects] = useState([])
 
   const getData = async () => {
-    const responce = await fetch(`http://localhost:3000/projects`)
+    const responce = await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}`)
 
     setProjects(await responce.json())
   }
@@ -47,7 +62,7 @@ const StatusGroup = () => {
             color="b"
             h="1.8rem"
           >
-            29
+            {allQuanity}
           </Badge>
         </Tab>
         <Tab>
@@ -66,7 +81,7 @@ const StatusGroup = () => {
             color="b"
             h="1.8rem"
           >
-            9
+            {riskQuanity}
           </Badge>
         </Tab>
         <Tab>
@@ -85,7 +100,7 @@ const StatusGroup = () => {
             color="b"
             h="1.8rem"
           >
-            4
+            {holdQuanity}
           </Badge>
         </Tab>
         <Tab>
@@ -104,7 +119,7 @@ const StatusGroup = () => {
             color="b"
             h="1.8rem"
           >
-            9
+            {potentialQuanity}
           </Badge>
         </Tab>
         <Tab>
@@ -123,14 +138,18 @@ const StatusGroup = () => {
             color="b"
             h="1.8rem"
           >
-            10
+            {trackQuanity}
           </Badge>
         </Tab>
       </TabList>
 
       <TabPanels>
         <TabPanel>
-          <TableProject tableHeader={tableHeader} tableBody={projects} />
+          <TableProject<Project>
+            tableHeader={tableHeader}
+            dataTable={projects}
+            renderBody={(dataTable) => <ProjectRow {...dataTable} />}
+          />
         </TabPanel>
         <TabPanel>
           <p>two!</p>
