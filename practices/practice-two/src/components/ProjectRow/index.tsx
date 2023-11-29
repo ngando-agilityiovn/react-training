@@ -21,9 +21,19 @@ const colorStatusMapping = {
 }
 
 const ProjectRow = (project: Project) => {
+  const {
+    id,
+    name,
+    manager,
+    status,
+    updatedAt,
+    resource,
+    timeline,
+    estimation,
+  } = project
   return (
     <>
-      <Td>{project.id}</Td>
+      <Td>{id}</Td>
       <Td
         fontSize="sm"
         color="primary"
@@ -31,17 +41,17 @@ const ProjectRow = (project: Project) => {
         lineHeight="5"
         letterSpacing="wider"
       >
-        {project.name}
+        {name}
       </Td>
       <Td>
-        <Avatar boxSize="6" icon={<Img src={project.manager} />} />
+        <Avatar boxSize="6" icon={<Img src={manager} />} />
       </Td>
       <Td>
         <Status
           isDot={true}
-          variant={variantStatusMapping[project.status]}
-          text={project.status}
-          background={colorStatusMapping[project.status]}
+          variant={variantStatusMapping[status]}
+          text={status}
+          background={colorStatusMapping[status]}
         />
       </Td>
       <Td
@@ -53,7 +63,7 @@ const ProjectRow = (project: Project) => {
       >
         <Flex gap="1.5">
           <NoteIcon />
-          {project.updatedAt}
+          {updatedAt}
         </Flex>
       </Td>
       <Td
@@ -64,7 +74,7 @@ const ProjectRow = (project: Project) => {
         letterSpacing="wider"
       >
         <Badge marginLeft="5" variant="primary">
-          {project.resource}
+          {resource}
         </Badge>
       </Td>
       <Td
@@ -74,9 +84,9 @@ const ProjectRow = (project: Project) => {
         lineHeight="extraShort"
         letterSpacing="wider"
       >
-        <Tag>{project.timeline.start}</Tag>
+        <Tag>{timeline.start}</Tag>
         <ChevronRightIcon mx="1.5" />
-        <Tag>{project.timeline.end}</Tag>
+        <Tag>{timeline.end}</Tag>
       </Td>
       <Td
         fontSize="sm"
@@ -88,7 +98,7 @@ const ProjectRow = (project: Project) => {
         <Flex marginLeft="4" justifyContent="space-between" alignItems="center">
           <Flex>
             <Text mr="1">US$</Text>
-            {project.estimation}
+            {estimation}
             <Text>k</Text>
           </Flex>
           <MenuSelect
