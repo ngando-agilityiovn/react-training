@@ -15,7 +15,21 @@ import { TableProject } from '..'
 import { tableHeader } from '@/constants'
 import { projects } from '@/mock-data'
 
-const StatusGroup = () => {
+interface IStatusGroupProps {
+  allQuanity?: number
+  riskQuanity?: number
+  holdQuanity?: number
+  potentialQuanity?: number
+  trackQuanity?: number
+}
+
+const StatusGroup = ({
+  allQuanity = 0,
+  riskQuanity = 0,
+  holdQuanity = 0,
+  potentialQuanity = 0,
+  trackQuanity = 0,
+}: IStatusGroupProps) => {
   return (
     <Tabs>
       <TabList>
@@ -35,7 +49,7 @@ const StatusGroup = () => {
             color="b"
             h="1.8rem"
           >
-            29
+            {allQuanity}
           </Badge>
         </Tab>
         <Tab>
@@ -54,7 +68,7 @@ const StatusGroup = () => {
             color="b"
             h="1.8rem"
           >
-            9
+            {riskQuanity}
           </Badge>
         </Tab>
         <Tab>
@@ -73,7 +87,7 @@ const StatusGroup = () => {
             color="b"
             h="1.8rem"
           >
-            4
+            {holdQuanity}
           </Badge>
         </Tab>
         <Tab>
@@ -92,7 +106,7 @@ const StatusGroup = () => {
             color="b"
             h="1.8rem"
           >
-            9
+            {potentialQuanity}
           </Badge>
         </Tab>
         <Tab>
@@ -111,7 +125,7 @@ const StatusGroup = () => {
             color="b"
             h="1.8rem"
           >
-            10
+            {trackQuanity}
           </Badge>
         </Tab>
       </TabList>
