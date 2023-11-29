@@ -14,6 +14,8 @@ import { TableProject } from '..'
 // Constants
 import { tableHeader } from '@/constants'
 import { projects } from '@/mock-data'
+import { Project } from '@/types'
+import ProjectRow from '../ProjectRow'
 
 interface IStatusGroupProps {
   allQuanity?: number
@@ -132,7 +134,11 @@ const StatusGroup = ({
 
       <TabPanels>
         <TabPanel>
-          <TableProject tableHeader={tableHeader} tableBody={projects} />
+          <TableProject<Project>
+            tableHeader={tableHeader}
+            dataTable={projects}
+            renderBody={(dataTable) => <ProjectRow {...dataTable} />}
+          />
         </TabPanel>
         <TabPanel>
           <p>two!</p>

@@ -1,5 +1,4 @@
-import { Project } from '@/components/TableBody'
-import { ProjectStatus } from '@/types'
+import { Project, ProjectStatus } from '@/types'
 
 export const projects: Project[] = [
   {
