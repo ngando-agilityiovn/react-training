@@ -23,13 +23,13 @@ const Timeline = memo(({ title }: ITimelineProps) => {
   }
 
   return (
-    <Box w="100%" mb="2rem">
+    <Box w="100%" mb="8">
       <FormLabel fontSize="sm" fontWeight="medium" color="secondary">
         {title}
       </FormLabel>
       <HStack gap="0">
         <Box w="45%">
-          <Text variant="secondary" mb="0.563rem">
+          <Text variant="secondary" mb="2.5">
             From
           </Text>
           <Input
@@ -40,9 +40,9 @@ const Timeline = memo(({ title }: ITimelineProps) => {
             type="date"
           />
         </Box>
-        <ChevronRightIcon w="10%" mt="1.875rem" />
+        <ChevronRightIcon w="10%" mt="7.5" />
         <Box w="45%">
-          <Text variant="secondary" mb="0.563rem">
+          <Text variant="secondary" mb="2.5">
             To
           </Text>
           <Input

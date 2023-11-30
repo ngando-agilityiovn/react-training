@@ -5,6 +5,7 @@ import { NoteIcon } from '../Icons'
 import { ChevronRightIcon, DragHandleIcon } from '@chakra-ui/icons'
 import MenuSelect from '../MenuSelect'
 import { options } from '@/constants'
+import { formatTime } from '@/utils'
 
 const variantStatusMapping = {
   [ProjectStatus.ON_TRACK]: TAGS_VARIANT.TRACK,
@@ -33,7 +34,7 @@ const ProjectRow = (project: Project) => {
   } = project
   return (
     <>
-      <Td>{id}</Td>
+      <Td>{+id + 1}</Td>
       <Td
         fontSize="sm"
         color="primary"
@@ -84,9 +85,9 @@ const ProjectRow = (project: Project) => {
         lineHeight="extraShort"
         letterSpacing="wider"
       >
-        <Tag>{timeline.start}</Tag>
+        <Tag>{formatTime(timeline.start)}</Tag>
         <ChevronRightIcon mx="1.5" />
-        <Tag>{timeline.end}</Tag>
+        <Tag>{formatTime(timeline.end)}</Tag>
       </Td>
       <Td
         fontSize="sm"

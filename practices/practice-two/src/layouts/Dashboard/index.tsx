@@ -28,7 +28,7 @@ const Dashboard = ({ title, titleNumeric, children }: DashboardProps) => {
     <Container>
       <Sidebar />
 
-      <Box pos="absolute" top="0" left="72px" right="0">
+      <Box pos="absolute" top="0" left="18" right="0">
         <Flex
           h="14"
           px="5"

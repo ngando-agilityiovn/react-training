@@ -14,7 +14,7 @@ interface IResourceProps {
 
 const ResourceGroup = ({ title, variant, tagGroup }: IResourceProps) => {
   return (
-    <Box mb="2rem">
+    <Box mb="8">
       <Text
         fontSize="sm"
         letterSpacing="wider"
@@ -24,7 +24,7 @@ const ResourceGroup = ({ title, variant, tagGroup }: IResourceProps) => {
       >
         {title}
       </Text>
-      <Flex gap="0.625rem" mt="0.5rem" flexWrap="wrap">
+      <Flex gap="2.5" mt="2" flexWrap="wrap">
         {tagGroup.map(({ id, text }) => (
           <Tag key={id} variant={variant}>
             {text}

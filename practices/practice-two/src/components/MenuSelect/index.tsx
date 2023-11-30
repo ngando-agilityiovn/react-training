@@ -25,7 +25,7 @@ const MenuSelect = ({
     <MenuButton
       as={Button}
       background="white"
-      gap="0.3rem"
+      gap="1.25"
       color="secondary"
       fontSize="sm"
       width={width}
