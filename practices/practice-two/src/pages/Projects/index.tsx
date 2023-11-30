@@ -36,6 +36,22 @@ const ProjectsPages = () => {
     getData()
   }, [])
 
+  const addProject = async (data: object) => {
+    const updatedTime = new Date()
+    const newData = { ...data, updatedAt: updatedTime }
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newData),
+    }
+    await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}`, requestOptions)
+
+    onClose()
+
+    getData()
+  }
+
   const riskProjects = useMemo(
     () => projects.filter(({ status }) => status === ProjectStatus.AT_RISK),
     [projects],
@@ -138,7 +154,7 @@ const ProjectsPages = () => {
       />
 
       <ModalCustom title="Add project" onClose={onClose} isOpen={isOpen}>
-        <Form />
+        <Form onClose={onClose} addProject={addProject} />
       </ModalCustom>
     </>
   )

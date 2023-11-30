@@ -29,9 +29,11 @@ const ProjectRow = (project: Project) => {
     status,
     updatedAt,
     resource,
-    timeline,
+    start,
+    end,
     estimation,
   } = project
+
   return (
     <>
       <Td>{+id + 1}</Td>
@@ -85,9 +87,9 @@ const ProjectRow = (project: Project) => {
         lineHeight="extraShort"
         letterSpacing="wider"
       >
-        <Tag>{formatTime(timeline.start)}</Tag>
+        <Tag>{formatTime(start)}</Tag>
         <ChevronRightIcon mx="1.5" />
-        <Tag>{formatTime(timeline.end)}</Tag>
+        <Tag>{formatTime(end)}</Tag>
       </Td>
       <Td
         fontSize="sm"

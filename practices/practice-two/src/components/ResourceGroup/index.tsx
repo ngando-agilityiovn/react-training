@@ -10,9 +10,15 @@ interface IResourceProps {
   title: string
   variant: string
   tagGroup: TagGroup[]
+  onChange: (value: string, name: string) => void
 }
 
-const ResourceGroup = ({ title, variant, tagGroup }: IResourceProps) => {
+const ResourceGroup = ({
+  title,
+  variant,
+  tagGroup,
+  onChange,
+}: IResourceProps) => {
   return (
     <Box mb="8">
       <Text
@@ -26,7 +32,11 @@ const ResourceGroup = ({ title, variant, tagGroup }: IResourceProps) => {
       </Text>
       <Flex gap="2.5" mt="2" flexWrap="wrap">
         {tagGroup.map(({ id, text }) => (
-          <Tag key={id} variant={variant}>
+          <Tag
+            key={id}
+            variant={variant}
+            onClick={() => onChange(text, 'resource')}
+          >
             {text}
           </Tag>
         ))}

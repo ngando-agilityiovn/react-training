@@ -7,9 +7,10 @@ import { Box, FormLabel, HStack, Input, Text } from '@chakra-ui/react'
 
 interface ITimelineProps {
   title: string
+  onChange: (value: string, name: string) => void
 }
 
-const Timeline = memo(({ title }: ITimelineProps) => {
+const Timeline = memo(({ title, onChange }: ITimelineProps) => {
   const [fromDateTime, setFromDateTime] = useState<string>('')
   const [toDateTime, setToDateTime] = useState<string>('')
 
@@ -18,8 +19,9 @@ const Timeline = memo(({ title }: ITimelineProps) => {
     event: ChangeEvent<HTMLInputElement>,
     setDateTime: React.Dispatch<React.SetStateAction<string>>,
   ) => {
-    const { value } = event.target
+    const { value, name } = event.target
     setDateTime(value)
+    onChange(value, name)
   }
 
   return (
@@ -34,6 +36,7 @@ const Timeline = memo(({ title }: ITimelineProps) => {
           </Text>
           <Input
             value={fromDateTime}
+            name="start"
             onChange={(e) => handleDateTimeChange(e, setFromDateTime)}
             placeholder="Select Date and Time"
             size="md"
@@ -46,6 +49,7 @@ const Timeline = memo(({ title }: ITimelineProps) => {
             To
           </Text>
           <Input
+            name="end"
             value={toDateTime}
             onChange={(e) => handleDateTimeChange(e, setToDateTime)}
             placeholder="Select Date and Time"

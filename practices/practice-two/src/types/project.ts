@@ -1,15 +1,13 @@
 import { ProjectStatus } from './common'
 
 export interface Project {
-  id: string
+  id: number
   name: string
   manager: string
   status: ProjectStatus
   updatedAt: number
   resource: number
-  timeline: {
-    start: number
-    end: number
-  }
+  start: number
+  end: number
   estimation: number
 }

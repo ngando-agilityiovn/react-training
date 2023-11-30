@@ -1,5 +1,6 @@
 export * from './api'
 export * from './sort'
 export * from './options'
+export * from './tag'
 export * from './variables'
 export * from './tableHeader'
