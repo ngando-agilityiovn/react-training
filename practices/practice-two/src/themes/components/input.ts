@@ -3,7 +3,7 @@ import { defineStyleConfig } from '@chakra-ui/react'
 export const Input = defineStyleConfig({
   baseStyle: {
     field: {
-      borderRadius: '1.5',
+      borderRadius: '6',
       backgroundColor: 'white',
       boxShadow: 'primary',
     },
@@ -11,7 +11,7 @@ export const Input = defineStyleConfig({
   variants: {
     primary: {
       field: {
-        borderRadius: '1.5',
+        borderRadius: '6',
         _placeholder: {
           color: 'textPlaceholder',
         },

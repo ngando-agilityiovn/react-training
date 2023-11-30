@@ -31,7 +31,13 @@ export const TableHeader = ({ tableHeader }: IHeaderProps) => {
           return (
             <Th key={id}>
               <Flex>
-                <Text textTransform="uppercase">{label}</Text>
+                <Text
+                  color="tertiary"
+                  fontWeight="medium"
+                  textTransform="uppercase"
+                >
+                  {label}
+                </Text>
                 {renderIcon()}
               </Flex>
             </Th>

@@ -18,7 +18,7 @@ const ProjectTagManager = ({ title, tagsList }: ITagGroupProps) => {
       >
         {title}
       </Text>
-      <Tabs mt="2" bg="backgroundInactive" borderRadius="1.5">
+      <Tabs mt="2" bg="backgroundInactive" borderRadius="6">
         <TabList>
           {tagsList.map(({ id, text }) => (
             <Tab
@@ -28,7 +28,7 @@ const ProjectTagManager = ({ title, tagsList }: ITagGroupProps) => {
                 color: 'primary',
                 bg: 'white',
                 boxShadow: 'secondary',
-                borderRadius: '1.5',
+                borderRadius: '6',
               }}
             >
               {text}

@@ -30,7 +30,7 @@ const ProjectManagementPanel = ({
             >
               {text}
             </Text>
-            <Badge variant="primary" boxSize="7.5" color="_selected">
+            <Badge variant="primary" boxSize="30px" color="_selected">
               {total}
             </Badge>
           </Tab>
