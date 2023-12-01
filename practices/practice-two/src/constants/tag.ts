@@ -1,4 +1,4 @@
-export const TAGSGROUP = [
+export const TAGGROUP = [
   {
     id: '0',
     text: 'UX/UI Design',
@@ -29,7 +29,7 @@ export const TAGSGROUP = [
   },
 ]
 
-export const TAGSLIST = [
+export const TAGLIST = [
   {
     id: '0',
     text: 'Roger Vaccaro',
