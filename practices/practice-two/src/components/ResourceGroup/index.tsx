@@ -1,10 +1,8 @@
 // Components
 import { Box, Flex, Tag, Text } from '@chakra-ui/react'
 
-export interface TagGroup {
-  id: string
-  text: string
-}
+// Types
+import { TagGroup } from '@/types'
 
 interface IResourceProps {
   title: string

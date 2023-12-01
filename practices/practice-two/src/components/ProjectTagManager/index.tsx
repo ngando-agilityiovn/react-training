@@ -1,5 +1,7 @@
 import { Box, Tab, TabList, Tabs, Text } from '@chakra-ui/react'
-import { TagGroup } from '../ResourceGroup'
+
+// Types
+import { TagGroup } from '@/types'
 
 interface ITagGroupProps {
   title: string

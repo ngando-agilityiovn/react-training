@@ -1,7 +1,7 @@
 import { Box, Flex } from '@chakra-ui/react'
-import { FolderIcon, LogoIcon, SettingIcon } from '../Icons'
 
 // Components
+import { FolderIcon, LogoIcon, SettingIcon } from '../Icons'
 
 const Sidebar = () => (
   <Box

@@ -1,4 +1,4 @@
-export const tableHeader = [
+export const TABLEHEADER = [
   {
     id: '0',
     label: '#',

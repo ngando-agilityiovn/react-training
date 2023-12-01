@@ -1,53 +1,10 @@
 import { Box, Button, Flex, FormControl } from '@chakra-ui/react'
 
+// Constants
+import { TAGSGROUP, TAGSLIST } from '@/constants'
+
 // Components
 import { InputField, ProjectTagManager, ResourceGroup, Timeline } from '..'
-
-const tagGroup = [
-  {
-    id: '0',
-    text: 'UX/UI Design',
-  },
-  {
-    id: '1',
-    text: 'Frontend',
-  },
-  {
-    id: '2',
-    text: 'Backend',
-  },
-  {
-    id: '3',
-    text: 'Full Stack',
-  },
-  {
-    id: '4',
-    text: 'Graphic Designer',
-  },
-  {
-    id: '5',
-    text: 'Web Designer',
-  },
-  {
-    id: '6',
-    text: 'QA',
-  },
-]
-
-const tagsList = [
-  {
-    id: '0',
-    text: 'Roger Vaccaro',
-  },
-  {
-    id: '1',
-    text: 'Tatiana Dias',
-  },
-  {
-    id: '2',
-    text: 'Leo Gouse',
-  },
-]
 
 const Form = () => {
   return (
@@ -61,11 +18,11 @@ const Form = () => {
             placeholder=""
             marginBot="6"
           />
-          <ProjectTagManager title="Project manager (PM)" tagsList={tagsList} />
+          <ProjectTagManager title="Project manager (PM)" tagsList={TAGSLIST} />
           <ResourceGroup
             title="Resources"
             variant="outline"
-            tagGroup={tagGroup}
+            tagGroup={TAGSGROUP}
           />
           <Timeline title="Timeline project" />
           <InputField
