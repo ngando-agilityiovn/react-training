@@ -1,4 +1,4 @@
-export const tagGroup = [
+export const TAGGROUP = [
   {
     id: '0',
     text: 'UX/UI Design',
@@ -29,16 +29,16 @@ export const tagGroup = [
   },
 ]
 
-export const tagsList = [
+export const TAGLIST = [
   {
     id: '0',
     text: 'Roger Vaccaro',
-    img: 'https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatarDias.png?alt=media&token=06db0e21-b5a5-4574-9bf4-678ea2aa279d',
+    img: 'https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatarRog.png?alt=media&token=606acbd1-cf3a-4c59-85ca-f7d49b74347a',
   },
   {
     id: '1',
     text: 'Tatiana Dias',
-    img: 'https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatarRog.png?alt=media&token=606acbd1-cf3a-4c59-85ca-f7d49b74347a',
+    img: 'https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatarDias.png?alt=media&token=06db0e21-b5a5-4574-9bf4-678ea2aa279d',
   },
   {
     id: '2',

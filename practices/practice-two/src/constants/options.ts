@@ -1,4 +1,4 @@
-export const options = {
+export const OPTIONS = {
   menuOptions: [
     {
       value: 'edit',

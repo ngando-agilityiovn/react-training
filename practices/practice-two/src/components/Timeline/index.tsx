@@ -1,9 +1,6 @@
 import { ChangeEvent, memo, useState } from 'react'
-
-import { ChevronRightIcon } from '@chakra-ui/icons'
-
-// Components
 import { Box, FormLabel, HStack, Input, Text } from '@chakra-ui/react'
+import { ChevronRightIcon } from '@chakra-ui/icons'
 
 interface ITimelineProps {
   title: string

@@ -1,11 +1,19 @@
-import { Project, ProjectStatus, TAGS_COLORS, TAGS_VARIANT } from '@/types'
 import { Avatar, Badge, Flex, Img, Tag, Td, Text } from '@chakra-ui/react'
+import { ChevronRightIcon, DragHandleIcon } from '@chakra-ui/icons'
+
+// Types
+import { Project, ProjectStatus, TAGS_COLORS, TAGS_VARIANT } from '@/types'
+
+// Constants
+import { OPTIONS } from '@/constants'
+
+// Utils
+import { formatTime } from '@/utils'
+
+// Conponents
 import Status from '../Status'
 import { NoteIcon } from '../Icons'
-import { ChevronRightIcon, DragHandleIcon } from '@chakra-ui/icons'
 import MenuSelect from '../MenuSelect'
-import { options } from '@/constants'
-import { formatTime } from '@/utils'
 
 const variantStatusMapping = {
   [ProjectStatus.ON_TRACK]: TAGS_VARIANT.TRACK,
@@ -36,7 +44,7 @@ const ProjectRow = (project: Project) => {
 
   return (
     <>
-      <Td>{+id + 1}</Td>
+      <Td>{Number(id) + 1}</Td>
       <Td
         fontSize="sm"
         color="primary"
@@ -106,7 +114,7 @@ const ProjectRow = (project: Project) => {
           </Flex>
           <MenuSelect
             leftIcon={<DragHandleIcon />}
-            options={options.menuOptions}
+            options={OPTIONS.menuOptions}
           />
         </Flex>
       </Td>

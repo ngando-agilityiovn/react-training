@@ -11,3 +11,8 @@ export interface Project {
   end: number
   estimation: number
 }
+
+export interface TagGroup {
+  id: string
+  text: string
+}

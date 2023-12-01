@@ -1,10 +1,12 @@
 import { Box, Button, Flex, FormControl } from '@chakra-ui/react'
 
+// Constants
+import { TAGGROUP, TAGLIST } from '@/constants'
+
 // Components
 import { InputField, ProjectTagManager, ResourceGroup, Timeline } from '..'
 import { Project, ProjectStatus } from '@/types'
 import { useCallback, useState } from 'react'
-import { tagGroup, tagsList } from '@/constants'
 
 interface IFormProps {
   onClose: () => void
@@ -54,16 +56,18 @@ const Form = ({ onClose, addProject }: IFormProps) => {
           />
           <ProjectTagManager
             title="Project manager (PM)"
-            tagsList={tagsList}
+            tagsList={TAGLIST}
             onChange={handleOnChange}
           />
+
           <ResourceGroup
             title="Resources"
             variant="outline"
-            tagGroup={tagGroup}
+            tagGroup={TAGGROUP}
             onChange={handleOnChange}
           />
           <Timeline title="Timeline project" onChange={handleOnChange} />
+
           <InputField
             value={projectDataForm.estimation}
             label="Estimation"

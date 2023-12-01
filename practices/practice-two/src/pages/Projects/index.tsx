@@ -15,7 +15,7 @@ import {
 import { DropdownIcon, FilterIcon } from '@/components/Icons'
 
 // Constants
-import { API, sortOptions, tableHeader } from '@/constants'
+import { API, SORTOPTIONS, TABLEHEADER } from '@/constants'
 
 // Types
 import { Project, ProjectStatus } from '@/types'
@@ -135,7 +135,7 @@ const ProjectsPages = () => {
             leftIcon={<FilterIcon />}
             rightIcon={<DropdownIcon />}
             title="All"
-            options={sortOptions}
+            options={SORTOPTIONS}
           />
           <Search width="280px" />
         </Flex>
@@ -148,7 +148,7 @@ const ProjectsPages = () => {
       <ProjectManagementPanel onChangeTab={setTabView} tabs={tabs} />
 
       <TableProject<Project>
-        tableHeader={tableHeader}
+        tableHeader={TABLEHEADER}
         dataTable={projectsDisplay}
         renderBody={(dataTable) => <ProjectRow {...dataTable} />}
       />

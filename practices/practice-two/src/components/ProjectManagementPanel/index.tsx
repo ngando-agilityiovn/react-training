@@ -13,7 +13,7 @@ const ProjectManagementPanel = ({
   tabs,
 }: IProjectManagementPanelProps) => {
   return (
-    <Tabs onChange={(tabIndex) => onChangeTab(tabIndex)}>
+    <Tabs onChange={onChangeTab}>
       <TabList>
         {tabs.map(({ text, total }) => (
           <Tab
