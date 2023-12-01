@@ -1,12 +1,10 @@
-export const options = {
-  menuOptions: [
-    {
-      value: 'edit',
-      text: 'Edit',
-    },
-    {
-      value: 'delete',
-      text: 'Delete',
-    },
-  ],
-}
+export const MENUOPTION = [
+  {
+    value: 'edit',
+    text: 'Edit',
+  },
+  {
+    value: 'delete',
+    text: 'Delete',
+  },
+]

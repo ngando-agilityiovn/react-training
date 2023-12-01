@@ -1,4 +1,4 @@
-export const sortOptions = [
+export const SORTOPTIONS = [
   {
     value: 'name',
     text: 'Project name',

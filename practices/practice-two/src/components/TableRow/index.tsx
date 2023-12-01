@@ -1,10 +1,19 @@
-import { Project, ProjectStatus, TAGS_COLORS, TAGS_VARIANT } from '@/types'
 import { Avatar, Badge, Flex, Img, Tag, Td, Text } from '@chakra-ui/react'
+import { ChevronRightIcon, DragHandleIcon } from '@chakra-ui/icons'
+
+// Types
+import { Project, ProjectStatus, TAGS_COLORS, TAGS_VARIANT } from '@/types'
+
+// Constants
+import { MENUOPTION } from '@/constants'
+
+// Utils
+import { formatTime } from '@/utils'
+
+// Conponents
 import Status from '../Status'
 import { NoteIcon } from '../Icons'
-import { ChevronRightIcon, DragHandleIcon } from '@chakra-ui/icons'
 import MenuSelect from '../MenuSelect'
-import { options } from '@/constants'
 
 const variantStatusMapping = {
   [ProjectStatus.ON_TRACK]: TAGS_VARIANT.TRACK,
@@ -33,7 +42,7 @@ const ProjectRow = (project: Project) => {
   } = project
   return (
     <>
-      <Td>{id}</Td>
+      <Td>{Number(id) + 1}</Td>
       <Td
         fontSize="sm"
         color="primary"
@@ -84,9 +93,9 @@ const ProjectRow = (project: Project) => {
         lineHeight="extraShort"
         letterSpacing="wider"
       >
-        <Tag>{timeline.start}</Tag>
+        <Tag>{formatTime(timeline.start)}</Tag>
         <ChevronRightIcon mx="1.5" />
-        <Tag>{timeline.end}</Tag>
+        <Tag>{formatTime(timeline.end)}</Tag>
       </Td>
       <Td
         fontSize="sm"
@@ -101,10 +110,7 @@ const ProjectRow = (project: Project) => {
             {estimation}
             <Text>k</Text>
           </Flex>
-          <MenuSelect
-            leftIcon={<DragHandleIcon />}
-            options={options.menuOptions}
-          />
+          <MenuSelect leftIcon={<DragHandleIcon />} options={MENUOPTION} />
         </Flex>
       </Td>
     </>

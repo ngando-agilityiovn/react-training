@@ -1,5 +1,7 @@
 import { Box, Tab, TabList, Tabs, Text } from '@chakra-ui/react'
-import { TagGroup } from '../ResourceGroup'
+
+// Types
+import { TagGroup } from '@/types'
 
 interface ITagGroupProps {
   title: string
@@ -8,7 +10,7 @@ interface ITagGroupProps {
 
 const ProjectTagManager = ({ title, tagsList }: ITagGroupProps) => {
   return (
-    <Box mb="2rem">
+    <Box mb="8">
       <Text
         fontSize="sm"
         letterSpacing="wider"
@@ -18,17 +20,17 @@ const ProjectTagManager = ({ title, tagsList }: ITagGroupProps) => {
       >
         {title}
       </Text>
-      <Tabs mt="0.5rem" bg="backgroundInactive" borderRadius="0.375rem">
+      <Tabs mt="2" bg="backgroundInactive" borderRadius="6">
         <TabList>
           {tagsList.map(({ id, text }) => (
             <Tab
-              m="0.125rem"
+              m="0.5"
               key={id}
               _selected={{
                 color: 'primary',
                 bg: 'white',
                 boxShadow: 'secondary',
-                borderRadius: '0.375rem',
+                borderRadius: '6',
               }}
             >
               {text}
