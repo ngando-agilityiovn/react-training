@@ -54,6 +54,7 @@ const Form = ({ onClose, addProject }: IFormProps) => {
             marginBot="6"
             onChange={handleOnChange}
           />
+
           <ProjectTagManager
             title="Project manager (PM)"
             tagsList={TAGLIST}
@@ -66,6 +67,7 @@ const Form = ({ onClose, addProject }: IFormProps) => {
             tagGroup={TAGGROUP}
             onChange={handleOnChange}
           />
+
           <Timeline title="Timeline project" onChange={handleOnChange} />
 
           <InputField

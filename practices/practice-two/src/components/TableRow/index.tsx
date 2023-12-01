@@ -5,7 +5,7 @@ import { ChevronRightIcon, DragHandleIcon } from '@chakra-ui/icons'
 import { Project, ProjectStatus, TAGS_COLORS, TAGS_VARIANT } from '@/types'
 
 // Constants
-import { OPTIONS } from '@/constants'
+import { MENUOPTION } from '@/constants'
 
 // Utils
 import { formatTime } from '@/utils'
@@ -112,10 +112,7 @@ const ProjectRow = (project: Project) => {
             {estimation}
             <Text>k</Text>
           </Flex>
-          <MenuSelect
-            leftIcon={<DragHandleIcon />}
-            options={OPTIONS.menuOptions}
-          />
+          <MenuSelect leftIcon={<DragHandleIcon />} options={MENUOPTION} />
         </Flex>
       </Td>
     </>
