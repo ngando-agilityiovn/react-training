@@ -29,7 +29,7 @@ const colorStatusMapping = {
   [ProjectStatus.ON_HOLD]: TAGS_COLORS.HOLD,
 }
 
-const ProjectRow = (project: Project) => {
+const TableRow = (project: Project) => {
   const {
     id,
     name,
@@ -44,7 +44,7 @@ const ProjectRow = (project: Project) => {
 
   return (
     <>
-      <Td>{Number(id) + 1}</Td>
+      <Td>{id + 1}</Td>
       <Td
         fontSize="sm"
         color="primary"
@@ -55,7 +55,7 @@ const ProjectRow = (project: Project) => {
         {name}
       </Td>
       <Td>
-        <Avatar boxSize="6" icon={<Img src={manager} />} />
+        <Avatar borderRadius="6px" boxSize="6" icon={<Img src={manager} />} />
       </Td>
       <Td>
         <Status
@@ -119,4 +119,4 @@ const ProjectRow = (project: Project) => {
   )
 }
 
-export default ProjectRow
+export default TableRow

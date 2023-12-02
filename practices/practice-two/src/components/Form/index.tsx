@@ -5,36 +5,48 @@ import { TAGGROUP, TAGLIST } from '@/constants'
 
 // Components
 import { InputField, ProjectTagManager, ResourceGroup, Timeline } from '..'
-import { Project, ProjectStatus } from '@/types'
+import { Project } from '@/types'
 import { useCallback, useState } from 'react'
 
 interface IFormProps {
   onClose: () => void
   addProject: (data: object) => void
+  projectDataForm: Omit<Project, 'id'>
+  setProjectDataForm: React.Dispatch<React.SetStateAction<Omit<Project, 'id'>>>
 }
 
-const projectDataFormInitial: Omit<Project, 'id'> = {
-  name: '',
-  manager: 'Roger Vaccaro',
-  status: ProjectStatus.ON_HOLD,
-  updatedAt: 0,
-  resource: 0,
-  start: 0,
-  end: 0,
-  estimation: 0,
-}
-
-const Form = ({ onClose, addProject }: IFormProps) => {
-  const [projectDataForm, setProjectDataForm] = useState(projectDataFormInitial)
+const Form = ({
+  onClose,
+  addProject,
+  projectDataForm,
+  setProjectDataForm,
+}: IFormProps) => {
+  const [selectedTags, setSelectedTags] = useState<string[]>([])
 
   const handleOnChange = useCallback(
-    (value: string, name: string) => {
+    (value: string | number, name: string) => {
       setProjectDataForm({
         ...projectDataForm,
         [name]: value,
       })
     },
     [setProjectDataForm, projectDataForm],
+  )
+
+  const handleTagChange = useCallback(
+    (currentTag: string) => {
+      const isExist = selectedTags.find((tag) => tag === currentTag)
+
+      if (isExist) {
+        const currentTags = selectedTags.filter((tag) => tag !== currentTag)
+
+        setSelectedTags(currentTags)
+      } else {
+        setSelectedTags([...selectedTags, currentTag])
+      }
+      handleOnChange(selectedTags.length + 1, 'resource')
+    },
+    [selectedTags, handleOnChange],
   )
 
   const handleAddProject = () => {
@@ -63,9 +75,9 @@ const Form = ({ onClose, addProject }: IFormProps) => {
 
           <ResourceGroup
             title="Resources"
-            variant="outline"
             tagGroup={TAGGROUP}
-            onChange={handleOnChange}
+            handleTagChange={handleTagChange}
+            selectedTags={selectedTags}
           />
 
           <Timeline title="Timeline project" onChange={handleOnChange} />

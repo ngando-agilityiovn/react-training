@@ -31,3 +31,41 @@ export const formatTime = (
 
   return formattedDateWithoutCommas
 }
+
+const timeFormat12Hour = (date: Date) => {
+  let h = date.getHours()
+  let m: number | string = date.getMinutes()
+  const ampm = h >= 12 ? 'PM' : 'AM'
+
+  h = h % 12 //reminder
+  h = h ? h : 12
+
+  m = m.toString().padStart(2, '0')
+  const formattedTimeString = h + ':' + m + ' ' + ampm
+
+  return formattedTimeString
+}
+
+export const formatLongDateTime = (day: Date) => {
+  const MONTHS = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ]
+  const originalDate = new Date(day)
+  const date = originalDate.getDate()
+  const month = MONTHS[originalDate.getMonth()]
+  const year = originalDate.getFullYear()
+  const time = timeFormat12Hour(day)
+
+  return `${date} ${month} ${year}, ${time}`
+}

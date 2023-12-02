@@ -1,4 +1,3 @@
-// Components
 import { Box, Flex, Tag, Text } from '@chakra-ui/react'
 
 // Types
@@ -6,16 +5,16 @@ import { TagGroup } from '@/types'
 
 interface IResourceProps {
   title: string
-  variant: string
+  handleTagChange: (text: string) => void
   tagGroup: TagGroup[]
-  onChange: (value: string, name: string) => void
+  selectedTags: string[]
 }
 
 const ResourceGroup = ({
   title,
-  variant,
   tagGroup,
-  onChange,
+  selectedTags,
+  handleTagChange,
 }: IResourceProps) => {
   return (
     <Box mb="8">
@@ -28,16 +27,22 @@ const ResourceGroup = ({
       >
         {title}
       </Text>
+
       <Flex gap="2.5" mt="2" flexWrap="wrap">
-        {tagGroup.map(({ id, text }) => (
-          <Tag
-            key={id}
-            variant={variant}
-            onClick={() => onChange(text, 'resource')}
-          >
-            {text}
-          </Tag>
-        ))}
+        {tagGroup.map(({ id, text }) => {
+          const isSelected = selectedTags.includes(text)
+
+          return (
+            <Tag
+              key={id}
+              id={id}
+              variant={isSelected ? 'success' : 'outline'}
+              onClick={() => handleTagChange(text)}
+            >
+              {text}
+            </Tag>
+          )
+        })}
       </Flex>
     </Box>
   )

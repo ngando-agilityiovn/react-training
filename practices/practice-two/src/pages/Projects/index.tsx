@@ -1,6 +1,16 @@
 import { useEffect, useMemo, useState } from 'react'
 import { AddIcon } from '@chakra-ui/icons'
 import { Button, Flex, useDisclosure } from '@chakra-ui/react'
+import { formatLongDateTime } from '@/utils'
+
+// Constants
+import { API, SORTOPTIONS, TABLEHEADER, TAGLIST } from '@/constants'
+
+// Types
+import { Project, ProjectStatus } from '@/types'
+
+// Icon components
+import { DropdownIcon, FilterIcon } from '@/components/Icons'
 
 // Components
 import {
@@ -10,17 +20,23 @@ import {
   Search,
   ProjectManagementPanel,
   TableProject,
-  ProjectRow,
+  TableRow,
 } from '@/components'
-import { DropdownIcon, FilterIcon } from '@/components/Icons'
 
-// Constants
-import { API, SORTOPTIONS, TABLEHEADER } from '@/constants'
-
-// Types
-import { Project, ProjectStatus } from '@/types'
+const projectDataFormInitial: Omit<Project, 'id'> = {
+  name: '',
+  manager: TAGLIST[0].img,
+  status: ProjectStatus.ON_HOLD,
+  updatedAt: 0,
+  resource: 0,
+  start: 0,
+  end: 0,
+  estimation: 0,
+}
 
 const ProjectsPages = () => {
+  const [projectDataForm, setProjectDataForm] = useState(projectDataFormInitial)
+
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const [projects, setProjects] = useState<Project[]>([])
@@ -38,7 +54,7 @@ const ProjectsPages = () => {
 
   const addProject = async (data: object) => {
     const updatedTime = new Date()
-    const newData = { ...data, updatedAt: updatedTime }
+    const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
 
     const requestOptions = {
       method: 'POST',
@@ -48,7 +64,7 @@ const ProjectsPages = () => {
     await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}`, requestOptions)
 
     onClose()
-
+    setProjectDataForm(projectDataFormInitial)
     getData()
   }
 
@@ -150,11 +166,16 @@ const ProjectsPages = () => {
       <TableProject<Project>
         tableHeader={TABLEHEADER}
         dataTable={projectsDisplay}
-        renderBody={(dataTable) => <ProjectRow {...dataTable} />}
+        renderBody={(dataTable, id) => <TableRow {...dataTable} id={id} />}
       />
 
       <ModalCustom title="Add project" onClose={onClose} isOpen={isOpen}>
-        <Form onClose={onClose} addProject={addProject} />
+        <Form
+          onClose={onClose}
+          addProject={addProject}
+          projectDataForm={projectDataForm}
+          setProjectDataForm={setProjectDataForm}
+        />
       </ModalCustom>
     </>
   )
