@@ -11,7 +11,7 @@ import { useCallback, useState } from 'react'
 interface IFormProps {
   onClose: () => void
   addProject: (data: object) => void
-  projectDataForm: Omit<Project, 'id'>
+  projectDataForm: Project
   setProjectDataForm: React.Dispatch<React.SetStateAction<Omit<Project, 'id'>>>
 }
 
@@ -21,10 +21,13 @@ const Form = ({
   projectDataForm,
   setProjectDataForm,
 }: IFormProps) => {
-  const [selectedTags, setSelectedTags] = useState<string[]>([])
+  const [selectedTags, setSelectedTags] = useState<string[]>(
+    projectDataForm?.resource,
+  )
+  console.log(projectDataForm)
 
   const handleOnChange = useCallback(
-    (value: string | number, name: string) => {
+    (value: string | number | string[], name: string) => {
       setProjectDataForm({
         ...projectDataForm,
         [name]: value,
@@ -44,7 +47,8 @@ const Form = ({
       } else {
         setSelectedTags([...selectedTags, currentTag])
       }
-      handleOnChange(selectedTags.length + 1, 'resource')
+      handleOnChange(selectedTags, 'resource')
+      // handleOnChange(selectedTags.length + 1, 'resource')
     },
     [selectedTags, handleOnChange],
   )
@@ -58,7 +62,7 @@ const Form = ({
       <Box bg="darkToLight" py="4">
         <Box px="6">
           <InputField
-            value={projectDataForm.name}
+            value={projectDataForm?.name}
             label="Project name"
             name="name"
             type="text"
@@ -68,6 +72,7 @@ const Form = ({
           />
 
           <ProjectTagManager
+            selectedTab={projectDataForm.id}
             title="Project manager (PM)"
             tagsList={TAGLIST}
             onChange={handleOnChange}
@@ -83,7 +88,7 @@ const Form = ({
           <Timeline title="Timeline project" onChange={handleOnChange} />
 
           <InputField
-            value={projectDataForm.estimation}
+            value={projectDataForm?.estimation}
             label="Estimation"
             name="estimation"
             type="number"

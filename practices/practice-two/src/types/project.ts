@@ -6,10 +6,12 @@ export interface Project {
   manager: string
   status: ProjectStatus
   updatedAt: number
-  resource: number
+  resource: string[]
   start: number
   end: number
   estimation: number
+  index: number
+  onEditItem: (data: Project) => void
 }
 
 export interface TagGroup {

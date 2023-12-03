@@ -31,6 +31,7 @@ const ResourceGroup = ({
       <Flex gap="2.5" mt="2" flexWrap="wrap">
         {tagGroup.map(({ id, text }) => {
           const isSelected = selectedTags.includes(text)
+          console.log(selectedTags)
 
           return (
             <Tag

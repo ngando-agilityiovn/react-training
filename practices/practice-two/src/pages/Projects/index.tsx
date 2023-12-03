@@ -23,7 +23,7 @@ import {
   TableRow,
 } from '@/components'
 
-const projectDataFormInitial: Omit<Project, 'id'> = {
+const projectDataFormInitial: Omit<Project, 'id' | 'index' | 'onEditItem'> = {
   name: '',
   manager: TAGLIST[0].img,
   status: ProjectStatus.ON_HOLD,
@@ -41,6 +41,7 @@ const ProjectsPages = () => {
 
   const [projects, setProjects] = useState<Project[]>([])
   const [tabView, setTabView] = useState(0)
+  const [idEdit, setIdEdit] = useState(0)
 
   const getData = async () => {
     const response = await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}`)
@@ -67,6 +68,22 @@ const ProjectsPages = () => {
     setProjectDataForm(projectDataFormInitial)
     getData()
   }
+
+  // const editProject = async (data: object) => {
+  //   const updatedTime = new Date()
+  //   const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
+
+  //   const requestOptions = {
+  //     method: 'PUT',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify(newData),
+  //   }
+  //   await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}/${idEdit}`, requestOptions)
+
+  //   onClose()
+  //   setProjectDataForm(projectDataFormInitial)
+  //   getData()
+  // }
 
   const riskProjects = useMemo(
     () => projects.filter(({ status }) => status === ProjectStatus.AT_RISK),
@@ -143,6 +160,43 @@ const ProjectsPages = () => {
     trackProjects,
   ])
 
+  const handleEditProject = (
+    project: Omit<Project, 'index' | 'onEditItem'>,
+  ) => {
+    onOpen()
+
+    const {
+      id,
+      name,
+      manager,
+      status,
+      updatedAt,
+      resource,
+      start,
+      end,
+      estimation,
+    } = project
+    setIdEdit(id)
+
+    setProjectDataForm({
+      name: name,
+      manager: manager,
+      status: status,
+      updatedAt: updatedAt,
+      resource: resource,
+      start: start,
+      end: end,
+      estimation: estimation,
+    })
+
+    // editProject(projectDataForm)
+  }
+
+  useEffect(() => {
+    console.log(projectDataForm)
+    // console.log(idEdit)
+  }, [projectDataForm])
+
   return (
     <>
       <Flex mt="5" mb="7" mx="5" justifyContent="space-between">
@@ -166,7 +220,13 @@ const ProjectsPages = () => {
       <TableProject<Project>
         tableHeader={TABLEHEADER}
         dataTable={projectsDisplay}
-        renderBody={(dataTable, id) => <TableRow {...dataTable} id={id} />}
+        renderBody={(dataTable, index) => (
+          <TableRow
+            {...dataTable}
+            index={index}
+            onEditItem={handleEditProject}
+          />
+        )}
       />
 
       <ModalCustom title="Add project" onClose={onClose} isOpen={isOpen}>

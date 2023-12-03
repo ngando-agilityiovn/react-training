@@ -31,7 +31,7 @@ const colorStatusMapping = {
 
 const TableRow = (project: Project) => {
   const {
-    id,
+    index,
     name,
     manager,
     status,
@@ -40,11 +40,12 @@ const TableRow = (project: Project) => {
     start,
     end,
     estimation,
+    onEditItem,
   } = project
 
   return (
     <>
-      <Td>{id + 1}</Td>
+      <Td>{index + 1}</Td>
       <Td
         fontSize="sm"
         color="primary"
@@ -85,7 +86,7 @@ const TableRow = (project: Project) => {
         letterSpacing="wider"
       >
         <Badge marginLeft="5" variant="primary">
-          {resource}
+          {resource.length}
         </Badge>
       </Td>
       <Td
@@ -112,7 +113,11 @@ const TableRow = (project: Project) => {
             {estimation}
             <Text>k</Text>
           </Flex>
-          <MenuSelect leftIcon={<DragHandleIcon />} options={MENUOPTION} />
+          <MenuSelect
+            leftIcon={<DragHandleIcon />}
+            options={MENUOPTION}
+            onEditItem={() => onEditItem(project)}
+          />
         </Flex>
       </Td>
     </>
