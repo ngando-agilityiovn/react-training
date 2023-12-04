@@ -8,7 +8,7 @@
  * @returns The string of date after format
  */
 export const formatTime = (
-  dateTime: number,
+  dateTime: number | string,
   locales: Intl.LocalesArgument = 'en-US',
   options: Intl.DateTimeFormatOptions = {
     day: 'numeric',
@@ -38,7 +38,7 @@ const timeFormat12Hour = (date: Date) => {
   const ampm = h >= 12 ? 'PM' : 'AM'
 
   h = h % 12 //reminder
-  h = h ? h : 12
+  h = h || 12
 
   m = m.toString().padStart(2, '0')
   const formattedTimeString = h + ':' + m + ' ' + ampm

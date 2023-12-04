@@ -5,7 +5,7 @@ import { ChevronRightIcon, DragHandleIcon } from '@chakra-ui/icons'
 import { Project, ProjectStatus, TAGS_COLORS, TAGS_VARIANT } from '@/types'
 
 // Constants
-import { MENUOPTION } from '@/constants'
+import { MENU_OPTION } from '@/constants'
 
 // Utils
 import { formatTime } from '@/utils'
@@ -56,7 +56,11 @@ const TableRow = (project: Project) => {
         {name}
       </Td>
       <Td>
-        <Avatar borderRadius="6px" boxSize="6" icon={<Img src={manager} />} />
+        <Avatar
+          borderRadius="6px"
+          boxSize="6"
+          icon={<Img src={manager?.img} />}
+        />
       </Td>
       <Td>
         <Status
@@ -115,7 +119,7 @@ const TableRow = (project: Project) => {
           </Flex>
           <MenuSelect
             leftIcon={<DragHandleIcon />}
-            options={MENUOPTION}
+            options={MENU_OPTION}
             onEditItem={() => onEditItem(project)}
           />
         </Flex>

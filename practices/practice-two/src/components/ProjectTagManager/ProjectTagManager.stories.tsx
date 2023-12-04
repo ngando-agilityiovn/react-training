@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 // Constants
-import { TAGLIST } from '@/constants'
+import { TAG_LIST } from '@/constants'
 
 // Components
 import ProjectTagManager from '.'
@@ -16,6 +16,6 @@ type Story = StoryObj<typeof ProjectTagManager>
 export const Base: Story = {
   args: {
     title: 'Resources',
-    tagsList: TAGLIST,
+    tagsList: TAG_LIST,
   },
 }

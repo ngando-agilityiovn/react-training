@@ -1,7 +1,7 @@
 import { Box, Button, Flex, FormControl } from '@chakra-ui/react'
 
 // Constants
-import { TAGGROUP, TAGLIST } from '@/constants'
+import { TAG_GROUP, TAG_LIST } from '@/constants'
 
 // Components
 import { InputField, ProjectTagManager, ResourceGroup, Timeline } from '..'
@@ -9,25 +9,35 @@ import { Project } from '@/types'
 import { useCallback, useState } from 'react'
 
 interface IFormProps {
+  isEdit: boolean
   onClose: () => void
-  addProject: (data: object) => void
-  projectDataForm: Project
-  setProjectDataForm: React.Dispatch<React.SetStateAction<Omit<Project, 'id'>>>
+  // addProject: (data: object) => void
+  onSubmitForm: (data: object) => void
+  projectDataForm: Omit<Project, 'id' | 'index' | 'onEditItem'>
+  setProjectDataForm: React.Dispatch<
+    React.SetStateAction<Omit<Project, 'id' | 'index' | 'onEditItem'>>
+  >
 }
 
 const Form = ({
+  isEdit,
   onClose,
-  addProject,
+  // addProject,
+  onSubmitForm,
   projectDataForm,
   setProjectDataForm,
 }: IFormProps) => {
-  const [selectedTags, setSelectedTags] = useState<string[]>(
-    projectDataForm?.resource,
-  )
+  const { resource, name, estimation, manager, start, end } =
+    projectDataForm || {}
+
+  const [selectedTags, setSelectedTags] = useState<string[]>(resource)
   console.log(projectDataForm)
 
   const handleOnChange = useCallback(
-    (value: string | number | string[], name: string) => {
+    (
+      value: string | number | string[] | { id: number; img: string },
+      name: string,
+    ) => {
       setProjectDataForm({
         ...projectDataForm,
         [name]: value,
@@ -53,16 +63,16 @@ const Form = ({
     [selectedTags, handleOnChange],
   )
 
-  const handleAddProject = () => {
-    addProject(projectDataForm)
-  }
+  // const handleAddProject = () => {
+  //   addProject(projectDataForm)
+  // }
 
   return (
     <FormControl>
       <Box bg="darkToLight" py="4">
         <Box px="6">
           <InputField
-            value={projectDataForm?.name}
+            value={name}
             label="Project name"
             name="name"
             type="text"
@@ -72,23 +82,28 @@ const Form = ({
           />
 
           <ProjectTagManager
-            selectedTab={projectDataForm.id}
+            selectedTab={manager?.id}
             title="Project manager (PM)"
-            tagsList={TAGLIST}
+            tagsList={TAG_LIST}
             onChange={handleOnChange}
           />
 
           <ResourceGroup
             title="Resources"
-            tagGroup={TAGGROUP}
+            tagGroup={TAG_GROUP}
             handleTagChange={handleTagChange}
             selectedTags={selectedTags}
           />
 
-          <Timeline title="Timeline project" onChange={handleOnChange} />
+          <Timeline
+            title="Timeline project"
+            startTime={start}
+            endTime={end}
+            onChange={handleOnChange}
+          />
 
           <InputField
-            value={projectDataForm?.estimation}
+            value={estimation}
             label="Estimation"
             name="estimation"
             type="number"
@@ -103,8 +118,8 @@ const Form = ({
         <Button variant="outline" onClick={onClose}>
           Cancel
         </Button>
-        <Button variant="solid" onClick={handleAddProject}>
-          Add project
+        <Button variant="solid" onClick={() => onSubmitForm(projectDataForm)}>
+          {isEdit ? 'Edit' : 'Add'} project
         </Button>
       </Flex>
     </FormControl>

@@ -7,7 +7,7 @@ export interface Option {
 }
 
 interface IMenuProps {
-  onEditItem: () => void
+  onEditItem?: () => void
   options: Option[]
   title?: string
   width?: string

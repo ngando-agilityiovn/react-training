@@ -4,7 +4,7 @@ import { Button, Flex, useDisclosure } from '@chakra-ui/react'
 import { formatLongDateTime } from '@/utils'
 
 // Constants
-import { API, SORTOPTIONS, TABLEHEADER, TAGLIST } from '@/constants'
+import { API, SORT_OPTIONS, TABLE_HEADER, TAG_LIST } from '@/constants'
 
 // Types
 import { Project, ProjectStatus } from '@/types'
@@ -25,12 +25,15 @@ import {
 
 const projectDataFormInitial: Omit<Project, 'id' | 'index' | 'onEditItem'> = {
   name: '',
-  manager: TAGLIST[0].img,
+  manager: {
+    id: TAG_LIST[0].id,
+    img: TAG_LIST[0].img,
+  },
   status: ProjectStatus.ON_HOLD,
   updatedAt: 0,
-  resource: 0,
-  start: 0,
-  end: 0,
+  resource: [],
+  start: '',
+  end: '',
   estimation: 0,
 }
 
@@ -41,32 +44,43 @@ const ProjectsPages = () => {
 
   const [projects, setProjects] = useState<Project[]>([])
   const [tabView, setTabView] = useState(0)
-  const [idEdit, setIdEdit] = useState(0)
+  const [isEdit, setIsEdit] = useState(false)
 
   const getData = async () => {
     const response = await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}`)
+    const data = await response.json()
 
-    setProjects(await response.json())
+    setProjects(data)
+    console.log('response', data)
   }
 
   useEffect(() => {
     getData()
   }, [])
 
-  const addProject = async (data: object) => {
-    const updatedTime = new Date()
-    const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
-
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newData),
-    }
-    await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}`, requestOptions)
-
+  const handleResetForm = () => {
     onClose()
     setProjectDataForm(projectDataFormInitial)
     getData()
+    setIsEdit(false)
+  }
+
+  const handleSubmitForm = async (data: object) => {
+    const updatedTime = new Date()
+    const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
+    console.log(data)
+
+    const requestOptions = {
+      method: isEdit ? 'PUT' : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newData),
+    }
+
+    const url = isEdit
+      ? `${API.BASE_URL}${API.PROJECT_COLLECTION}/${isEdit}`
+      : `${API.BASE_URL}${API.PROJECT_COLLECTION}`
+    await fetch(url, requestOptions)
+    handleResetForm()
   }
 
   // const editProject = async (data: object) => {
@@ -164,9 +178,9 @@ const ProjectsPages = () => {
     project: Omit<Project, 'index' | 'onEditItem'>,
   ) => {
     onOpen()
+    setIsEdit(true)
 
     const {
-      id,
       name,
       manager,
       status,
@@ -176,26 +190,26 @@ const ProjectsPages = () => {
       end,
       estimation,
     } = project
-    setIdEdit(id)
+    console.log('handleEditProject', project)
 
     setProjectDataForm({
-      name: name,
-      manager: manager,
-      status: status,
-      updatedAt: updatedAt,
-      resource: resource,
-      start: start,
-      end: end,
-      estimation: estimation,
+      name,
+      manager,
+      status,
+      updatedAt,
+      resource,
+      start,
+      end,
+      estimation,
     })
 
     // editProject(projectDataForm)
   }
 
-  useEffect(() => {
-    console.log(projectDataForm)
-    // console.log(idEdit)
-  }, [projectDataForm])
+  // useEffect(() => {
+  //   console.log(projectDataForm)
+  //   // console.log(idEdit)
+  // }, [projectDataForm])
 
   return (
     <>
@@ -205,7 +219,7 @@ const ProjectsPages = () => {
             leftIcon={<FilterIcon />}
             rightIcon={<DropdownIcon />}
             title="All"
-            options={SORTOPTIONS}
+            options={SORT_OPTIONS}
           />
           <Search width="280px" />
         </Flex>
@@ -218,7 +232,7 @@ const ProjectsPages = () => {
       <ProjectManagementPanel onChangeTab={setTabView} tabs={tabs} />
 
       <TableProject<Project>
-        tableHeader={TABLEHEADER}
+        tableHeader={TABLE_HEADER}
         dataTable={projectsDisplay}
         renderBody={(dataTable, index) => (
           <TableRow
@@ -229,10 +243,15 @@ const ProjectsPages = () => {
         )}
       />
 
-      <ModalCustom title="Add project" onClose={onClose} isOpen={isOpen}>
+      <ModalCustom
+        title={isEdit ? 'Edit project' : 'Add project'}
+        onClose={onClose}
+        isOpen={isOpen}
+      >
         <Form
+          isEdit={isEdit}
           onClose={onClose}
-          addProject={addProject}
+          onSubmitForm={handleSubmitForm}
           projectDataForm={projectDataForm}
           setProjectDataForm={setProjectDataForm}
         />

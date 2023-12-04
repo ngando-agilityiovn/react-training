@@ -3,12 +3,15 @@ import { ProjectStatus } from './common'
 export interface Project {
   id: number
   name: string
-  manager: string
+  manager: {
+    id: number
+    img: string
+  }
   status: ProjectStatus
   updatedAt: number
   resource: string[]
-  start: number
-  end: number
+  start: string
+  end: string
   estimation: number
   index: number
   onEditItem: (data: Project) => void
