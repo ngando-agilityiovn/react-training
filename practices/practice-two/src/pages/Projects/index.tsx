@@ -226,12 +226,12 @@ const ProjectsPages = () => {
     {
       value: 'name',
       text: 'Project name',
-      handleClick: () => console.log('Project click'),
+      handleClick: () => console.log('Project click'), //NOTE: update later
     },
     {
       value: 'updatedAt',
       text: 'Last update',
-      handleClick: () => console.log('Last update click'),
+      handleClick: () => console.log('Last update click'), // NOTE: update later
     },
   ]
 
