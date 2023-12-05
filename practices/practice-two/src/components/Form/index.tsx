@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { Box, Button, Flex, FormControl } from '@chakra-ui/react'
 
 // Constants
@@ -6,7 +7,6 @@ import { TAG_GROUP, TAG_LIST } from '@/constants'
 // Components
 import { InputField, ProjectTagManager, ResourceGroup, Timeline } from '..'
 import { Project } from '@/types'
-import { useCallback, useState } from 'react'
 
 interface IFormProps {
   isEdit: boolean
@@ -28,8 +28,6 @@ const Form = ({
   const { resource, name, estimation, manager, start, end } =
     projectDataForm || {}
 
-  const [selectedTags, setSelectedTags] = useState<string[]>(resource)
-
   const handleOnChange = useCallback(
     (
       value: string | number | string[] | { id: number; img: string },
@@ -43,22 +41,9 @@ const Form = ({
     [setProjectDataForm, projectDataForm],
   )
 
-  const handleTagChange = useCallback(
-    (currentTag: string) => {
-      const isExist = selectedTags.find((tag) => tag === currentTag)
-
-      if (isExist) {
-        const currentTags = selectedTags.filter((tag) => tag !== currentTag)
-
-        setSelectedTags(currentTags)
-        handleOnChange(currentTag, 'resource')
-      } else {
-        setSelectedTags([...selectedTags, currentTag])
-      }
-      handleOnChange([...selectedTags, currentTag], 'resource')
-    },
-    [selectedTags, handleOnChange],
-  )
+  const handleTagsChanged = (currentTags: string[]) => {
+    handleOnChange(currentTags, 'resource')
+  }
 
   return (
     <FormControl>
@@ -83,9 +68,9 @@ const Form = ({
 
           <ResourceGroup
             title="Resources"
+            initialValues={resource}
+            handleTagsChange={handleTagsChanged}
             tagGroup={TAG_GROUP}
-            handleTagChange={handleTagChange}
-            selectedTags={selectedTags}
           />
 
           <Timeline

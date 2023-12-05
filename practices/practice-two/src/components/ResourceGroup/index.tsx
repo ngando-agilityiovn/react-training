@@ -1,21 +1,26 @@
-import { Box, Flex, Tag, Text } from '@chakra-ui/react'
+import { Box, Flex, Tag, Text, useCheckboxGroup } from '@chakra-ui/react'
 
 // Types
 import { TagGroup } from '@/types'
 
 interface IResourceProps {
   title: string
-  handleTagChange: (text: string) => void
+  initialValues: Array<string | number>
+  handleTagsChange: (text: string[]) => void
   tagGroup: TagGroup[]
-  selectedTags: string[]
 }
 
 const ResourceGroup = ({
   title,
+  initialValues,
+  handleTagsChange: handleTagChange,
   tagGroup,
-  selectedTags,
-  handleTagChange,
 }: IResourceProps) => {
+  const { value: selectedValues, onChange } = useCheckboxGroup({
+    defaultValue: initialValues,
+    onChange: handleTagChange,
+  })
+
   return (
     <Box mb="8">
       <Text
@@ -30,15 +35,13 @@ const ResourceGroup = ({
 
       <Flex gap="2.5" mt="2" flexWrap="wrap">
         {tagGroup.map(({ id, text }) => {
-          const isSelected = selectedTags.includes(text)
-          console.log(selectedTags)
-
+          const isSelected = selectedValues.includes(text)
           return (
             <Tag
               key={id}
               id={id}
               variant={isSelected ? 'success' : 'outline'}
-              onClick={() => handleTagChange(text)}
+              onClick={() => onChange(text)}
             >
               {text}
             </Tag>

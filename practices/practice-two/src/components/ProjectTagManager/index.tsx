@@ -9,8 +9,8 @@ interface TagList {
 interface ITagGroupProps {
   title: string
   tagsList: TagList[]
-  onChange: (value: { id: number; img: string }, name: string) => void
   selectedTab: number
+  onChange: (value: { id: number; img: string }, name: string) => void
 }
 
 const ProjectTagManager = ({
@@ -19,10 +19,6 @@ const ProjectTagManager = ({
   onChange,
   selectedTab,
 }: ITagGroupProps) => {
-  // const handleChangeManager = (img: string) => {
-  //   onChange(img, 'manager')
-  // }
-
   return (
     <Box mb="8">
       <Text
@@ -37,8 +33,6 @@ const ProjectTagManager = ({
       <Tabs index={selectedTab} mt="2" bg="backgroundInactive" borderRadius="6">
         <TabList>
           {tagsList.map(({ id, text, img }) => {
-            console.log(typeof id)
-            console.log(typeof selectedTab)
             return (
               <Tab
                 m="0.5"

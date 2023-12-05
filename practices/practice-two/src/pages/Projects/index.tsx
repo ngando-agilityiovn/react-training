@@ -52,7 +52,6 @@ const ProjectsPages = () => {
     const data = await response.json()
 
     setProjects(data)
-    console.log('response', data)
   }
 
   useEffect(() => {
@@ -71,7 +70,6 @@ const ProjectsPages = () => {
   ) => {
     const updatedTime = new Date()
     const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
-    console.log(data)
 
     const requestOptions = {
       method: isEdit ? 'PUT' : 'POST',
@@ -178,7 +176,6 @@ const ProjectsPages = () => {
       end,
       estimation,
     } = project
-    console.log('handleEditProject', project)
 
     setProjectDataForm({
       id,
@@ -191,8 +188,6 @@ const ProjectsPages = () => {
       end,
       estimation,
     })
-
-    // editProject(projectDataForm)
   }
 
   return (

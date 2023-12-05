@@ -4,12 +4,12 @@
       "id": "5",
       "name": "ReactJS ",
       "manager": {
-        "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatarDias.png?alt=media&token=06db0e21-b5a5-4574-9bf4-678ea2aa279d",
-        "id": 2
+        "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatarRog.png?alt=media&token=606acbd1-cf3a-4c59-85ca-f7d49b74347a",
+        "id": 0
       },
       "status": "On Hold",
-      "updatedAt": "5 Dec 2023, 11:10 AM",
-      "resource": ["UX/UI Design", "Frontend"],
+      "updatedAt": "5 Dec 2023, 11:59 AM",
+      "resource": ["Frontend"],
       "start": "2023-12-08",
       "end": "2023-12-17",
       "estimation": "123456"
@@ -44,12 +44,13 @@
         "id": 2
       },
       "status": "On Hold",
-      "updatedAt": "5 Dec 2023, 11:10 AM",
+      "updatedAt": "5 Dec 2023, 11:49 AM",
       "resource": [
         "UX/UI Design",
         "Graphic Designer",
         "Web Designer",
-        "Full Stack"
+        "Full Stack",
+        "QA"
       ],
       "start": "2023-12-07",
       "end": "2023-12-22",
@@ -57,17 +58,17 @@
     },
     {
       "id": "Wj-JLXr",
-      "name": "Java",
+      "name": "Java Core",
       "manager": {
-        "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatar.png?alt=media&token=81b6abe0-23b2-4e79-b3e1-77050c86baaf",
-        "id": 1
+        "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatarDias.png?alt=media&token=06db0e21-b5a5-4574-9bf4-678ea2aa279d",
+        "id": 2
       },
       "status": "On Hold",
-      "updatedAt": "5 Dec 2023, 11:11 AM",
+      "updatedAt": "5 Dec 2023, 11:48 AM",
       "resource": ["Frontend", "Backend", "Full Stack"],
-      "start": "2023-12-24",
-      "end": "2023-12-27",
-      "estimation": "34"
+      "start": "2023-12-25",
+      "end": "2023-12-31",
+      "estimation": "45"
     }
   ]
 }
