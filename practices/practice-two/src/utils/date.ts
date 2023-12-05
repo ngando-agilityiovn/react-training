@@ -32,17 +32,28 @@ export const formatTime = (
   return formattedDateWithoutCommas
 }
 
+// Function to format a Date object into a 12-hour time string with AM/PM
 const timeFormat12Hour = (date: Date) => {
+  // Extract the hour component from the Date object
   let h = date.getHours()
+
+  // Extract the minute component from the Date object
   let m: number | string = date.getMinutes()
+
+  // Determine whether it's AM or PM based on the hour
   const ampm = h >= 12 ? 'PM' : 'AM'
 
-  h = h % 12 //reminder
-  h = h || 12
+  // Convert the hour to 12-hour format (12 should be displayed as 12, not 0)
+  h = h % 12 // Take the remainder when divided by 12
+  h = h || 12 // If the result is 0, set it to 12
 
+  // Convert minutes to a string and pad with leading zero if needed
   m = m.toString().padStart(2, '0')
+
+  // Create the formatted time string in HH:mm AM/PM format
   const formattedTimeString = h + ':' + m + ' ' + ampm
 
+  // Return the formatted time string
   return formattedTimeString
 }
 

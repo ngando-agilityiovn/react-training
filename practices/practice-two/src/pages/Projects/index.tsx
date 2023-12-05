@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { AddIcon } from '@chakra-ui/icons'
-import { Button, Flex, useDisclosure } from '@chakra-ui/react'
+import { Button, Flex, Text, useDisclosure } from '@chakra-ui/react'
 import { formatLongDateTime } from '@/utils'
 
 // Constants
@@ -46,12 +46,19 @@ const ProjectsPages = () => {
   const [projects, setProjects] = useState<Project[]>([])
   const [tabView, setTabView] = useState(0)
   const [isEdit, setIsEdit] = useState(false)
+  const [isLoadingUsers, setIsLoadingUsers] = useState(false)
 
   const getData = async () => {
+    setIsLoadingUsers(true)
     const response = await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}`)
     const data = await response.json()
 
     setProjects(data)
+
+    // NOTE: Just for testing purposes
+    setTimeout(() => {
+      setIsLoadingUsers(false)
+    }, 1000)
   }
 
   useEffect(() => {
@@ -210,17 +217,23 @@ const ProjectsPages = () => {
 
       <ProjectManagementPanel onChangeTab={setTabView} tabs={tabs} />
 
-      <TableProject<Project>
-        tableHeader={TABLE_HEADER}
-        dataTable={projectsDisplay}
-        renderBody={(dataTable, index) => (
-          <TableRow
-            {...dataTable}
-            index={index}
-            onEditItem={handleEditProject}
-          />
-        )}
-      />
+      {isLoadingUsers ? (
+        <Text py="6" fontSize="2xl" color="green" textAlign="center">
+          Loading projects...
+        </Text>
+      ) : (
+        <TableProject<Project>
+          tableHeader={TABLE_HEADER}
+          dataTable={projectsDisplay}
+          renderBody={(dataTable, index) => (
+            <TableRow
+              {...dataTable}
+              index={index}
+              onEditItem={handleEditProject}
+            />
+          )}
+        />
+      )}
 
       <ModalCustom
         title={isEdit ? 'Edit project' : 'Add project'}
