@@ -1,14 +1,24 @@
 import { Box, Tab, TabList, Tabs, Text } from '@chakra-ui/react'
 
-// Types
-import { TagGroup } from '@/types'
+interface TagList {
+  id: number
+  text: string
+  img: string
+}
 
 interface ITagGroupProps {
   title: string
-  tagsList: TagGroup[]
+  tagsList: TagList[]
+  selectedTab: number
+  onChange: (value: { id: number; img: string }, name: string) => void
 }
 
-const ProjectTagManager = ({ title, tagsList }: ITagGroupProps) => {
+const ProjectTagManager = ({
+  title,
+  tagsList,
+  onChange,
+  selectedTab,
+}: ITagGroupProps) => {
   return (
     <Box mb="8">
       <Text
@@ -20,22 +30,25 @@ const ProjectTagManager = ({ title, tagsList }: ITagGroupProps) => {
       >
         {title}
       </Text>
-      <Tabs mt="2" bg="backgroundInactive" borderRadius="6">
+      <Tabs index={selectedTab} mt="2" bg="backgroundInactive" borderRadius="6">
         <TabList>
-          {tagsList.map(({ id, text }) => (
-            <Tab
-              m="0.5"
-              key={id}
-              _selected={{
-                color: 'primary',
-                bg: 'white',
-                boxShadow: 'secondary',
-                borderRadius: '6',
-              }}
-            >
-              {text}
-            </Tab>
-          ))}
+          {tagsList.map(({ id, text, img }) => {
+            return (
+              <Tab
+                m="0.5"
+                key={id}
+                _selected={{
+                  color: 'primary',
+                  bg: 'white',
+                  boxShadow: 'secondary',
+                  borderRadius: '6',
+                }}
+                onClick={() => onChange({ img, id }, 'manager')}
+              >
+                {text}
+              </Tab>
+            )
+          })}
         </TabList>
       </Tabs>
     </Box>

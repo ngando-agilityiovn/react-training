@@ -13,7 +13,7 @@ interface IInputProps {
   label?: string
   value?: string | number
   placeholder: string
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onChange: (value: string, name: string) => void
   type?: string
   errorMessage?: string
   isReadOnly?: boolean
@@ -67,7 +67,7 @@ const InputField = ({
           variant="primary"
           name={name}
           value={value}
-          onChange={onChange}
+          onChange={(e) => onChange(e.target.value, e.target.name)}
           type={type}
           aria-label="Input label"
           placeholder={placeholder}

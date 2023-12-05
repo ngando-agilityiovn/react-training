@@ -1,22 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import ProjectTagManager from '.'
+
+// Constants
+import { TAG_LIST } from '@/constants'
 
 // Components
-
-const taglist = [
-  {
-    id: '0',
-    text: 'UX/UI Design',
-  },
-  {
-    id: '1',
-    text: 'Frontend',
-  },
-  {
-    id: '2',
-    text: 'Backend',
-  },
-]
+import ProjectTagManager from '.'
 
 export default {
   title: 'Component/ProjectTagManager',
@@ -28,6 +16,6 @@ type Story = StoryObj<typeof ProjectTagManager>
 export const Base: Story = {
   args: {
     title: 'Resources',
-    tagsList: taglist,
+    tagsList: TAG_LIST,
   },
 }

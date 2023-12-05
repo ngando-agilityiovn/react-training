@@ -1,4 +1,4 @@
-export const MENUOPTION = [
+export const MENU_OPTION = [
   {
     value: 'edit',
     text: 'Edit',

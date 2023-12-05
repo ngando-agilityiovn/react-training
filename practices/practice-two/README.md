@@ -97,13 +97,22 @@ to install package dependencies
 
 ```bash
 pnpm install
+pnpm i vite-plugin-environment
 ```
 
 ## Start the web server
 
-Execute the following command to start the web server and json-server
+Execute the following command to start the web server
 
 ```bash
+pnpm start
+```
+
+Execute the following command to start the json-server
+
+```bash
+cd json-server
+pnpm install
 pnpm start
 ```
 

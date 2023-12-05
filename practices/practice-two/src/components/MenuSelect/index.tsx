@@ -7,6 +7,7 @@ export interface Option {
 }
 
 interface IMenuProps {
+  onEditItem?: () => void
   options: Option[]
   title?: string
   width?: string
@@ -15,6 +16,7 @@ interface IMenuProps {
 }
 
 const MenuSelect = ({
+  onEditItem,
   options,
   title,
   width,
@@ -36,7 +38,9 @@ const MenuSelect = ({
     </MenuButton>
     <MenuList>
       {options.map(({ value, text }) => (
-        <MenuItem key={value}>{text}</MenuItem>
+        <MenuItem key={value} onClick={onEditItem}>
+          {text}
+        </MenuItem>
       ))}
     </MenuList>
   </Menu>

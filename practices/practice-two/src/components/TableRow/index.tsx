@@ -5,7 +5,7 @@ import { ChevronRightIcon, DragHandleIcon } from '@chakra-ui/icons'
 import { Project, ProjectStatus, TAGS_COLORS, TAGS_VARIANT } from '@/types'
 
 // Constants
-import { MENUOPTION } from '@/constants'
+import { MENU_OPTION } from '@/constants'
 
 // Utils
 import { formatTime } from '@/utils'
@@ -29,20 +29,23 @@ const colorStatusMapping = {
   [ProjectStatus.ON_HOLD]: TAGS_COLORS.HOLD,
 }
 
-const ProjectRow = (project: Project) => {
+const TableRow = (project: Project) => {
   const {
-    id,
+    index,
     name,
     manager,
     status,
     updatedAt,
     resource,
-    timeline,
+    start,
+    end,
     estimation,
+    onEditItem,
   } = project
+
   return (
     <>
-      <Td>{Number(id) + 1}</Td>
+      <Td>{index + 1}</Td>
       <Td
         fontSize="sm"
         color="primary"
@@ -53,7 +56,11 @@ const ProjectRow = (project: Project) => {
         {name}
       </Td>
       <Td>
-        <Avatar boxSize="6" icon={<Img src={manager} />} />
+        <Avatar
+          borderRadius="6px"
+          boxSize="6"
+          icon={<Img src={manager?.img} />}
+        />
       </Td>
       <Td>
         <Status
@@ -83,7 +90,7 @@ const ProjectRow = (project: Project) => {
         letterSpacing="wider"
       >
         <Badge marginLeft="5" variant="primary">
-          {resource}
+          {resource.length}
         </Badge>
       </Td>
       <Td
@@ -93,9 +100,9 @@ const ProjectRow = (project: Project) => {
         lineHeight="extraShort"
         letterSpacing="wider"
       >
-        <Tag>{formatTime(timeline.start)}</Tag>
+        <Tag>{formatTime(start)}</Tag>
         <ChevronRightIcon mx="1.5" />
-        <Tag>{formatTime(timeline.end)}</Tag>
+        <Tag>{formatTime(end)}</Tag>
       </Td>
       <Td
         fontSize="sm"
@@ -110,11 +117,15 @@ const ProjectRow = (project: Project) => {
             {estimation}
             <Text>k</Text>
           </Flex>
-          <MenuSelect leftIcon={<DragHandleIcon />} options={MENUOPTION} />
+          <MenuSelect
+            leftIcon={<DragHandleIcon />}
+            options={MENU_OPTION}
+            onEditItem={() => onEditItem(project)}
+          />
         </Flex>
       </Td>
     </>
   )
 }
 
-export default ProjectRow
+export default TableRow

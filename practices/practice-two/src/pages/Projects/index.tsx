@@ -1,6 +1,16 @@
 import { useEffect, useMemo, useState } from 'react'
 import { AddIcon } from '@chakra-ui/icons'
-import { Button, Flex, useDisclosure } from '@chakra-ui/react'
+import { Button, Flex, Text, useDisclosure } from '@chakra-ui/react'
+import { formatLongDateTime } from '@/utils'
+
+// Constants
+import { API, SORT_OPTIONS, TABLE_HEADER, TAG_LIST } from '@/constants'
+
+// Types
+import { Project, ProjectStatus } from '@/types'
+
+// Icon components
+import { DropdownIcon, FilterIcon } from '@/components/Icons'
 
 // Components
 import {
@@ -10,31 +20,76 @@ import {
   Search,
   ProjectManagementPanel,
   TableProject,
-  ProjectRow,
+  TableRow,
 } from '@/components'
-import { DropdownIcon, FilterIcon } from '@/components/Icons'
 
-// Constants
-import { API, SORTOPTIONS, TABLEHEADER } from '@/constants'
-
-// Types
-import { Project, ProjectStatus } from '@/types'
+const projectDataFormInitial: Omit<Project, 'index' | 'onEditItem'> = {
+  id: '',
+  name: '',
+  manager: {
+    id: TAG_LIST[0].id,
+    img: TAG_LIST[0].img,
+  },
+  status: ProjectStatus.ON_HOLD,
+  updatedAt: 0,
+  resource: [],
+  start: '',
+  end: '',
+  estimation: 0,
+}
 
 const ProjectsPages = () => {
+  const [projectDataForm, setProjectDataForm] = useState(projectDataFormInitial)
+
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const [projects, setProjects] = useState<Project[]>([])
   const [tabView, setTabView] = useState(0)
+  const [isEdit, setIsEdit] = useState(false)
+  const [isLoadingUsers, setIsLoadingUsers] = useState(false)
 
   const getData = async () => {
+    setIsLoadingUsers(true)
     const response = await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}`)
+    const data = await response.json()
 
-    setProjects(await response.json())
+    setProjects(data)
+
+    // NOTE: Just for testing purposes
+    setTimeout(() => {
+      setIsLoadingUsers(false)
+    }, 1000)
   }
 
   useEffect(() => {
     getData()
   }, [])
+
+  const handleResetForm = () => {
+    onClose()
+    setProjectDataForm(projectDataFormInitial)
+    getData()
+    setIsEdit(false)
+  }
+
+  const handleSubmitForm = async (
+    data: Omit<Project, 'index' | 'onEditItem'>,
+  ) => {
+    const updatedTime = new Date()
+    const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
+
+    const requestOptions = {
+      method: isEdit ? 'PUT' : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newData),
+    }
+
+    const url = isEdit
+      ? `${API.BASE_URL}${API.PROJECT_COLLECTION}/${data?.id}`
+      : `${API.BASE_URL}${API.PROJECT_COLLECTION}`
+    await fetch(url, requestOptions)
+    handleResetForm()
+  }
 
   const riskProjects = useMemo(
     () => projects.filter(({ status }) => status === ProjectStatus.AT_RISK),
@@ -111,6 +166,37 @@ const ProjectsPages = () => {
     trackProjects,
   ])
 
+  const handleEditProject = (
+    project: Omit<Project, 'index' | 'onEditItem'>,
+  ) => {
+    onOpen()
+    setIsEdit(true)
+
+    const {
+      id,
+      name,
+      manager,
+      status,
+      updatedAt,
+      resource,
+      start,
+      end,
+      estimation,
+    } = project
+
+    setProjectDataForm({
+      id,
+      name,
+      manager,
+      status,
+      updatedAt,
+      resource,
+      start,
+      end,
+      estimation,
+    })
+  }
+
   return (
     <>
       <Flex mt="5" mb="7" mx="5" justifyContent="space-between">
@@ -119,7 +205,7 @@ const ProjectsPages = () => {
             leftIcon={<FilterIcon />}
             rightIcon={<DropdownIcon />}
             title="All"
-            options={SORTOPTIONS}
+            options={SORT_OPTIONS}
           />
           <Search width="280px" />
         </Flex>
@@ -131,14 +217,36 @@ const ProjectsPages = () => {
 
       <ProjectManagementPanel onChangeTab={setTabView} tabs={tabs} />
 
-      <TableProject<Project>
-        tableHeader={TABLEHEADER}
-        dataTable={projectsDisplay}
-        renderBody={(dataTable) => <ProjectRow {...dataTable} />}
-      />
+      {isLoadingUsers ? (
+        <Text py="6" fontSize="2xl" color="green" textAlign="center">
+          Loading projects...
+        </Text>
+      ) : (
+        <TableProject<Project>
+          tableHeader={TABLE_HEADER}
+          dataTable={projectsDisplay}
+          renderBody={(dataTable, index) => (
+            <TableRow
+              {...dataTable}
+              index={index}
+              onEditItem={handleEditProject}
+            />
+          )}
+        />
+      )}
 
-      <ModalCustom title="Add project" onClose={onClose} isOpen={isOpen}>
-        <Form />
+      <ModalCustom
+        title={isEdit ? 'Edit project' : 'Add project'}
+        onClose={onClose}
+        isOpen={isOpen}
+      >
+        <Form
+          isEdit={isEdit}
+          onClose={onClose}
+          onSubmitForm={handleSubmitForm}
+          projectDataForm={projectDataForm}
+          setProjectDataForm={setProjectDataForm}
+        />
       </ModalCustom>
     </>
   )

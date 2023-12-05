@@ -7,7 +7,7 @@ import { TableBody } from '../TableBody'
 interface ITableProps<T> {
   tableHeader: TableHeader[]
   dataTable: T[]
-  renderBody: (data: T) => JSX.Element
+  renderBody: (data: T, index: number) => JSX.Element
 }
 
 export const TableProject = <T,>({
