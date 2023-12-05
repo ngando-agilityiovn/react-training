@@ -5,7 +5,7 @@ import { ChevronRightIcon, DragHandleIcon } from '@chakra-ui/icons'
 import { Project, ProjectStatus, TAGS_COLORS, TAGS_VARIANT } from '@/types'
 
 // Constants
-import { MENU_OPTION } from '@/constants'
+// import { MENU_OPTION } from '@/constants'
 
 // Utils
 import { formatTime } from '@/utils'
@@ -41,7 +41,21 @@ const TableRow = (project: Project) => {
     end,
     estimation,
     onEditItem,
+    onDeleteItem,
   } = project
+
+  const MENU_OPTION = [
+    {
+      value: 'edit',
+      text: 'Edit',
+      handleClick: () => onEditItem(project),
+    },
+    {
+      value: 'delete',
+      text: 'Delete',
+      handleClick: () => onDeleteItem(project),
+    },
+  ]
 
   return (
     <>
@@ -117,11 +131,7 @@ const TableRow = (project: Project) => {
             {estimation}
             <Text>k</Text>
           </Flex>
-          <MenuSelect
-            leftIcon={<DragHandleIcon />}
-            options={MENU_OPTION}
-            onEditItem={() => onEditItem(project)}
-          />
+          <MenuSelect leftIcon={<DragHandleIcon />} options={MENU_OPTION} />
         </Flex>
       </Td>
     </>
