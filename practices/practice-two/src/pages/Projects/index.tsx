@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { AddIcon } from '@chakra-ui/icons'
 import { Button, Flex, Text } from '@chakra-ui/react'
+
+// Utils
 import { formatLongDateTime } from '@/utils'
 
 // Constants
@@ -54,6 +56,7 @@ const ProjectsPages = () => {
   const [isOpenProductModal, setIsOpenProductModal] = useState(false)
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
 
+  const [isLoadingUsers, setIsLoadingUsers] = useState(false)
   const handleToggleProductModal = () => {
     setIsOpenProductModal(!isOpenProductModal)
   }
@@ -63,10 +66,16 @@ const ProjectsPages = () => {
   }
 
   const getData = async () => {
+    setIsLoadingUsers(true)
     const response = await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}`)
     const data = await response.json()
 
     setProjects(data)
+
+    // NOTE: Just for testing purposes
+    setTimeout(() => {
+      setIsLoadingUsers(false)
+    }, 1000)
   }
 
   useEffect(() => {
@@ -259,7 +268,7 @@ const ProjectsPages = () => {
 
       <ProjectManagementPanel onChangeTab={setTabView} tabs={tabs} />
 
-      <TableProject<Project>
+      {/* <TableProject<Project>
         tableHeader={TABLE_HEADER}
         dataTable={projectsDisplay}
         renderBody={(dataTable, index) => (
@@ -270,7 +279,25 @@ const ProjectsPages = () => {
             onDeleteItem={handleDeleteProject}
           />
         )}
-      />
+      /> */}
+      {isLoadingUsers ? (
+        <Text py="6" fontSize="2xl" color="green" textAlign="center">
+          Loading projects...
+        </Text>
+      ) : (
+        <TableProject<Project>
+          tableHeader={TABLE_HEADER}
+          dataTable={projectsDisplay}
+          renderBody={(dataTable, index) => (
+            <TableRow
+              {...dataTable}
+              index={index}
+              onEditItem={handleEditProject}
+              onDeleteItem={handleDeleteProject}
+            />
+          )}
+        />
+      )}
 
       {isOpenProductModal && (
         <ModalCustom
