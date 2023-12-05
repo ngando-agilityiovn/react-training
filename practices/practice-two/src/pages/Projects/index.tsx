@@ -23,7 +23,8 @@ import {
   TableRow,
 } from '@/components'
 
-const projectDataFormInitial: Omit<Project, 'id' | 'index' | 'onEditItem'> = {
+const projectDataFormInitial: Omit<Project, 'index' | 'onEditItem'> = {
+  id: '',
   name: '',
   manager: {
     id: TAG_LIST[0].id,
@@ -65,7 +66,9 @@ const ProjectsPages = () => {
     setIsEdit(false)
   }
 
-  const handleSubmitForm = async (data: object) => {
+  const handleSubmitForm = async (
+    data: Omit<Project, 'index' | 'onEditItem'>,
+  ) => {
     const updatedTime = new Date()
     const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
     console.log(data)
@@ -77,27 +80,11 @@ const ProjectsPages = () => {
     }
 
     const url = isEdit
-      ? `${API.BASE_URL}${API.PROJECT_COLLECTION}/${isEdit}`
+      ? `${API.BASE_URL}${API.PROJECT_COLLECTION}/${data?.id}`
       : `${API.BASE_URL}${API.PROJECT_COLLECTION}`
     await fetch(url, requestOptions)
     handleResetForm()
   }
-
-  // const editProject = async (data: object) => {
-  //   const updatedTime = new Date()
-  //   const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
-
-  //   const requestOptions = {
-  //     method: 'PUT',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify(newData),
-  //   }
-  //   await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}/${idEdit}`, requestOptions)
-
-  //   onClose()
-  //   setProjectDataForm(projectDataFormInitial)
-  //   getData()
-  // }
 
   const riskProjects = useMemo(
     () => projects.filter(({ status }) => status === ProjectStatus.AT_RISK),
@@ -181,6 +168,7 @@ const ProjectsPages = () => {
     setIsEdit(true)
 
     const {
+      id,
       name,
       manager,
       status,
@@ -193,6 +181,7 @@ const ProjectsPages = () => {
     console.log('handleEditProject', project)
 
     setProjectDataForm({
+      id,
       name,
       manager,
       status,
@@ -205,11 +194,6 @@ const ProjectsPages = () => {
 
     // editProject(projectDataForm)
   }
-
-  // useEffect(() => {
-  //   console.log(projectDataForm)
-  //   // console.log(idEdit)
-  // }, [projectDataForm])
 
   return (
     <>

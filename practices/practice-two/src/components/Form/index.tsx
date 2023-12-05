@@ -11,18 +11,16 @@ import { useCallback, useState } from 'react'
 interface IFormProps {
   isEdit: boolean
   onClose: () => void
-  // addProject: (data: object) => void
-  onSubmitForm: (data: object) => void
-  projectDataForm: Omit<Project, 'id' | 'index' | 'onEditItem'>
+  onSubmitForm: (data: Omit<Project, 'index' | 'onEditItem'>) => void
+  projectDataForm: Omit<Project, 'index' | 'onEditItem'>
   setProjectDataForm: React.Dispatch<
-    React.SetStateAction<Omit<Project, 'id' | 'index' | 'onEditItem'>>
+    React.SetStateAction<Omit<Project, 'index' | 'onEditItem'>>
   >
 }
 
 const Form = ({
   isEdit,
   onClose,
-  // addProject,
   onSubmitForm,
   projectDataForm,
   setProjectDataForm,
@@ -31,7 +29,6 @@ const Form = ({
     projectDataForm || {}
 
   const [selectedTags, setSelectedTags] = useState<string[]>(resource)
-  console.log(projectDataForm)
 
   const handleOnChange = useCallback(
     (
@@ -54,18 +51,14 @@ const Form = ({
         const currentTags = selectedTags.filter((tag) => tag !== currentTag)
 
         setSelectedTags(currentTags)
+        handleOnChange(currentTag, 'resource')
       } else {
         setSelectedTags([...selectedTags, currentTag])
       }
-      handleOnChange(selectedTags, 'resource')
-      // handleOnChange(selectedTags.length + 1, 'resource')
+      handleOnChange([...selectedTags, currentTag], 'resource')
     },
     [selectedTags, handleOnChange],
   )
-
-  // const handleAddProject = () => {
-  //   addProject(projectDataForm)
-  // }
 
   return (
     <FormControl>

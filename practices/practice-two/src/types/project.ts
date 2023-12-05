@@ -1,7 +1,7 @@
 import { ProjectStatus } from './common'
 
 export interface Project {
-  id: number
+  id: string
   name: string
   manager: {
     id: number
