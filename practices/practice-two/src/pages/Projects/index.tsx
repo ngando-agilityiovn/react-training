@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import { AddIcon } from '@chakra-ui/icons'
-import { Button, Flex, useDisclosure } from '@chakra-ui/react'
+import { Button, Flex, Text } from '@chakra-ui/react'
 import { formatLongDateTime } from '@/utils'
 
 // Constants
-import { API, SORT_OPTIONS, TABLE_HEADER, TAG_LIST } from '@/constants'
+import { API, TABLE_HEADER, TAG_LIST } from '@/constants'
 
 // Types
 import { Project, ProjectStatus } from '@/types'
@@ -23,7 +23,10 @@ import {
   TableRow,
 } from '@/components'
 
-const projectDataFormInitial: Omit<Project, 'index' | 'onEditItem'> = {
+const projectDataFormInitial: Omit<
+  Project,
+  'index' | 'onEditItem' | 'onDeleteItem'
+> = {
   id: '',
   name: '',
   manager: {
@@ -41,11 +44,23 @@ const projectDataFormInitial: Omit<Project, 'index' | 'onEditItem'> = {
 const ProjectsPages = () => {
   const [projectDataForm, setProjectDataForm] = useState(projectDataFormInitial)
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  // const { isOpen, onClose } = useDisclosure()
 
   const [projects, setProjects] = useState<Project[]>([])
   const [tabView, setTabView] = useState(0)
   const [isEdit, setIsEdit] = useState(false)
+  const [idEdit, setIdEdit] = useState('')
+
+  const [isOpenProductModal, setIsOpenProductModal] = useState(false)
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
+
+  const handleToggleProductModal = () => {
+    setIsOpenProductModal(!isOpenProductModal)
+  }
+
+  const handleToggleDeleteModal = () => {
+    setIsOpenDeleteModal(!isOpenDeleteModal)
+  }
 
   const getData = async () => {
     const response = await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}`)
@@ -59,14 +74,14 @@ const ProjectsPages = () => {
   }, [])
 
   const handleResetForm = () => {
-    onClose()
+    handleToggleProductModal()
     setProjectDataForm(projectDataFormInitial)
     getData()
     setIsEdit(false)
   }
 
   const handleSubmitForm = async (
-    data: Omit<Project, 'index' | 'onEditItem'>,
+    data: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
   ) => {
     const updatedTime = new Date()
     const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
@@ -82,6 +97,15 @@ const ProjectsPages = () => {
       : `${API.BASE_URL}${API.PROJECT_COLLECTION}`
     await fetch(url, requestOptions)
     handleResetForm()
+  }
+
+  const deleteProject = async () => {
+    await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}/${idEdit}`, {
+      method: 'DELETE',
+    })
+
+    handleToggleDeleteModal()
+    getData()
   }
 
   const riskProjects = useMemo(
@@ -160,9 +184,9 @@ const ProjectsPages = () => {
   ])
 
   const handleEditProject = (
-    project: Omit<Project, 'index' | 'onEditItem'>,
+    project: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
   ) => {
-    onOpen()
+    handleToggleProductModal()
     setIsEdit(true)
 
     const {
@@ -190,6 +214,27 @@ const ProjectsPages = () => {
     })
   }
 
+  const handleDeleteProject = (
+    project: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
+  ) => {
+    const { id } = project
+    setIdEdit(id)
+    handleToggleDeleteModal()
+  }
+
+  const SORT_OPTIONS = [
+    {
+      value: 'name',
+      text: 'Project name',
+      handleClick: () => console.log('Project click'),
+    },
+    {
+      value: 'updatedAt',
+      text: 'Last update',
+      handleClick: () => console.log('Last update click'),
+    },
+  ]
+
   return (
     <>
       <Flex mt="5" mb="7" mx="5" justifyContent="space-between">
@@ -203,7 +248,11 @@ const ProjectsPages = () => {
           <Search width="280px" />
         </Flex>
 
-        <Button leftIcon={<AddIcon />} variant="solid" onClick={onOpen}>
+        <Button
+          leftIcon={<AddIcon />}
+          variant="solid"
+          onClick={handleToggleProductModal}
+        >
           Add project
         </Button>
       </Flex>
@@ -218,23 +267,47 @@ const ProjectsPages = () => {
             {...dataTable}
             index={index}
             onEditItem={handleEditProject}
+            onDeleteItem={handleDeleteProject}
           />
         )}
       />
 
-      <ModalCustom
-        title={isEdit ? 'Edit project' : 'Add project'}
-        onClose={onClose}
-        isOpen={isOpen}
-      >
-        <Form
-          isEdit={isEdit}
-          onClose={onClose}
-          onSubmitForm={handleSubmitForm}
-          projectDataForm={projectDataForm}
-          setProjectDataForm={setProjectDataForm}
-        />
-      </ModalCustom>
+      {isOpenProductModal && (
+        <ModalCustom
+          title={isEdit ? 'Edit project' : 'Add project'}
+          onClose={handleToggleProductModal}
+          isOpen={isOpenProductModal}
+        >
+          <Form
+            isEdit={isEdit}
+            onClose={handleToggleProductModal}
+            onSubmitForm={handleSubmitForm}
+            projectDataForm={projectDataForm}
+            setProjectDataForm={setProjectDataForm}
+          />
+        </ModalCustom>
+      )}
+
+      {isOpenDeleteModal && (
+        <ModalCustom
+          title="Delete project"
+          isOpen={isOpenDeleteModal}
+          onClose={handleToggleDeleteModal}
+        >
+          <Text px="6">
+            Are you sure you want to delete MicroRaptor website? If you delete,
+            it will be permanently lost.
+          </Text>
+          <Flex px="6" justifyContent="flex-end" gap="5" mt="8">
+            <Button variant="outline" onClick={handleToggleDeleteModal}>
+              Cancel
+            </Button>
+            <Button variant="error" onClick={deleteProject}>
+              Delete
+            </Button>
+          </Flex>
+        </ModalCustom>
+      )}
     </>
   )
 }

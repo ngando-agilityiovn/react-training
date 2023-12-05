@@ -4,10 +4,10 @@ import { ReactElement } from 'react'
 export interface Option {
   value: string
   text: string
+  handleClick: () => void
 }
 
 interface IMenuProps {
-  onEditItem?: () => void
   options: Option[]
   title?: string
   width?: string
@@ -16,7 +16,6 @@ interface IMenuProps {
 }
 
 const MenuSelect = ({
-  onEditItem,
   options,
   title,
   width,
@@ -37,8 +36,8 @@ const MenuSelect = ({
       {title}
     </MenuButton>
     <MenuList>
-      {options.map(({ value, text }) => (
-        <MenuItem key={value} onClick={onEditItem}>
+      {options.map(({ value, text, handleClick }) => (
+        <MenuItem key={value} onClick={handleClick}>
           {text}
         </MenuItem>
       ))}

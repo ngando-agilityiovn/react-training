@@ -15,6 +15,7 @@ export interface Project {
   estimation: number
   index: number
   onEditItem: (data: Project) => void
+  onDeleteItem: (data: Project) => void
 }
 
 export interface TagGroup {

@@ -11,10 +11,12 @@ import { Project } from '@/types'
 interface IFormProps {
   isEdit: boolean
   onClose: () => void
-  onSubmitForm: (data: Omit<Project, 'index' | 'onEditItem'>) => void
-  projectDataForm: Omit<Project, 'index' | 'onEditItem'>
+  onSubmitForm: (
+    data: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
+  ) => void
+  projectDataForm: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>
   setProjectDataForm: React.Dispatch<
-    React.SetStateAction<Omit<Project, 'index' | 'onEditItem'>>
+    React.SetStateAction<Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>>
   >
 }
 
