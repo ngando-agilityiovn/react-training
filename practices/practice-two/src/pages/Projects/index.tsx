@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { AddIcon } from '@chakra-ui/icons'
-import { Button, Flex, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Spinner, Text } from '@chakra-ui/react'
 
 // Utils
 import { formatLongDateTime } from '@/utils'
@@ -46,16 +46,16 @@ const projectDataFormInitial: Omit<
 const ProjectsPages = () => {
   const [projectDataForm, setProjectDataForm] = useState(projectDataFormInitial)
 
-  const [projects, setProjects] = useState<Project[]>([])
+  const [projects, setProjects] = useState<Record<string, Project[]>>()
   const [tabView, setTabView] = useState(0)
   const [isEdit, setIsEdit] = useState(false)
   const [idEdit, setIdEdit] = useState('')
-  const [search, setSearch] = useState<Project[]>([])
 
   const [isOpenProductModal, setIsOpenProductModal] = useState(false)
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
 
   const [isLoadingUsers, setIsLoadingUsers] = useState(false)
+
   const handleToggleProductModal = () => {
     setIsOpenProductModal(!isOpenProductModal)
   }
@@ -67,9 +67,16 @@ const ProjectsPages = () => {
   const getData = async () => {
     setIsLoadingUsers(true)
     const response = await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}`)
-    const data = await response.json()
+    const data = (await response.json()) as Project[]
 
-    setProjects(data)
+    const formatData: Record<string, Project[]> = { all: data }
+
+    Object.values(ProjectStatus).forEach((value) => {
+      const filterByStatus = data.filter((item) => item.status === value)
+      formatData[value] = filterByStatus
+    })
+
+    setProjects(formatData)
 
     // NOTE: Just for testing purposes
     setTimeout(() => {
@@ -116,81 +123,46 @@ const ProjectsPages = () => {
     getData()
   }
 
-  const riskProjects = useMemo(
-    () => projects.filter(({ status }) => status === ProjectStatus.AT_RISK),
-    [projects],
-  )
-
-  const holdProjects = useMemo(
-    () => projects.filter(({ status }) => status === ProjectStatus.ON_HOLD),
-    [projects],
-  )
-
-  const potentialProjects = useMemo(
-    () =>
-      projects.filter(({ status }) => status === ProjectStatus.POTENTIAL_RISK),
-    [projects],
-  )
-
-  const trackProjects = useMemo(
-    () => projects.filter(({ status }) => status === ProjectStatus.ON_TRACK),
-    [projects],
-  )
-
   const tabs = useMemo(
     () => [
       {
         text: 'All',
-        total:
-          riskProjects.length +
-          holdProjects.length +
-          potentialProjects.length +
-          trackProjects.length,
+        total: projects?.all.length,
       },
       {
         text: 'Risk',
-        total: riskProjects.length,
+        total: projects?.[ProjectStatus.AT_RISK].length,
       },
       {
         text: 'On hold',
-        total: holdProjects.length,
+        total: projects?.[ProjectStatus.ON_HOLD].length,
       },
       {
         text: 'Potential risk',
-        total: potentialProjects.length,
+        total: projects?.[ProjectStatus.POTENTIAL_RISK].length,
       },
+
       {
         text: 'On track',
-        total: trackProjects.length,
+        total: projects?.[ProjectStatus.ON_TRACK].length,
       },
     ],
-    [
-      holdProjects.length,
-      potentialProjects.length,
-      riskProjects.length,
-      trackProjects.length,
-    ],
+    [projects],
   )
+
+  console.log('type', typeof projects?.[ProjectStatus.AT_RISK].length)
 
   const projectsDisplay = useMemo(() => {
     const projectsMapping = {
-      0: search.length ? search : projects,
-      1: search.length ? search : riskProjects,
-      2: search.length ? search : holdProjects,
-      3: search.length ? search : potentialProjects,
-      4: search.length ? search : trackProjects,
+      0: projects?.all,
+      1: projects?.[ProjectStatus.AT_RISK],
+      2: projects?.[ProjectStatus.ON_HOLD],
+      3: projects?.[ProjectStatus.POTENTIAL_RISK],
+      4: projects?.[ProjectStatus.ON_TRACK],
     }
 
     return projectsMapping[tabView as keyof typeof projectsMapping]
-  }, [
-    holdProjects,
-    potentialProjects,
-    projects,
-    riskProjects,
-    tabView,
-    trackProjects,
-    search,
-  ])
+  }, [projects, tabView])
 
   const handleEditProject = (
     project: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
@@ -231,39 +203,30 @@ const ProjectsPages = () => {
     handleToggleDeleteModal()
   }
 
-  const handleSearch = (value: string) => {
-    let searchValue: Project[] = []
+  const handleSearch = (keySearch: string) => {
+    const tempProjects: Record<string, Project[]> = {}
 
-    switch (tabView) {
-      case 0:
-        searchValue = projects.filter((project) => project.name.includes(value))
-        break
-      case 1:
-        searchValue = riskProjects.filter((project) =>
-          project.name.includes(value),
-        )
-        break
-      case 2:
-        searchValue = holdProjects.filter((project) =>
-          project.name.includes(value),
-        )
-        break
-      case 3:
-        searchValue = potentialProjects.filter((project) =>
-          project.name.includes(value),
-        )
-        break
-      case 4:
-        searchValue = trackProjects.filter((project) =>
-          project.name.includes(value),
-        )
-        break
-
-      default:
-        throw new Error('Unknown tabView')
+    if (!keySearch) {
+      getData()
     }
 
-    setSearch(searchValue)
+    if (projects) {
+      Object.values(ProjectStatus).forEach((value) => {
+        const searchByStatus = projects[value].filter((item) =>
+          item.name.includes(keySearch),
+        )
+
+        tempProjects[value] = searchByStatus
+      })
+
+      const searchAll = projects.all.filter((item) =>
+        item.name.includes(keySearch),
+      )
+
+      tempProjects.all = searchAll
+
+      setProjects(tempProjects)
+    }
   }
 
   const SORT_OPTIONS = [
@@ -304,9 +267,15 @@ const ProjectsPages = () => {
       <ProjectManagementPanel onChangeTab={setTabView} tabs={tabs} />
 
       {isLoadingUsers ? (
-        <Text py="6" fontSize="2xl" color="green" textAlign="center">
-          Loading projects...
-        </Text>
+        <Box py="6" textAlign="center">
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+          />
+        </Box>
       ) : (
         <TableProject<Project>
           tableHeader={TABLE_HEADER}

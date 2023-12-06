@@ -1,7 +1,7 @@
 {
   "projects": [
     {
-      "id": "5",
+      "id": 0,
       "name": "ReactJS ",
       "manager": {
         "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatarRog.png?alt=media&token=606acbd1-cf3a-4c59-85ca-f7d49b74347a",
@@ -15,7 +15,7 @@
       "estimation": "123456"
     },
     {
-      "id": "LvQVnU6",
+      "id": 1,
       "name": "Python",
       "manager": {
         "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatar.png?alt=media&token=81b6abe0-23b2-4e79-b3e1-77050c86baaf",
@@ -37,7 +37,7 @@
       "estimation": "99"
     },
     {
-      "id": "ldlzbE3",
+      "id": 2,
       "name": "React Native",
       "manager": {
         "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatarDias.png?alt=media&token=06db0e21-b5a5-4574-9bf4-678ea2aa279d",
@@ -57,13 +57,55 @@
       "estimation": "111"
     },
     {
-      "id": "Wj-JLXr",
+      "id": 3,
       "name": "Java Core",
       "manager": {
         "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatarDias.png?alt=media&token=06db0e21-b5a5-4574-9bf4-678ea2aa279d",
         "id": 2
       },
       "status": "On Hold",
+      "updatedAt": "5 Dec 2023, 11:48 AM",
+      "resource": ["Frontend", "Backend", "Full Stack"],
+      "start": "2023-12-25",
+      "end": "2023-12-31",
+      "estimation": "45"
+    },
+    {
+      "id": 4,
+      "name": "C#",
+      "manager": {
+        "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatarDias.png?alt=media&token=06db0e21-b5a5-4574-9bf4-678ea2aa279d",
+        "id": 2
+      },
+      "status": "Potential Risk",
+      "updatedAt": "5 Dec 2023, 11:48 AM",
+      "resource": ["Frontend", "Backend", "Full Stack"],
+      "start": "2023-12-25",
+      "end": "2023-12-31",
+      "estimation": "45"
+    },
+    {
+      "id": 5,
+      "name": "Java Springboot",
+      "manager": {
+        "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatarDias.png?alt=media&token=06db0e21-b5a5-4574-9bf4-678ea2aa279d",
+        "id": 2
+      },
+      "status": "On Track",
+      "updatedAt": "5 Dec 2023, 11:48 AM",
+      "resource": ["Frontend", "Backend", "Full Stack"],
+      "start": "2023-12-25",
+      "end": "2023-12-31",
+      "estimation": "45"
+    },
+    {
+      "id": 6,
+      "name": "Java Desktop",
+      "manager": {
+        "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatarDias.png?alt=media&token=06db0e21-b5a5-4574-9bf4-678ea2aa279d",
+        "id": 2
+      },
+      "status": "Potential Risk",
       "updatedAt": "5 Dec 2023, 11:48 AM",
       "resource": ["Frontend", "Backend", "Full Stack"],
       "start": "2023-12-25",
