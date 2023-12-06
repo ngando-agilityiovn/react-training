@@ -46,12 +46,11 @@ const projectDataFormInitial: Omit<
 const ProjectsPages = () => {
   const [projectDataForm, setProjectDataForm] = useState(projectDataFormInitial)
 
-  // const { isOpen, onClose } = useDisclosure()
-
   const [projects, setProjects] = useState<Project[]>([])
   const [tabView, setTabView] = useState(0)
   const [isEdit, setIsEdit] = useState(false)
   const [idEdit, setIdEdit] = useState('')
+  const [search, setSearch] = useState<Project[]>([])
 
   const [isOpenProductModal, setIsOpenProductModal] = useState(false)
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
@@ -175,11 +174,11 @@ const ProjectsPages = () => {
 
   const projectsDisplay = useMemo(() => {
     const projectsMapping = {
-      0: projects,
-      1: riskProjects,
-      2: holdProjects,
-      3: potentialProjects,
-      4: trackProjects,
+      0: search.length ? search : projects,
+      1: search.length ? search : riskProjects,
+      2: search.length ? search : holdProjects,
+      3: search.length ? search : potentialProjects,
+      4: search.length ? search : trackProjects,
     }
 
     return projectsMapping[tabView as keyof typeof projectsMapping]
@@ -190,6 +189,7 @@ const ProjectsPages = () => {
     riskProjects,
     tabView,
     trackProjects,
+    search,
   ])
 
   const handleEditProject = (
@@ -231,6 +231,41 @@ const ProjectsPages = () => {
     handleToggleDeleteModal()
   }
 
+  const handleSearch = (value: string) => {
+    let searchValue: Project[] = []
+
+    switch (tabView) {
+      case 0:
+        searchValue = projects.filter((project) => project.name.includes(value))
+        break
+      case 1:
+        searchValue = riskProjects.filter((project) =>
+          project.name.includes(value),
+        )
+        break
+      case 2:
+        searchValue = holdProjects.filter((project) =>
+          project.name.includes(value),
+        )
+        break
+      case 3:
+        searchValue = potentialProjects.filter((project) =>
+          project.name.includes(value),
+        )
+        break
+      case 4:
+        searchValue = trackProjects.filter((project) =>
+          project.name.includes(value),
+        )
+        break
+
+      default:
+        throw new Error('Unknown tabView')
+    }
+
+    setSearch(searchValue)
+  }
+
   const SORT_OPTIONS = [
     {
       value: 'name',
@@ -254,7 +289,7 @@ const ProjectsPages = () => {
             title="All"
             options={SORT_OPTIONS}
           />
-          <Search width="280px" />
+          <Search width="280px" onChange={handleSearch} />
         </Flex>
 
         <Button
@@ -268,18 +303,6 @@ const ProjectsPages = () => {
 
       <ProjectManagementPanel onChangeTab={setTabView} tabs={tabs} />
 
-      {/* <TableProject<Project>
-        tableHeader={TABLE_HEADER}
-        dataTable={projectsDisplay}
-        renderBody={(dataTable, index) => (
-          <TableRow
-            {...dataTable}
-            index={index}
-            onEditItem={handleEditProject}
-            onDeleteItem={handleDeleteProject}
-          />
-        )}
-      /> */}
       {isLoadingUsers ? (
         <Text py="6" fontSize="2xl" color="green" textAlign="center">
           Loading projects...
