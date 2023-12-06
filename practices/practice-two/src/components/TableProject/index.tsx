@@ -14,13 +14,15 @@ export const TableProject = <T,>({
   tableHeader,
   dataTable,
   renderBody,
-}: ITableProps<T>) => (
-  <TableContainer>
-    <Table>
-      <TableHeader tableHeader={tableHeader} />
-      <TableBody<T> tableData={dataTable} customRender={renderBody} />
-    </Table>
-  </TableContainer>
-)
+}: ITableProps<T>) => {
+  return dataTable ? (
+    <TableContainer>
+      <Table>
+        <TableHeader tableHeader={tableHeader} />
+        <TableBody<T> tableData={dataTable} customRender={renderBody} />
+      </Table>
+    </TableContainer>
+  ) : null
+}
 
 export default TableProject

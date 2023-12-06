@@ -3,7 +3,7 @@ import { AddIcon } from '@chakra-ui/icons'
 import { Box, Button, Flex, Spinner, Text } from '@chakra-ui/react'
 
 // Utils
-import { formatLongDateTime } from '@/utils'
+import { formatLongDateTime, sorting } from '@/utils'
 
 // Constants
 import { API, TABLE_HEADER, TAG_LIST } from '@/constants'
@@ -12,7 +12,7 @@ import { API, TABLE_HEADER, TAG_LIST } from '@/constants'
 import { Project, ProjectStatus } from '@/types'
 
 // Icon components
-import { DropdownIcon, FilterIcon } from '@/components/Icons'
+import { DropdownIcon } from '@/components/Icons'
 
 // Components
 import {
@@ -55,6 +55,29 @@ const ProjectsPages = () => {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
 
   const [isLoadingUsers, setIsLoadingUsers] = useState(false)
+
+  const handleOnSort = (
+    sortBy: string = 'name',
+    orderBy: string = 'ascending',
+  ) => {
+    const tempDataAfterSorted: Record<string, Project[]> = {}
+
+    const isDateValue = sortBy === 'updatedAt'
+
+    Object.values(ProjectStatus).forEach((status) => {
+      const tempData = sorting(projects![status], sortBy, orderBy, isDateValue)
+
+      tempDataAfterSorted[status] = tempData
+    })
+    tempDataAfterSorted.all = sorting(
+      projects!.all,
+      sortBy,
+      orderBy,
+      isDateValue,
+    )
+
+    setProjects(tempDataAfterSorted)
+  }
 
   const handleToggleProductModal = () => {
     setIsOpenProductModal(!isOpenProductModal)
@@ -150,8 +173,6 @@ const ProjectsPages = () => {
     [projects],
   )
 
-  console.log('type', typeof projects?.[ProjectStatus.AT_RISK].length)
-
   const projectsDisplay = useMemo(() => {
     const projectsMapping = {
       0: projects?.all,
@@ -231,14 +252,24 @@ const ProjectsPages = () => {
 
   const SORT_OPTIONS = [
     {
-      value: 'name',
-      text: 'Project name',
-      handleClick: () => console.log('Project click'), //NOTE: update later
+      value: 'name-asc',
+      text: 'Project name (Asc)',
+      handleClick: () => handleOnSort(),
     },
     {
-      value: 'updatedAt',
-      text: 'Last update',
-      handleClick: () => console.log('Last update click'), // NOTE: update later
+      value: 'name-desc',
+      text: 'Project name (Desc)',
+      handleClick: () => handleOnSort('name', 'descending'),
+    },
+    {
+      value: 'updatedAt-asc',
+      text: 'Recently updated',
+      handleClick: () => handleOnSort('updatedAt', 'descending'),
+    },
+    {
+      value: 'updatedAt-desc',
+      text: 'Least recently updated',
+      handleClick: () => handleOnSort('updatedAt', 'ascending'),
     },
   ]
 
@@ -247,9 +278,8 @@ const ProjectsPages = () => {
       <Flex mt="5" mb="7" mx="5" justifyContent="space-between">
         <Flex w="370px" border="2px solid #e2e8f0" borderRadius="1.5">
           <MenuSelect
-            leftIcon={<FilterIcon />}
             rightIcon={<DropdownIcon />}
-            title="All"
+            title="Sort by"
             options={SORT_OPTIONS}
           />
           <Search width="280px" onChange={handleSearch} />
