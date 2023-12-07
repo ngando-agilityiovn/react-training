@@ -3,7 +3,7 @@ import { AddIcon } from '@chakra-ui/icons'
 import { Box, Button, Flex, Spinner, Text } from '@chakra-ui/react'
 
 // Utils
-import { formatLongDateTime, sorting } from '@/utils'
+import { validate, formatLongDateTime, sorting } from '@/utils'
 
 // Constants
 import { API, TABLE_HEADER, TAG_LIST } from '@/constants'
@@ -13,6 +13,9 @@ import { Project, ProjectStatus } from '@/types'
 
 // Icon components
 import { DropdownIcon } from '@/components/Icons'
+
+// Services
+import { apiRequest } from '@/services'
 
 // Components
 import {
@@ -46,8 +49,34 @@ const projectDataFormInitial: Omit<
 const ProjectsPages = () => {
   const [projectDataForm, setProjectDataForm] = useState(projectDataFormInitial)
 
+  const [errors, setErrors] = useState('')
+
+  const handleValidate = () => {
+    // const key = Object.keys(projectDataForm)
+    // const value = Object.values(projectDataForm)
+
+    // let mess = { ...errors }
+
+    // for (let i = 0; i < key.length; i++) {
+    //   const eror = Validate({ name: key[i], value: value[i] })
+    //   mess = { ...mess, [key[i]]: eror }
+    // }
+
+    // setErrors(mess)
+
+    const mess = validate({ name: 'name', value: projectDataForm.name })
+
+    setErrors(mess)
+
+    if (mess === 'This field is required' || mess === 'Invalid name') {
+      return false
+    }
+    return true
+  }
+
   const [projects, setProjects] = useState<Record<string, Project[]>>()
   const [tabView, setTabView] = useState(0)
+
   const [isEdit, setIsEdit] = useState(false)
   const [idEdit, setIdEdit] = useState('')
 
@@ -55,6 +84,15 @@ const ProjectsPages = () => {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
 
   const [isLoadingUsers, setIsLoadingUsers] = useState(false)
+
+  // Show and hide modal
+  const handleToggleProductModal = () => {
+    setIsOpenProductModal(!isOpenProductModal)
+  }
+
+  const handleToggleDeleteModal = () => {
+    setIsOpenDeleteModal(!isOpenDeleteModal)
+  }
 
   const handleOnSort = (
     sortBy: string = 'name',
@@ -79,23 +117,17 @@ const ProjectsPages = () => {
     setProjects(tempDataAfterSorted)
   }
 
-  const handleToggleProductModal = () => {
-    setIsOpenProductModal(!isOpenProductModal)
-  }
-
-  const handleToggleDeleteModal = () => {
-    setIsOpenDeleteModal(!isOpenDeleteModal)
-  }
-
   const getData = async () => {
     setIsLoadingUsers(true)
-    const response = await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}`)
-    const data = (await response.json()) as Project[]
+    const response = await apiRequest<null, Project[]>(
+      `${API.BASE_URL}${API.PROJECT_COLLECTION}`,
+      'GET',
+    )
 
-    const formatData: Record<string, Project[]> = { all: data }
+    const formatData: Record<string, Project[]> = { all: response }
 
     Object.values(ProjectStatus).forEach((value) => {
-      const filterByStatus = data.filter((item) => item.status === value)
+      const filterByStatus = response.filter((item) => item.status === value)
       formatData[value] = filterByStatus
     })
 
@@ -121,26 +153,24 @@ const ProjectsPages = () => {
   const handleSubmitForm = async (
     data: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
   ) => {
+    //
+    if (!handleValidate()) return
+
     const updatedTime = new Date()
     const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
-
-    const requestOptions = {
-      method: isEdit ? 'PUT' : 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newData),
-    }
 
     const url = isEdit
       ? `${API.BASE_URL}${API.PROJECT_COLLECTION}/${data?.id}`
       : `${API.BASE_URL}${API.PROJECT_COLLECTION}`
-    await fetch(url, requestOptions)
+    await apiRequest(url, isEdit ? 'PUT' : 'POST', newData)
     handleResetForm()
   }
 
   const deleteProject = async () => {
-    await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}/${idEdit}`, {
-      method: 'DELETE',
-    })
+    await apiRequest(
+      `${API.BASE_URL}${API.PROJECT_COLLECTION}/${idEdit}`,
+      'DELETE',
+    )
 
     handleToggleDeleteModal()
     getData()
@@ -185,6 +215,7 @@ const ProjectsPages = () => {
     return projectsMapping[tabView as keyof typeof projectsMapping]
   }, [projects, tabView])
 
+  // Handle edit project
   const handleEditProject = (
     project: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
   ) => {
@@ -216,6 +247,7 @@ const ProjectsPages = () => {
     })
   }
 
+  // Handle delete project
   const handleDeleteProject = (
     project: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
   ) => {
@@ -224,6 +256,7 @@ const ProjectsPages = () => {
     handleToggleDeleteModal()
   }
 
+  // Handle search by project name
   const handleSearch = (keySearch: string) => {
     const tempProjects: Record<string, Project[]> = {}
 
@@ -333,6 +366,7 @@ const ProjectsPages = () => {
             onSubmitForm={handleSubmitForm}
             projectDataForm={projectDataForm}
             setProjectDataForm={setProjectDataForm}
+            error={errors}
           />
         </ModalCustom>
       )}

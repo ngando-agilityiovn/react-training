@@ -18,6 +18,7 @@ interface IFormProps {
   setProjectDataForm: React.Dispatch<
     React.SetStateAction<Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>>
   >
+  error: string
 }
 
 const Form = ({
@@ -26,6 +27,7 @@ const Form = ({
   onSubmitForm,
   projectDataForm,
   setProjectDataForm,
+  error,
 }: IFormProps) => {
   const { resource, name, estimation, manager, start, end } =
     projectDataForm || {}
@@ -59,6 +61,7 @@ const Form = ({
             placeholder=""
             marginBot="6"
             onChange={handleOnChange}
+            errorMessage={error}
           />
 
           <ProjectTagManager

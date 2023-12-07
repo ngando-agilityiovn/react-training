@@ -16,13 +16,13 @@
     },
     {
       "id": 1,
-      "name": "Python",
+      "name": "Python P",
       "manager": {
         "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatar.png?alt=media&token=81b6abe0-23b2-4e79-b3e1-77050c86baaf",
         "id": 1
       },
       "status": "On Hold",
-      "updatedAt": "5 Dec 2023, 11:10 AM",
+      "updatedAt": "6 Dec 2023, 11:31 PM",
       "resource": [
         "Frontend",
         "UX/UI Design",
@@ -30,7 +30,8 @@
         "Full Stack",
         "QA",
         "Graphic Designer",
-        "Backend"
+        "Backend",
+        "Web Designer"
       ],
       "start": "2023-12-09",
       "end": "2023-12-27",
@@ -111,20 +112,6 @@
       "start": "2023-12-25",
       "end": "2023-12-31",
       "estimation": "45"
-    },
-    {
-      "id": 7,
-      "name": "Hi Hi",
-      "manager": {
-        "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatar.png?alt=media&token=81b6abe0-23b2-4e79-b3e1-77050c86baaf",
-        "id": 1
-      },
-      "status": "On Hold",
-      "updatedAt": "6 Dec 2023, 7:09 PM",
-      "resource": [],
-      "start": "2023-12-07",
-      "end": "2023-12-10",
-      "estimation": "12"
     }
   ]
 }
