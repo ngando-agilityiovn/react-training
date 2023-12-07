@@ -3,7 +3,7 @@ import { AddIcon } from '@chakra-ui/icons'
 import { Box, Button, Flex, Spinner, Text } from '@chakra-ui/react'
 
 // Utils
-import { formatLongDateTime } from '@/utils'
+import { formatDataByStatus, formatLongDateTime } from '@/utils'
 
 // Constants
 import { API, TABLE_HEADER, TAG_LIST } from '@/constants'
@@ -69,14 +69,7 @@ const ProjectsPages = () => {
     const response = await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}`)
     const data = (await response.json()) as Project[]
 
-    const formatData: Record<string, Project[]> = { all: data }
-
-    Object.values(ProjectStatus).forEach((value) => {
-      const filterByStatus = data.filter((item) => item.status === value)
-      formatData[value] = filterByStatus
-    })
-
-    setProjects(formatData)
+    setProjects(formatDataByStatus(data))
 
     // NOTE: Just for testing purposes
     setTimeout(() => {
