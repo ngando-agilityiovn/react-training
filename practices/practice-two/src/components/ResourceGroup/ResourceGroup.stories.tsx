@@ -44,7 +44,6 @@ type Story = StoryObj<typeof ResourceGroup>
 export const Base: Story = {
   args: {
     title: 'Resources',
-    variant: 'outline',
     tagGroup: tagGroup,
   },
 }

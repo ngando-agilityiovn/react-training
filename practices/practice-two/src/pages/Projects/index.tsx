@@ -3,7 +3,12 @@ import { AddIcon } from '@chakra-ui/icons'
 import { Box, Button, Flex, Spinner, Text } from '@chakra-ui/react'
 
 // Utils
-import { validate, formatLongDateTime, sorting } from '@/utils'
+import {
+  validate,
+  formatLongDateTime,
+  sorting,
+  formatDataByStatus,
+} from '@/utils'
 
 // Constants
 import { API, TABLE_HEADER, TAG_LIST } from '@/constants'
@@ -64,14 +69,33 @@ const ProjectsPages = () => {
 
     // setErrors(mess)
 
-    const mess = validate({ name: 'name', value: projectDataForm.name })
+    // Validate the 'name' field of 'projectDataForm'
+    const nameError = validate({ name: 'name', value: projectDataForm.name })
 
-    setErrors(mess)
+    console.log(typeof nameError)
+    // Validate the 'estimation' field of 'projectDataForm'
+    const estimationError = validate({
+      name: 'estimation',
+      value: projectDataForm.estimation,
+    })
 
-    if (mess === 'This field is required' || mess === 'Invalid name') {
+    setErrors(nameError)
+
+    if (nameError || estimationError) {
       return false
     }
+
     return true
+
+    // const mess = validate({ name: 'name', value: projectDataForm.name })
+
+    // setErrors(mess)
+    // console.log('projectDataForm', projectDataForm.estimation)
+
+    // if (mess === 'This field is required' || mess === 'Invalid name') {
+    //   return false
+    // }
+    // return true
   }
 
   const [projects, setProjects] = useState<Record<string, Project[]>>()
@@ -124,14 +148,7 @@ const ProjectsPages = () => {
       'GET',
     )
 
-    const formatData: Record<string, Project[]> = { all: response }
-
-    Object.values(ProjectStatus).forEach((value) => {
-      const filterByStatus = response.filter((item) => item.status === value)
-      formatData[value] = filterByStatus
-    })
-
-    setProjects(formatData)
+    setProjects(formatDataByStatus(response))
 
     // NOTE: Just for testing purposes
     setTimeout(() => {
@@ -153,7 +170,6 @@ const ProjectsPages = () => {
   const handleSubmitForm = async (
     data: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
   ) => {
-    //
     if (!handleValidate()) return
 
     const updatedTime = new Date()

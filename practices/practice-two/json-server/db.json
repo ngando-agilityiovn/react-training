@@ -112,6 +112,76 @@
       "start": "2023-12-25",
       "end": "2023-12-31",
       "estimation": "45"
+    },
+    {
+      "id": 7,
+      "name": "Ngan Do",
+      "manager": {
+        "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatar.png?alt=media&token=81b6abe0-23b2-4e79-b3e1-77050c86baaf",
+        "id": 1
+      },
+      "status": "On Hold",
+      "updatedAt": "7 Dec 2023, 3:37 PM",
+      "resource": ["Backend", "Frontend"],
+      "start": "",
+      "end": "",
+      "estimation": "12"
+    },
+    {
+      "id": 8,
+      "name": "VueJS hhhhhhh",
+      "manager": {
+        "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatar.png?alt=media&token=81b6abe0-23b2-4e79-b3e1-77050c86baaf",
+        "id": 1
+      },
+      "status": "On Hold",
+      "updatedAt": "7 Dec 2023, 3:44 PM",
+      "resource": ["Frontend", "Backend", "Full Stack"],
+      "start": "2023-12-09",
+      "end": "2023-12-15",
+      "estimation": "144"
+    },
+    {
+      "id": 9,
+      "name": "Ngan",
+      "manager": {
+        "id": 0,
+        "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatarRog.png?alt=media&token=606acbd1-cf3a-4c59-85ca-f7d49b74347a"
+      },
+      "status": "On Hold",
+      "updatedAt": "7 Dec 2023, 3:46 PM",
+      "resource": ["Backend", "Full Stack", "QA"],
+      "start": "",
+      "end": "",
+      "estimation": "12"
+    },
+    {
+      "id": 10,
+      "name": "Ngan Do",
+      "manager": {
+        "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatar.png?alt=media&token=81b6abe0-23b2-4e79-b3e1-77050c86baaf",
+        "id": 1
+      },
+      "status": "On Hold",
+      "updatedAt": "7 Dec 2023, 4:24 PM",
+      "resource": ["Graphic Designer", "Web Designer", "QA"],
+      "start": "2023-12-08",
+      "end": "2023-12-10",
+      "estimation": 0
+    },
+    {
+      "id": 11,
+      "name": "tghrewhreghgsf",
+      "manager": {
+        "id": 0,
+        "img": "https://firebasestorage.googleapis.com/v0/b/icon-foot.appspot.com/o/avatarRog.png?alt=media&token=606acbd1-cf3a-4c59-85ca-f7d49b74347a"
+      },
+      "status": "On Hold",
+      "updatedAt": "7 Dec 2023, 4:25 PM",
+      "resource": [],
+      "start": "",
+      "end": "",
+      "estimation": "0455"
     }
   ]
 }

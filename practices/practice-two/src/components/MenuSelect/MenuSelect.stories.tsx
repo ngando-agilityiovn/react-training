@@ -10,20 +10,24 @@ const options = {
     {
       value: 'name',
       text: 'Project name',
+      handleClick: () => console.log('Project name'),
     },
     {
       value: 'updatedAt',
       text: 'Last update',
+      handleClick: () => console.log('Last update'),
     },
   ],
   menuOptions: [
     {
       value: 'edit',
       text: 'Edit',
+      handleClick: () => console.log('Edit'),
     },
     {
       value: 'delete',
       text: 'Delete',
+      handleClick: () => console.log('Delete'),
     },
   ],
 }

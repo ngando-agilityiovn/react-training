@@ -83,6 +83,7 @@ const Form = ({
             startTime={start}
             endTime={end}
             onChange={handleOnChange}
+            errorMessages={error}
           />
 
           <InputField
@@ -93,6 +94,7 @@ const Form = ({
             placeholder="00.00"
             addOn="US$"
             onChange={handleOnChange}
+            errorMessage={error}
           />
         </Box>
       </Box>
