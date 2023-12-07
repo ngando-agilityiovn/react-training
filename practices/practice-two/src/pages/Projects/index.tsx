@@ -54,7 +54,7 @@ const ProjectsPages = () => {
   const [isOpenProductModal, setIsOpenProductModal] = useState(false)
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
 
-  const [isLoadingUsers, setIsLoadingUsers] = useState(false)
+  const [isLoadingProjects, setIsLoadingProjects] = useState(false)
 
   const handleToggleProductModal = () => {
     setIsOpenProductModal(!isOpenProductModal)
@@ -65,7 +65,7 @@ const ProjectsPages = () => {
   }
 
   const getData = async () => {
-    setIsLoadingUsers(true)
+    setIsLoadingProjects(true)
     const response = await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}`)
     const data = (await response.json()) as Project[]
 
@@ -80,7 +80,7 @@ const ProjectsPages = () => {
 
     // NOTE: Just for testing purposes
     setTimeout(() => {
-      setIsLoadingUsers(false)
+      setIsLoadingProjects(false)
     }, 1000)
   }
 
@@ -149,8 +149,6 @@ const ProjectsPages = () => {
     ],
     [projects],
   )
-
-  console.log('type', typeof projects?.[ProjectStatus.AT_RISK].length)
 
   const projectsDisplay = useMemo(() => {
     const projectsMapping = {
@@ -266,7 +264,7 @@ const ProjectsPages = () => {
 
       <ProjectManagementPanel onChangeTab={setTabView} tabs={tabs} />
 
-      {isLoadingUsers ? (
+      {isLoadingProjects ? (
         <Box py="6" textAlign="center">
           <Spinner
             thickness="4px"
@@ -314,8 +312,8 @@ const ProjectsPages = () => {
           onClose={handleToggleDeleteModal}
         >
           <Text px="6">
-            Are you sure you want to delete MicroRaptor website? If you delete,
-            it will be permanently lost.
+            Are you sure you want to delete this project? If you delete, it will
+            be permanently lost.
           </Text>
           <Flex px="6" justifyContent="flex-end" gap="5" mt="8">
             <Button variant="outline" onClick={handleToggleDeleteModal}>
