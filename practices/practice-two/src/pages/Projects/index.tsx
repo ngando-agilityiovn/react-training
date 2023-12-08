@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { AddIcon } from '@chakra-ui/icons'
-import { Box, Button, Flex, Spinner, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Spinner, Text, useToast } from '@chakra-ui/react'
 
 // Utils
 import { formatLongDateTime, sorting, formatDataByStatus } from '@/utils'
@@ -60,13 +60,15 @@ const ProjectsPages = () => {
 
   const [isLoadingProjects, setIsLoadingProjects] = useState(false)
 
+  const toast = useToast()
+
   // Show and hide modal
   const handleToggleProductModal = () => {
-    setIsOpenProductModal(!isOpenProductModal)
+    setIsOpenProductModal((prevIsOpenProductModal) => !prevIsOpenProductModal)
   }
 
   const handleToggleDeleteModal = () => {
-    setIsOpenDeleteModal(!isOpenDeleteModal)
+    setIsOpenDeleteModal((prevIsOpenDeleteModal) => !prevIsOpenDeleteModal)
   }
 
   const handleOnSort = (
@@ -121,14 +123,32 @@ const ProjectsPages = () => {
   const handleSubmitForm = async (
     data: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
   ) => {
-    const updatedTime = new Date()
-    const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
+    try {
+      const updatedTime = new Date()
+      const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
 
-    const url = isEdit
-      ? `${API.BASE_URL}${API.PROJECT_COLLECTION}/${data?.id}`
-      : `${API.BASE_URL}${API.PROJECT_COLLECTION}`
-    await apiRequest(url, isEdit ? 'PUT' : 'POST', newData)
-    handleResetForm()
+      const url = isEdit
+        ? `${API.BASE_URL}${API.PROJECT_COLLECTION}/${data?.id}`
+        : `${API.BASE_URL}${API.PROJECT_COLLECTION}`
+      await apiRequest(url, isEdit ? 'PUT' : 'POST', newData)
+      handleResetForm()
+
+      toast({
+        title: 'Account created.',
+        description: 'You have successfully created the project',
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      })
+    } catch (error) {
+      toast({
+        title: 'API Error',
+        description: 'An error occurred while communicating with the server.',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      })
+    }
   }
 
   const deleteProject = async () => {
@@ -139,6 +159,13 @@ const ProjectsPages = () => {
 
     handleToggleDeleteModal()
     getData()
+    toast({
+      title: 'Account created.',
+      description: "We've created your account for you.",
+      status: 'success',
+      duration: 5000,
+      isClosable: true,
+    })
   }
 
   const tabs = useMemo(

@@ -4,12 +4,14 @@ import { Box, Button, Flex, FormControl } from '@chakra-ui/react'
 // Constants
 import { REGEX, TAG_GROUP, TAG_LIST } from '@/constants'
 
-// Components
-import { InputField, ProjectTagManager, ResourceGroup, Timeline } from '..'
-
 // Types
 import { Project } from '@/types'
 
+// Utils
+import { compareDate } from '@/utils'
+
+// Components
+import { InputField, ProjectTagManager, ResourceGroup, Timeline } from '..'
 interface IFormProps {
   isEdit: boolean
   onClose: () => void
@@ -24,21 +26,6 @@ interface IFormProps {
 
 const isValidName = (name: string) => {
   return REGEX.NAME.test(name) ? '' : 'Please enter a valid name'
-}
-
-const compareDate = (targetDate: Date, inputDate: Date, message?: string) => {
-  const currentDate = targetDate
-  currentDate.setHours(0, 0, 0, 0)
-
-  const yesterday = new Date(currentDate)
-  yesterday.setDate(currentDate.getDate() - 1)
-
-  const inputDateTime = new Date(inputDate)
-  inputDateTime.setHours(0, 0, 0, 0)
-
-  const isValidTime = inputDateTime > yesterday
-
-  return isValidTime ? '' : message ?? 'Please provide a valid date'
 }
 
 const TableForm = ({
