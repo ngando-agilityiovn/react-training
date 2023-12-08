@@ -3,7 +3,7 @@ import { Badge, Tab, TabList, Tabs, Text } from '@chakra-ui/react'
 interface IProjectManagementPanelProps {
   tabs: {
     text: string
-    total: number
+    total?: number
   }[]
   onChangeTab: (tabIndex: number) => void
 }

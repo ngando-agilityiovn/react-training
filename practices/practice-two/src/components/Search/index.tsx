@@ -3,9 +3,10 @@ import { Box, Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
 
 interface ISearchProps {
   width: string
+  onChange: (value: string) => void
 }
 
-const Search = ({ width }: ISearchProps) => {
+const Search = ({ width, onChange }: ISearchProps) => {
   return (
     <Box w={width}>
       <InputGroup>
@@ -17,6 +18,7 @@ const Search = ({ width }: ISearchProps) => {
           type="search"
           placeholder="Search"
           borderRadius="0"
+          onChange={(e) => onChange(e.target.value)}
         />
       </InputGroup>
     </Box>

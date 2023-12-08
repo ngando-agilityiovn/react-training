@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import { AddIcon } from '@chakra-ui/icons'
-import { Button, Flex, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Spinner, Text } from '@chakra-ui/react'
 
 // Utils
-import { formatLongDateTime } from '@/utils'
+import { formatDataByStatus, formatLongDateTime } from '@/utils'
 
 // Constants
 import { API, TABLE_HEADER, TAG_LIST } from '@/constants'
@@ -46,9 +46,7 @@ const projectDataFormInitial: Omit<
 const ProjectsPages = () => {
   const [projectDataForm, setProjectDataForm] = useState(projectDataFormInitial)
 
-  // const { isOpen, onClose } = useDisclosure()
-
-  const [projects, setProjects] = useState<Project[]>([])
+  const [projects, setProjects] = useState<Record<string, Project[]>>()
   const [tabView, setTabView] = useState(0)
   const [isEdit, setIsEdit] = useState(false)
   const [idEdit, setIdEdit] = useState('')
@@ -56,7 +54,8 @@ const ProjectsPages = () => {
   const [isOpenProductModal, setIsOpenProductModal] = useState(false)
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
 
-  const [isLoadingUsers, setIsLoadingUsers] = useState(false)
+  const [isLoadingProjects, setIsLoadingProjects] = useState(false)
+
   const handleToggleProductModal = () => {
     setIsOpenProductModal(!isOpenProductModal)
   }
@@ -66,15 +65,15 @@ const ProjectsPages = () => {
   }
 
   const getData = async () => {
-    setIsLoadingUsers(true)
+    setIsLoadingProjects(true)
     const response = await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}`)
-    const data = await response.json()
+    const data = (await response.json()) as Project[]
 
-    setProjects(data)
+    setProjects(formatDataByStatus(data))
 
     // NOTE: Just for testing purposes
     setTimeout(() => {
-      setIsLoadingUsers(false)
+      setIsLoadingProjects(false)
     }, 1000)
   }
 
@@ -117,80 +116,44 @@ const ProjectsPages = () => {
     getData()
   }
 
-  const riskProjects = useMemo(
-    () => projects.filter(({ status }) => status === ProjectStatus.AT_RISK),
-    [projects],
-  )
-
-  const holdProjects = useMemo(
-    () => projects.filter(({ status }) => status === ProjectStatus.ON_HOLD),
-    [projects],
-  )
-
-  const potentialProjects = useMemo(
-    () =>
-      projects.filter(({ status }) => status === ProjectStatus.POTENTIAL_RISK),
-    [projects],
-  )
-
-  const trackProjects = useMemo(
-    () => projects.filter(({ status }) => status === ProjectStatus.ON_TRACK),
-    [projects],
-  )
-
   const tabs = useMemo(
     () => [
       {
         text: 'All',
-        total:
-          riskProjects.length +
-          holdProjects.length +
-          potentialProjects.length +
-          trackProjects.length,
+        total: projects?.all.length,
       },
       {
         text: 'Risk',
-        total: riskProjects.length,
+        total: projects?.[ProjectStatus.AT_RISK].length,
       },
       {
         text: 'On hold',
-        total: holdProjects.length,
+        total: projects?.[ProjectStatus.ON_HOLD].length,
       },
       {
         text: 'Potential risk',
-        total: potentialProjects.length,
+        total: projects?.[ProjectStatus.POTENTIAL_RISK].length,
       },
+
       {
         text: 'On track',
-        total: trackProjects.length,
+        total: projects?.[ProjectStatus.ON_TRACK].length,
       },
     ],
-    [
-      holdProjects.length,
-      potentialProjects.length,
-      riskProjects.length,
-      trackProjects.length,
-    ],
+    [projects],
   )
 
   const projectsDisplay = useMemo(() => {
     const projectsMapping = {
-      0: projects,
-      1: riskProjects,
-      2: holdProjects,
-      3: potentialProjects,
-      4: trackProjects,
+      0: projects?.all,
+      1: projects?.[ProjectStatus.AT_RISK],
+      2: projects?.[ProjectStatus.ON_HOLD],
+      3: projects?.[ProjectStatus.POTENTIAL_RISK],
+      4: projects?.[ProjectStatus.ON_TRACK],
     }
 
     return projectsMapping[tabView as keyof typeof projectsMapping]
-  }, [
-    holdProjects,
-    potentialProjects,
-    projects,
-    riskProjects,
-    tabView,
-    trackProjects,
-  ])
+  }, [projects, tabView])
 
   const handleEditProject = (
     project: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
@@ -231,6 +194,32 @@ const ProjectsPages = () => {
     handleToggleDeleteModal()
   }
 
+  const handleSearch = (keySearch: string) => {
+    const tempProjects: Record<string, Project[]> = {}
+
+    if (!keySearch) {
+      getData()
+    }
+
+    if (projects) {
+      Object.values(ProjectStatus).forEach((value) => {
+        const searchByStatus = projects[value].filter((item) =>
+          item.name.includes(keySearch),
+        )
+
+        tempProjects[value] = searchByStatus
+      })
+
+      const searchAll = projects.all.filter((item) =>
+        item.name.includes(keySearch),
+      )
+
+      tempProjects.all = searchAll
+
+      setProjects(tempProjects)
+    }
+  }
+
   const SORT_OPTIONS = [
     {
       value: 'name',
@@ -254,7 +243,7 @@ const ProjectsPages = () => {
             title="All"
             options={SORT_OPTIONS}
           />
-          <Search width="280px" />
+          <Search width="280px" onChange={handleSearch} />
         </Flex>
 
         <Button
@@ -268,22 +257,16 @@ const ProjectsPages = () => {
 
       <ProjectManagementPanel onChangeTab={setTabView} tabs={tabs} />
 
-      {/* <TableProject<Project>
-        tableHeader={TABLE_HEADER}
-        dataTable={projectsDisplay}
-        renderBody={(dataTable, index) => (
-          <TableRow
-            {...dataTable}
-            index={index}
-            onEditItem={handleEditProject}
-            onDeleteItem={handleDeleteProject}
+      {isLoadingProjects ? (
+        <Box py="6" textAlign="center">
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
           />
-        )}
-      /> */}
-      {isLoadingUsers ? (
-        <Text py="6" fontSize="2xl" color="green" textAlign="center">
-          Loading projects...
-        </Text>
+        </Box>
       ) : (
         <TableProject<Project>
           tableHeader={TABLE_HEADER}
@@ -322,8 +305,8 @@ const ProjectsPages = () => {
           onClose={handleToggleDeleteModal}
         >
           <Text px="6">
-            Are you sure you want to delete MicroRaptor website? If you delete,
-            it will be permanently lost.
+            Are you sure you want to delete this project? If you delete, it will
+            be permanently lost.
           </Text>
           <Flex px="6" justifyContent="flex-end" gap="5" mt="8">
             <Button variant="outline" onClick={handleToggleDeleteModal}>

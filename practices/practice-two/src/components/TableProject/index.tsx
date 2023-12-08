@@ -6,7 +6,7 @@ import { TableBody } from '../TableBody'
 
 interface ITableProps<T> {
   tableHeader: TableHeader[]
-  dataTable: T[]
+  dataTable?: T[]
   renderBody: (data: T, index: number) => JSX.Element
 }
 
