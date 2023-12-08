@@ -3,12 +3,7 @@ import { AddIcon } from '@chakra-ui/icons'
 import { Box, Button, Flex, Spinner, Text } from '@chakra-ui/react'
 
 // Utils
-import {
-  validate,
-  formatLongDateTime,
-  sorting,
-  formatDataByStatus,
-} from '@/utils'
+import { formatLongDateTime, sorting, formatDataByStatus } from '@/utils'
 
 // Constants
 import { API, TABLE_HEADER, TAG_LIST } from '@/constants'
@@ -24,7 +19,7 @@ import { apiRequest } from '@/services'
 
 // Components
 import {
-  Form,
+  TableForm,
   MenuSelect,
   ModalCustom,
   Search,
@@ -53,50 +48,6 @@ const projectDataFormInitial: Omit<
 
 const ProjectsPages = () => {
   const [projectDataForm, setProjectDataForm] = useState(projectDataFormInitial)
-
-  const [errors, setErrors] = useState('')
-
-  const handleValidate = () => {
-    // const key = Object.keys(projectDataForm)
-    // const value = Object.values(projectDataForm)
-
-    // let mess = { ...errors }
-
-    // for (let i = 0; i < key.length; i++) {
-    //   const eror = Validate({ name: key[i], value: value[i] })
-    //   mess = { ...mess, [key[i]]: eror }
-    // }
-
-    // setErrors(mess)
-
-    // Validate the 'name' field of 'projectDataForm'
-    const nameError = validate({ name: 'name', value: projectDataForm.name })
-
-    console.log(typeof nameError)
-    // Validate the 'estimation' field of 'projectDataForm'
-    const estimationError = validate({
-      name: 'estimation',
-      value: projectDataForm.estimation,
-    })
-
-    setErrors(nameError)
-
-    if (nameError || estimationError) {
-      return false
-    }
-
-    return true
-
-    // const mess = validate({ name: 'name', value: projectDataForm.name })
-
-    // setErrors(mess)
-    // console.log('projectDataForm', projectDataForm.estimation)
-
-    // if (mess === 'This field is required' || mess === 'Invalid name') {
-    //   return false
-    // }
-    // return true
-  }
 
   const [projects, setProjects] = useState<Record<string, Project[]>>()
   const [tabView, setTabView] = useState(0)
@@ -170,8 +121,6 @@ const ProjectsPages = () => {
   const handleSubmitForm = async (
     data: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
   ) => {
-    if (!handleValidate()) return
-
     const updatedTime = new Date()
     const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
 
@@ -376,13 +325,12 @@ const ProjectsPages = () => {
           onClose={handleToggleProductModal}
           isOpen={isOpenProductModal}
         >
-          <Form
+          <TableForm
             isEdit={isEdit}
             onClose={handleToggleProductModal}
             onSubmitForm={handleSubmitForm}
             projectDataForm={projectDataForm}
             setProjectDataForm={setProjectDataForm}
-            error={errors}
           />
         </ModalCustom>
       )}
