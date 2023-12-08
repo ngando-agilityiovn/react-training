@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import { AddIcon } from '@chakra-ui/icons'
-import { Box, Button, Flex, Spinner, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Spinner, Text, useToast } from '@chakra-ui/react'
 
 // Utils
-import { formatDataByStatus, formatLongDateTime, sorting } from '@/utils'
+import { formatLongDateTime, sorting, formatDataByStatus } from '@/utils'
 
 // Constants
 import { API, TABLE_HEADER, TAG_LIST } from '@/constants'
@@ -14,9 +14,12 @@ import { Project, ProjectStatus } from '@/types'
 // Icon components
 import { DropdownIcon } from '@/components/Icons'
 
+// Services
+import { apiRequest } from '@/services'
+
 // Components
 import {
-  Form,
+  TableForm,
   MenuSelect,
   ModalCustom,
   Search,
@@ -48,6 +51,7 @@ const ProjectsPages = () => {
 
   const [projects, setProjects] = useState<Record<string, Project[]>>()
   const [tabView, setTabView] = useState(0)
+
   const [isEdit, setIsEdit] = useState(false)
   const [idEdit, setIdEdit] = useState('')
 
@@ -55,6 +59,17 @@ const ProjectsPages = () => {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
 
   const [isLoadingProjects, setIsLoadingProjects] = useState(false)
+
+  const toast = useToast()
+
+  // Show and hide modal
+  const handleToggleProductModal = () => {
+    setIsOpenProductModal((prevIsOpenProductModal) => !prevIsOpenProductModal)
+  }
+
+  const handleToggleDeleteModal = () => {
+    setIsOpenDeleteModal((prevIsOpenDeleteModal) => !prevIsOpenDeleteModal)
+  }
 
   const handleOnSort = (
     sortBy: string = 'name',
@@ -79,20 +94,14 @@ const ProjectsPages = () => {
     setProjects(tempDataAfterSorted)
   }
 
-  const handleToggleProductModal = () => {
-    setIsOpenProductModal(!isOpenProductModal)
-  }
-
-  const handleToggleDeleteModal = () => {
-    setIsOpenDeleteModal(!isOpenDeleteModal)
-  }
-
   const getData = async () => {
     setIsLoadingProjects(true)
-    const response = await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}`)
-    const data = (await response.json()) as Project[]
+    const response = await apiRequest<null, Project[]>(
+      `${API.BASE_URL}${API.PROJECT_COLLECTION}`,
+      'GET',
+    )
 
-    setProjects(formatDataByStatus(data))
+    setProjects(formatDataByStatus(response))
 
     // NOTE: Just for testing purposes
     setTimeout(() => {
@@ -114,29 +123,49 @@ const ProjectsPages = () => {
   const handleSubmitForm = async (
     data: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
   ) => {
-    const updatedTime = new Date()
-    const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
+    try {
+      const updatedTime = new Date()
+      const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
 
-    const requestOptions = {
-      method: isEdit ? 'PUT' : 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newData),
+      const url = isEdit
+        ? `${API.BASE_URL}${API.PROJECT_COLLECTION}/${data?.id}`
+        : `${API.BASE_URL}${API.PROJECT_COLLECTION}`
+      await apiRequest(url, isEdit ? 'PUT' : 'POST', newData)
+      handleResetForm()
+
+      toast({
+        title: 'Account created.',
+        description: 'You have successfully created the project',
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      })
+    } catch (error) {
+      toast({
+        title: 'API Error',
+        description: 'An error occurred while communicating with the server.',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      })
     }
-
-    const url = isEdit
-      ? `${API.BASE_URL}${API.PROJECT_COLLECTION}/${data?.id}`
-      : `${API.BASE_URL}${API.PROJECT_COLLECTION}`
-    await fetch(url, requestOptions)
-    handleResetForm()
   }
 
   const deleteProject = async () => {
-    await fetch(`${API.BASE_URL}${API.PROJECT_COLLECTION}/${idEdit}`, {
-      method: 'DELETE',
-    })
+    await apiRequest(
+      `${API.BASE_URL}${API.PROJECT_COLLECTION}/${idEdit}`,
+      'DELETE',
+    )
 
     handleToggleDeleteModal()
     getData()
+    toast({
+      title: 'Account created.',
+      description: "We've created your account for you.",
+      status: 'success',
+      duration: 5000,
+      isClosable: true,
+    })
   }
 
   const tabs = useMemo(
@@ -178,6 +207,7 @@ const ProjectsPages = () => {
     return projectsMapping[tabView as keyof typeof projectsMapping]
   }, [projects, tabView])
 
+  // Handle edit project
   const handleEditProject = (
     project: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
   ) => {
@@ -209,6 +239,7 @@ const ProjectsPages = () => {
     })
   }
 
+  // Handle delete project
   const handleDeleteProject = (
     project: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
   ) => {
@@ -217,6 +248,7 @@ const ProjectsPages = () => {
     handleToggleDeleteModal()
   }
 
+  // Handle search by project name
   const handleSearch = (keySearch: string) => {
     const tempProjects: Record<string, Project[]> = {}
 
@@ -320,7 +352,7 @@ const ProjectsPages = () => {
           onClose={handleToggleProductModal}
           isOpen={isOpenProductModal}
         >
-          <Form
+          <TableForm
             isEdit={isEdit}
             onClose={handleToggleProductModal}
             onSubmitForm={handleSubmitForm}

@@ -1,16 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 // Components
-import Form from '.'
-
-// Components
+import TableForm from '.'
 
 export default {
-  title: 'Component/Form',
-  component: Form,
+  title: 'Component/TableForm',
+  component: TableForm,
 } as Meta
 
-type Story = StoryObj<typeof Form>
+type Story = StoryObj<typeof TableForm>
 
 export const Base: Story = {
   args: {},

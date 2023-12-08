@@ -7,10 +7,11 @@ interface ITimelineProps {
   startTime: string
   endTime: string
   onChange: (value: string, name: string) => void
+  errorMessage: string
 }
 
 const Timeline = memo(
-  ({ title, startTime, endTime, onChange }: ITimelineProps) => {
+  ({ title, startTime, endTime, onChange, errorMessage }: ITimelineProps) => {
     const [fromDateTime, setFromDateTime] = useState<string>(startTime)
     const [toDateTime, setToDateTime] = useState<string>(endTime)
 
@@ -58,6 +59,12 @@ const Timeline = memo(
             />
           </Box>
         </HStack>
+        {/* {Error message} */}
+        {errorMessage && (
+          <Text mt="2" fontSize="sm" color="textError">
+            {errorMessage}
+          </Text>
+        )}
       </Box>
     )
   },

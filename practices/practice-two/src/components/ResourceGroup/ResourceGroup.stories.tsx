@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import ResourceGroup from '.'
 
 // Components
+import ResourceGroup from '.'
 
 const tagGroup = [
   {
@@ -44,7 +44,6 @@ type Story = StoryObj<typeof ResourceGroup>
 export const Base: Story = {
   args: {
     title: 'Resources',
-    variant: 'outline',
     tagGroup: tagGroup,
   },
 }
