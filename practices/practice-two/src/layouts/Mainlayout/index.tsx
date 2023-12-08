@@ -17,13 +17,13 @@ import { ActiveIcon, HelpIcon, NotificationIcon } from '@/components/Icons'
 // Constants
 import { AVATAR } from '@/constants'
 
-interface DashboardProps {
+interface MainLayoutProps {
   title: string
   titleNumeric?: number
   children: ReactNode
 }
 
-const Dashboard = ({ title, titleNumeric, children }: DashboardProps) => {
+const MainLayout = ({ title, titleNumeric, children }: MainLayoutProps) => {
   return (
     <Container>
       <Sidebar />
@@ -63,4 +63,4 @@ const Dashboard = ({ title, titleNumeric, children }: DashboardProps) => {
   )
 }
 
-export default Dashboard
+export default MainLayout

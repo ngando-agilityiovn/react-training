@@ -95,7 +95,7 @@ const TableForm = ({
 
   return (
     <FormControl>
-      <Box bg="darkToLight" py="4">
+      <Box bg="darkToLight" py="6">
         <Box px="6">
           <InputField
             value={name}
@@ -142,7 +142,7 @@ const TableForm = ({
         </Box>
       </Box>
 
-      <Flex px="6" justifyContent="flex-end" gap="5" mt="8">
+      <Flex px="6" justifyContent="flex-end" gap="5" mt="8" pb="4">
         <Button variant="outline" onClick={onClose}>
           Cancel
         </Button>

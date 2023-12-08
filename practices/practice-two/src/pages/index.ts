@@ -1,1 +1,1 @@
-export { default as ProjectsPages } from './Projects'
+export { default as Dashboard } from './Projects'

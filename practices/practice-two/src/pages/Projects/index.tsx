@@ -46,7 +46,7 @@ const projectDataFormInitial: Omit<
   estimation: 0,
 }
 
-const ProjectsPages = () => {
+const Dashboard = () => {
   const [projectDataForm, setProjectDataForm] = useState(projectDataFormInitial)
 
   const [projects, setProjects] = useState<Record<string, Project[]>>()
@@ -386,4 +386,4 @@ const ProjectsPages = () => {
   )
 }
 
-export default ProjectsPages
+export default Dashboard
