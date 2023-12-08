@@ -80,3 +80,40 @@ export const formatLongDateTime = (day: Date) => {
 
   return `${date} ${month} ${year}, ${time}`
 }
+
+export const parseDateString = (dateString: string): Date => {
+  const parts = dateString.split(/[\s,]+/)
+
+  const day = parseInt(parts[0], 10)
+  const month = parts[1]
+  const year = parseInt(parts[2], 10)
+  const timeParts = parts[3].split(':')
+  const hours = parseInt(timeParts[0], 10)
+  const minutes = parseInt(timeParts[1], 10)
+  const period = parts[4]
+
+  const monthIndex = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ].indexOf(month)
+
+  const date = new Date(
+    year,
+    monthIndex,
+    day,
+    period === 'PM' && hours < 12 ? hours + 12 : hours,
+    minutes,
+  )
+
+  return date
+}
