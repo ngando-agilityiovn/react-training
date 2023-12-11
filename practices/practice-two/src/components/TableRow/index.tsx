@@ -103,7 +103,7 @@ const TableRow = (project: Project) => {
         lineHeight="5"
         letterSpacing="wider"
       >
-        <Badge marginLeft="5" variant="primary" borderRadius="6px">
+        <Badge marginLeft="5" variant="primary">
           {resource.length}
         </Badge>
       </Td>
