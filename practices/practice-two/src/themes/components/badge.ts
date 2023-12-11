@@ -6,7 +6,7 @@ export const Badge = defineStyleConfig({
     fontWeight: 'medium',
     color: 'secondary',
     borderWidth: '7px',
-    borderRadius: 'full',
+    borderRadius: '6px',
   },
   variants: {
     default: {},
