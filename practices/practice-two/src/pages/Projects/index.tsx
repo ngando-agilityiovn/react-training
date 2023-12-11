@@ -318,41 +318,34 @@ const Dashboard = () => {
           Add project
         </Button>
       </Flex>
+      <>
+        <ProjectManagementPanel onChangeTab={setTabView} tabs={tabs} />
 
-      {projectsDisplay?.length ? (
-        <>
-          <ProjectManagementPanel onChangeTab={setTabView} tabs={tabs} />
-
-          {isLoadingProjects ? (
-            <Box py="6" textAlign="center">
-              <Spinner
-                thickness="4px"
-                speed="0.65s"
-                emptyColor="gray.200"
-                color="blue.500"
-                size="xl"
-              />
-            </Box>
-          ) : (
-            <TableProject<Project>
-              tableHeader={TABLE_HEADER}
-              dataTable={projectsDisplay}
-              renderBody={(dataTable, index) => (
-                <TableRow
-                  {...dataTable}
-                  index={index}
-                  onEditItem={handleEditProject}
-                  onDeleteItem={handleDeleteProject}
-                />
-              )}
+        {isLoadingProjects ? (
+          <Box py="6" textAlign="center">
+            <Spinner
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="blue.500"
+              size="xl"
             />
-          )}
-        </>
-      ) : (
-        <Text textAlign="center">
-          There's no data. Please add a new record & try again
-        </Text>
-      )}
+          </Box>
+        ) : (
+          <TableProject<Project>
+            tableHeader={TABLE_HEADER}
+            dataTable={projectsDisplay}
+            renderBody={(dataTable, index) => (
+              <TableRow
+                {...dataTable}
+                index={index}
+                onEditItem={handleEditProject}
+                onDeleteItem={handleDeleteProject}
+              />
+            )}
+          />
+        )}
+      </>
 
       {isOpenProductModal && (
         <ModalCustom
