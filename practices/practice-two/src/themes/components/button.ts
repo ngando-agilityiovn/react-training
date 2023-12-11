@@ -12,8 +12,8 @@ export const Button = defineStyleConfig({
     solid: {
       color: 'white',
       background: 'primary',
-      px: '0.75rem',
-      py: '0.375rem',
+      px: '3',
+      py: '1.5',
       _hover: {
         borderColor: 'textWarning',
         backgroundColor: 'textWarning',
@@ -22,8 +22,8 @@ export const Button = defineStyleConfig({
     outline: {
       borderColor: 'backgroundInactive',
       color: 'secondary',
-      px: '0.5rem',
-      py: '0.125rem',
+      px: '2',
+      py: '0.5',
       _hover: {
         backgroundColor: 'backgroundInactive',
       },

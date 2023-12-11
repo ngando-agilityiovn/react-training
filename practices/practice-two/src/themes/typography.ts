@@ -16,11 +16,11 @@ export const fonts = {
 
 // Custom line-height
 export const lineHeights = {
-  extraShort: '1.125rem',
+  extraShort: '18px',
 }
 
 // Custom letter-spacing
 export const letterSpacing = {
-  wider: '0.018rem',
-  wide: '0.023rem',
+  wider: '0.288px',
+  wide: '0.368px',
 }

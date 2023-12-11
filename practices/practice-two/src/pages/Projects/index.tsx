@@ -160,8 +160,8 @@ const Dashboard = () => {
     handleToggleDeleteModal()
     getData()
     toast({
-      title: 'Account created.',
-      description: "We've created your account for you.",
+      title: 'Project deleted.',
+      description: 'You have successfully deleted the project',
       status: 'success',
       duration: 5000,
       isClosable: true,
@@ -349,11 +349,9 @@ const Dashboard = () => {
           )}
         </>
       ) : (
-        <>
-          <Text textAlign="center">
-            There's no data. Please add a new record & try again
-          </Text>
-        </>
+        <Text textAlign="center">
+          There's no data. Please add a new record & try again
+        </Text>
       )}
 
       {isOpenProductModal && (
