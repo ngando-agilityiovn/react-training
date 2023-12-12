@@ -4,16 +4,13 @@ import { ChevronRightIcon, DragHandleIcon } from '@chakra-ui/icons'
 // Types
 import { Project, ProjectStatus, TAGS_COLORS, TAGS_VARIANT } from '@/types'
 
-// Constants
-// import { MENU_OPTION } from '@/constants'
-
 // Utils
 import { formatTime } from '@/utils'
 
-// Conponents
-import Status from '../Status'
-import { NoteIcon } from '../Icons'
-import MenuSelect from '../MenuSelect'
+// Components
+import Status from '../../Status'
+import { NoteIcon } from '../../Icons'
+import MenuSelect from '../../MenuSelect'
 
 const variantStatusMapping = {
   [ProjectStatus.ON_TRACK]: TAGS_VARIANT.TRACK,

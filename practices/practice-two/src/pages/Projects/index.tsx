@@ -19,14 +19,15 @@ import { apiRequest } from '@/services'
 
 // Components
 import {
-  TableForm,
   MenuSelect,
   ModalCustom,
   Search,
   ProjectManagementPanel,
   TableProject,
-  TableRow,
 } from '@/components'
+
+import TableForm from '@/components/Table/Form'
+import TableRow from '@/components/Table/Row'
 
 const projectDataFormInitial: Omit<
   Project,

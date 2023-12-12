@@ -11,7 +11,7 @@ import { Project } from '@/types'
 import { compareDate } from '@/utils'
 
 // Components
-import { InputField, ProjectTagManager, ResourceGroup, Timeline } from '..'
+import { InputField, ProjectTagManager, ResourceGroup, Timeline } from '../..'
 interface IFormProps {
   isEdit: boolean
   onClose: () => void
