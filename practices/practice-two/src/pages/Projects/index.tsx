@@ -26,7 +26,7 @@ import {
   TableProject,
 } from '@/components'
 
-import TableForm from '@/components/Table/Form'
+import TableForm from '@/components/Form'
 import TableRow from '@/components/Table/Row'
 
 const projectDataFormInitial: Omit<
@@ -320,7 +320,7 @@ const Dashboard = () => {
         </Button>
       </Flex>
 
-      {projectsDisplay?.length ? (
+      {projectsDisplay?.length && (
         <>
           <ProjectManagementPanel onChangeTab={setTabView} tabs={tabs} />
 
@@ -349,10 +349,6 @@ const Dashboard = () => {
             />
           )}
         </>
-      ) : (
-        <Text textAlign="center">
-          There's no data. Please add a new record & try again
-        </Text>
       )}
 
       {isOpenProductModal && (
