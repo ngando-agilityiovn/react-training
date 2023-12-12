@@ -24,9 +24,9 @@ import {
   Search,
   ProjectManagementPanel,
   TableProject,
+  TableForm,
 } from '@/components'
 
-import TableForm from '@/components/Form'
 import TableRow from '@/components/Table/Row'
 
 const projectDataFormInitial: Omit<
@@ -102,7 +102,17 @@ const Dashboard = () => {
       'GET',
     )
 
-    setProjects(formatDataByStatus(response))
+    if (typeof response == 'string') {
+      toast({
+        title: 'Fail',
+        description: 'You do not get data the project',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      })
+    } else {
+      setProjects(formatDataByStatus(response))
+    }
 
     // NOTE: Just for testing purposes
     setTimeout(() => {
@@ -124,28 +134,27 @@ const Dashboard = () => {
   const handleSubmitForm = async (
     data: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
   ) => {
-    try {
-      const updatedTime = new Date()
-      const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
+    const updatedTime = new Date()
+    const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
 
-      const url = isEdit
-        ? `${API.BASE_URL}${API.PROJECT_COLLECTION}/${data?.id}`
-        : `${API.BASE_URL}${API.PROJECT_COLLECTION}`
-      await apiRequest(url, isEdit ? 'PUT' : 'POST', newData)
-      handleResetForm()
-
+    const url = isEdit
+      ? `${API.BASE_URL}${API.PROJECT_COLLECTION}/${data?.id}`
+      : `${API.BASE_URL}${API.PROJECT_COLLECTION}`
+    const response = await apiRequest(url, isEdit ? 'PUT' : 'POST', newData)
+    if (typeof response == 'string') {
       toast({
-        title: 'Account created.',
-        description: 'You have successfully created the project',
-        status: 'success',
+        title: 'API Error!',
+        description: response,
+        status: 'error',
         duration: 9000,
         isClosable: true,
       })
-    } catch (error) {
+    } else {
+      handleResetForm()
       toast({
-        title: 'API Error',
-        description: 'An error occurred while communicating with the server.',
-        status: 'error',
+        title: 'Account created!',
+        description: 'You have successfully created the project',
+        status: 'success',
         duration: 5000,
         isClosable: true,
       })
