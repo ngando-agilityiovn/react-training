@@ -28,7 +28,7 @@ const Timeline = memo(
     return (
       <Box w="100%" mb="8">
         <Flex fontSize="sm" fontWeight="medium" color="secondary">
-          <Text>{title}</Text>
+          <Text mr="1">{title}</Text>
           <Text color="red">*</Text>
         </Flex>
         <HStack gap="0">
