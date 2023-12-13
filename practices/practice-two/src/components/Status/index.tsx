@@ -9,7 +9,7 @@ export interface IStatusProps {
 
 const Status = ({ text, variant, isDot, background }: IStatusProps) => {
   return (
-    <Tag variant={variant} borderRadius="1" gap="1.5">
+    <Tag variant={variant} borderRadius="4" gap="1.5">
       {isDot && (
         <Box background={background} w="1.5" h="1.5" borderRadius="0.5" />
       )}

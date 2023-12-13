@@ -42,6 +42,7 @@ const ResourceGroup = ({
               id={id}
               variant={isSelected ? 'success' : 'outline'}
               onClick={() => onChange(text)}
+              cursor="pointer"
             >
               {text}
             </Tag>

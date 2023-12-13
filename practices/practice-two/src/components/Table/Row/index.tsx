@@ -2,7 +2,7 @@ import { Avatar, Badge, Flex, Img, Tag, Td, Text } from '@chakra-ui/react'
 import { ChevronRightIcon, DragHandleIcon } from '@chakra-ui/icons'
 
 // Types
-import { Project, ProjectStatus, TAGS_COLORS, TAGS_VARIANT } from '@/types'
+import { ProjectStatus, ProjectSub, TAGS_COLORS, TAGS_VARIANT } from '@/types'
 
 // Utils
 import { formatTime } from '@/utils'
@@ -26,7 +26,7 @@ const colorStatusMapping = {
   [ProjectStatus.ON_HOLD]: TAGS_COLORS.HOLD,
 }
 
-const TableRow = (project: Project) => {
+const TableRow = (project: ProjectSub) => {
   const {
     index,
     name,
@@ -88,7 +88,7 @@ const TableRow = (project: Project) => {
         lineHeight="5"
         letterSpacing="wider"
       >
-        <Flex gap="1.5">
+        <Flex gap="1.5" alignItems="center">
           <NoteIcon />
           {updatedAt}
         </Flex>
@@ -100,7 +100,7 @@ const TableRow = (project: Project) => {
         lineHeight="5"
         letterSpacing="wider"
       >
-        <Badge marginLeft="5" variant="primary">
+        <Badge marginLeft="5" variant="primary" borderRadius="6px">
           {resource.length}
         </Badge>
       </Td>
