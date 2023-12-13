@@ -6,7 +6,7 @@ export const Tag = defineStyleConfig({
       fontWeight: 'medium',
       lineHeight: 'extraShorter',
       letterSpacing: 'wide',
-      borderRadius: '1',
+      borderRadius: '4px',
       fontSize: 'xs',
       backgroundColor: 'backgroundInactive',
       color: 'textInactive',
