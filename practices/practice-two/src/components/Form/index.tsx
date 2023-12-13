@@ -24,6 +24,10 @@ const isValidName = (name: string) => {
   return REGEX.NAME.test(name) ? '' : 'Please enter a valid name'
 }
 
+const isValidEstimate = (estimation: number) => {
+  return estimation > 0 ? '' : 'Please enter a number than 0'
+}
+
 const TableForm = ({
   isEdit,
   onClose,
@@ -34,7 +38,12 @@ const TableForm = ({
   const { resource, name, estimation, manager, start, end } =
     projectDataForm || {}
 
-  const [errors, setErrors] = useState({ name: '', startDate: '', endDate: '' })
+  const [errors, setErrors] = useState({
+    name: '',
+    startDate: '',
+    endDate: '',
+    estimation: '',
+  })
 
   const handleOnChange = useCallback(
     (
@@ -57,6 +66,7 @@ const TableForm = ({
     const { start, end, name } = projectDataForm
 
     const nameMessage = isValidName(name)
+    const estimationMessage = isValidEstimate(estimation)
 
     const startMessage = compareDate(
       new Date(),
@@ -69,7 +79,8 @@ const TableForm = ({
       'End date must be after start date',
     )
 
-    const isValidData = !nameMessage && !startMessage && !endMessage
+    const isValidData =
+      !nameMessage && !startMessage && !endMessage && !estimationMessage
 
     if (isValidData) {
       // Reset error messages
@@ -77,6 +88,7 @@ const TableForm = ({
         name: '',
         startDate: '',
         endDate: '',
+        estimation: '',
       })
 
       return onSubmitForm(projectDataForm)
@@ -86,8 +98,9 @@ const TableForm = ({
       name: nameMessage,
       startDate: startMessage,
       endDate: endMessage,
+      estimation: estimationMessage,
     })
-  }, [onSubmitForm, projectDataForm])
+  }, [onSubmitForm, projectDataForm, estimation])
 
   return (
     <FormControl>
@@ -134,6 +147,7 @@ const TableForm = ({
             placeholder="00.00"
             addOn="US$"
             onChange={handleOnChange}
+            errorMessage={errors.estimation}
           />
         </Box>
       </Box>
