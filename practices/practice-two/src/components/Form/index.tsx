@@ -5,7 +5,7 @@ import { Box, Button, Flex, FormControl } from '@chakra-ui/react'
 import { REGEX, TAG_GROUP, TAG_LIST } from '@/constants'
 
 // Types
-import { Project } from '@/types'
+import { ProjectParent } from '@/types'
 
 // Utils
 import { compareDate } from '@/utils'
@@ -15,13 +15,9 @@ import { InputField, ProjectTagManager, ResourceGroup, Timeline } from '..'
 interface IFormProps {
   isEdit: boolean
   onClose: () => void
-  onSubmitForm: (
-    data: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
-  ) => void
-  projectDataForm: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>
-  setProjectDataForm: React.Dispatch<
-    React.SetStateAction<Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>>
-  >
+  onSubmitForm: (data: ProjectParent) => void
+  projectDataForm: ProjectParent
+  setProjectDataForm: React.Dispatch<React.SetStateAction<ProjectParent>>
 }
 
 const isValidName = (name: string) => {

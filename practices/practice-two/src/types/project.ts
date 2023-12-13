@@ -1,6 +1,6 @@
 import { ProjectStatus } from './common'
 
-export interface Project {
+export interface ProjectParent {
   id: string
   name: string
   manager: {
@@ -13,9 +13,12 @@ export interface Project {
   start: string
   end: string
   estimation: number
+}
+
+export interface ProjectSub extends ProjectParent {
   index: number
-  onEditItem: (data: Project) => void
-  onDeleteItem: (data: Project) => void
+  onEditItem: (data: ProjectSub) => void
+  onDeleteItem: (data: ProjectSub) => void
 }
 
 export interface TagGroup {

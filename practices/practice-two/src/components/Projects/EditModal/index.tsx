@@ -1,18 +1,14 @@
 import TableForm from '@/components/Form'
 import ModalCustom from '@/components/ModalCustom'
-import { Project } from '@/types'
+import { ProjectParent } from '@/types'
 
 interface IEditModalProps {
   isOpenProductModal: boolean
   isEdit: boolean
   handleToggleProductModal: () => void
-  handleSubmitForm: (
-    data: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
-  ) => void
-  setProjectDataForm: React.Dispatch<
-    React.SetStateAction<Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>>
-  >
-  projectDataForm: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>
+  handleSubmitForm: (data: ProjectParent) => void
+  setProjectDataForm: React.Dispatch<React.SetStateAction<ProjectParent>>
+  projectDataForm: ProjectParent
 }
 
 const ProjectEditModal = ({

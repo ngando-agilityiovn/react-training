@@ -1,7 +1,7 @@
 import { Box, Spinner } from '@chakra-ui/react'
 
 // Types
-import { Project } from '@/types'
+import { ProjectParent, ProjectSub } from '@/types'
 
 // Components
 import { ProjectManagementPanel, TableProject } from '@/components'
@@ -15,13 +15,9 @@ interface IProjectBodyProps {
     total?: number
   }[]
   isLoadingProjects: boolean
-  projectsDisplay: Project[]
-  handleEditProject: (
-    project: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
-  ) => void
-  handleDeleteProject: (
-    project: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
-  ) => void
+  projectsDisplay: ProjectSub[]
+  handleEditProject: (project: ProjectParent) => void
+  handleDeleteProject: (project: ProjectParent) => void
 }
 
 const ProjectBody = ({
@@ -47,7 +43,7 @@ const ProjectBody = ({
           />
         </Box>
       ) : (
-        <TableProject<Project>
+        <TableProject<ProjectSub>
           tableHeader={TABLE_HEADER}
           dataTable={projectsDisplay}
           renderBody={(dataTable, index) => (

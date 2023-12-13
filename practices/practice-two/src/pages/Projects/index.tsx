@@ -8,7 +8,7 @@ import { formatLongDateTime, sorting, formatDataByStatus } from '@/utils'
 import { API, TAG_LIST } from '@/constants'
 
 // Types
-import { Project, ProjectStatus } from '@/types'
+import { ProjectParent, ProjectStatus, ProjectSub } from '@/types'
 
 // Services
 import { apiRequest } from '@/services'
@@ -21,10 +21,7 @@ import {
   ProjectHeader,
 } from '@/components/Projects'
 
-const projectDataFormInitial: Omit<
-  Project,
-  'index' | 'onEditItem' | 'onDeleteItem'
-> = {
+const projectDataFormInitial: ProjectParent = {
   id: '',
   name: '',
   manager: {
@@ -42,7 +39,7 @@ const projectDataFormInitial: Omit<
 const Dashboard = () => {
   const [projectDataForm, setProjectDataForm] = useState(projectDataFormInitial)
 
-  const [projects, setProjects] = useState<Record<string, Project[]>>()
+  const [projects, setProjects] = useState<Record<string, ProjectSub[]>>()
   const [tabView, setTabView] = useState(0)
 
   const [isEdit, setIsEdit] = useState(false)
@@ -68,7 +65,7 @@ const Dashboard = () => {
     sortBy: string = 'name',
     orderBy: string = 'ascending',
   ) => {
-    const tempDataAfterSorted: Record<string, Project[]> = {}
+    const tempDataAfterSorted: Record<string, ProjectSub[]> = {}
 
     const isDateValue = sortBy === 'updatedAt'
 
@@ -89,7 +86,7 @@ const Dashboard = () => {
 
   const getData = async () => {
     setIsLoadingProjects(true)
-    const response = await apiRequest<null, Project[]>(
+    const response = await apiRequest<null, ProjectSub[]>(
       `${API.BASE_URL}${API.PROJECT_COLLECTION}`,
       'GET',
     )
@@ -123,9 +120,7 @@ const Dashboard = () => {
     setIsEdit(false)
   }
 
-  const handleSubmitForm = async (
-    data: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
-  ) => {
+  const handleSubmitForm = async (data: ProjectParent) => {
     const updatedTime = new Date()
     const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
 
@@ -210,9 +205,7 @@ const Dashboard = () => {
   }, [projects, tabView])
 
   // Handle edit project
-  const handleEditProject = (
-    project: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
-  ) => {
+  const handleEditProject = (project: ProjectParent) => {
     handleToggleProductModal()
     setIsEdit(true)
 
@@ -242,9 +235,7 @@ const Dashboard = () => {
   }
 
   // Handle delete project
-  const handleDeleteProject = (
-    project: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
-  ) => {
+  const handleDeleteProject = (project: ProjectParent) => {
     const { id } = project
     setIdEdit(id)
     handleToggleDeleteModal()
@@ -252,7 +243,7 @@ const Dashboard = () => {
 
   // Handle search by project name
   const handleSearch = (keySearch: string) => {
-    const tempProjects: Record<string, Project[]> = {}
+    const tempProjects: Record<string, ProjectSub[]> = {}
 
     if (!keySearch) {
       getData()
