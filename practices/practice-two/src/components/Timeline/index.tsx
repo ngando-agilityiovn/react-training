@@ -1,5 +1,5 @@
 import { ChangeEvent, memo, useState } from 'react'
-import { Box, FormLabel, HStack, Input, Text } from '@chakra-ui/react'
+import { Box, Flex, HStack, Input, Text } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 
 interface ITimelineProps {
@@ -27,9 +27,10 @@ const Timeline = memo(
 
     return (
       <Box w="100%" mb="8">
-        <FormLabel fontSize="sm" fontWeight="medium" color="secondary">
-          {title}
-        </FormLabel>
+        <Flex fontSize="sm" fontWeight="medium" color="secondary">
+          <Text mr="1">{title}</Text>
+          <Text color="red">*</Text>
+        </Flex>
         <HStack gap="0">
           <Box w="45%">
             <Text variant="secondary" mb="2.5">
