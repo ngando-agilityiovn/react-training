@@ -45,7 +45,7 @@ const Timeline = memo(
               type="date"
             />
           </Box>
-          <ChevronRightIcon w="10%" mt="7.5" />
+          <ChevronRightIcon w="10%" mt="30px" />
           <Box w="45%">
             <Text variant="secondary" mb="2.5">
               To

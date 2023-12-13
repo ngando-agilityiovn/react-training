@@ -55,28 +55,27 @@ This application is using React to a web application Project Information applica
 ├── .storybook
 ├── json-server
 ├── src
-    ├── assets
     ├── components
     ├── constants
     ├── layouts
     ├── pages
     ├── services
+    ├── themes
+    ├── types
     ├── utils
     ├── App.tsx
     └── main.tsx
 ├── .env
-├── .env.example
-├── .editorconfig
 ├── .eslintrc.cjs
 ├── .gitignore
 ├── .huskyrc
 ├── .lintstagedrc
 ├── .prettierrc
+├── favicon.ico
 ├── index.html
 ├── package.json
-├── tsconfig.json
-├── tsconfig.node.json
 ├── README.md
+├── tsconfig.json
 └── vite.config.ts
 ```
 

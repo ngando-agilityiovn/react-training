@@ -1,9 +1,5 @@
 type MethodRequest = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
-type ErrorResponse = {
-  message: string
-}
-
 export const apiRequest = async <T, K>(
   url: string,
   method: MethodRequest,
@@ -26,6 +22,6 @@ export const apiRequest = async <T, K>(
 
     return responseData as K
   } catch (error) {
-    throw new Error(`API request failed: ${(error as ErrorResponse).message}`)
+    return 'An error occurred while communicating with the server.'
   }
 }

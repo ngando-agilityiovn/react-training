@@ -2,13 +2,12 @@
 export * from './common'
 
 // Components
-export { default as Search } from './Search'
 export { default as Status } from './Status'
+export { default as Search } from './Search'
+export { default as TableForm } from './Form'
 export { default as Sidebar } from './Sidebar'
 export { default as Timeline } from './Timeline'
-export { default as TableRow } from './TableRow'
 export { default as TableProject } from './Table'
-export { default as TableForm } from './TableForm'
 export { default as MenuSelect } from './MenuSelect'
 export { default as ModalCustom } from './ModalCustom'
 export { default as ResourceGroup } from './ResourceGroup'

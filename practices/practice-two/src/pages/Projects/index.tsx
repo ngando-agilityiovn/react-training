@@ -1,37 +1,27 @@
 import { useEffect, useMemo, useState } from 'react'
-import { AddIcon } from '@chakra-ui/icons'
-import { Box, Button, Flex, Spinner, Text, useToast } from '@chakra-ui/react'
+import { useToast } from '@chakra-ui/react'
 
 // Utils
 import { formatLongDateTime, sorting, formatDataByStatus } from '@/utils'
 
 // Constants
-import { API, TABLE_HEADER, TAG_LIST } from '@/constants'
+import { API, TAG_LIST } from '@/constants'
 
 // Types
-import { Project, ProjectStatus } from '@/types'
-
-// Icon components
-import { DropdownIcon } from '@/components/Icons'
+import { ProjectParent, ProjectStatus, ProjectSub } from '@/types'
 
 // Services
 import { apiRequest } from '@/services'
 
 // Components
 import {
-  TableForm,
-  MenuSelect,
-  ModalCustom,
-  Search,
-  ProjectManagementPanel,
-  TableProject,
-  TableRow,
-} from '@/components'
+  ProjectBody,
+  ProjectDeleteModal,
+  ProjectEditModal,
+  ProjectHeader,
+} from '@/components/Projects'
 
-const projectDataFormInitial: Omit<
-  Project,
-  'index' | 'onEditItem' | 'onDeleteItem'
-> = {
+const projectDataFormInitial: ProjectParent = {
   id: '',
   name: '',
   manager: {
@@ -49,7 +39,7 @@ const projectDataFormInitial: Omit<
 const Dashboard = () => {
   const [projectDataForm, setProjectDataForm] = useState(projectDataFormInitial)
 
-  const [projects, setProjects] = useState<Record<string, Project[]>>()
+  const [projects, setProjects] = useState<Record<string, ProjectSub[]>>()
   const [tabView, setTabView] = useState(0)
 
   const [isEdit, setIsEdit] = useState(false)
@@ -75,7 +65,7 @@ const Dashboard = () => {
     sortBy: string = 'name',
     orderBy: string = 'ascending',
   ) => {
-    const tempDataAfterSorted: Record<string, Project[]> = {}
+    const tempDataAfterSorted: Record<string, ProjectSub[]> = {}
 
     const isDateValue = sortBy === 'updatedAt'
 
@@ -96,12 +86,22 @@ const Dashboard = () => {
 
   const getData = async () => {
     setIsLoadingProjects(true)
-    const response = await apiRequest<null, Project[]>(
+    const response = await apiRequest<null, ProjectSub[]>(
       `${API.BASE_URL}${API.PROJECT_COLLECTION}`,
       'GET',
     )
 
-    setProjects(formatDataByStatus(response))
+    if (typeof response == 'string') {
+      toast({
+        title: 'Fail',
+        description: 'You do not get data the project',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      })
+    } else {
+      setProjects(formatDataByStatus(response))
+    }
 
     // NOTE: Just for testing purposes
     setTimeout(() => {
@@ -120,31 +120,28 @@ const Dashboard = () => {
     setIsEdit(false)
   }
 
-  const handleSubmitForm = async (
-    data: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
-  ) => {
-    try {
-      const updatedTime = new Date()
-      const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
+  const handleSubmitForm = async (data: ProjectParent) => {
+    const updatedTime = new Date()
+    const newData = { ...data, updatedAt: formatLongDateTime(updatedTime) }
 
-      const url = isEdit
-        ? `${API.BASE_URL}${API.PROJECT_COLLECTION}/${data?.id}`
-        : `${API.BASE_URL}${API.PROJECT_COLLECTION}`
-      await apiRequest(url, isEdit ? 'PUT' : 'POST', newData)
-      handleResetForm()
-
+    const url = isEdit
+      ? `${API.BASE_URL}${API.PROJECT_COLLECTION}/${data?.id}`
+      : `${API.BASE_URL}${API.PROJECT_COLLECTION}`
+    const response = await apiRequest(url, isEdit ? 'PUT' : 'POST', newData)
+    if (typeof response == 'string') {
       toast({
-        title: 'Account created.',
-        description: 'You have successfully created the project',
-        status: 'success',
+        title: 'API Error!',
+        description: response,
+        status: 'error',
         duration: 9000,
         isClosable: true,
       })
-    } catch (error) {
+    } else {
+      handleResetForm()
       toast({
-        title: 'API Error',
-        description: 'An error occurred while communicating with the server.',
-        status: 'error',
+        title: 'Account created!',
+        description: 'You have successfully created the project',
+        status: 'success',
         duration: 5000,
         isClosable: true,
       })
@@ -208,9 +205,7 @@ const Dashboard = () => {
   }, [projects, tabView])
 
   // Handle edit project
-  const handleEditProject = (
-    project: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
-  ) => {
+  const handleEditProject = (project: ProjectParent) => {
     handleToggleProductModal()
     setIsEdit(true)
 
@@ -240,9 +235,7 @@ const Dashboard = () => {
   }
 
   // Handle delete project
-  const handleDeleteProject = (
-    project: Omit<Project, 'index' | 'onEditItem' | 'onDeleteItem'>,
-  ) => {
+  const handleDeleteProject = (project: ProjectParent) => {
     const { id } = project
     setIdEdit(id)
     handleToggleDeleteModal()
@@ -250,7 +243,7 @@ const Dashboard = () => {
 
   // Handle search by project name
   const handleSearch = (keySearch: string) => {
-    const tempProjects: Record<string, Project[]> = {}
+    const tempProjects: Record<string, ProjectSub[]> = {}
 
     if (!keySearch) {
       getData()
@@ -300,89 +293,37 @@ const Dashboard = () => {
 
   return (
     <>
-      <Flex mt="5" mb="7" mx="5" justifyContent="space-between">
-        <Flex w="370px" border="2px solid #e2e8f0" borderRadius="1.5">
-          <MenuSelect
-            rightIcon={<DropdownIcon />}
-            title="Sort by"
-            options={SORT_OPTIONS}
-          />
-          <Search width="280px" onChange={handleSearch} />
-        </Flex>
+      <ProjectHeader
+        handleSearch={handleSearch}
+        options={SORT_OPTIONS}
+        handleToggleProductModal={handleToggleProductModal}
+      />
 
-        <Button
-          leftIcon={<AddIcon />}
-          variant="solid"
-          onClick={handleToggleProductModal}
-        >
-          Add project
-        </Button>
-      </Flex>
-      <>
-        <ProjectManagementPanel onChangeTab={setTabView} tabs={tabs} />
-
-        {isLoadingProjects ? (
-          <Box py="6" textAlign="center">
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="blue.500"
-              size="xl"
-            />
-          </Box>
-        ) : (
-          <TableProject<Project>
-            tableHeader={TABLE_HEADER}
-            dataTable={projectsDisplay}
-            renderBody={(dataTable, index) => (
-              <TableRow
-                {...dataTable}
-                index={index}
-                onEditItem={handleEditProject}
-                onDeleteItem={handleDeleteProject}
-              />
-            )}
-          />
-        )}
-      </>
-
-      {isOpenProductModal && (
-        <ModalCustom
-          title={isEdit ? 'Edit project' : 'Add project'}
-          onClose={handleToggleProductModal}
-          isOpen={isOpenProductModal}
-        >
-          <TableForm
-            isEdit={isEdit}
-            onClose={handleToggleProductModal}
-            onSubmitForm={handleSubmitForm}
-            projectDataForm={projectDataForm}
-            setProjectDataForm={setProjectDataForm}
-          />
-        </ModalCustom>
+      {projectsDisplay?.length && (
+        <ProjectBody
+          setTabView={setTabView}
+          tabs={tabs}
+          isLoadingProjects={isLoadingProjects}
+          projectsDisplay={projectsDisplay}
+          handleEditProject={handleEditProject}
+          handleDeleteProject={handleDeleteProject}
+        />
       )}
 
-      {isOpenDeleteModal && (
-        <ModalCustom
-          title="Delete project"
-          isOpen={isOpenDeleteModal}
-          onClose={handleToggleDeleteModal}
-        >
-          <Text px="6">
-            Are you sure you want to delete this project? If you delete, it will
-            be permanently lost.
-          </Text>
-          <Flex px="6" justifyContent="flex-end" gap="5" mt="8">
-            <Button variant="outline" onClick={handleToggleDeleteModal}>
-              Cancel
-            </Button>
-            <Button variant="error" onClick={deleteProject}>
-              Delete
-            </Button>
-          </Flex>
-        </ModalCustom>
-      )}
+      <ProjectEditModal
+        isOpenProductModal={isOpenProductModal}
+        isEdit={isEdit}
+        handleToggleProductModal={handleToggleProductModal}
+        handleSubmitForm={handleSubmitForm}
+        setProjectDataForm={setProjectDataForm}
+        projectDataForm={projectDataForm}
+      />
+
+      <ProjectDeleteModal
+        isOpenDeleteModal={isOpenDeleteModal}
+        handleToggleDeleteModal={handleToggleDeleteModal}
+        deleteProject={deleteProject}
+      />
     </>
   )
 }

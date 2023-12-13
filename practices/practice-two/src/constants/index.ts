@@ -1,6 +1,5 @@
 export * from './api'
 export * from './tag'
-export * from './sort'
 export * from './options'
 export * from './tag'
 export * from './variables'
