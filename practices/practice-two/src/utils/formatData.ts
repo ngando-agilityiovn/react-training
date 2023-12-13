@@ -1,9 +1,9 @@
-import { Project, ProjectStatus } from '@/types'
+import { ProjectStatus, ProjectSub } from '@/types'
 
 export const formatDataByStatus = (
-  data: Project[],
-): Record<string, Project[]> => {
-  const formattedData: Record<string, Project[]> = { all: data }
+  data: ProjectSub[],
+): Record<string, ProjectSub[]> => {
+  const formattedData: Record<string, ProjectSub[]> = { all: data }
 
   Object.values(ProjectStatus).forEach((value) => {
     const filterByStatus = data.filter((item) => item.status === value)
