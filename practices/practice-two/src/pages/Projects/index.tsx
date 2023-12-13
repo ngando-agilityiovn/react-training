@@ -1,33 +1,25 @@
 import { useEffect, useMemo, useState } from 'react'
-import { AddIcon } from '@chakra-ui/icons'
-import { Box, Button, Flex, Spinner, Text, useToast } from '@chakra-ui/react'
+import { useToast } from '@chakra-ui/react'
 
 // Utils
 import { formatLongDateTime, sorting, formatDataByStatus } from '@/utils'
 
 // Constants
-import { API, TABLE_HEADER, TAG_LIST } from '@/constants'
+import { API, TAG_LIST } from '@/constants'
 
 // Types
 import { Project, ProjectStatus } from '@/types'
-
-// Icon components
-import { DropdownIcon } from '@/components/Icons'
 
 // Services
 import { apiRequest } from '@/services'
 
 // Components
 import {
-  MenuSelect,
-  ModalCustom,
-  Search,
-  ProjectManagementPanel,
-  TableProject,
-  TableForm,
-} from '@/components'
-
-import TableRow from '@/components/Table/Row'
+  ProjectBody,
+  ProjectDeleteModal,
+  ProjectEditModal,
+  ProjectHeader,
+} from '@/components/Projects'
 
 const projectDataFormInitial: Omit<
   Project,
@@ -310,92 +302,37 @@ const Dashboard = () => {
 
   return (
     <>
-      <Flex mt="5" mb="7" mx="5" justifyContent="space-between">
-        <Flex w="370px" border="2px solid #e2e8f0" borderRadius="1.5">
-          <MenuSelect
-            rightIcon={<DropdownIcon />}
-            title="Sort by"
-            options={SORT_OPTIONS}
-          />
-          <Search width="280px" onChange={handleSearch} />
-        </Flex>
-
-        <Button
-          leftIcon={<AddIcon />}
-          variant="solid"
-          onClick={handleToggleProductModal}
-        >
-          Add project
-        </Button>
-      </Flex>
+      <ProjectHeader
+        handleSearch={handleSearch}
+        options={SORT_OPTIONS}
+        handleToggleProductModal={handleToggleProductModal}
+      />
 
       {projectsDisplay?.length && (
-        <>
-          <ProjectManagementPanel onChangeTab={setTabView} tabs={tabs} />
-
-          {isLoadingProjects ? (
-            <Box py="6" textAlign="center">
-              <Spinner
-                thickness="4px"
-                speed="0.65s"
-                emptyColor="gray.200"
-                color="blue.500"
-                size="xl"
-              />
-            </Box>
-          ) : (
-            <TableProject<Project>
-              tableHeader={TABLE_HEADER}
-              dataTable={projectsDisplay}
-              renderBody={(dataTable, index) => (
-                <TableRow
-                  {...dataTable}
-                  index={index}
-                  onEditItem={handleEditProject}
-                  onDeleteItem={handleDeleteProject}
-                />
-              )}
-            />
-          )}
-        </>
+        <ProjectBody
+          setTabView={setTabView}
+          tabs={tabs}
+          isLoadingProjects={isLoadingProjects}
+          projectsDisplay={projectsDisplay}
+          handleEditProject={handleEditProject}
+          handleDeleteProject={handleDeleteProject}
+        />
       )}
 
-      {isOpenProductModal && (
-        <ModalCustom
-          title={isEdit ? 'Edit project' : 'Add project'}
-          onClose={handleToggleProductModal}
-          isOpen={isOpenProductModal}
-        >
-          <TableForm
-            isEdit={isEdit}
-            onClose={handleToggleProductModal}
-            onSubmitForm={handleSubmitForm}
-            projectDataForm={projectDataForm}
-            setProjectDataForm={setProjectDataForm}
-          />
-        </ModalCustom>
-      )}
+      <ProjectEditModal
+        isOpenProductModal={isOpenProductModal}
+        isEdit={isEdit}
+        handleToggleProductModal={handleToggleProductModal}
+        handleSubmitForm={handleSubmitForm}
+        setProjectDataForm={setProjectDataForm}
+        projectDataForm={projectDataForm}
+      />
 
-      {isOpenDeleteModal && (
-        <ModalCustom
-          title="Delete project"
-          isOpen={isOpenDeleteModal}
-          onClose={handleToggleDeleteModal}
-        >
-          <Text px="6">
-            Are you sure you want to delete this project? If you delete, it will
-            be permanently lost.
-          </Text>
-          <Flex px="6" justifyContent="flex-end" gap="5" mt="8">
-            <Button variant="outline" onClick={handleToggleDeleteModal}>
-              Cancel
-            </Button>
-            <Button variant="error" onClick={deleteProject}>
-              Delete
-            </Button>
-          </Flex>
-        </ModalCustom>
-      )}
+      <ProjectDeleteModal
+        isOpenDeleteModal={isOpenDeleteModal}
+        handleToggleDeleteModal={handleToggleDeleteModal}
+        deleteProject={deleteProject}
+      />
     </>
   )
 }
