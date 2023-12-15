@@ -1,0 +1,33 @@
+.btn {
+  color: var(--color-light);
+  font-weight: var(--bold);
+  border-radius: 5px;
+  border: none;
+  padding: 13px 24px;
+  cursor: pointer;
+  line-height: var(--lh-sm);
+  font-size: var(--primary-font);
+}
+
+.icon {
+  background-color: unset;
+  border: unset;
+  padding: 0;
+}
+
+.btn:hover {
+  transition: all 0.5s ease-out;
+  opacity: 0.7;
+}
+
+.primary {
+  background-color: var(--color-light-blue);
+}
+
+.secondary {
+  background-color: var(--color-secondary);
+}
+
+.warning {
+  background-color: var(--color-warning);
+}

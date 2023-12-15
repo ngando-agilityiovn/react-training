@@ -1,0 +1,30 @@
+.tableHeader {
+  font-size: var(--sm-font);
+  display: none;
+}
+
+.tableHeaderContent {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tableHeaderContentButton {
+  width: 10%;
+}
+
+.sorting {
+  position: relative;
+}
+
+@media (min-width: 1130px) {
+  .tableHeader {
+    display: flex;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .tableContent {
+    gap: 0;
+  }
+}

@@ -1,0 +1,32 @@
+.tag {
+  width: 83px;
+  height: 28px;
+  border-radius: 12px;
+  padding-top: 8px;
+  text-align: center;
+}
+
+.info {
+  color: var(--color-info-subtle);
+  background-color: var(--color-light-subtle);
+}
+
+.success {
+  color: var(--color-success);
+  background-color: var(--color-success-subtle);
+}
+
+.warning {
+  color: var(--color-warning);
+  background-color: var(--color-gradient);
+}
+
+.error {
+  color: var(--color-danger);
+  background-color: var(--color-light-gradient);
+}
+
+.disabled {
+  color: var(--color-info-gradient);
+  background-color: var(--color-tertiary);
+}
