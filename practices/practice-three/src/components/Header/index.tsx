@@ -1,17 +1,23 @@
-import { Flex } from '@chakra-ui/react'
+import { Container, Flex } from '@chakra-ui/react'
+
+// Icon components
 import { Logo } from '../Icons'
+
+// Components
 import Navbar from '../Navbar'
 import CartIcon from '../CartIcon'
 
 const Header = () => {
   return (
-    <Flex py="7" alignItems="center" justifyContent="space-between">
-      <Flex gap="60px">
-        <Logo />
-        <Navbar />
+    <Container maxW="1280px" p="0">
+      <Flex py="7" alignItems="center" justifyContent="space-between">
+        <Flex gap="60px">
+          <Logo />
+          <Navbar />
+        </Flex>
+        <CartIcon quantity={5} />
       </Flex>
-      <CartIcon quantity={5} />
-    </Flex>
+    </Container>
   )
 }
 

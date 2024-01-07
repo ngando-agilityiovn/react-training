@@ -1,11 +1,12 @@
-import { Header } from '@/components'
-import { Container } from '@chakra-ui/react'
+// Components
+import { Banner, Header } from '@/components'
 
 const Home = () => {
   return (
-    <Container maxW="1280px" p="0">
+    <>
       <Header />
-    </Container>
+      <Banner />
+    </>
   )
 }
 
