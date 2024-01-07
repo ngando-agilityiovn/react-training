@@ -11,7 +11,7 @@ export const colors = {
   // Text colors
   textTertiary: '#667085',
   textWarning: '#64666a',
-  textError: '#0d3356',
+  textTitle: '#0d3356',
   textInfo: '#1a064f',
   textInactive: '#344054',
   textDanger: '#726c6c',
