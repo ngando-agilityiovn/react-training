@@ -19,7 +19,7 @@ const Banner = () => {
             >
               Grab Upto 50% Off On Selected Headphone
             </Heading>
-            <Button variant="solid" mt="43px">
+            <Button variant="solid" mt="43px" disabled>
               Buy Now
             </Button>
           </Box>
