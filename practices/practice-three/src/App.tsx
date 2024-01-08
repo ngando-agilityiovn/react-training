@@ -1,11 +1,28 @@
-import { ChakraProvider, Text } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 // Themes
-import { theme } from '@/themes'
+import { theme } from './themes'
+
+// Components
+import { Navbar } from '@/components'
+
+const pages = [
+  {
+    path: '/',
+    element: <Navbar />,
+  },
+]
 
 const App = () => (
   <ChakraProvider theme={theme}>
-    <Text>Hello World</Text>
+    <BrowserRouter>
+      <Routes>
+        {pages.map(({ path, element }) => (
+          <Route key={path} path={path} element={element} />
+        ))}
+      </Routes>
+    </BrowserRouter>
   </ChakraProvider>
 )
 
