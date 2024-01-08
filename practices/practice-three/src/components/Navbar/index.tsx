@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 // Constant
 import { NAVBAR } from '@/constants'
 
-console.log(NAVBAR, 'edff')
-
 const Navbar = () => {
   return (
     <UnorderedList listStyleType="none">

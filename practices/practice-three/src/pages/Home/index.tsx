@@ -1,11 +1,12 @@
 // Components
-import { Banner, Header } from '@/components'
+import { Banner, Header, Product } from '@/components'
 
 const Home = () => {
   return (
     <>
       <Header />
       <Banner />
+      <Product />
     </>
   )
 }
