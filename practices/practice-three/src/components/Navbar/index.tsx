@@ -1,14 +1,20 @@
 import { Flex, ListItem, UnorderedList } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
-// Constant
-import { NAVBAR } from '@/constants'
+interface INavbarItem {
+  title: string
+  link: string
+}
 
-const Navbar = () => {
+interface INavbar {
+  navbarData: INavbarItem[]
+}
+
+const Navbar = ({ navbarData }: INavbar) => {
   return (
     <UnorderedList listStyleType="none">
       <Flex>
-        {NAVBAR.map(({ title, link }) => (
+        {navbarData.map(({ title, link }) => (
           <ListItem key={title} mr="50px" color="secondary" fontWeight="medium">
             <Link to={link}>{title}</Link>
           </ListItem>

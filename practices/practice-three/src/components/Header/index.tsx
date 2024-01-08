@@ -1,5 +1,8 @@
 import { Container, Flex } from '@chakra-ui/react'
 
+// Constants
+import { NAVBAR } from '@/constants'
+
 // Icon components
 import { Logo } from '../Icons'
 
@@ -13,7 +16,7 @@ const Header = () => {
       <Flex py="7" alignItems="center" justifyContent="space-between">
         <Flex gap="60px">
           <Logo />
-          <Navbar />
+          <Navbar navbarData={NAVBAR} />
         </Flex>
         <CartIcon quantity={5} />
       </Flex>

@@ -2,7 +2,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 // Themes
-import { theme } from '@/themes'
+import { theme } from './themes'
 
 // Components
 import { Home } from '@/pages'

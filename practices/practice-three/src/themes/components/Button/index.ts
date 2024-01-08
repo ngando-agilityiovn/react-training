@@ -10,7 +10,7 @@ export const Button = defineStyleConfig({
   variants: {
     default: {
       borderRadius: '30px',
-      border: '1px solid #e4e4e4',
+      border: '1px solid darkGrey40',
       color: 'textDanger',
       fontSize: 'sm',
       fontWeight: 'normal',
@@ -20,7 +20,7 @@ export const Button = defineStyleConfig({
       fontSize: 'sm',
       fontWeight: 'semibold',
       borderRadius: '50px',
-      border: '1px solid #3a4980',
+      border: '1px solid primary',
       background: 'primary',
       px: '3.5',
       py: '2',
@@ -35,7 +35,7 @@ export const Button = defineStyleConfig({
       px: '3.5',
       py: '2',
       borderRadius: '50px',
-      border: ' 1px solid #d0d5dd',
+      border: ' 1px solid backgroundDark',
       background: 'white',
       boxShadow: 'primary',
       _hover: {
