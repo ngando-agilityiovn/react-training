@@ -22,7 +22,7 @@ interface IFilter {
 
 interface IFilterGroup {
   title: string
-  dataFilter: IFilter[]
+  dataFilter?: IFilter[]
 }
 
 const Filter = ({ title, dataFilter }: IFilterGroup) => {
