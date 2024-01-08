@@ -4,9 +4,9 @@ export const colors = {
   secondary: '#1d364d',
   tertiary: '#98a2b3',
   dark: '#140342',
-  white: '#fff',
-  black: '#000',
-  darkToLight: '#374151',
+  darkGrey30: '#f3f3f3',
+  darkGrey40: '#e4e4e4',
+  gray700: '#374151',
 
   // Text colors
   textTertiary: '#667085',
