@@ -1,13 +1,8 @@
 // Components
-import { Banner, Header } from '@/components'
+import { Header } from '@/components'
 
 const Home = () => {
-  return (
-    <>
-      <Header />
-      <Banner />
-    </>
-  )
+  return <Header />
 }
 
 export default Home
