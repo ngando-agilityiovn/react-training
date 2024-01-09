@@ -2,12 +2,7 @@ import { Box, Button, Container, Flex, Heading, Img } from '@chakra-ui/react'
 
 const Banner = () => {
   return (
-    <Box
-      h="287px"
-      background="linear-gradient(75deg, #f4e8f3 0%, #f3eff6 52.07%, #eee0f9 102.02%)"
-      pos="relative"
-      mx="-80px"
-    >
+    <Box h="287px" background="backgroundBanner" pos="relative" mx="-80px">
       <Container h="100%" maxW="1280px" p="0">
         <Flex h="100%" justifyContent="space-between">
           <Box pl="55" pt="64px">

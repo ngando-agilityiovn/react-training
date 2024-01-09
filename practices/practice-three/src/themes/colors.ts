@@ -20,4 +20,10 @@ export const colors = {
   backgroundSuccess: '#e1fcef',
   backgroundWarning: '#b9bbbf',
   backgroundDark: '#d0d5dd',
+
+  // Linear-gradients
+  backgroundBanner:
+    'linear-gradient(75deg, #f4e8f3 0%, #f3eff6 52.07%, #eee0f9 102.02%)',
+  backgroundNumberPagination:
+    'linear-gradient(75deg, #F4E8F3 0%, #F3EFF6 52.07%, #EEE0F9 102.02%)',
 }
