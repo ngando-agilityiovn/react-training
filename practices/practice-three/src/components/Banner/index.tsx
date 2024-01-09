@@ -1,12 +1,6 @@
-import {
-  Box,
-  Button,
-  Container,
-  Flex,
-  Heading,
-  Img,
-  Link,
-} from '@chakra-ui/react'
+import { Box, Button, Container, Flex, Heading, Img } from '@chakra-ui/react'
+
+import { Link } from 'react-router-dom'
 
 const Banner = () => {
   return (
@@ -27,8 +21,13 @@ const Banner = () => {
             >
               Grab Upto 50% Off On Selected Headphone
             </Heading>
-            <Button variant="solid" mt="43px">
-              <Link />
+            <Button
+              variant="solid"
+              mt="43px"
+              border="1px"
+              borderColor="primary"
+            >
+              <Link to="/product">Buy Now</Link>
             </Button>
           </Box>
           <Img
