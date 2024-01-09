@@ -8,6 +8,7 @@ export const colors = {
   darkGrey40: '#e4e4e4',
   gray700: '#374151',
   red50: '#f5f1ee',
+  primary500: '#164C96',
 
   // Text colors
   textTertiary: '#667085',
