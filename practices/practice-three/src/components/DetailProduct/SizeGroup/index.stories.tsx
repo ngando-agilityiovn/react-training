@@ -21,7 +21,7 @@ export default {
 
 type Story = StoryObj<typeof SizeGroup>
 
-export const Catogory: Story = {
+export const Default: Story = {
   args: {
     dataSize: SIZE_DATA,
   },
