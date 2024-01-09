@@ -1,4 +1,12 @@
-import { Box, Button, Container, Flex, Heading, Img } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Container,
+  Flex,
+  Heading,
+  Img,
+  Link,
+} from '@chakra-ui/react'
 
 const Banner = () => {
   return (
@@ -19,8 +27,8 @@ const Banner = () => {
             >
               Grab Upto 50% Off On Selected Headphone
             </Heading>
-            <Button variant="solid" mt="43px" disabled>
-              Buy Now
+            <Button variant="solid" mt="43px">
+              <Link />
             </Button>
           </Box>
           <Img
