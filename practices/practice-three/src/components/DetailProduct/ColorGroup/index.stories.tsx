@@ -2,14 +2,14 @@ import { Meta, StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 
 // Constants
-import { DELIVERY_DATA } from '@/constants'
+import { DATA_COLOR } from '@/constants'
 
 // Components
-import Delivery from '.'
+import ColorGroup from '.'
 
 export default {
-  title: 'Components/Delivery',
-  component: Delivery,
+  title: 'Components/ColorGroup',
+  component: ColorGroup,
   decorators: [
     (Story) => (
       <BrowserRouter>
@@ -19,10 +19,10 @@ export default {
   ],
 } as Meta
 
-type Story = StoryObj<typeof Delivery>
+type Story = StoryObj<typeof ColorGroup>
 
-export const Catogory: Story = {
+export const Default: Story = {
   args: {
-    deliveryDate: DELIVERY_DATA,
+    dataColor: DATA_COLOR,
   },
 }

@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorGroup component Render correcty 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <p
+        class="chakra-text css-1f7e0rw"
+      >
+        Choose a Color
+      </p>
+      <div
+        class="css-dtg2nl"
+      >
+        <div
+          class="css-rk01vg"
+        >
+          <button
+            aria-label=""
+            class="chakra-button css-n7i3qc"
+            type="button"
+          />
+        </div>
+        <div
+          class="css-15dtwlt"
+        >
+          <button
+            aria-label=""
+            class="chakra-button css-15o6u5l"
+            type="button"
+          />
+        </div>
+        <div
+          class="css-1nknmqn"
+        >
+          <button
+            aria-label=""
+            class="chakra-button css-gpon6y"
+            type="button"
+          />
+        </div>
+        <div
+          class="css-zp9sb0"
+        >
+          <button
+            aria-label=""
+            class="chakra-button css-1ojbwa3"
+            type="button"
+          />
+        </div>
+        <div
+          class="css-18x00dg"
+        >
+          <button
+            aria-label=""
+            class="chakra-button css-19ln54c"
+            type="button"
+          />
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <p
+      class="chakra-text css-1f7e0rw"
+    >
+      Choose a Color
+    </p>
+    <div
+      class="css-dtg2nl"
+    >
+      <div
+        class="css-rk01vg"
+      >
+        <button
+          aria-label=""
+          class="chakra-button css-n7i3qc"
+          type="button"
+        />
+      </div>
+      <div
+        class="css-15dtwlt"
+      >
+        <button
+          aria-label=""
+          class="chakra-button css-15o6u5l"
+          type="button"
+        />
+      </div>
+      <div
+        class="css-1nknmqn"
+      >
+        <button
+          aria-label=""
+          class="chakra-button css-gpon6y"
+          type="button"
+        />
+      </div>
+      <div
+        class="css-zp9sb0"
+      >
+        <button
+          aria-label=""
+          class="chakra-button css-1ojbwa3"
+          type="button"
+        />
+      </div>
+      <div
+        class="css-18x00dg"
+      >
+        <button
+          aria-label=""
+          class="chakra-button css-19ln54c"
+          type="button"
+        />
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

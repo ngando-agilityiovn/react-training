@@ -24,6 +24,13 @@ export const colors = {
   backgroundWarning: '#b9bbbf',
   backgroundDark: '#d0d5dd',
 
+  // Color product
+  pink100: '#ffd3d3',
+  pink200: '#ffd3f8',
+  green600: '#bbd278',
+  purple200: '#bbd278',
+  orange100: '#ecdecc',
+
   // Linear-gradients
   backgroundBanner:
     'linear-gradient(75deg, #f4e8f3 0%, #f3eff6 52.07%, #eee0f9 102.02%)',
