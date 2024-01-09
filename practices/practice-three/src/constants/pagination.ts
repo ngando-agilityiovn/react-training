@@ -1,4 +1,4 @@
-export const TEXTDATA = [
+export const TEXT_DATA = [
   {
     text: 'Preview',
   },
