@@ -1,7 +1,8 @@
-import { Box, Button } from '@chakra-ui/react'
+import { Button, Text } from '@chakra-ui/react'
 
 // Icon components
 import { Cart } from '../Icons'
+import { Link } from 'react-router-dom'
 
 interface ICartIcon {
   quantity: number
@@ -9,29 +10,30 @@ interface ICartIcon {
 
 const CartIcon = ({ quantity }: ICartIcon) => {
   return (
-    <Box pos="relative">
-      <Button
-        w="50px"
-        h="50px"
-        borderRadius="full"
-        backgroundColor="#f5f1ee"
-        border="none"
-      >
+    <Button
+      w="50px"
+      h="50px"
+      borderRadius="full"
+      backgroundColor="red50"
+      border="none"
+    >
+      <Link to="/cartPage">
         <Cart />
-      </Button>
-      <Button
-        w="25px"
-        h="25px"
-        borderRadius="full"
-        backgroundColor="black"
-        border="none"
-        color="white"
+      </Link>
+      <Text
+        as="span"
+        display="block"
         pos="absolute"
-        left="8"
+        mb="35px"
+        ml="45px"
+        backgroundColor="secondary"
+        w="28px"
+        borderRadius="50%"
+        color="white"
       >
         {quantity}
-      </Button>
-    </Box>
+      </Text>
+    </Button>
   )
 }
 
