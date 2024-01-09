@@ -2,14 +2,14 @@ import { Meta, StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 
 // Constants
-import { BENEFIT_DATA } from '@/constants'
+import { DELIVERYDATA } from '@/constants'
 
 // Components
-import BenefitList from '.'
+import Delivery from '.'
 
 export default {
-  title: 'Components/BenefitList',
-  component: BenefitList,
+  title: 'Components/Delivery',
+  component: Delivery,
   decorators: [
     (Story) => (
       <BrowserRouter>
@@ -19,10 +19,10 @@ export default {
   ],
 } as Meta
 
-type Story = StoryObj<typeof BenefitList>
+type Story = StoryObj<typeof Delivery>
 
-export const Default: Story = {
+export const Catogory: Story = {
   args: {
-    benefitData: BENEFIT_DATA,
+    deliveryDate: DELIVERYDATA,
   },
 }
