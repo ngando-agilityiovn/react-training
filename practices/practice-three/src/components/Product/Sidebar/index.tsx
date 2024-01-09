@@ -1,6 +1,10 @@
-import { FILTER } from '@/constants'
 import { Accordion, AccordionItem, Button, Flex, Text } from '@chakra-ui/react'
-import Filter from '../../Filter'
+
+// Constants
+import { FILTER } from '@/constants'
+
+// Components
+import { Filter } from '@/components'
 
 const Sidebar = () => {
   return (
@@ -9,7 +13,7 @@ const Sidebar = () => {
         <Text fontSize="20px" fontWeight="medium" color="dark">
           Filters
         </Text>
-        <Button textTransform="capitalize">Clear all</Button>
+        <Button textTransform="capitalize">clear all</Button>
       </Flex>
       <Accordion
         w="304px"
