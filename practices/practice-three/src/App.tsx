@@ -5,12 +5,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { theme } from './themes'
 
 // Components
-import { Navbar } from '@/components'
+import { Home } from '@/pages'
 
 const pages = [
   {
     path: '/',
-    element: <Navbar />,
+    element: <Home />,
   },
 ]
 

@@ -7,14 +7,14 @@ interface INavbarItem {
 }
 
 interface INavbar {
-  navbarData?: INavbarItem[]
+  navbarData: INavbarItem[]
 }
 
 const Navbar = ({ navbarData }: INavbar) => {
   return (
     <UnorderedList listStyleType="none">
       <Flex>
-        {navbarData?.map(({ title, link }) => (
+        {navbarData.map(({ title, link }) => (
           <ListItem key={title} mr="50px" color="secondary" fontWeight="medium">
             <Link to={link}>{title}</Link>
           </ListItem>
