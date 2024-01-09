@@ -21,6 +21,7 @@ const CartIcon = ({ quantity }: ICartIcon) => {
         <Cart />
       </Link>
       <Text
+        as="span"
         display="block"
         pos="absolute"
         mb="35px"
