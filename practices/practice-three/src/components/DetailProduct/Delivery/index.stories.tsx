@@ -21,7 +21,7 @@ export default {
 
 type Story = StoryObj<typeof Delivery>
 
-export const Catogory: Story = {
+export const Default: Story = {
   args: {
     deliveryDate: DELIVERYDATA,
   },

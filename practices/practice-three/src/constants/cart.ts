@@ -7,7 +7,7 @@ export const CARD_DATA = [
     price: 675.0,
     numeric: '5 types of shoos available',
     rating: '******',
-    numericRating: '333',
+    reviewQuantity: '333',
   },
   {
     image:
@@ -17,7 +17,7 @@ export const CARD_DATA = [
     price: 675.0,
     numeric: '5 types of shoos available',
     rating: '******',
-    numericRating: '333',
+    reviewQuantity: '333',
   },
   {
     image:
@@ -27,7 +27,7 @@ export const CARD_DATA = [
     price: 675.0,
     numeric: '5 types of shoos available',
     rating: '******',
-    numericRating: '333',
+    reviewQuantity: '333',
   },
   {
     image:
@@ -37,7 +37,7 @@ export const CARD_DATA = [
     price: 675.0,
     numeric: '5 types of shoos available',
     rating: '******',
-    numericRating: '333',
+    reviewQuantity: '333',
   },
   {
     image:
@@ -47,7 +47,7 @@ export const CARD_DATA = [
     price: 675.0,
     numeric: '5 types of shoos available',
     rating: '******',
-    numericRating: '333',
+    reviewQuantity: '333',
   },
   {
     image:
@@ -57,7 +57,7 @@ export const CARD_DATA = [
     price: 675.0,
     numeric: '5 types of shoos available',
     rating: '******',
-    numericRating: '333',
+    reviewQuantity: '333',
   },
   {
     image:
@@ -67,6 +67,6 @@ export const CARD_DATA = [
     price: 675.0,
     numeric: '5 types of shoos available',
     rating: '******',
-    numericRating: '333',
+    reviewQuantity: '333',
   },
 ]
