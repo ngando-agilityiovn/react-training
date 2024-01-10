@@ -5,11 +5,11 @@ import { BrowserRouter } from 'react-router-dom'
 import { BENEFIT_DATA } from '@/constants'
 
 // Components
-import DescriptionTag from '.'
+import DescriptionTab from '.'
 
 export default {
-  title: 'Components/DescriptionTag',
-  component: DescriptionTag,
+  title: 'Components/DescriptionTab',
+  component: DescriptionTab,
   decorators: [
     (Story) => (
       <BrowserRouter>
@@ -19,7 +19,7 @@ export default {
   ],
 } as Meta
 
-type Story = StoryObj<typeof DescriptionTag>
+type Story = StoryObj<typeof DescriptionTab>
 
 export const Default: Story = {
   args: {

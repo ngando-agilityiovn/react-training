@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Box, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react'
+import { SIZE_DATA } from '@/constants'
 
 interface ISizeItem {
   size: string
@@ -10,7 +11,7 @@ interface ISizeGroup {
 }
 
 const SizeGroup = ({ dataSize }: ISizeGroup) => {
-  const [value, setValue] = useState('1')
+  const [value, setValue] = useState(SIZE_DATA[0].size)
   return (
     <>
       <Text color="backgroundWarning" fontWeight="medium" mb="14px">

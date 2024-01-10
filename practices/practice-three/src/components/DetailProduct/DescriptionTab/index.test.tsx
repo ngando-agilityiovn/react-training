@@ -5,13 +5,13 @@ import { BrowserRouter } from 'react-router-dom'
 import { BENEFIT_DATA } from '@/constants'
 
 // Components
-import DescriptionTag from '.'
+import DescriptionTab from '.'
 
 describe('DescriptionTag component', () => {
   it('Render correcty', () => {
     const container = render(
       <BrowserRouter>
-        <DescriptionTag
+        <DescriptionTab
           descriptionTitle="Product Description"
           descriptionText="When it's colder than the far side of the moon and spitting rain too, you've still got to look good. From water-repellent leather to a rugged outsole."
           benefitData={BENEFIT_DATA}

@@ -1,7 +1,7 @@
 import { Container, Flex } from '@chakra-ui/react'
 
 // Constants
-import { CARD_DATA, TEXT_DATA } from '@/constants'
+import { CARD_DATA } from '@/constants'
 
 // Components
 import Sidebar from './Sidebar'
@@ -12,7 +12,7 @@ const Product = () => {
     <Container maxW="1280px" pt="49px" px={0}>
       <Flex gap={21}>
         <Sidebar />
-        <ListProduct cardData={CARD_DATA} textData={TEXT_DATA} />
+        <ListProduct cardData={CARD_DATA} />
       </Flex>
     </Container>
   )
