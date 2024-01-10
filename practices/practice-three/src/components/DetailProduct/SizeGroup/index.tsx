@@ -10,7 +10,7 @@ interface ISizeGroup {
 }
 
 const SizeGroup = ({ dataSize }: ISizeGroup) => {
-  const [value, setValue] = useState('1')
+  const [value, setValue] = useState('Small')
   return (
     <>
       <Text color="backgroundWarning" fontWeight="medium" mb="14px">
