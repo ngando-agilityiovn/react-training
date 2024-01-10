@@ -1,8 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 
-// Constants
-
 // Components
 import Sidebar from '.'
 

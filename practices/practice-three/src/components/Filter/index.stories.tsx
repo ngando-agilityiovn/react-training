@@ -1,12 +1,15 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
+import { Accordion, AccordionItem } from '@chakra-ui/react'
 
 // Constants
 import { FILTER } from '@/constants'
 
+// Types
+import { Title } from '@/types'
+
 // Components
 import Filter from '.'
-import { Accordion, AccordionItem } from '@chakra-ui/react'
 
 export default {
   title: 'Components/Filter',
@@ -26,30 +29,29 @@ export default {
 
 type Story = StoryObj<typeof Filter>
 
-export const Catogory: Story = {
+export const Category: Story = {
   args: {
-    title: 'Catogory',
+    title: Title.CATEGORY,
     dataFilter: FILTER.category,
   },
 }
 
 export const Brand: Story = {
   args: {
-    title: 'Brand',
+    title: Title.BRAND,
     dataFilter: FILTER.brand,
   },
 }
 
 export const Size: Story = {
   args: {
-    title: 'Size',
+    title: Title.SIZE,
     dataFilter: FILTER.size,
   },
 }
 
 export const Price: Story = {
   args: {
-    title: 'Price',
-    dataFilter: FILTER.category,
+    title: Title.PRICE,
   },
 }

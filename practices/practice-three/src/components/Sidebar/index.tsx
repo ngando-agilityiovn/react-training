@@ -3,6 +3,9 @@ import { Accordion, AccordionItem, Button, Flex, Text } from '@chakra-ui/react'
 // Constants
 import { FILTER } from '@/constants'
 
+// Types
+import { Title } from '@/types'
+
 // Components
 import Filter from '../Filter'
 
@@ -25,16 +28,16 @@ const Sidebar = () => {
         borderColor="darkGrey30"
       >
         <AccordionItem>
-          <Filter dataFilter={FILTER.category} title="Category" />
+          <Filter dataFilter={FILTER.category} title={Title.CATEGORY} />
         </AccordionItem>
         <AccordionItem>
-          <Filter dataFilter={FILTER.brand} title="Brand" />
+          <Filter dataFilter={FILTER.brand} title={Title.BRAND} />
         </AccordionItem>
         <AccordionItem>
-          <Filter dataFilter={FILTER.brand} title="Size" />
+          <Filter dataFilter={FILTER.size} title={Title.SIZE} />
         </AccordionItem>
         <AccordionItem>
-          <Filter dataFilter={FILTER.brand} title="Price" />
+          <Filter title={Title.PRICE} />
         </AccordionItem>
       </Accordion>
     </>
