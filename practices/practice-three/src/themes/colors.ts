@@ -24,15 +24,15 @@ export const colors = {
   backgroundDark: '#d0d5dd',
 
   // Color product
-  pink100: '#ffd3d3',
-  pink200: '#ffd3f8',
-  green600: '#bbd278',
-  purple200: '#bbd278',
-  orange100: '#ecdecc',
+  mistyRose: '#ffd3d3',
+  lavenderBlush: '#ffd3f8',
+  deco: '#bbd278',
+  pearlLusta: '#ecdecc',
+  paleCornflowerBlue: '#bbc1f8',
 
   // Linear-gradients
   backgroundBanner:
     'linear-gradient(75deg, #f4e8f3 0%, #f3eff6 52.07%, #eee0f9 102.02%)',
   backgroundNumberPagination:
-    'linear-gradient(75deg, #F4E8F3 0%, #F3EFF6 52.07%, #EEE0F9 102.02%)',
+    'linear-gradient(75deg, #F4E8F3 0%, #F3EFF6 52.07%, #eee0f9 102.02%)',
 }

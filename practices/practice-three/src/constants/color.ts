@@ -1,17 +1,17 @@
 export const DATA_COLOR = [
   {
-    color: 'orange100',
+    color: 'pearlLusta',
   },
   {
-    color: 'green600',
+    color: 'paleCornflowerBlue',
   },
   {
-    color: 'purple200',
+    color: 'deco',
   },
   {
-    color: 'pink200',
+    color: 'lavenderBlush',
   },
   {
-    color: 'pink100',
+    color: 'mistyRose',
   },
 ]
