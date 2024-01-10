@@ -7,6 +7,7 @@ export const colors = {
   whiteSmoke: '#f3f3f3',
   gainsboro: '#e4e4e4',
   cloudBurst: '#374151',
+  desertStorm: '#f5f1ee',
 
   // Text colors
   textTertiary: '#667085',

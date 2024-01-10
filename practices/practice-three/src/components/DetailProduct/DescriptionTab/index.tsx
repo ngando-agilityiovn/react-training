@@ -22,7 +22,7 @@ interface IDescriptionTagItem {
   benefitData: IBenefitItem[]
 }
 
-const DescriptionTag = ({
+const DescriptionTab = ({
   descriptionTitle,
   descriptionText,
   benefitData,
@@ -65,4 +65,4 @@ const DescriptionTag = ({
   )
 }
 
-export default DescriptionTag
+export default DescriptionTab

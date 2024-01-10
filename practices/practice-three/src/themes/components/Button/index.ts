@@ -65,7 +65,7 @@ export const Button = defineStyleConfig({
     },
     error: {
       color: 'white',
-      backgroundColor: 'red',
+      backgroundColor: 'desertStorm',
     },
   },
   defaultProps: {

@@ -14,7 +14,7 @@ const CartIcon = ({ quantity }: ICartIcon) => {
       w="50px"
       h="50px"
       borderRadius="full"
-      backgroundColor="red"
+      backgroundColor="desertStorm"
       border="none"
     >
       <Link to="/cartPage">
