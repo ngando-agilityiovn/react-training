@@ -16,7 +16,7 @@ export const Button = defineStyleConfig({
     default: {
       borderRadius: '30px',
       border: '1px solid',
-      borderColor: 'darkGrey40',
+      borderColor: 'gainsboro',
       color: 'textDanger',
       fontSize: 'sm',
       fontWeight: 'normal',

@@ -30,7 +30,7 @@ const DescriptionTag = ({
   return (
     <Tabs>
       <TabList mb="49px">
-        <Tab color="primary500" fontSize="md" fontWeight="semibold">
+        <Tab color="textDescription" fontSize="md" fontWeight="semibold">
           Description
         </Tab>
       </TabList>
