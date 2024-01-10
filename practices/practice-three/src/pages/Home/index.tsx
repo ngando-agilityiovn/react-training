@@ -1,8 +1,14 @@
 // Components
-import { Header } from '@/components'
+import { Banner, Header, Product } from '@/components'
 
 const Home = () => {
-  return <Header />
+  return (
+    <>
+      <Header />
+      <Banner />
+      <Product />
+    </>
+  )
 }
 
 export default Home
