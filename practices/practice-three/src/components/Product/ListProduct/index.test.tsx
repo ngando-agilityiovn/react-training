@@ -2,14 +2,14 @@ import { render } from '@testing-library/react'
 
 // Components
 import ListProduct from '.'
-import { CARDDATA, TEXTDATA } from '@/constants'
+import { CARD_DATA, TEXTDATA } from '@/constants'
 
 jest.mock('@chakra-ui/react')
 
 describe('Sidebar component', () => {
   it('Render correcty', () => {
     const container = render(
-      <ListProduct cardData={CARDDATA} textData={TEXTDATA} />,
+      <ListProduct cardData={CARD_DATA} textData={TEXTDATA} />,
     )
     expect(container).toMatchSnapshot()
   })

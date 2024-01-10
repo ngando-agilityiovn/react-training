@@ -1,4 +1,4 @@
-export const TEXTDATA = [
+export const PAGINATION_DATA = [
   {
     text: 'Preview',
   },
