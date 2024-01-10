@@ -21,7 +21,7 @@ const Sidebar = () => {
         flexDirection="column"
         gap={30}
         border="1px solid"
-        borderColor="darkGrey30"
+        borderColor="whiteSmoke"
       >
         <AccordionItem>
           <Filter dataFilter={FILTER.category} title="Category" />

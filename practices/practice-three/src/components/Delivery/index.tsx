@@ -18,7 +18,7 @@ const Delivery = ({ deliveryDate }: IDelivery) => {
       p="17px"
       borderRadius="14px"
       border="1px solid"
-      borderColor="darkGrey40"
+      borderColor="gainsboro"
       w="582px"
     >
       {deliveryDate.map(({ title, description }) => (
@@ -37,7 +37,7 @@ const Delivery = ({ deliveryDate }: IDelivery) => {
               <Text variant="secondary">{description}</Text>
             </Box>
           </Flex>
-          <Box my="21px" w="548px" h="1px" background="darkGrey40"></Box>
+          <Box my="21px" w="548px" h="1px" background="gainsboro"></Box>
         </>
       ))}
     </Box>
