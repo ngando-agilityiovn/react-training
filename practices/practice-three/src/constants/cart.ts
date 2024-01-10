@@ -1,4 +1,4 @@
-export const CARDDATA = [
+export const CARD_DATA = [
   {
     image:
       'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
@@ -7,7 +7,7 @@ export const CARDDATA = [
     price: 675.0,
     numeric: '5 types of shoos available',
     rating: '******',
-    numericRating: '333',
+    reviewQuantity: '333',
   },
   {
     image:
@@ -17,7 +17,7 @@ export const CARDDATA = [
     price: 675.0,
     numeric: '5 types of shoos available',
     rating: '******',
-    numericRating: '333',
+    reviewQuantity: '333',
   },
   {
     image:
@@ -27,7 +27,7 @@ export const CARDDATA = [
     price: 675.0,
     numeric: '5 types of shoos available',
     rating: '******',
-    numericRating: '333',
+    reviewQuantity: '333',
   },
   {
     image:
@@ -37,7 +37,7 @@ export const CARDDATA = [
     price: 675.0,
     numeric: '5 types of shoos available',
     rating: '******',
-    numericRating: '333',
+    reviewQuantity: '333',
   },
   {
     image:
@@ -47,7 +47,7 @@ export const CARDDATA = [
     price: 675.0,
     numeric: '5 types of shoos available',
     rating: '******',
-    numericRating: '333',
+    reviewQuantity: '333',
   },
   {
     image:
@@ -57,7 +57,7 @@ export const CARDDATA = [
     price: 675.0,
     numeric: '5 types of shoos available',
     rating: '******',
-    numericRating: '333',
+    reviewQuantity: '333',
   },
   {
     image:
@@ -67,6 +67,6 @@ export const CARDDATA = [
     price: 675.0,
     numeric: '5 types of shoos available',
     rating: '******',
-    numericRating: '333',
+    reviewQuantity: '333',
   },
 ]
