@@ -12,7 +12,11 @@ interface ISizeGroup {
 const SizeGroup = ({ dataSize }: ISizeGroup) => {
   const [value, setValue] = useState('1')
   return (
-    <>
+    <Box
+      borderBottom={'1px solid red'}
+      borderTop={'1px solid red'}
+      padding="30px 0"
+    >
       <Text color="backgroundWarning" fontWeight="medium" mb="14px">
         Choose a Size
       </Text>
@@ -36,7 +40,7 @@ const SizeGroup = ({ dataSize }: ISizeGroup) => {
           ))}
         </Stack>
       </RadioGroup>
-    </>
+    </Box>
   )
 }
 
