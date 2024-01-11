@@ -1,7 +1,8 @@
+import Bag from '@/components/Icons/bag'
+import Car from '@/components/Icons/car'
 import { Box, Flex, Text } from '@chakra-ui/react'
 
 // Icon components
-import { Bag, Car } from '../Icons'
 
 interface IDeliveryItem {
   title: string
