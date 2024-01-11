@@ -34,5 +34,5 @@ export const colors = {
   backgroundBanner:
     'linear-gradient(75deg, #f4e8f3 0%, #f3eff6 52.07%, #eee0f9 102.02%)',
   backgroundNumberPagination:
-    'linear-gradient(75deg, #f4e8f3 0%, #f3eff6 52.07%, #eee0f9 102.02%)',
+    'linear-gradient(75deg, #f4e8f3 0%, #f3eff6 52.07%, #eee0f9 102.02%)'
 }

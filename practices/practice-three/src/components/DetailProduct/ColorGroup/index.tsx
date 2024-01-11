@@ -14,16 +14,17 @@ const ColorGroup = ({ data }: IRadioGroup) => {
       <Text color="backgroundWarning" fontWeight="medium" mb="14px">
         Choose a Color
       </Text>
-      <Flex gap="12px">
+      <Flex gap="6">
         {data.map(({ color }) => (
           <Box color={color}>
             <IconButton
               aria-label=""
               bg={color}
-              w={30}
-              h={30}
-              rounded="full"
+              w={16}
+              h={16}
+              rounded="100%"
               position="relative"
+              // TODO: Implement handle after
               _after={{
                 position: 'absolute',
                 content: '""',
@@ -35,7 +36,7 @@ const ColorGroup = ({ data }: IRadioGroup) => {
                 bg: 'transparent',
                 borderRadius: '100%',
                 border: `4px solid  ${color}`,
-                zIndex: -1,
+                zIndex: -1
               }}
             />
           </Box>

@@ -1,17 +1,19 @@
+import { colors } from '@/themes/colors'
+
 export const DATA_COLOR = [
   {
-    color: 'pearlLusta',
+    color: colors.pearlLusta
   },
   {
-    color: 'paleCornflowerBlue',
+    color: colors.paleCornflowerBlue
   },
   {
-    color: 'deco',
+    color: colors.deco
   },
   {
-    color: 'lavenderBlush',
+    color: colors.lavenderBlush
   },
   {
-    color: 'mistyRose',
-  },
+    color: colors.mistyRose
+  }
 ]
