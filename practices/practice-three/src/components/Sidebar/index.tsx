@@ -7,40 +7,39 @@ import { FILTER } from '@/constants'
 import { Title } from '@/types'
 
 // Components
-import Filter from '../Filter'
+import { Filter } from '@/components'
 
 const Sidebar = () => {
   return (
-    <>
-      <Flex gap={149}>
-        <Text fontSize={20} fontWeight="medium" color="dark">
+    <Flex flexDirection="column">
+      <Flex justifyContent={'space-between'} mb={'23px'}>
+        <Text fontSize="20px" fontWeight="medium" color="dark">
           Filters
         </Text>
         <Button textTransform="capitalize">clear all</Button>
       </Flex>
       <Accordion
-        marginTop={23}
         w="304px"
         display="flex"
         flexDirection="column"
         gap={30}
         border="1px solid"
-        borderColor="darkGrey30"
+        borderColor="whiteSmoke"
       >
         <AccordionItem>
-          <Filter dataFilter={FILTER.category} title={Title.CATEGORY} />
+          <Filter data={FILTER.category} title={Title.CATEGORY} />
         </AccordionItem>
         <AccordionItem>
-          <Filter dataFilter={FILTER.brand} title={Title.BRAND} />
+          <Filter data={FILTER.brand} title={Title.BRAND} />
         </AccordionItem>
         <AccordionItem>
-          <Filter dataFilter={FILTER.size} title={Title.SIZE} />
+          <Filter data={FILTER.size} title={Title.SIZE} />
         </AccordionItem>
         <AccordionItem>
           <Filter title={Title.PRICE} />
         </AccordionItem>
       </Accordion>
-    </>
+    </Flex>
   )
 }
 

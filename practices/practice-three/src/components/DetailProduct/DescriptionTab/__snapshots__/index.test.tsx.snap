@@ -1,0 +1,260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DescriptionTag component Render correcty 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="chakra-tabs css-79elbk"
+      >
+        <div
+          aria-orientation="horizontal"
+          class="chakra-tabs__tablist css-10cldg7"
+          role="tablist"
+        >
+          <button
+            aria-controls="tabs-:r0:--tabpanel-0"
+            aria-disabled="false"
+            aria-selected="true"
+            class="chakra-tabs__tab css-1hdb1r3"
+            data-index="0"
+            id="tabs-:r0:--tab-0"
+            role="tab"
+            tabindex="0"
+            type="button"
+          >
+            Description
+          </button>
+        </div>
+        <div
+          class="chakra-tabs__tab-panels css-8atqhb"
+        >
+          <div
+            aria-labelledby="tabs-:r0:--tab-0"
+            class="chakra-tabs__tab-panel css-sjt5nk"
+            id="tabs-:r0:--tabpanel-0"
+            role="tabpanel"
+            tabindex="0"
+          >
+            <div
+              class="css-10ib5jr"
+            >
+              <p
+                class="chakra-text css-1jzba86"
+              >
+                Product Description
+              </p>
+              <p
+                class="chakra-text css-0"
+              >
+                When it's colder than the far side of the moon and spitting rain too, you've still got to look good. From water-repellent leather to a rugged outsole.
+              </p>
+            </div>
+            <div
+              class="css-0"
+            >
+              <p
+                class="chakra-text css-1n2b16c"
+              >
+                Benefits
+              </p>
+              <div
+                class="css-lgm91p"
+              >
+                <svg
+                  fill="none"
+                  height="20"
+                  viewBox="0 0 21 20"
+                  width="21"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g
+                    id="Check icon"
+                  >
+                    <rect
+                      fill="#e7f4fc"
+                      height="20"
+                      rx="10"
+                      width="20"
+                      x="0.248047"
+                    />
+                    <path
+                      clip-rule="evenodd"
+                      d="M14.4949 6.15838L8.52822 11.9167L6.94489 10.2251C6.65322 9.95005 6.19489 9.93338 5.86156 10.1667C5.53656 10.4084 5.44489 10.8334 5.64489 11.1751L7.51989 14.2251C7.70322 14.5084 8.01989 14.6834 8.37822 14.6834C8.71989 14.6834 9.04489 14.5084 9.22822 14.2251C9.52822 13.8334 15.2532 7.00838 15.2532 7.00838C16.0032 6.24172 15.0949 5.56672 14.4949 6.15005V6.15838Z"
+                      fill="#164c96"
+                      fill-rule="evenodd"
+                      id="Icon"
+                    />
+                  </g>
+                </svg>
+                <p
+                  class="chakra-text css-0"
+                >
+                  Durable leather is easily cleanable so you can keep your look fresh.
+                </p>
+                <p
+                  class="chakra-text css-0"
+                >
+                  Toe piece with star pattern adds durability.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="chakra-tabs css-79elbk"
+    >
+      <div
+        aria-orientation="horizontal"
+        class="chakra-tabs__tablist css-10cldg7"
+        role="tablist"
+      >
+        <button
+          aria-controls="tabs-:r0:--tabpanel-0"
+          aria-disabled="false"
+          aria-selected="true"
+          class="chakra-tabs__tab css-1hdb1r3"
+          data-index="0"
+          id="tabs-:r0:--tab-0"
+          role="tab"
+          tabindex="0"
+          type="button"
+        >
+          Description
+        </button>
+      </div>
+      <div
+        class="chakra-tabs__tab-panels css-8atqhb"
+      >
+        <div
+          aria-labelledby="tabs-:r0:--tab-0"
+          class="chakra-tabs__tab-panel css-sjt5nk"
+          id="tabs-:r0:--tabpanel-0"
+          role="tabpanel"
+          tabindex="0"
+        >
+          <div
+            class="css-10ib5jr"
+          >
+            <p
+              class="chakra-text css-1jzba86"
+            >
+              Product Description
+            </p>
+            <p
+              class="chakra-text css-0"
+            >
+              When it's colder than the far side of the moon and spitting rain too, you've still got to look good. From water-repellent leather to a rugged outsole.
+            </p>
+          </div>
+          <div
+            class="css-0"
+          >
+            <p
+              class="chakra-text css-1n2b16c"
+            >
+              Benefits
+            </p>
+            <div
+              class="css-lgm91p"
+            >
+              <svg
+                fill="none"
+                height="20"
+                viewBox="0 0 21 20"
+                width="21"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  id="Check icon"
+                >
+                  <rect
+                    fill="#e7f4fc"
+                    height="20"
+                    rx="10"
+                    width="20"
+                    x="0.248047"
+                  />
+                  <path
+                    clip-rule="evenodd"
+                    d="M14.4949 6.15838L8.52822 11.9167L6.94489 10.2251C6.65322 9.95005 6.19489 9.93338 5.86156 10.1667C5.53656 10.4084 5.44489 10.8334 5.64489 11.1751L7.51989 14.2251C7.70322 14.5084 8.01989 14.6834 8.37822 14.6834C8.71989 14.6834 9.04489 14.5084 9.22822 14.2251C9.52822 13.8334 15.2532 7.00838 15.2532 7.00838C16.0032 6.24172 15.0949 5.56672 14.4949 6.15005V6.15838Z"
+                    fill="#164c96"
+                    fill-rule="evenodd"
+                    id="Icon"
+                  />
+                </g>
+              </svg>
+              <p
+                class="chakra-text css-0"
+              >
+                Durable leather is easily cleanable so you can keep your look fresh.
+              </p>
+              <p
+                class="chakra-text css-0"
+              >
+                Toe piece with star pattern adds durability.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

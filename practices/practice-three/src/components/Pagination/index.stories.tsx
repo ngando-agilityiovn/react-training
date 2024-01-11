@@ -2,14 +2,14 @@ import { Meta, StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 
 // Constants
-import { NAVBAR } from '@/constants'
+import { PAGINATION_DATA } from '@/constants'
 
 // Components
-import Navbar from '.'
+import Pagination from '.'
 
 export default {
-  title: 'Components/Navbar',
-  component: Navbar,
+  title: 'Components/Pagination',
+  component: Pagination,
   decorators: [
     (Story) => (
       <BrowserRouter>
@@ -19,10 +19,10 @@ export default {
   ],
 } as Meta
 
-type Story = StoryObj<typeof Navbar>
+type Story = StoryObj<typeof Pagination>
 
 export const Default: Story = {
   args: {
-    data: NAVBAR,
+    textData: PAGINATION_DATA,
   },
 }

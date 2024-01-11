@@ -2,14 +2,14 @@ import { Meta, StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 
 // Constants
-import { NAVBAR } from '@/constants'
+import { SIZE_DATA } from '@/constants'
 
 // Components
-import Navbar from '.'
+import SizeGroup from '.'
 
 export default {
-  title: 'Components/Navbar',
-  component: Navbar,
+  title: 'Components/SizeGroup',
+  component: SizeGroup,
   decorators: [
     (Story) => (
       <BrowserRouter>
@@ -19,10 +19,10 @@ export default {
   ],
 } as Meta
 
-type Story = StoryObj<typeof Navbar>
+type Story = StoryObj<typeof SizeGroup>
 
 export const Default: Story = {
   args: {
-    data: NAVBAR,
+    data: SIZE_DATA,
   },
 }

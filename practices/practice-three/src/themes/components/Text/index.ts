@@ -5,6 +5,7 @@ export const Text = defineStyleConfig({
     fontFamily: "'Inter', sans-serif",
     fontWeight: 'normal',
     color: 'textTertiary',
+    fontSize: 'sm',
   },
   variants: {
     default: {
@@ -13,11 +14,10 @@ export const Text = defineStyleConfig({
     },
     primary: {
       fontSize: 'lg',
-      fontWeight: 'bold',
+      fontWeight: 'medium',
     },
     secondary: {
       color: 'textDanger',
-      fontSize: 'sm',
     },
     tertiary: {
       color: 'backgroundWarning',
@@ -25,8 +25,7 @@ export const Text = defineStyleConfig({
     },
     title: {
       color: 'textTitle',
-      fontSize: 'sm',
-      fontWeight: 'bold',
+      fontWeight: 'meidum',
     },
   },
   defaultProps: {
