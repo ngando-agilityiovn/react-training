@@ -8,7 +8,7 @@ import ColorGroup from '.'
 
 describe('ColorGroup component', () => {
   it('Render correcty', () => {
-    const container = render(<ColorGroup dataColor={DATA_COLOR} />)
+    const container = render(<ColorGroup data={DATA_COLOR} />)
     expect(container).toMatchSnapshot()
   })
 })

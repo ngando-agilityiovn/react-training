@@ -14,7 +14,7 @@ describe('Filter component', () => {
       <BrowserRouter>
         <Accordion>
           <AccordionItem>
-            <Filter title="Catogory" dataFilter={FILTER.category} />
+            <Filter title="Catogory" data={FILTER.category} />
           </AccordionItem>
         </Accordion>
       </BrowserRouter>,

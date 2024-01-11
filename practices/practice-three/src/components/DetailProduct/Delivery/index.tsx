@@ -10,10 +10,10 @@ interface IDeliveryItem {
 }
 
 interface IDelivery {
-  deliveryDate: IDeliveryItem[]
+  data: IDeliveryItem[]
 }
 
-const Delivery = ({ deliveryDate }: IDelivery) => {
+const Delivery = ({ data }: IDelivery) => {
   return (
     <Box
       p="17px"
@@ -22,7 +22,7 @@ const Delivery = ({ deliveryDate }: IDelivery) => {
       borderColor="gainsboro"
       w="582px"
     >
-      {deliveryDate.map(({ title, description }) => (
+      {data.map(({ title, description }) => (
         <>
           <Flex gap="14px">
             <Box>{title === 'Free Delivery' ? <Car /> : <Bag />}</Box>

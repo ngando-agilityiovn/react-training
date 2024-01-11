@@ -5,25 +5,27 @@ interface IColorItem {
 }
 
 interface IRadioGroup {
-  dataColor: IColorItem[]
+  data: IColorItem[]
 }
 
-const ColorGroup = ({ dataColor }: IRadioGroup) => {
+const ColorGroup = ({ data }: IRadioGroup) => {
   return (
     <>
       <Text color="backgroundWarning" fontWeight="medium" mb="14px">
         Choose a Color
       </Text>
-      <Flex gap="12px">
-        {dataColor.map(({ color }) => (
+      <Flex gap="6">
+        {data.map(({ color }) => (
           <Box color={color}>
             <IconButton
+              _hover={{ background: color }}
               aria-label=""
               bg={color}
-              w={30}
-              h={30}
+              w={16}
+              h={16}
               rounded="100%"
               position="relative"
+              // TODO: Implement handle after
               _after={{
                 position: 'absolute',
                 content: '""',
@@ -35,7 +37,7 @@ const ColorGroup = ({ dataColor }: IRadioGroup) => {
                 bg: 'transparent',
                 borderRadius: '100%',
                 border: `4px solid  ${color}`,
-                zIndex: -1,
+                zIndex: -1
               }}
             />
           </Box>

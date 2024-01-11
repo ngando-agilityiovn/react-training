@@ -8,7 +8,7 @@ import Delivery from '.'
 
 describe('Delivery component', () => {
   it('Render correcty', () => {
-    const container = render(<Delivery deliveryDate={DELIVERY_DATA} />)
+    const container = render(<Delivery data={DELIVERY_DATA} />)
     expect(container).toMatchSnapshot()
   })
 })

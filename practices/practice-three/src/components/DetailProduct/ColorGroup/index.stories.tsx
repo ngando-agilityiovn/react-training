@@ -23,6 +23,6 @@ type Story = StoryObj<typeof ColorGroup>
 
 export const Default: Story = {
   args: {
-    dataColor: DATA_COLOR,
+    data: DATA_COLOR,
   },
 }
