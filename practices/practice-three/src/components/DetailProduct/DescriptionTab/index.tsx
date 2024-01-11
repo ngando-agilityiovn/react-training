@@ -6,7 +6,7 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-  Text,
+  Text
 } from '@chakra-ui/react'
 
 // Icon components
@@ -48,10 +48,12 @@ const DescriptionTab = ({ title, text, data }: IDescriptionTagItem) => {
             <Text fontSize="2xl" fontWeight="bold" color="textInactive">
               Benefits
             </Text>
-            <Flex mt="21px" gap="14px">
-              <Check />
+            <Flex mt="21px" gap="14px" flexDirection="column">
               {data.map(({ title }) => (
-                <Text key={title}>{title}</Text>
+                <Flex gap="14px" alignItems="center">
+                  <Check />
+                  <Text key={title}>{title}</Text>
+                </Flex>
               ))}
             </Flex>
           </Box>

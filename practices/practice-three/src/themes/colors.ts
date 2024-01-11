@@ -8,6 +8,10 @@ export const colors = {
   gainsboro: '#e4e4e4',
   cloudBurst: '#374151',
   desertStorm: '#f5f1ee',
+  fuelYellow: '#d48d3b',
+  linen: '#fbf3ea',
+  pattensBlue: '#edf0f8',
+  darkGray: '#a3a3a3',
 
   // Text colors
   textTertiary: '#667085',

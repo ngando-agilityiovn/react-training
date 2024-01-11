@@ -5,5 +5,6 @@ export { default as Filter } from './Filter'
 export { default as Sidebar } from './Sidebar'
 export { default as Pagination } from './Pagination'
 export { default as ProductList } from './ProductList'
+export { default as ButtonQuantity } from './ButtonQuantity'
 
 export * from '@/components/Icons'
