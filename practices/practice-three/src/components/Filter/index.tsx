@@ -22,10 +22,10 @@ interface IFilter {
 
 interface IFilterGroup {
   title: string
-  dataFilter?: IFilter[]
+  data?: IFilter[]
 }
 
-const Filter = ({ title, dataFilter }: IFilterGroup) => {
+const Filter = ({ title, data }: IFilterGroup) => {
   return (
     <>
       <h2>
@@ -60,7 +60,7 @@ const Filter = ({ title, dataFilter }: IFilterGroup) => {
         ) : (
           <CheckboxGroup colorScheme="blue" defaultValue={['', '']}>
             <VStack display="block">
-              {dataFilter?.map(({ name, quantityName }) => {
+              {data?.map(({ name, quantityName }) => {
                 return (
                   <Flex
                     justifyContent="space-between"

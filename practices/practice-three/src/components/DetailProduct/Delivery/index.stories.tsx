@@ -23,6 +23,6 @@ type Story = StoryObj<typeof Delivery>
 
 export const Default: Story = {
   args: {
-    deliveryDate: DELIVERYDATA,
+    data: DELIVERYDATA,
   },
 }

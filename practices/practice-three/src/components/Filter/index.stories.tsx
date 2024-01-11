@@ -29,27 +29,27 @@ type Story = StoryObj<typeof Filter>
 export const Catogory: Story = {
   args: {
     title: 'Catogory',
-    dataFilter: FILTER.category,
+    data: FILTER.category,
   },
 }
 
 export const Brand: Story = {
   args: {
     title: 'Brand',
-    dataFilter: FILTER.brand,
+    data: FILTER.brand,
   },
 }
 
 export const Size: Story = {
   args: {
     title: 'Size',
-    dataFilter: FILTER.size,
+    data: FILTER.size,
   },
 }
 
 export const Price: Story = {
   args: {
     title: 'Price',
-    dataFilter: FILTER.category,
+    data: FILTER.category,
   },
 }
