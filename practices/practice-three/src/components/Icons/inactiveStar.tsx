@@ -1,4 +1,4 @@
-const InactiveStar = () => (
+const InActiveStar = () => (
   <svg
     width="16"
     height="15"
@@ -14,4 +14,4 @@ const InactiveStar = () => (
   </svg>
 )
 
-export default InactiveStar
+export default InActiveStar

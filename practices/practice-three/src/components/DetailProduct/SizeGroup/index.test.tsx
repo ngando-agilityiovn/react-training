@@ -8,7 +8,7 @@ import SizeGroup from '.'
 
 describe('SizeGroup component', () => {
   it('Render correcty', () => {
-    const container = render(<SizeGroup dataSize={SIZE_DATA} />)
+    const container = render(<SizeGroup data={SIZE_DATA} />)
     expect(container).toMatchSnapshot()
   })
 })

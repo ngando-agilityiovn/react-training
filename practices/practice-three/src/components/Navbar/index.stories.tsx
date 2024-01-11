@@ -23,6 +23,6 @@ type Story = StoryObj<typeof Navbar>
 
 export const Default: Story = {
   args: {
-    navbarData: NAVBAR,
+    data: NAVBAR,
   },
 }

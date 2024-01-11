@@ -23,6 +23,6 @@ type Story = StoryObj<typeof SizeGroup>
 
 export const Default: Story = {
   args: {
-    dataSize: SIZE_DATA,
+    data: SIZE_DATA,
   },
 }

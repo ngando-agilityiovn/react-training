@@ -7,10 +7,10 @@ interface ISizeItem {
 }
 
 interface ISizeGroup {
-  dataSize: ISizeItem[]
+  data: ISizeItem[]
 }
 
-const SizeGroup = ({ dataSize }: ISizeGroup) => {
+const SizeGroup = ({ data }: ISizeGroup) => {
   const [value, setValue] = useState(SIZE_DATA[0].size)
   return (
     <>
@@ -19,7 +19,7 @@ const SizeGroup = ({ dataSize }: ISizeGroup) => {
       </Text>
       <RadioGroup onChange={setValue} value={value}>
         <Stack direction="row">
-          {dataSize.map(({ size }) => (
+          {data.map(({ size }) => (
             <Box
               backgroundColor="gray100"
               borderRadius="8px"

@@ -17,16 +17,12 @@ interface IBenefitItem {
 }
 
 interface IDescriptionTagItem {
-  descriptionTitle: string
-  descriptionText: string
-  benefitData: IBenefitItem[]
+  title: string
+  text: string
+  data: IBenefitItem[]
 }
 
-const DescriptionTab = ({
-  descriptionTitle,
-  descriptionText,
-  benefitData,
-}: IDescriptionTagItem) => {
+const DescriptionTab = ({ title, text, data }: IDescriptionTagItem) => {
   return (
     <Tabs>
       <TabList mb="49px">
@@ -44,9 +40,9 @@ const DescriptionTab = ({
               fontWeight="bold"
               color="textInactive"
             >
-              {descriptionTitle}
+              {title}
             </Text>
-            <Text>{descriptionText}</Text>
+            <Text>{text}</Text>
           </Box>
           <Box>
             <Text fontSize="2xl" fontWeight="bold" color="textInactive">
@@ -54,7 +50,7 @@ const DescriptionTab = ({
             </Text>
             <Flex mt="21px" gap="14px">
               <Check />
-              {benefitData.map(({ title }) => (
+              {data.map(({ title }) => (
                 <Text key={title}>{title}</Text>
               ))}
             </Flex>

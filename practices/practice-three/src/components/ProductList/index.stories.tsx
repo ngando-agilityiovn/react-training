@@ -1,14 +1,15 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 
-// Constants
+//  Constants
+import { CARD_DATA } from '@/constants'
 
 // Components
-import Sidebar from '.'
+import ProductList from '.'
 
 export default {
-  title: 'Components/Sidebar',
-  component: Sidebar,
+  title: 'Components/ProductList',
+  component: ProductList,
   decorators: [
     (Story) => (
       <BrowserRouter>
@@ -18,8 +19,10 @@ export default {
   ],
 } as Meta
 
-type Story = StoryObj<typeof Sidebar>
+type Story = StoryObj<typeof ProductList>
 
 export const Default: Story = {
-  args: {},
+  args: {
+    data: CARD_DATA,
+  },
 }

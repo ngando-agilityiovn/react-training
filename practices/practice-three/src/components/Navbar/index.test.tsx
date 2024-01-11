@@ -11,7 +11,7 @@ describe('Navbar component', () => {
   it('Render correcty', () => {
     const container = render(
       <BrowserRouter>
-        <Navbar navbarData={NAVBAR} />
+        <Navbar data={NAVBAR} />
       </BrowserRouter>,
     )
     expect(container).toMatchSnapshot()
