@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 
 //  Constants
-import { CARDDATA, TEXTDATA } from '@/constants'
+import { CARD_DATA } from '@/constants'
 
 // Components
 import ListProduct from '.'
@@ -23,7 +23,6 @@ type Story = StoryObj<typeof ListProduct>
 
 export const Default: Story = {
   args: {
-    cardData: CARDDATA,
-    textData: TEXTDATA,
+    cardData: CARD_DATA,
   },
 }
