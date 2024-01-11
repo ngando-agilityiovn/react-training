@@ -5,11 +5,11 @@ import { BrowserRouter } from 'react-router-dom'
 import { CARD_DATA } from '@/constants'
 
 // Components
-import ListProduct from '.'
+import ProductList from '.'
 
 export default {
-  title: 'Components/ListProduct',
-  component: ListProduct,
+  title: 'Components/ProductList',
+  component: ProductList,
   decorators: [
     (Story) => (
       <BrowserRouter>
@@ -19,10 +19,10 @@ export default {
   ],
 } as Meta
 
-type Story = StoryObj<typeof ListProduct>
+type Story = StoryObj<typeof ProductList>
 
 export const Default: Story = {
   args: {
-    cardData: CARD_DATA,
+    data: CARD_DATA,
   },
 }

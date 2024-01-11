@@ -5,13 +5,13 @@ interface IPagination {
 }
 
 interface IPaginationGroup {
-  textData: IPagination[]
+  data: IPagination[]
 }
 
-const Pagination = ({ textData }: IPaginationGroup) => {
+const Pagination = ({ data }: IPaginationGroup) => {
   return (
     <Flex justifyContent="center" py="8px" mt="63px" gap="8px">
-      {textData.map(({ text }) => (
+      {data.map(({ text }) => (
         <Button
           variant="outline"
           background="white"
