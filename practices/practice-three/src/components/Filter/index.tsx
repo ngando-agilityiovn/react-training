@@ -17,7 +17,7 @@ import {
 
 interface IFilter {
   name: string
-  quantityName: number
+  quantity: number
 }
 
 interface IFilterGroup {
@@ -58,7 +58,7 @@ const Filter = ({ title, data }: IFilterGroup) => {
             </Flex>
           </>
         ) : (
-          <CheckboxGroup colorScheme="blue" defaultValue={['', '']}>
+          <CheckboxGroup colorScheme="blue" defaultValue={[]}>
             <VStack display="block">
               {data?.map(({ name, quantityName }) => {
                 return (
@@ -69,7 +69,7 @@ const Filter = ({ title, data }: IFilterGroup) => {
                     lineHeight="7"
                   >
                     <Checkbox value={name}>{name}</Checkbox>
-                    <Text>({quantityName})</Text>
+                    <Text>({quantity})</Text>
                   </Flex>
                 )
               })}
