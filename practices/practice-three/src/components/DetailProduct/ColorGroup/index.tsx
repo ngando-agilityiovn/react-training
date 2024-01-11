@@ -18,6 +18,7 @@ const ColorGroup = ({ data }: IRadioGroup) => {
         {data.map(({ color }) => (
           <Box color={color}>
             <IconButton
+              _hover={{ background: color }}
               aria-label=""
               bg={color}
               w={16}
