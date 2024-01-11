@@ -27,13 +27,13 @@ const Sidebar = () => {
         borderColor="whiteSmoke"
       >
         <AccordionItem>
-          <Filter dataFilter={FILTER.category} title={Title.CATEGORY} />
+          <Filter data={FILTER.category} title={Title.CATEGORY} />
         </AccordionItem>
         <AccordionItem>
-          <Filter dataFilter={FILTER.brand} title={Title.BRAND} />
+          <Filter data={FILTER.brand} title={Title.BRAND} />
         </AccordionItem>
         <AccordionItem>
-          <Filter dataFilter={FILTER.size} title={Title.SIZE} />
+          <Filter data={FILTER.size} title={Title.SIZE} />
         </AccordionItem>
         <AccordionItem>
           <Filter title={Title.PRICE} />

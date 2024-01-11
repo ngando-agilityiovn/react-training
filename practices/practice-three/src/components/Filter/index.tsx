@@ -60,7 +60,7 @@ const Filter = ({ title, data }: IFilterGroup) => {
         ) : (
           <CheckboxGroup colorScheme="blue" defaultValue={[]}>
             <VStack display="block">
-              {data?.map(({ name, quantityName }) => {
+              {data?.map(({ name, quantity }) => {
                 return (
                   <Flex
                     justifyContent="space-between"
