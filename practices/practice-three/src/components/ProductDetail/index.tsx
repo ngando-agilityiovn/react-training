@@ -10,7 +10,7 @@ import {
 } from '@/constants'
 
 // Icon components
-import { Feedback, Reviewer, WhiteCart } from '../Icons'
+import { Rating, Comment, WhiteBag } from '../Icons'
 
 // Components
 import SizeGroup from './SizeGroup'
@@ -19,8 +19,17 @@ import Delivery from './Delivery'
 import ImageGalleries from './ImageGalleries'
 import DescriptionTab from './DescriptionTab'
 import NumberPicker from '../NumberPicker'
+import { Product } from '@/types/product'
 
-const ProductDetail = () => {
+const ProductDetail = ({
+  name,
+  price,
+  rating,
+  reviews,
+  quantity,
+  description
+}: Product) => {
+  const totalView = reviews.length
   return (
     <Container maxW="1280px" pt="49px" px={0}>
       <Flex padding="40px 0" gap={110} flexGrow={'revert'}>
@@ -30,20 +39,24 @@ const ProductDetail = () => {
         {/* Information product */}
         <Flex direction={'column'} gap={30}>
           <Text as="span" fontSize={28} fontWeight={600}>
-            Giay
+            {name}
           </Text>
           <Text as="span">Teixeira Design Studio</Text>
+
           <Flex
-            borderBottom={'1px solid gainsboro'}
-            borderTop={'1px solid gainsboro'}
+            border="1px solid gainsboro"
+            borderWidth="1px 0px 1px 0px"
             padding="46px 0 45px 0"
             gap="41px"
             alignItems="center"
           >
+            {/* Product price */}
             <Text as="span" fontSize="34px" fontWeight="bold" color="primary">
-              $187
+              {price}
             </Text>
+
             <HStack>
+              {/* Quantity rating */}
               <Flex
                 borderRadius="27px"
                 padding="7px 10px"
@@ -53,11 +66,13 @@ const ProductDetail = () => {
                 alignItems="center"
                 w="65px"
               >
-                <Feedback />
+                <Rating />
                 <Text color="fuelYellow" fontWeight="semibold" as="span">
-                  5
+                  {rating}
                 </Text>
               </Flex>
+
+              {/* Total comments  */}
               <Flex
                 alignItems="center"
                 gap="7px"
@@ -65,34 +80,45 @@ const ProductDetail = () => {
                 borderRadius="27px"
                 background="pattensBlue"
               >
-                <Reviewer />
+                <Comment />
                 <Text color="primary" fontWeight="semibold">
-                  67 Reviewers
+                  {totalView} Reviews
                 </Text>
               </Flex>
             </HStack>
           </Flex>
+
+          {/* Colors option */}
           <ColorGroup data={DATA_COLOR} />
+
+          {/* Sizes select */}
           <SizeGroup data={SIZE_DATA} />
+
           <Flex gap="19px">
+            {/* Increase or decrease product quantity */}
             <NumberPicker
               onChangeQuantity={() => {}}
               onDecrease={() => {}}
               onIncrease={() => {}}
-              quantity={10}
+              quantity={quantity}
             />
+
+            {/* Add the product to cart */}
             <Button w="309px" h="59px" variant="solid" gap="10px">
-              <WhiteCart />
+              <WhiteBag />
               Add To Cart
             </Button>
           </Flex>
+
+          {/* Product returns policy  */}
           <Delivery data={DELIVERY_DATA} />
         </Flex>
       </Flex>
+
+      {/* Product information */}
       <DescriptionTab
         title="Product Description"
-        text="When it's colder than the far side of the moon and spitting rain too, you've still got to look good. From water-repellent leather to a rugged outsole.
-        the far side of the moon and spitting rain too, you've still got to look good. From water-repellent leather to a rugged "
+        text={description}
         data={BENEFIT_DATA}
       />
     </Container>

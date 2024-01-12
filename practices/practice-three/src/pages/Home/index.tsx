@@ -1,22 +1,23 @@
-import { Box, Container, Flex, Spinner, Text } from '@chakra-ui/react'
+// import { Box, Container, Flex, Spinner, Text } from '@chakra-ui/react'
 
 // Constants
-import { CARD_DATA, PAGINATION_DATA } from '@/constants'
+// import { CARD_DATA, PAGINATION_DATA } from '@/constants'
 
 import MainLayout from '@/MainLayout'
+import ProductDetail from '@/components/ProductDetail'
 
 // Components
-import { Pagination, ProductList, Sidebar } from '@/components'
+// import { Pagination, ProductList, Sidebar } from '@/components'
 
-interface IHome {
-  isLoadingProjects?: boolean
-}
+// interface IHome {
+//   isLoadingProjects?: boolean
+// }
 
-const Home = ({ isLoadingProjects }: IHome) => {
+const Home = () => {
   return (
     <>
       <MainLayout />
-      <Container maxW="1280px" pt="49px" px={0}>
+      {/* <Container maxW="1280px" pt="49px" px={0}>
         <Flex gap={21}>
           <Sidebar />
           <Box>
@@ -39,7 +40,8 @@ const Home = ({ isLoadingProjects }: IHome) => {
             <Pagination data={PAGINATION_DATA} />
           </Box>
         </Flex>
-      </Container>
+      </Container> */}
+      <ProductDetail />
     </>
   )
 }

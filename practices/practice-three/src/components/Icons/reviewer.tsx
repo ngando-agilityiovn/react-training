@@ -1,4 +1,4 @@
-const Reviewer = () => (
+const Comment = () => (
   <svg
     width="16"
     height="17"
@@ -19,4 +19,4 @@ const Reviewer = () => (
   </svg>
 )
 
-export default Reviewer
+export default Comment

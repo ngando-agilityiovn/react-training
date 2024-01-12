@@ -1,4 +1,4 @@
-const Feedback = () => (
+const Rating = () => (
   <svg
     width="16"
     height="17"
@@ -19,4 +19,4 @@ const Feedback = () => (
   </svg>
 )
 
-export default Feedback
+export default Rating

@@ -1,4 +1,4 @@
-const WhiteCart = () => (
+const WhiteBag = () => (
   <svg
     width="21"
     height="21"
@@ -19,4 +19,4 @@ const WhiteCart = () => (
   </svg>
 )
 
-export default WhiteCart
+export default WhiteBag

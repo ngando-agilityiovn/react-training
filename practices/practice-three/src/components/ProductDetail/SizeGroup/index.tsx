@@ -16,8 +16,8 @@ const SizeGroup = ({ data }: ISizeGroup) => {
   const [value, setValue] = useState(SIZE_DATA[0].size)
   return (
     <Box
-      borderBottom={'1px solid gainsboro'}
-      borderTop={'1px solid gainsboro'}
+      border="1px solid gainsboro"
+      borderWidth="1px 0px 1px 0px"
       padding="30px 0"
     >
       <Text color="backgroundWarning" fontWeight="medium" mb="14px">
