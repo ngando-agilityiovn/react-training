@@ -10,7 +10,7 @@ interface IDetailProduct {
   data: IImage[]
 }
 
-const ImageProduct = ({ data }: IDetailProduct) => {
+const ImageGalleries = ({ data }: IDetailProduct) => {
   return (
     <Box>
       <Image
@@ -33,4 +33,4 @@ const ImageProduct = ({ data }: IDetailProduct) => {
   )
 }
 
-export default ImageProduct
+export default ImageGalleries

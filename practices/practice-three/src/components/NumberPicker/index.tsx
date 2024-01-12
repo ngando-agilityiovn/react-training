@@ -1,6 +1,6 @@
 import { Button, HStack, Input } from '@chakra-ui/react'
 
-const ButtonQuantity = () => {
+const NumberPicker = () => {
   return (
     <HStack w="130px" borderRadius="100px" background="whiteSmoke">
       <Button border="none" color="darkGray" fontSize="18px" fontWeight="bold">
@@ -20,4 +20,4 @@ const ButtonQuantity = () => {
   )
 }
 
-export default ButtonQuantity
+export default NumberPicker

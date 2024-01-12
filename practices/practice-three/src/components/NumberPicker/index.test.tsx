@@ -2,13 +2,13 @@ import { render } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 
 // Components
-import ButtonQuantity from '.'
+import NumberPicker from '.'
 
-describe('ButtonQuantity component', () => {
+describe('NumberPicker component', () => {
   it('Render correcty', () => {
     const container = render(
       <BrowserRouter>
-        <ButtonQuantity />
+        <NumberPicker />
       </BrowserRouter>
     )
     expect(container).toMatchSnapshot()

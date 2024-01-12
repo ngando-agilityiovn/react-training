@@ -2,11 +2,11 @@ import { Meta, StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 
 // Components
-import ButtonQuantity from '.'
+import NumberPicker from '.'
 
 export default {
-  title: 'Components/ButtonQuantity',
-  component: ButtonQuantity,
+  title: 'Components/NumberPicker',
+  component: NumberPicker,
   decorators: [
     (Story) => (
       <BrowserRouter>
@@ -16,7 +16,7 @@ export default {
   ]
 } as Meta
 
-type Story = StoryObj<typeof ButtonQuantity>
+type Story = StoryObj<typeof NumberPicker>
 
 export const Default: Story = {
   args: {}

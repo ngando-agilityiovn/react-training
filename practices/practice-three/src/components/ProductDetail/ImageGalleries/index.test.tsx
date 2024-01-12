@@ -5,13 +5,13 @@ import { BrowserRouter } from 'react-router-dom'
 import { IMAGE_PRODUCT } from '@/constants'
 
 // Components
-import ImageProduct from '.'
+import ImageGalleries from '.'
 
 describe('ButtonQuantity component', () => {
   it('Render correcty', () => {
     const container = render(
       <BrowserRouter>
-        <ImageProduct data={IMAGE_PRODUCT} />
+        <ImageGalleries data={IMAGE_PRODUCT} />
       </BrowserRouter>
     )
     expect(container).toMatchSnapshot()

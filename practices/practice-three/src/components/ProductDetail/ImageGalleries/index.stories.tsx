@@ -5,11 +5,11 @@ import { BrowserRouter } from 'react-router-dom'
 import { IMAGE_PRODUCT } from '@/constants'
 
 // Components
-import ImageProduct from '.'
+import ImageGalleries from '.'
 
 export default {
-  title: 'Components/ImageProduct',
-  component: ImageProduct,
+  title: 'Components/ImageGalleries',
+  component: ImageGalleries,
   decorators: [
     (Story) => (
       <BrowserRouter>
@@ -19,7 +19,7 @@ export default {
   ]
 } as Meta
 
-type Story = StoryObj<typeof ImageProduct>
+type Story = StoryObj<typeof ImageGalleries>
 
 export const Default: Story = {
   args: {

@@ -13,9 +13,9 @@ import {
 import SizeGroup from './SizeGroup'
 import ColorGroup from './ColorGroup'
 import Delivery from './Delivery'
-import ImageProduct from './ImageProduct'
+import ImageGalleries from './ImageGalleries'
 import { Feedback, Reviewer, WhiteCart } from '../Icons'
-import ButtonQuantity from '../ButtonQuantity'
+import ButtonQuantity from '../NumberPicker'
 import DescriptionTab from './DescriptionTab'
 
 const ProductDetail = () => {
@@ -23,7 +23,7 @@ const ProductDetail = () => {
     <Container maxW="1280px" pt="49px" px={0}>
       <Flex padding="40px 0" gap={110} flexGrow={'revert'}>
         {/* Images product */}
-        <ImageProduct data={IMAGE_PRODUCT} />
+        <ImageGalleries data={IMAGE_PRODUCT} />
 
         {/* Information product */}
         <Flex direction={'column'} gap={30}>
