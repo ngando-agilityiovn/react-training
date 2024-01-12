@@ -5,10 +5,16 @@ import { BrowserRouter } from 'react-router-dom'
 import NumberPicker from '.'
 
 describe('NumberPicker component', () => {
+  const mockProps = {
+    onChangeQuantity: jest.fn(),
+    quantity: 5,
+    onIncrease: jest.fn(),
+    onDecrease: jest.fn()
+  }
   it('Render correcty', () => {
     const container = render(
       <BrowserRouter>
-        <NumberPicker />
+        <NumberPicker {...mockProps} />
       </BrowserRouter>
     )
     expect(container).toMatchSnapshot()

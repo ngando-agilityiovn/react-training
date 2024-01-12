@@ -16,6 +16,7 @@ exports[`NumberPicker component Render correcty 1`] = `
         </button>
         <input
           class="chakra-input css-54b3fl"
+          value="5"
         />
         <button
           class="chakra-button css-1khsnk5"
@@ -38,6 +39,7 @@ exports[`NumberPicker component Render correcty 1`] = `
       </button>
       <input
         class="chakra-input css-54b3fl"
+        value="5"
       />
       <button
         class="chakra-button css-1khsnk5"

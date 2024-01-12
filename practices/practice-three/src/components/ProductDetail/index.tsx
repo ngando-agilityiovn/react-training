@@ -9,14 +9,16 @@ import {
   SIZE_DATA
 } from '@/constants'
 
+// Icon components
+import { Feedback, Reviewer, WhiteCart } from '../Icons'
+
 // Components
 import SizeGroup from './SizeGroup'
 import ColorGroup from './ColorGroup'
 import Delivery from './Delivery'
 import ImageGalleries from './ImageGalleries'
-import { Feedback, Reviewer, WhiteCart } from '../Icons'
-import ButtonQuantity from '../NumberPicker'
 import DescriptionTab from './DescriptionTab'
+import NumberPicker from '../NumberPicker'
 
 const ProductDetail = () => {
   return (
@@ -73,7 +75,12 @@ const ProductDetail = () => {
           <ColorGroup data={DATA_COLOR} />
           <SizeGroup data={SIZE_DATA} />
           <Flex gap="19px">
-            <ButtonQuantity />
+            <NumberPicker
+              onChangeQuantity={() => {}}
+              onDecrease={() => {}}
+              onIncrease={() => {}}
+              quantity={10}
+            />
             <Button w="309px" h="59px" variant="solid" gap="10px">
               <WhiteCart />
               Add To Cart
