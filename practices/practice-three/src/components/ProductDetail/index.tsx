@@ -18,7 +18,7 @@ import { Feedback, Reviewer, WhiteCart } from '../Icons'
 import ButtonQuantity from '../ButtonQuantity'
 import DescriptionTab from './DescriptionTab'
 
-const DetailProduct = () => {
+const ProductDetail = () => {
   return (
     <Container maxW="1280px" pt="49px" px={0}>
       <Flex padding="40px 0" gap={110} flexGrow={'revert'}>
@@ -92,4 +92,4 @@ const DetailProduct = () => {
   )
 }
 
-export default DetailProduct
+export default ProductDetail
