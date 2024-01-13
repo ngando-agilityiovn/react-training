@@ -1,5 +1,4 @@
 import { Box, Button, Container, Flex, Heading, Img } from '@chakra-ui/react'
-
 import { Link } from 'react-router-dom'
 
 const Banner = () => {

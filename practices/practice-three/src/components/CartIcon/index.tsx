@@ -1,8 +1,8 @@
 import { Button, Text } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 
 // Icon components
 import { Cart } from '../Icons'
-import { Link } from 'react-router-dom'
 
 interface ICartIcon {
   quantity: number

@@ -1,45 +1,67 @@
-import { Button, Container, Flex, HStack, Text } from '@chakra-ui/react'
+import {
+  Button,
+  Container,
+  Flex,
+  HStack,
+  Stack,
+  Text,
+  useRadioGroup
+} from '@chakra-ui/react'
+import { useCallback, useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 // Constants
-import {
-  BENEFIT_DATA,
-  DATA_COLOR,
-  DELIVERY_DATA,
-  IMAGE_PRODUCT,
-  SIZE_DATA
-} from '@/constants'
+import { DELIVERY_DATA, SIZE_DATA } from '@/constants'
 
 // Icon components
 import { Rating, Comment, WhiteBag } from '../Icons'
 
+// Helpers
+import { productDetail } from '@/helpers'
+
+// Types
+import { IProduct } from '@/types'
+
 // Components
-import SizeGroup from './SizeGroup'
-import ColorGroup from './ColorGroup'
-import Delivery from './Delivery'
 import ImageGalleries from './ImageGalleries'
 import DescriptionTab from './DescriptionTab'
 import NumberPicker from '../NumberPicker'
-import { Product } from '@/types/product'
+import SizeGroup from './SizeGroup'
+import Delivery from './Delivery'
+import Color from '../Color'
 
-const ProductDetail = ({
-  name,
-  price,
-  rating,
-  reviews,
-  quantity,
-  description
-}: Product) => {
-  const totalView = reviews.length
+const ProductDetail = () => {
+  const { id } = useParams()
+  const [product, setProduct] = useState<IProduct>()
+  const handleGetProduct = useCallback(async () => {
+    const productData = await productDetail(
+      'https://657c3495853beeefdb98e5f4.mockapi.io/Product',
+      id!
+    )
+    setProduct(productData)
+  }, [id])
+
+  useEffect(() => {
+    if (id) {
+      handleGetProduct()
+    }
+  }, [handleGetProduct, id])
+
+  const totalView = product?.reviews.length
+
+  const { value, getRadioProps, getRootProps } = useRadioGroup({
+    defaultValue: 'Kevin'
+  })
   return (
     <Container maxW="1280px" pt="49px" px={0}>
       <Flex padding="40px 0" gap={110} flexGrow={'revert'}>
         {/* Images product */}
-        <ImageGalleries data={IMAGE_PRODUCT} />
+        <ImageGalleries data={product?.images} />
 
         {/* Information product */}
         <Flex direction={'column'} gap={30}>
           <Text as="span" fontSize={28} fontWeight={600}>
-            {name}
+            {product?.name}
           </Text>
           <Text as="span">Teixeira Design Studio</Text>
 
@@ -52,7 +74,7 @@ const ProductDetail = ({
           >
             {/* Product price */}
             <Text as="span" fontSize="34px" fontWeight="bold" color="primary">
-              {price}
+              {product?.currency} {product?.price}
             </Text>
 
             <HStack>
@@ -68,7 +90,7 @@ const ProductDetail = ({
               >
                 <Rating />
                 <Text color="fuelYellow" fontWeight="semibold" as="span">
-                  {rating}
+                  {product?.rating}
                 </Text>
               </Flex>
 
@@ -89,7 +111,22 @@ const ProductDetail = ({
           </Flex>
 
           {/* Colors option */}
-          <ColorGroup data={DATA_COLOR} />
+          <Stack {...getRootProps()}>
+            <Text color="backgroundWarning" fontWeight="medium" mb="14px">
+              Choose a Color
+            </Text>
+            <HStack>
+              {product?.colors.map((item) => {
+                return (
+                  <Color
+                    key={item}
+                    color={item}
+                    {...getRadioProps({ value: item })}
+                  />
+                )
+              })}
+            </HStack>
+          </Stack>
 
           {/* Sizes select */}
           <SizeGroup data={SIZE_DATA} />
@@ -100,7 +137,7 @@ const ProductDetail = ({
               onChangeQuantity={() => {}}
               onDecrease={() => {}}
               onIncrease={() => {}}
-              quantity={quantity}
+              quantity={product?.quantity}
             />
 
             {/* Add the product to cart */}
@@ -118,8 +155,8 @@ const ProductDetail = ({
       {/* Product information */}
       <DescriptionTab
         title="Product Description"
-        text={description}
-        data={BENEFIT_DATA}
+        text={product?.description}
+        data={product?.information}
       />
     </Container>
   )

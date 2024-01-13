@@ -1,5 +1,5 @@
-export interface Product {
-  id: number
+export interface IProduct {
+  id: string
   name: string
   price: number
   category: string
@@ -9,7 +9,7 @@ export interface Product {
   currency: string
   quantity: number
   reviews: IReviews[]
-  color: string[]
+  colors: string[]
   description: string
   information: string[]
   images: string[]

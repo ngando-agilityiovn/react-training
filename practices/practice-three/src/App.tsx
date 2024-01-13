@@ -6,12 +6,17 @@ import { theme } from './themes'
 
 // Components
 import { Home } from '@/pages'
+import ProductDetail from './components/ProductDetail'
 
 const pages = [
   {
     path: '/',
-    element: <Home />,
+    element: <Home />
   },
+  {
+    path: '/product-detail/:id',
+    element: <ProductDetail />
+  }
 ]
 
 const App = () => (
