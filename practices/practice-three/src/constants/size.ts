@@ -1,17 +1,1 @@
-export const SIZE_DATA = [
-  {
-    size: 'Small',
-  },
-  {
-    size: 'Medium',
-  },
-  {
-    size: 'Large',
-  },
-  {
-    size: 'Extra Large',
-  },
-  {
-    size: 'XXL',
-  },
-]
+export const SIZE_DATA = ['Small', 'Medium', 'Large', 'Extra Large', 'XXL']

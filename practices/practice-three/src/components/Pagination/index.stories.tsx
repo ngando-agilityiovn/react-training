@@ -15,14 +15,14 @@ export default {
       <BrowserRouter>
         <Story />
       </BrowserRouter>
-    ),
-  ],
+    )
+  ]
 } as Meta
 
 type Story = StoryObj<typeof Pagination>
 
 export const Default: Story = {
   args: {
-    textData: PAGINATION_DATA,
-  },
+    data: PAGINATION_DATA
+  }
 }

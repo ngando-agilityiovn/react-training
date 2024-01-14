@@ -5,11 +5,11 @@ export interface IProduct {
   category: string
   brand: string
   rating: number
-  size: string
+  size: string[]
   currency: string
   quantity: number
   reviews: IReviews[]
-  color: string[]
+  colors: string[]
   description: string
   information: string[]
   images: string[]

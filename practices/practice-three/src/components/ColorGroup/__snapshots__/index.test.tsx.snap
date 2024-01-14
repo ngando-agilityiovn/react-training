@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorGroup component renders Color component correctly 1`] = `
+<div>
+  <label
+    class="css-4g6ai3"
+  >
+    <input
+      hidden=""
+    />
+    <div
+      class="css-1u37ltk"
+    >
+      <div
+        aria-label=""
+        class="css-5tm45m"
+        content=""""
+      />
+    </div>
+  </label>
+</div>
+`;
+
+exports[`Header component renders Color component correctly 1`] = `
+<div>
+  <label
+    class="css-4g6ai3"
+  >
+    <input
+      hidden=""
+    />
+    <div
+      class="css-1u37ltk"
+    >
+      <div
+        aria-label=""
+        class="css-5tm45m"
+        content=""""
+      />
+    </div>
+  </label>
+</div>
+`;

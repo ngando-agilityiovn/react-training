@@ -10,7 +10,7 @@ jest.mock('@chakra-ui/react')
 
 describe('Sidebar component', () => {
   it('Render correcty', () => {
-    const container = render(<Pagination textData={PAGINATION_DATA} />)
+    const container = render(<Pagination data={PAGINATION_DATA} />)
     expect(container).toMatchSnapshot()
   })
 })

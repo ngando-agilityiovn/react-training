@@ -15,14 +15,14 @@ export default {
       <BrowserRouter>
         <Story />
       </BrowserRouter>
-    ),
-  ],
+    )
+  ]
 } as Meta
 
 type Story = StoryObj<typeof SizeGroup>
 
 export const Default: Story = {
   args: {
-    data: SIZE_DATA,
-  },
+    options: SIZE_DATA
+  }
 }
