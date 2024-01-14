@@ -1,9 +1,13 @@
 import { Box, Container, Flex, Spinner, Text } from '@chakra-ui/react'
 
 // Constants
-import { CARD_DATA, PAGINATION_DATA } from '@/constants'
+import { PAGINATION_DATA } from '@/constants'
 
+// MainLayouts
 import MainLayout from '@/MainLayout'
+
+// Hooks
+import { useFetch } from '@/hooks'
 
 // Components
 import { Pagination, ProductList, Sidebar } from '@/components'
@@ -13,6 +17,7 @@ interface IHome {
 }
 
 const Home = ({ isLoadingProjects }: IHome) => {
+  const { data } = useFetch()
   return (
     <>
       <MainLayout />
@@ -34,7 +39,7 @@ const Home = ({ isLoadingProjects }: IHome) => {
                 />
               </Box>
             ) : (
-              <ProductList data={CARD_DATA} />
+              <ProductList data={data} />
             )}
             <Pagination data={PAGINATION_DATA} />
           </Box>

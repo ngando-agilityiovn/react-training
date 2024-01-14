@@ -1,36 +1,67 @@
-import { Button, Container, Flex, HStack, Stack, Text, useRadioGroup } from '@chakra-ui/react';
+import {
+  Button,
+  Container,
+  Flex,
+  HStack,
+  Stack,
+  Text,
+  useRadioGroup
+} from '@chakra-ui/react'
+import { useCallback, useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 // Constants
-import { BENEFIT_DATA, DELIVERY_DATA } from '@/constants';
+import { DELIVERY_DATA, SIZE_DATA } from '@/constants'
+
+// Helpers
+import { productDetail } from '@/helpers'
+
+// Types
+import { IProduct } from '@/types'
 
 // Icon components
-import { Rating, Comment, WhiteBag } from '../Icons';
+import { Rating, Comment, WhiteBag } from '../Icons'
 
 // Components
-import Delivery from './Delivery';
-import ImageGalleries from './ImageGalleries';
-import DescriptionTab from './DescriptionTab';
-import NumberPicker from '../NumberPicker';
-import { IProduct } from '@/types/product';
-import Color from '../ColorGroup';
-import Size from './SizeGroup';
+import ImageGalleries from './ImageGalleries'
+import DescriptionTab from './DescriptionTab'
+import NumberPicker from '../NumberPicker'
+import Delivery from './Delivery'
+import SizeGroup from './SizeGroup'
+import ColorGroup from '../ColorGroup'
 
-const ProductDetail = ({ name, price, rating, reviews, images, quantity, colors, size, description }: IProduct) => {
-  const totalView = reviews.length;
+const ProductDetail = () => {
+  const { id } = useParams()
+  const [product, setProduct] = useState<IProduct>()
+  const handleGetProduct = useCallback(async () => {
+    const productData = await productDetail(
+      'https://657c3495853beeefdb98e5f4.mockapi.io/Product',
+      id!
+    )
+    setProduct(productData)
+  }, [id])
+
+  useEffect(() => {
+    if (id) {
+      handleGetProduct()
+    }
+  }, [handleGetProduct, id])
+
+  const totalView = product?.reviews.length
 
   const { getRadioProps, getRootProps } = useRadioGroup({
-    defaultValue: 'Blue'
-  });
+    defaultValue: 'Kevin'
+  })
   return (
     <Container maxW="1280px" pt="49px" px={0}>
       <Flex padding="40px 0" gap={110} flexGrow={'revert'}>
         {/* Images product */}
-        <ImageGalleries data={images} />
+        <ImageGalleries data={product?.images} />
 
         {/* Information product */}
         <Flex direction={'column'} gap={30}>
           <Text as="span" fontSize={28} fontWeight={600}>
-            {name}
+            {product?.name}
           </Text>
           <Text as="span">Teixeira Design Studio</Text>
 
@@ -43,7 +74,7 @@ const ProductDetail = ({ name, price, rating, reviews, images, quantity, colors,
           >
             {/* Product price */}
             <Text as="span" fontSize="34px" fontWeight="bold" color="primary">
-              {price}
+              {product?.currency} {product?.price}
             </Text>
 
             <HStack>
@@ -59,12 +90,18 @@ const ProductDetail = ({ name, price, rating, reviews, images, quantity, colors,
               >
                 <Rating />
                 <Text color="fuelYellow" fontWeight="semibold" as="span">
-                  {rating}
+                  {product?.ratings}
                 </Text>
               </Flex>
 
               {/* Total comments  */}
-              <Flex alignItems="center" gap="7px" padding="10px 7px" borderRadius="27px" background="pattensBlue">
+              <Flex
+                alignItems="center"
+                gap="7px"
+                padding="10px 7px"
+                borderRadius="27px"
+                background="pattensBlue"
+              >
                 <Comment />
                 <Text color="primary" fontWeight="semibold">
                   {totalView} Reviews
@@ -79,18 +116,39 @@ const ProductDetail = ({ name, price, rating, reviews, images, quantity, colors,
               Choose a Color
             </Text>
             <HStack>
-              {colors?.map((item) => {
-                return <Color key={item} color={item} {...getRadioProps({ value: item })} />;
+              {product?.colors.map((item) => {
+                return (
+                  <ColorGroup
+                    key={item}
+                    color={item}
+                    {...getRadioProps({ value: item })}
+                  />
+                )
               })}
             </HStack>
           </Stack>
 
           {/* Sizes select */}
-          <Size options={size} />
+          <Stack
+            {...getRootProps()}
+            border="1px solid gainsboro"
+            borderWidth="1px 0px 1px 0px"
+            py="41px"
+          >
+            <Text color="backgroundWarning" fontWeight="medium" mb="14px">
+              Choose a Size
+            </Text>
+            <SizeGroup options={SIZE_DATA} />
+          </Stack>
 
           <Flex gap="19px">
             {/* Increase or decrease product quantity */}
-            <NumberPicker onChangeQuantity={() => {}} onDecrease={() => {}} onIncrease={() => {}} quantity={quantity} />
+            <NumberPicker
+              onChangeQuantity={() => {}}
+              onDecrease={() => {}}
+              onIncrease={() => {}}
+              quantity={product?.quantity}
+            />
 
             {/* Add the product to cart */}
             <Button w="309px" h="59px" variant="solid" gap="10px">
@@ -105,9 +163,13 @@ const ProductDetail = ({ name, price, rating, reviews, images, quantity, colors,
       </Flex>
 
       {/* Product information */}
-      <DescriptionTab title="Product Description" text={description} data={BENEFIT_DATA} />
+      <DescriptionTab
+        title="Product Description"
+        text={product?.description}
+        data={product?.information}
+      />
     </Container>
-  );
-};
+  )
+}
 
-export default ProductDetail;
+export default ProductDetail
