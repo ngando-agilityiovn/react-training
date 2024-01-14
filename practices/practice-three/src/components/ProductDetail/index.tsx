@@ -1,13 +1,7 @@
 import { Button, Container, Flex, HStack, Text } from '@chakra-ui/react'
 
 // Constants
-import {
-  BENEFIT_DATA,
-  DATA_COLOR,
-  DELIVERY_DATA,
-  IMAGE_PRODUCT,
-  SIZE_DATA
-} from '@/constants'
+import { BENEFIT_DATA, DATA_COLOR, DELIVERY_DATA, SIZE_DATA } from '@/constants'
 
 // Icon components
 import { Rating, Comment, WhiteBag } from '../Icons'
@@ -19,22 +13,23 @@ import Delivery from './Delivery'
 import ImageGalleries from './ImageGalleries'
 import DescriptionTab from './DescriptionTab'
 import NumberPicker from '../NumberPicker'
-import { Product } from '@/types/product'
+import { IProduct } from '@/types/product'
 
 const ProductDetail = ({
   name,
   price,
   rating,
   reviews,
+  images,
   quantity,
   description
-}: Product) => {
-  const totalView = reviews.length
+}: IProduct) => {
+  const totalView = reviews!.length
   return (
     <Container maxW="1280px" pt="49px" px={0}>
       <Flex padding="40px 0" gap={110} flexGrow={'revert'}>
         {/* Images product */}
-        <ImageGalleries data={IMAGE_PRODUCT} />
+        <ImageGalleries data={images} />
 
         {/* Information product */}
         <Flex direction={'column'} gap={30}>

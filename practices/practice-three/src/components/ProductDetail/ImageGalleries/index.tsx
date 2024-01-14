@@ -1,32 +1,54 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import { Box, Center, Flex, Image } from '@chakra-ui/react'
-
-interface IImage {
-  image: string
-  alt: string
-}
+import { useState } from 'react'
 
 interface IDetailProduct {
-  data: IImage[]
+  data: string[]
 }
 
 const ImageGalleries = ({ data }: IDetailProduct) => {
+  const [indexImage, setIndexImage] = useState(0)
+
+  const currentImage = data?.[indexImage]
+
+  // Handle click next image
+  const handleNext = () => {
+    setIndexImage((prevIndex): number => {
+      if (prevIndex === data.length - 1) {
+        return 0
+      }
+      return prevIndex + 1
+    })
+  }
+
+  const handleNextClick = () => {
+    handleNext()
+  }
+
+  // Handle click prev image
+  const handlePrev = () => {
+    setIndexImage((prevIndex): number => {
+      if (prevIndex === 0) {
+        return data.length - 1
+      }
+      return prevIndex - 1
+    })
+  }
+
+  const handlePrevClick = () => {
+    handlePrev()
+  }
+
   return (
     <Box>
-      <Image
-        width="587"
-        height="691"
-        src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-      />
+      <Image width="587" height="691" src={currentImage} />
       <Flex mt={37} gap="10px">
         <Center>
-          <ChevronLeftIcon />
+          <ChevronLeftIcon onClick={handlePrevClick} />
         </Center>
-        {data.map(({ image, alt }) => (
-          <Image w="115px" h="115px" src={image} alt={alt} />
-        ))}
+        {data?.map((item) => <Image w="115px" h="115px" src={item} />)}
         <Center>
-          <ChevronRightIcon />
+          <ChevronRightIcon onClick={handleNextClick} />
         </Center>
       </Flex>
     </Box>
