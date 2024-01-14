@@ -1,5 +1,3 @@
-import { Flex } from '@chakra-ui/react'
-
 // Constants
 import { NAVBAR } from '@/constants'
 
@@ -9,6 +7,7 @@ import { Logo } from '../Icons'
 // Components
 import Navbar from '../Navbar'
 import CartIcon from '../CartIcon'
+import { Flex } from '@chakra-ui/react'
 
 const Header = () => {
   return (
