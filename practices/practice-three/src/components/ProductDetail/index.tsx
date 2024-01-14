@@ -13,14 +13,14 @@ import { useParams } from 'react-router-dom'
 // Constants
 import { DELIVERY_DATA, SIZE_DATA } from '@/constants'
 
-// Icon components
-import { Rating, Comment, WhiteBag } from '../Icons'
-
 // Helpers
 import { productDetail } from '@/helpers'
 
 // Types
 import { IProduct } from '@/types'
+
+// Icon components
+import { Rating, Comment, WhiteBag } from '../Icons'
 
 // Components
 import ImageGalleries from './ImageGalleries'
