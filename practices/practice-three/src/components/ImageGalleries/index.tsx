@@ -12,23 +12,17 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
   const currentImage = data?.[indexImage]
 
   // Handle click next image
-  const handleNext = () => {
-    setIndexImage((prevIndex): number => prevIndex)
-  }
-
   const handleNextClick = () => {
-    handleNext()
-  }
-
-  // Handle click prev image
-  const handlePrev = () => {
     setIndexImage((prevIndex): number =>
-      prevIndex === data.length - 1 ? 0 : prevIndex - 1
+      prevIndex === data.length - 1 ? 0 : prevIndex + 1
     )
   }
 
+  // Handle click prev image
   const handlePrevClick = () => {
-    handlePrev()
+    setIndexImage((prevIndex): number =>
+      prevIndex === 0 ? data.length - 1 : prevIndex - 1
+    )
   }
 
   return (
