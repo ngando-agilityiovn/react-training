@@ -7,7 +7,6 @@ import MainLayout from '@/MainLayout'
 
 // Components
 import { Pagination, ProductList, Sidebar } from '@/components'
-import ProductCart from '../ProductCart'
 
 interface IHome {
   isLoadingProjects?: boolean
@@ -41,13 +40,6 @@ const Home = ({ isLoadingProjects }: IHome) => {
           </Box>
         </Flex>
       </Container>
-      <ProductCart
-        quantity={0}
-        image={'https://source.unsplash.com/random/587x691/?fashion'}
-        name={'Jean '}
-        currency={'$'}
-        price={103000}
-      />
     </>
   )
 }
