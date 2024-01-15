@@ -2,42 +2,99 @@
 
 exports[`ColorGroup component renders Color component correctly 1`] = `
 <div>
-  <label
-    class="css-4g6ai3"
+  <div
+    class="chakra-stack css-8g8ihq"
+    role="radiogroup"
   >
-    <input
-      hidden=""
-    />
-    <div
-      class="css-1u37ltk"
+    <p
+      class="chakra-text css-1f7e0rw"
     >
-      <div
-        aria-label=""
-        class="css-5tm45m"
-        content=""""
-      />
-    </div>
-  </label>
-</div>
-`;
-
-exports[`Header component renders Color component correctly 1`] = `
-<div>
-  <label
-    class="css-4g6ai3"
-  >
-    <input
-      hidden=""
-    />
+      Choose a Color
+    </p>
     <div
-      class="css-1u37ltk"
+      class="chakra-stack css-1igwmid"
     >
-      <div
-        aria-label=""
-        class="css-5tm45m"
-        content=""""
-      />
+      <label
+        class="css-4g6ai3"
+      >
+        <input
+          hidden=""
+        />
+        <div
+          class="css-dmcr11"
+        >
+          <div
+            aria-label=""
+            class="css-1icq76o"
+            content=""""
+          />
+        </div>
+      </label>
+      <label
+        class="css-4g6ai3"
+      >
+        <input
+          hidden=""
+        />
+        <div
+          class="css-90x6df"
+        >
+          <div
+            aria-label=""
+            class="css-1h4dol3"
+            content=""""
+          />
+        </div>
+      </label>
+      <label
+        class="css-4g6ai3"
+      >
+        <input
+          hidden=""
+        />
+        <div
+          class="css-10lllrq"
+        >
+          <div
+            aria-label=""
+            class="css-1h97wqx"
+            content=""""
+          />
+        </div>
+      </label>
+      <label
+        class="css-4g6ai3"
+      >
+        <input
+          hidden=""
+        />
+        <div
+          class="css-1bxy0tl"
+        >
+          <div
+            aria-label=""
+            class="css-v8t28h"
+            content=""""
+          />
+        </div>
+      </label>
+      <label
+        class="css-4g6ai3"
+      >
+        <input
+          hidden=""
+        />
+        <div
+          class="css-18na94k"
+        >
+          <div
+            aria-label=""
+            class="css-1ge6590"
+            content=""""
+          />
+        </div>
+      </label>
     </div>
-  </label>
+  </div>
 </div>
 `;

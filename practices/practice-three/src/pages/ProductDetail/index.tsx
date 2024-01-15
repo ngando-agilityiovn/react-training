@@ -1,34 +1,30 @@
-import {
-  Button,
-  Container,
-  Flex,
-  HStack,
-  Stack,
-  Text,
-  useRadioGroup
-} from '@chakra-ui/react'
+import { Button, Container, Flex, HStack, Text } from '@chakra-ui/react'
 import { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 // Constants
-import { DELIVERY_DATA, SIZE_DATA } from '@/constants'
+import { DELIVERY_DATA } from '@/constants'
 
 // Helpers
 import { productDetail } from '@/helpers'
 
 // Types
 import { IProduct } from '@/types'
+import {
+  ColorGroup,
+  Comment,
+  Delivery,
+  DescriptionTab,
+  ImageGalleries,
+  NumberPicker,
+  Rating,
+  SizeGroup,
+  WhiteBag
+} from '@/components'
 
 // Icon components
-import { Rating, Comment, WhiteBag } from '../Icons'
 
 // Components
-import ImageGalleries from './ImageGalleries'
-import DescriptionTab from './DescriptionTab'
-import NumberPicker from '../NumberPicker'
-import Delivery from './Delivery'
-import SizeGroup from './SizeGroup'
-import ColorGroup from '../ColorGroup'
 
 const ProductDetail = () => {
   const { id } = useParams()
@@ -49,9 +45,8 @@ const ProductDetail = () => {
 
   const totalView = product?.reviews.length
 
-  const { getRadioProps, getRootProps } = useRadioGroup({
-    defaultValue: 'Kevin'
-  })
+  console.log(typeof product?.size)
+
   return (
     <Container maxW="1280px" pt="49px" px={0}>
       <Flex padding="40px 0" gap={110} flexGrow={'revert'}>
@@ -111,42 +106,15 @@ const ProductDetail = () => {
           </Flex>
 
           {/* Colors option */}
-          <Stack {...getRootProps()}>
-            <Text color="backgroundWarning" fontWeight="medium" mb="14px">
-              Choose a Color
-            </Text>
-            <HStack>
-              {product?.colors.map((item) => {
-                return (
-                  <ColorGroup
-                    key={item}
-                    color={item}
-                    {...getRadioProps({ value: item })}
-                  />
-                )
-              })}
-            </HStack>
-          </Stack>
+          <ColorGroup colors={product?.colors} />
 
           {/* Sizes select */}
-          <Stack
-            {...getRootProps()}
-            border="1px solid gainsboro"
-            borderWidth="1px 0px 1px 0px"
-            py="41px"
-          >
-            <Text color="backgroundWarning" fontWeight="medium" mb="14px">
-              Choose a Size
-            </Text>
-            <SizeGroup options={SIZE_DATA} />
-          </Stack>
+          <SizeGroup />
 
           <Flex gap="19px">
             {/* Increase or decrease product quantity */}
             <NumberPicker
               onChangeQuantity={() => {}}
-              onDecrease={() => {}}
-              onIncrease={() => {}}
               quantity={product?.quantity}
             />
 

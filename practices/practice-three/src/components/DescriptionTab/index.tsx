@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 
 // Icon components
-import { Check } from '@/components/Icons'
+import { Check } from '../Icons'
 
 interface IDescriptionTagItem {
   title: string

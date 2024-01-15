@@ -3,25 +3,12 @@ import { Button, HStack, Input } from '@chakra-ui/react'
 interface INumberPicker {
   quantity?: number
   onChangeQuantity: () => void
-  onIncrease: () => void
-  onDecrease: () => void
 }
 
-const NumberPicker = ({
-  quantity,
-  onChangeQuantity,
-  onDecrease,
-  onIncrease
-}: INumberPicker) => {
+const NumberPicker = ({ quantity, onChangeQuantity }: INumberPicker) => {
   return (
     <HStack w="130px" borderRadius="100px" background="whiteSmoke">
-      <Button
-        border="none"
-        color="darkGray"
-        fontSize="18px"
-        fontWeight="bold"
-        onClick={onIncrease}
-      >
+      <Button border="none" color="darkGray" fontSize="18px" fontWeight="bold">
         -
       </Button>
       <Input
@@ -33,13 +20,7 @@ const NumberPicker = ({
         value={quantity}
         onChange={onChangeQuantity}
       />
-      <Button
-        border="none"
-        fontSize="18px"
-        color="primary"
-        fontWeight="bold"
-        onClick={onDecrease}
-      >
+      <Button border="none" fontSize="18px" color="primary" fontWeight="bold">
         +
       </Button>
     </HStack>

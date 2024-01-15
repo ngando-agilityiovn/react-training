@@ -11,21 +11,18 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
 
   const currentImage = data?.[indexImage]
 
-  const handleNext = () => {
-    setIndexImage((prevIndex): number => {
-      if (prevIndex === data!.length - 1) {
-        return 0
-      }
-      return prevIndex + 1
-    })
+  // Handle click next image
+  const handleNextClick = () => {
+    setIndexImage((prevIndex): number =>
+      prevIndex === data!.length - 1 ? 0 : prevIndex + 1
+    )
   }
-  const handlePrev = () => {
-    setIndexImage((prevIndex): number => {
-      if (prevIndex === 0) {
-        return data!.length - 1
-      }
-      return prevIndex - 1
-    })
+
+  // Handle click prev image
+  const handlePrevClick = () => {
+    setIndexImage((prevIndex): number =>
+      prevIndex === 0 ? data!.length - 1 : prevIndex - 1
+    )
   }
 
   return (
@@ -33,7 +30,7 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
       <Image width="587" height="691" src={currentImage} />
       <Flex mt={37} gap="10px">
         <Center>
-          <ChevronLeftIcon onClick={() => handlePrev()} />
+          <ChevronLeftIcon onClick={handlePrevClick} />
         </Center>
         {data?.map((item, index) => (
           <Image
@@ -46,7 +43,7 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
           />
         ))}
         <Center>
-          <ChevronRightIcon onClick={() => handleNext()} />
+          <ChevronRightIcon onClick={handleNextClick} />
         </Center>
       </Flex>
     </Box>

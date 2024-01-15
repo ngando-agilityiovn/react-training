@@ -5,8 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { theme } from './themes'
 
 // Components
-import { Home } from '@/pages'
-import ProductDetail from './components/ProductDetail'
+import { Home, ProductDetail } from '@/pages'
 
 const pages = [
   {
