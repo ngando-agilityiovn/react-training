@@ -1,4 +1,5 @@
-import { SIZE_DATA } from '@/constants'
+import { SIZE_OPTIONS } from '@/constants'
+import { ISise } from '@/types'
 import {
   Box,
   HStack,
@@ -9,13 +10,7 @@ import {
   Text
 } from '@chakra-ui/react'
 
-// interface CustomRadioProps {
-//   options?: string[]
-// }
-
 const SizeGroup = () => {
-  // const {  ...rest } = props
-
   const { getRootProps, getRadioProps } = useRadioGroup()
 
   const group = getRootProps()
@@ -32,12 +27,12 @@ const SizeGroup = () => {
   )
 
   return (
-    <Stack {...getRootProps()}>
+    <Stack {...getRootProps()} borderBottom="1px solid gainsboro" pb="30px">
       <Text color="backgroundWarning" fontWeight="medium" mb="14px">
         Choose a Size
       </Text>
       <HStack {...group}>
-        {SIZE_DATA?.map((value: string) => {
+        {SIZE_OPTIONS?.map(({ value, label }: ISise) => {
           const radio = getRadioProps({ value })
           return (
             <Box
@@ -55,7 +50,7 @@ const SizeGroup = () => {
               }}
             >
               <Radio {...radio} value={value}>
-                {value}
+                {label}
               </Radio>
             </Box>
           )

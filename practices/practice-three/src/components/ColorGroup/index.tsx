@@ -10,7 +10,7 @@ const ColorGroup = ({ colors }: IColorGroup) => {
     defaultValue: 'Blue'
   })
   return (
-    <Stack {...getRootProps()}>
+    <Stack {...getRootProps()} borderBottom="1px solid gainsboro">
       <Text color="backgroundWarning" fontWeight="medium" mb="14px">
         Choose a Color
       </Text>

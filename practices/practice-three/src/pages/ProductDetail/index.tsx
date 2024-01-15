@@ -10,6 +10,8 @@ import { productDetail } from '@/helpers'
 
 // Types
 import { IProduct } from '@/types'
+
+// Components
 import {
   ColorGroup,
   Comment,
@@ -21,10 +23,6 @@ import {
   SizeGroup,
   WhiteBag
 } from '@/components'
-
-// Icon components
-
-// Components
 
 const ProductDetail = () => {
   const { id } = useParams()
@@ -58,12 +56,13 @@ const ProductDetail = () => {
           <Text as="span" fontSize={28} fontWeight={600}>
             {product?.name}
           </Text>
-          <Text as="span">Teixeira Design Studio</Text>
+          <Text as="span" borderBottom="1px solid gainsboro" pb="30px">
+            Teixeira Design Studio
+          </Text>
 
           <Flex
-            border="1px solid gainsboro"
-            borderWidth="1px 0px 1px 0px"
-            padding="46px 0 45px 0"
+            borderBottom="1px solid gainsboro"
+            pb="45px"
             gap="41px"
             alignItems="center"
           >
@@ -82,6 +81,7 @@ const ProductDetail = () => {
                 justifyContent="center"
                 alignItems="center"
                 w="65px"
+                borderBottom="1px solid gainsboro"
               >
                 <Rating />
                 <Text color="fuelYellow" fontWeight="semibold" as="span">
@@ -113,10 +113,7 @@ const ProductDetail = () => {
 
           <Flex gap="19px">
             {/* Increase or decrease product quantity */}
-            <NumberPicker
-              onChangeQuantity={() => {}}
-              quantity={product?.quantity}
-            />
+            <NumberPicker onChangeQuantity={() => {}} quantity={1} />
 
             {/* Add the product to cart */}
             <Button w="309px" h="59px" variant="solid" gap="10px">
