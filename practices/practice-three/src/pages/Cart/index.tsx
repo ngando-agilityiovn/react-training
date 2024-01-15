@@ -11,11 +11,11 @@ import {
 } from '@chakra-ui/react'
 
 // Constants
-import { DATA_COLOR } from '@/constants'
+import { DATA_COLOR, SIZE_DATA } from '@/constants'
 
 // Components
 import { ColorGroup, NumberPicker } from '@/components'
-import { Size } from '@/types'
+import { ISise } from '@/types'
 
 interface ICart {
   quantity: number
@@ -79,13 +79,9 @@ const Cart = ({ quantity, name, image, currency, price }: ICart) => {
                   borderColor="midnightExpress"
                   border="1px solid"
                 >
-                  <option value={Size.SMALL}>Size: {Size.SMALL}</option>
-                  <option value={Size.MEDIUM}>Size: {Size.MEDIUM}</option>
-                  <option value={Size.LARGE}>Size: {Size.LARGE}</option>
-                  <option value={Size.EXTRA_LARGE}>
-                    Size: {Size.EXTRA_LARGE}
-                  </option>
-                  <option value={Size.XXL}>Size: {Size.XXL}</option>
+                  {SIZE_DATA.map(({ label, value }: ISise) => {
+                    return <option value={value}>Size: {label}</option>
+                  })}
                 </Select>
                 <NumberPicker quantity={quantity} onChangeQuantity={() => {}} />
               </HStack>

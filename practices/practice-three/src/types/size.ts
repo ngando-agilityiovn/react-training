@@ -5,3 +5,8 @@ export enum Size {
   EXTRA_LARGE = 'Extra Large',
   XXL = 'XXL'
 }
+
+export interface ISise {
+  value: string
+  label: string
+}
