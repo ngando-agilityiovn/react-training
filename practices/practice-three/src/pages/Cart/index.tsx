@@ -15,6 +15,7 @@ import { DATA_COLOR } from '@/constants'
 
 // Components
 import { ColorGroup, NumberPicker } from '@/components'
+import { Size } from '@/types'
 
 interface ICart {
   quantity: number
@@ -24,7 +25,7 @@ interface ICart {
   price: number
 }
 
-const ProductCart = ({ quantity, name, image, currency, price }: ICart) => {
+const Cart = ({ quantity, name, image, currency, price }: ICart) => {
   return (
     <Container maxW="1280px" p="0">
       <Box mb="87px">
@@ -78,11 +79,13 @@ const ProductCart = ({ quantity, name, image, currency, price }: ICart) => {
                   borderColor="midnightExpress"
                   border="1px solid"
                 >
-                  <option value="option1">Size: Small</option>
-                  <option value="option2">Size: Medium</option>
-                  <option value="option2">Size: Large</option>
-                  <option value="option2">Size: Extra Large</option>
-                  <option value="option3">Size: XXL</option>
+                  <option value={Size.SMALL}>Size: {Size.SMALL}</option>
+                  <option value={Size.MEDIUM}>Size: {Size.MEDIUM}</option>
+                  <option value={Size.LARGE}>Size: {Size.LARGE}</option>
+                  <option value={Size.EXTRA_LARGE}>
+                    Size: {Size.EXTRA_LARGE}
+                  </option>
+                  <option value={Size.XXL}>Size: {Size.XXL}</option>
                 </Select>
                 <NumberPicker quantity={quantity} onChangeQuantity={() => {}} />
               </HStack>
@@ -93,6 +96,8 @@ const ProductCart = ({ quantity, name, image, currency, price }: ICart) => {
           </Box>
         </HStack>
       </Box>
+
+      {/* Total price of those products in cart */}
       <Flex flexDirection="column" alignItems="flex-end">
         <Text color="primary" fontWeight="bold" fontSize="34px" mb="57px">
           Total: {currency}
@@ -105,4 +110,4 @@ const ProductCart = ({ quantity, name, image, currency, price }: ICart) => {
   )
 }
 
-export default ProductCart
+export default Cart
