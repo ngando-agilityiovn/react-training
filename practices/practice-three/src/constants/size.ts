@@ -1,21 +1,21 @@
 import { Size } from '@/types'
 
-export const SIZE_DATA = [
+export const SIZE_OPTIONS = [
   {
-    label: Size.SMALL,
-    value: Size.SMALL
+    label: Size.Small,
+    value: Size.Small
   },
   {
-    label: Size.MEDIUM,
-    value: Size.MEDIUM
+    label: Size.Medium,
+    value: Size.Medium
   },
   {
-    label: Size.LARGE,
-    value: Size.LARGE
+    label: Size.Large,
+    value: Size.Large
   },
   {
-    label: Size.EXTRA_LARGE,
-    value: Size.EXTRA_LARGE
+    label: Size.ExtraLarge,
+    value: Size.ExtraLarge
   },
   {
     label: Size.XXL,

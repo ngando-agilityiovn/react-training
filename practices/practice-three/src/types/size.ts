@@ -1,8 +1,8 @@
 export enum Size {
-  SMALL = 'Small',
-  MEDIUM = 'Medium',
-  LARGE = 'Large',
-  EXTRA_LARGE = 'Extra Large',
+  Small = 'Small',
+  Medium = 'Medium',
+  Large = 'Large',
+  ExtraLarge = 'Extra Large',
   XXL = 'XXL'
 }
 
