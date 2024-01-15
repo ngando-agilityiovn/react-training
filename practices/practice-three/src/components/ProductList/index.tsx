@@ -78,17 +78,13 @@ const ProductList = ({ data }: IProductList) => {
                     <InActiveStar />
                   </Center>
                   <Text color="tertiary" fontSize="sm">
-                    {reviews.length}
+                    ({reviews.length})
                   </Text>
                 </Flex>
-                <Flex justify="space-between" py="25px" gap="11px">
-                  <Button variant="solid" width="50%">
-                    Add To Cart
-                  </Button>
-                  <Button variant="outline" width="50%">
-                    Add Shorlist
-                  </Button>
-                </Flex>
+
+                <Button variant="solid" width="50%" my="25px">
+                  Add To Cart
+                </Button>
               </Stack>
             </CardBody>
           </Card>

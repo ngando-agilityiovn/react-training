@@ -9,8 +9,8 @@ export const Button = defineStyleConfig({
     _hover: {
       borderColor: 'primary',
       backgroundColor: 'white',
-      color: 'primary',
-    },
+      color: 'primary'
+    }
   },
   variants: {
     default: {
@@ -19,7 +19,7 @@ export const Button = defineStyleConfig({
       borderColor: 'gainsboro',
       color: 'textDanger',
       fontSize: 'sm',
-      fontWeight: 'normal',
+      fontWeight: 'normal'
     },
     solid: {
       color: 'white',
@@ -34,8 +34,8 @@ export const Button = defineStyleConfig({
       _hover: {
         borderColor: 'primary',
         backgroundColor: 'white',
-        color: 'primary',
-      },
+        color: 'primary'
+      }
     },
     outline: {
       color: 'textInactive',
@@ -50,8 +50,8 @@ export const Button = defineStyleConfig({
       _hover: {
         background: 'textDanger',
         color: 'white',
-        border: 'none',
-      },
+        border: 'none'
+      }
     },
     ghost: {
       color: 'darkToLight',
@@ -59,16 +59,16 @@ export const Button = defineStyleConfig({
       fontWeight: 'normal',
       _hover: {
         backgroundColor: 'primary',
-        color: 'white',
-        borderRadius: '10px',
-      },
+        color: 'primary',
+        borderRadius: '10px'
+      }
     },
     error: {
       color: 'white',
-      backgroundColor: 'desertStorm',
-    },
+      backgroundColor: 'desertStorm'
+    }
   },
   defaultProps: {
-    variant: 'default',
-  },
+    variant: 'default'
+  }
 })
