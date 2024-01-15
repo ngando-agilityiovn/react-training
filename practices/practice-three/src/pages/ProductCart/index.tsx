@@ -44,12 +44,16 @@ const ProductCart = ({ quantity, name, image, currency, price }: ICart) => {
           </Text>
         </Box>
 
-        {/* NOTE: Refactor code and pass props when fetch api, just define to compare UI with design */}
-        <HStack mt="58px" gap="48px" borderBottom="1px solid gainsboro">
-          <Box w="254px" h="236px" top="0px" mb="31px">
+        <HStack
+          mt="58px"
+          gap="48px"
+          borderBottom="1px solid gainsboro"
+          flexWrap="wrap"
+        >
+          <Box top="0px" mb="31px">
             <Image src={image} alt={name} width="100%" height="303px" />
           </Box>
-          <Box w="994px" mb="31px">
+          <Box mb="31px">
             <Box mb="24px">
               <Text color="gray700" fontSize="24px" mb="16px">
                 {name}
@@ -65,33 +69,33 @@ const ProductCart = ({ quantity, name, image, currency, price }: ICart) => {
               </Text>
             </Box>
             <ColorGroup colors={DATA_COLOR} />
-            <Flex justifyContent="flex-end">
+            <Flex gap="24px" justifyContent="space-between">
+              <HStack>
+                <Select
+                  placeholder="Select option"
+                  w="192px"
+                  h="40px"
+                  borderColor="midnightExpress"
+                  border="1px solid"
+                >
+                  <option value="option1">Size: Small</option>
+                  <option value="option2">Size: Medium</option>
+                  <option value="option2">Size: Large</option>
+                  <option value="option2">Size: Extra Large</option>
+                  <option value="option3">Size: XXL</option>
+                </Select>
+                <NumberPicker quantity={quantity} onChangeQuantity={() => {}} />
+              </HStack>
               <Button variant="ghost" leftIcon={<DeleteIcon />}>
                 Remove
               </Button>
-            </Flex>
-            <Flex mt="24px" gap="24px">
-              <Select
-                placeholder="Select option"
-                w="192px"
-                h="40px"
-                borderColor="midnightExpress"
-                border="1px solid"
-              >
-                <option value="option1">Size: Small</option>
-                <option value="option2">Size: Medium</option>
-                <option value="option2">Size: Large</option>
-                <option value="option2">Size: Extra Large</option>
-                <option value="option3">Size: XXL</option>
-              </Select>
-              <NumberPicker quantity={quantity} onChangeQuantity={() => {}} />
             </Flex>
           </Box>
         </HStack>
       </Box>
       <Flex flexDirection="column" alignItems="flex-end">
         <Text color="primary" fontWeight="bold" fontSize="34px" mb="57px">
-          Total:{currency}
+          Total: {currency}
         </Text>
         <Button variant="solid" padding="17px 81px">
           Go to check
