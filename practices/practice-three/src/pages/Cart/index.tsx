@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react'
 
 // Constants
-import { DATA_COLOR, SIZE_DATA } from '@/constants'
+import { DATA_COLOR, SIZE_OPTIONS } from '@/constants'
 
 // Components
 import { ColorGroup, NumberPicker } from '@/components'
@@ -79,7 +79,7 @@ const Cart = ({ quantity, name, image, currency, price }: ICart) => {
                   borderColor="midnightExpress"
                   border="1px solid"
                 >
-                  {SIZE_DATA.map(({ label, value }: ISise) => {
+                  {SIZE_OPTIONS.map(({ label, value }: ISise) => {
                     return <option value={value}>Size: {label}</option>
                   })}
                 </Select>
