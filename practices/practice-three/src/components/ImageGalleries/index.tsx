@@ -30,7 +30,7 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
       <Image width="587" height="691" src={currentImage} />
       <Flex mt={37} gap="10px">
         <Center>
-          <ChevronLeftIcon onClick={handlePrevClick} />
+          <ChevronLeftIcon onClick={handlePrevClick} cursor="pointer" />
         </Center>
         {data?.map((item, index) => (
           <Image
@@ -40,10 +40,11 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
             onClick={() => {
               setIndexImage(index)
             }}
+            cursor="pointer"
           />
         ))}
         <Center>
-          <ChevronRightIcon onClick={handleNextClick} />
+          <ChevronRightIcon onClick={handleNextClick} cursor="pointer" />
         </Center>
       </Flex>
     </Box>
