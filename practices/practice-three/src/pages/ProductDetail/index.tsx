@@ -1,26 +1,37 @@
-import { Button, Container, Flex, HStack, Stack, Text, useRadioGroup } from '@chakra-ui/react';
+import { Button, Container, Flex, HStack, Text } from '@chakra-ui/react'
 
 // Constants
-import { BENEFIT_DATA, DELIVERY_DATA } from '@/constants';
+import { BENEFIT_DATA, DELIVERY_DATA } from '@/constants'
 
-// Icon components
-import { Rating, Comment, WhiteBag } from '../Icons';
+// Types
+import { IProduct } from '@/types'
 
 // Components
-import Delivery from './Delivery';
-import ImageGalleries from './ImageGalleries';
-import DescriptionTab from './DescriptionTab';
-import NumberPicker from '../NumberPicker';
-import { IProduct } from '@/types/product';
-import Color from '../ColorGroup';
-import Size from './SizeGroup';
+import {
+  ColorGroup,
+  Comment,
+  Delivery,
+  DescriptionTab,
+  ImageGalleries,
+  NumberPicker,
+  Rating,
+  SizeGroup,
+  WhiteBag
+} from '@/components'
 
-const ProductDetail = ({ name, price, rating, reviews, images, quantity, colors, size, description }: IProduct) => {
-  const totalView = reviews.length;
+const ProductDetail = ({
+  name,
+  price,
+  rating,
+  reviews,
+  images,
+  quantity,
+  colors,
+  size,
+  description
+}: IProduct) => {
+  const totalView = reviews.length
 
-  const { getRadioProps, getRootProps } = useRadioGroup({
-    defaultValue: 'Blue'
-  });
   return (
     <Container maxW="1280px" pt="49px" px={0}>
       <Flex padding="40px 0" gap={110} flexGrow={'revert'}>
@@ -64,7 +75,13 @@ const ProductDetail = ({ name, price, rating, reviews, images, quantity, colors,
               </Flex>
 
               {/* Total comments  */}
-              <Flex alignItems="center" gap="7px" padding="10px 7px" borderRadius="27px" background="pattensBlue">
+              <Flex
+                alignItems="center"
+                gap="7px"
+                padding="10px 7px"
+                borderRadius="27px"
+                background="pattensBlue"
+              >
                 <Comment />
                 <Text color="primary" fontWeight="semibold">
                   {totalView} Reviews
@@ -74,23 +91,14 @@ const ProductDetail = ({ name, price, rating, reviews, images, quantity, colors,
           </Flex>
 
           {/* Colors option */}
-          <Stack {...getRootProps()}>
-            <Text color="backgroundWarning" fontWeight="medium" mb="14px">
-              Choose a Color
-            </Text>
-            <HStack>
-              {colors?.map((item) => {
-                return <Color key={item} color={item} {...getRadioProps({ value: item })} />;
-              })}
-            </HStack>
-          </Stack>
+          <ColorGroup colors={colors} />
 
           {/* Sizes select */}
-          <Size options={size} />
+          <SizeGroup options={size} />
 
           <Flex gap="19px">
             {/* Increase or decrease product quantity */}
-            <NumberPicker onChangeQuantity={() => {}} onDecrease={() => {}} onIncrease={() => {}} quantity={quantity} />
+            <NumberPicker onChangeQuantity={() => {}} quantity={quantity} />
 
             {/* Add the product to cart */}
             <Button w="309px" h="59px" variant="solid" gap="10px">
@@ -105,9 +113,13 @@ const ProductDetail = ({ name, price, rating, reviews, images, quantity, colors,
       </Flex>
 
       {/* Product information */}
-      <DescriptionTab title="Product Description" text={description} data={BENEFIT_DATA} />
+      <DescriptionTab
+        title="Product Description"
+        text={description}
+        data={BENEFIT_DATA}
+      />
     </Container>
-  );
-};
+  )
+}
 
-export default ProductDetail;
+export default ProductDetail

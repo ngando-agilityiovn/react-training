@@ -1,16 +1,17 @@
 import { render } from '@testing-library/react'
+import { useRadio } from '@chakra-ui/react'
 
 // Components
-import ColorGroup from '.'
-import { DATA_COLOR } from '@/constants'
-import { useRadio } from '@chakra-ui/react'
+import Color from '.'
 
 jest.mock('@chakra-ui/react', () => ({
   ...jest.requireActual('@chakra-ui/react'),
   useRadio: jest.fn()
 }))
-describe('ColorGroup component', () => {
+describe('Color component', () => {
   it('renders Color component correctly', () => {
+    const color = 'blue'
+
     const mockUseRadio = jest.fn()
     mockUseRadio.mockReturnValue({
       state: { isChecked: true },
@@ -21,7 +22,7 @@ describe('ColorGroup component', () => {
     })
     ;(useRadio as jest.Mock).mockImplementation(mockUseRadio)
 
-    const { container } = render(<ColorGroup colors={DATA_COLOR} />)
+    const { container } = render(<Color color={color} />)
     expect(container).toMatchSnapshot()
   })
 })

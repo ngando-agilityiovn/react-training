@@ -13,12 +13,7 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
 
   // Handle click next image
   const handleNext = () => {
-    setIndexImage((prevIndex): number => {
-      if (prevIndex === data.length - 1) {
-        return 0
-      }
-      return prevIndex + 1
-    })
+    setIndexImage((prevIndex): number => prevIndex)
   }
 
   const handleNextClick = () => {
@@ -27,12 +22,9 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
 
   // Handle click prev image
   const handlePrev = () => {
-    setIndexImage((prevIndex): number => {
-      if (prevIndex === 0) {
-        return data.length - 1
-      }
-      return prevIndex - 1
-    })
+    setIndexImage((prevIndex): number =>
+      prevIndex === data.length - 1 ? 0 : prevIndex - 1
+    )
   }
 
   const handlePrevClick = () => {
