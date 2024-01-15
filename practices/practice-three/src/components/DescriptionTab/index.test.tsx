@@ -12,11 +12,11 @@ describe('DescriptionTag component', () => {
     const container = render(
       <BrowserRouter>
         <DescriptionTab
-          descriptionTitle="Product Description"
-          descriptionText="When it's colder than the far side of the moon and spitting rain too, you've still got to look good. From water-repellent leather to a rugged outsole."
-          benefitData={BENEFIT_DATA}
+          title="Product Description"
+          text="When it's colder than the far side of the moon and spitting rain too, you've still got to look good. From water-repellent leather to a rugged outsole."
+          data={BENEFIT_DATA}
         />
-      </BrowserRouter>,
+      </BrowserRouter>
     )
     expect(container).toMatchSnapshot()
   })

@@ -2,14 +2,14 @@ import { Meta, StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 
 // Constants
-import { PAGINATION_DATA } from '@/constants'
+import { DATA_COLOR } from '@/constants'
 
 // Components
-import Pagination from '.'
+import ColorGroup from '.'
 
 export default {
-  title: 'Components/Pagination',
-  component: Pagination,
+  title: 'Components/ColorGroup',
+  component: ColorGroup,
   decorators: [
     (Story) => (
       <BrowserRouter>
@@ -19,10 +19,8 @@ export default {
   ]
 } as Meta
 
-type Story = StoryObj<typeof Pagination>
+type Story = StoryObj<typeof ColorGroup>
 
 export const Default: Story = {
-  args: {
-    data: PAGINATION_DATA
-  }
+  args: { colors: DATA_COLOR }
 }

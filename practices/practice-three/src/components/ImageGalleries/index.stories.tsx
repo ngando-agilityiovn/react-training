@@ -2,27 +2,27 @@ import { Meta, StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 
 // Constants
-import { SIZE_DATA } from '@/constants'
+import { IMAGE_PRODUCT } from '@/constants'
 
 // Components
-import SizeGroup from '.'
+import ImageGalleries from '.'
 
 export default {
-  title: 'Components/SizeGroup',
-  component: SizeGroup,
+  title: 'Components/ImageGalleries',
+  component: ImageGalleries,
   decorators: [
     (Story) => (
       <BrowserRouter>
         <Story />
       </BrowserRouter>
-    ),
-  ],
+    )
+  ]
 } as Meta
 
-type Story = StoryObj<typeof SizeGroup>
+type Story = StoryObj<typeof ImageGalleries>
 
 export const Default: Story = {
   args: {
-    data: SIZE_DATA,
-  },
+    data: IMAGE_PRODUCT
+  }
 }

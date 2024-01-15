@@ -2,27 +2,27 @@ import { Meta, StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 
 // Constants
-import { DELIVERYDATA } from '@/constants'
+import { SIZE_DATA } from '@/constants'
 
 // Components
-import Delivery from '.'
+import SizeGroup from '.'
 
 export default {
-  title: 'Components/Delivery',
-  component: Delivery,
+  title: 'Components/SizeGroup',
+  component: SizeGroup,
   decorators: [
     (Story) => (
       <BrowserRouter>
         <Story />
       </BrowserRouter>
-    ),
-  ],
+    )
+  ]
 } as Meta
 
-type Story = StoryObj<typeof Delivery>
+type Story = StoryObj<typeof SizeGroup>
 
 export const Default: Story = {
   args: {
-    data: DELIVERYDATA,
-  },
+    options: SIZE_DATA
+  }
 }
