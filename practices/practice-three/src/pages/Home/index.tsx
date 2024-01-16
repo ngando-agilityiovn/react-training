@@ -6,13 +6,13 @@ import { PAGINATION_DATA } from '@/constants'
 import MainLayout from '@/MainLayout'
 
 // Hooks
-import { useFetch } from '@/hooks'
+import { useProductList } from '@/hooks'
 
 // Components
 import { Pagination, ProductList, Sidebar } from '@/components'
 
 const Home = () => {
-  const { data, error, isLoading } = useFetch()
+  const { data, error, isLoading } = useProductList()
 
   return (
     <>
