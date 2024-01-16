@@ -9,6 +9,9 @@ const ColorGroup = ({ colors }: IColorGroup) => {
   const { getRadioProps, getRootProps } = useRadioGroup({
     defaultValue: 'Blue'
   })
+
+  console.log(colors, '123')
+
   return (
     <Stack {...getRootProps()} borderBottom="1px solid gainsboro">
       <Text color="backgroundWarning" fontWeight="medium" mb="14px">
