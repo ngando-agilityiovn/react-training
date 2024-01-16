@@ -9,6 +9,9 @@ interface IPaginationGroup {
 }
 
 const Pagination = ({ data }: IPaginationGroup) => {
+  const getPageIndex = (pageeIndex: number) => {
+    set(pageeIndex)
+  }
   return (
     <Flex justifyContent="center" py="8px" mt="63px" gap="8px">
       {data.map(({ text }) => (
@@ -17,8 +20,9 @@ const Pagination = ({ data }: IPaginationGroup) => {
           background="white"
           borderRadius="4px"
           _hover={{
-            background: 'backgroundNumberPagination',
+            background: 'backgroundNumberPagination'
           }}
+          onClick={() => getPageIndex}
         >
           {text}
         </Button>

@@ -5,8 +5,8 @@ import { useParams } from 'react-router-dom'
 // Constants
 import { DELIVERY_DATA } from '@/constants'
 
-// Helpers
-import { productDetail } from '@/helpers'
+// Services
+import { getproductDetail } from '@/services'
 
 // Types
 import { IProduct } from '@/types'
@@ -28,7 +28,7 @@ const ProductDetail = () => {
   const { id } = useParams()
   const [product, setProduct] = useState<IProduct>()
   const handleGetProduct = useCallback(async () => {
-    const productData = await productDetail(
+    const productData = await getproductDetail(
       'https://657c3495853beeefdb98e5f4.mockapi.io/Product',
       id!
     )

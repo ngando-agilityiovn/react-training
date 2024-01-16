@@ -1,10 +1,10 @@
 import useSWR from 'swr'
-import { fetchData } from '@/helpers/api'
+import { fetchData } from '@/services/api'
 import { IProduct } from '@/types/product'
 
-const useFetch = () => {
+const useProductList = () => {
   const { data, error, isLoading } = useSWR<IProduct[]>(
-    'https://657c3495853beeefdb98e5f4.mockapi.io/Product',
+    'https://practice-free-api.vercel.app/api/fashion-products',
     fetchData
   )
 
@@ -15,4 +15,4 @@ const useFetch = () => {
   }
 }
 
-export default useFetch
+export default useProductList
