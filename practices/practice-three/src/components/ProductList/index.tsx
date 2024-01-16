@@ -4,7 +4,7 @@ import { Flex } from '@chakra-ui/react'
 // Types
 import { IProduct } from '@/types'
 
-//  Icon components
+// Components
 import ProductCard from '../ProductCard'
 
 interface IProductList {
