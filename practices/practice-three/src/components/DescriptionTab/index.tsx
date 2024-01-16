@@ -12,14 +12,10 @@ import {
 // Icon components
 import { Check } from '../Icons'
 
-interface IBenefitItem {
-  title: string
-}
-
 interface IDescriptionTagItem {
   title: string
   text: string
-  data: IBenefitItem[]
+  data: string[]
 }
 
 const DescriptionTab = ({ title, text, data }: IDescriptionTagItem) => {
@@ -49,7 +45,7 @@ const DescriptionTab = ({ title, text, data }: IDescriptionTagItem) => {
               Benefits
             </Text>
             <Flex mt="21px" gap="14px" flexDirection="column">
-              {data.map(({ title }) => (
+              {data?.map((title) => (
                 <Flex gap="14px" alignItems="center">
                   <Check />
                   <Text key={title}>{title}</Text>
