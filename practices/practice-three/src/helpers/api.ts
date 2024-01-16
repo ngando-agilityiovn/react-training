@@ -4,6 +4,7 @@ export const fetchData = async (url: string) => {
     const data = await res.json()
     return data
   }
+  throw Error('err')
 }
 
 export const productDetail = async (url: string, productId: string) => {

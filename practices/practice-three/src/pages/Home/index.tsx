@@ -5,16 +5,15 @@ import { PAGINATION_DATA } from '@/constants'
 
 import MainLayout from '@/MainLayout'
 
-// Components
-import { Pagination, ProductList, Sidebar } from '@/components'
+// Hooks
 import { useFetch } from '@/hooks'
 
-interface IHome {
-  isLoadingProjects?: boolean
-}
+// Components
+import { Pagination, ProductList, Sidebar } from '@/components'
 
-const Home = ({ isLoadingProjects }: IHome) => {
-  const { data } = useFetch()
+const Home = () => {
+  const { data, error, isLoading } = useFetch()
+
   return (
     <>
       <MainLayout />
@@ -25,7 +24,7 @@ const Home = ({ isLoadingProjects }: IHome) => {
             <Text pt="10px" mb="33" variant="title">
               Showing 12 Result from total 230
             </Text>
-            {isLoadingProjects ? (
+            {isLoading ? (
               <Box py="6" textAlign="center">
                 <Spinner
                   thickness="4px"
@@ -35,6 +34,10 @@ const Home = ({ isLoadingProjects }: IHome) => {
                   size="xl"
                 />
               </Box>
+            ) : error ? (
+              <Text variant="primary" color="red">
+                Not found data
+              </Text>
             ) : (
               <ProductList data={data} />
             )}
