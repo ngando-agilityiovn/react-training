@@ -16,7 +16,9 @@ const Home = () => {
     handlePrevPage,
     handleNextPage,
     pageButtons,
-    limit
+    limit,
+    selectPage,
+    pageIndex
   } = useFetch()
 
   return (
@@ -50,6 +52,8 @@ const Home = () => {
               handlePrevPage={handlePrevPage}
               handleNextPage={handleNextPage}
               pageButtons={pageButtons}
+              selectPage={selectPage}
+              pageIndex={pageIndex}
             />
           </Box>
         </Flex>

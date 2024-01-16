@@ -1,34 +1,22 @@
+import { useFetch } from '@/hooks'
 import { Button, Flex } from '@chakra-ui/react'
-
-// Hooks
-// import { useFetch } from '@/hooks'
 
 interface IPagination {
   handlePrevPage: () => void
   handleNextPage: () => void
   pageButtons: number[]
+  selectPage: (num: number) => void
+  pageIndex: number
 }
 
 const Pagination = ({
   handlePrevPage,
   handleNextPage,
-  pageButtons
+  pageButtons,
+  selectPage,
+  pageIndex
 }: IPagination) => {
-  // const { data } = useFetch()
-  // const pageButtons = []
-
-  // if (data) {
-  //   const totalPage = data.length / 9
-  //   console.log(totalPage)
-
-  //   for (let i = 0; i < totalPage; i++) {
-  //     pageButtons.push(i)
-  //     console.log(i)
-  //   }
-
-  //   console.log(pageButtons, 'pages button')
-  // }
-
+  const { dataAll } = useFetch()
   return (
     <Flex justifyContent="center" py="8px" mt="63px" gap="8px">
       <Button
@@ -39,6 +27,7 @@ const Pagination = ({
           background: 'backgroundNumberPagination'
         }}
         onClick={handlePrevPage}
+        isDisabled={pageIndex == 1 ? true : false}
       >
         Preview
       </Button>
@@ -46,11 +35,14 @@ const Pagination = ({
       {pageButtons?.map((index) => (
         <Button
           variant="outline"
-          background="white"
+          background={
+            pageIndex === index + 1 ? 'backgroundNumberPagination' : 'white'
+          }
           borderRadius="4px"
           _hover={{
             background: 'backgroundNumberPagination'
           }}
+          onClick={() => selectPage(index + 1)}
         >
           {index + 1}
         </Button>
@@ -64,6 +56,7 @@ const Pagination = ({
           background: 'backgroundNumberPagination'
         }}
         onClick={handleNextPage}
+        isDisabled={pageIndex <= dataAll!.length / 9 ? false : true}
       >
         Next
       </Button>
