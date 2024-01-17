@@ -17,17 +17,13 @@ type Demo = {
   props: IProduct
 }
 const ProductCard = ({ props }: Demo) => {
+  const { id, images, name, currency, price, quantity, reviews } = props
   return (
-    <Card maxW="sm" width="305px" overflow="hidden" key={props.id}>
+    <Card maxW="sm" width="305px" overflow="hidden" key={id}>
       <CardBody p="0">
         <Stack>
-          <Link to={`/product-detail/${props.id}`}>
-            <Image
-              src={props.images[0]}
-              alt={props.name}
-              width="100%"
-              height="303px"
-            />
+          <Link to={`/product-detail/${id}`}>
+            <Image src={images[0]} alt={name} width="100%" height="303px" />
           </Link>
 
           <IconButton
@@ -51,13 +47,13 @@ const ProductCard = ({ props }: Demo) => {
         </Stack>
         <Stack mt="22px" pl="21px" pr="17px">
           <Flex justify="space-between">
-            <Text variant="primary">{props.name}</Text>
+            <Text variant="primary">{name}</Text>
             <Text fontSize="lg" fontWeight="bold" color="textInactive">
-              {props.currency} {props.price}
+              {currency} {price}
             </Text>
           </Flex>
           <Text color="tertiary" fontWeight="normal" lineHeight="20px">
-            {props.quantity} types of shoos available
+            {quantity} types of shoos available
           </Text>
           <Flex gap="6px">
             <Center>
@@ -69,7 +65,7 @@ const ProductCard = ({ props }: Demo) => {
               <InActiveStar />
             </Center>
             <Text color="tertiary" fontSize="sm">
-              ({props.reviews.length})
+              ({reviews.length})
             </Text>
           </Flex>
 
