@@ -25,6 +25,7 @@ const Sidebar = () => {
         gap={30}
         border="1px solid"
         borderColor="whiteSmoke"
+        allowMultiple
       >
         <AccordionItem>
           <Filter data={FILTER.category} title={Title.CATEGORY} />
