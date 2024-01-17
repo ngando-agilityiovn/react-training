@@ -1,7 +1,7 @@
 import useSWR from 'swr'
 
-// Helpers
-import { fetchData } from '@/helpers'
+// Services
+import { fetchData } from '@/services'
 
 // Types
 import { IProduct } from '@/types'

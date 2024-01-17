@@ -4,8 +4,8 @@ import { useMemo, useState } from 'react'
 // Types
 import { IProduct } from '@/types'
 
-// Helpers
-import { fetchData } from '@/helpers'
+// Services
+import { fetchData } from '@/services'
 
 const usePagination = (total: number) => {
   const [pageIndex, setPageIndex] = useState(1)
