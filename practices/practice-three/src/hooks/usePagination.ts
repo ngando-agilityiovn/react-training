@@ -1,5 +1,5 @@
 import useSWR from 'swr'
-import { useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // Types
 import { IProduct } from '@/types'
@@ -46,7 +46,7 @@ const usePagination = (total: number) => {
     setPageIndex(num)
   }
 
-  useMemo(() => {
+  useEffect(() => {
     window.scrollTo({ top: 0 })
   }, [pageIndex])
 
