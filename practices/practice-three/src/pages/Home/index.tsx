@@ -3,24 +3,26 @@ import { Box, Container, Flex, Spinner, Text } from '@chakra-ui/react'
 import MainLayout from '@/MainLayout'
 
 // Hooks
-import { useFetch } from '@/hooks'
+import { usePagination, useProductList } from '@/hooks'
 
 // Components
 import { Pagination, ProductList, Sidebar } from '@/components'
 
 const Home = () => {
+  const { dataAll } = useProductList()
+  const totalProduct = dataAll?.length || 0
+
   const {
-    data,
+    limitedData,
     error,
     isLoading,
     handlePrevPage,
     handleNextPage,
-    pageButtons,
+    pageNumbers,
     limit,
     selectPage,
     pageIndex
-  } = useFetch()
-
+  } = usePagination(totalProduct)
   return (
     <>
       <MainLayout />
@@ -46,12 +48,12 @@ const Home = () => {
                 Not found data
               </Text>
             ) : (
-              <ProductList data={data} limit={limit} />
+              <ProductList data={limitedData} limit={limit} />
             )}
             <Pagination
               handlePrevPage={handlePrevPage}
               handleNextPage={handleNextPage}
-              pageButtons={pageButtons}
+              pageNumbers={pageNumbers}
               selectPage={selectPage}
               pageIndex={pageIndex}
             />

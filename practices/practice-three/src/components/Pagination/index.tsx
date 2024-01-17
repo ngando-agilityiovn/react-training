@@ -1,10 +1,10 @@
-import { useFetch } from '@/hooks'
+import { useProductList } from '@/hooks'
 import { Button, Flex } from '@chakra-ui/react'
 
 interface IPagination {
   handlePrevPage: () => void
   handleNextPage: () => void
-  pageButtons: number[]
+  pageNumbers: number[]
   selectPage: (num: number) => void
   pageIndex: number
 }
@@ -12,11 +12,13 @@ interface IPagination {
 const Pagination = ({
   handlePrevPage,
   handleNextPage,
-  pageButtons,
+  pageNumbers,
   selectPage,
   pageIndex
 }: IPagination) => {
-  const { dataAll } = useFetch()
+  const { dataAll } = useProductList()
+
+  const totalProduct = dataAll?.length || 0
   return (
     <Flex justifyContent="center" py="8px" mt="63px" gap="8px">
       <Button
@@ -32,7 +34,7 @@ const Pagination = ({
         Preview
       </Button>
 
-      {pageButtons?.map((index) => (
+      {pageNumbers?.map((index) => (
         <Button
           variant="outline"
           background={
@@ -56,7 +58,7 @@ const Pagination = ({
           background: 'backgroundNumberPagination'
         }}
         onClick={handleNextPage}
-        isDisabled={pageIndex <= dataAll!.length / 9 ? false : true}
+        isDisabled={pageIndex <= totalProduct / 9 ? false : true}
       >
         Next
       </Button>
