@@ -7,10 +7,8 @@ interface IColorGroup {
 
 const ColorGroup = ({ colors }: IColorGroup) => {
   const { getRadioProps, getRootProps } = useRadioGroup({
-    defaultValue: 'Blue'
+    defaultValue: '#3498db'
   })
-
-  console.log(colors, '123')
 
   return (
     <Stack {...getRootProps()} borderBottom="1px solid gainsboro">

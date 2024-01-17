@@ -33,7 +33,6 @@ const Color = (props: CustomRadioProps) => {
           transform="translate(-50%, -50%)"
           width="120%"
           height="120%"
-          borderRadius="100%"
           _after={{
             position: 'absolute',
             content: '""',
@@ -44,7 +43,7 @@ const Color = (props: CustomRadioProps) => {
             height: '120%',
             bg: 'transparent',
             borderRadius: '100%',
-            border: `4px solid  ${state.isChecked ? color : 'transparent'}`
+            border: `4px solid ${state.isChecked ? color : 'transparent'}`
           }}
           zIndex={-1}
         />

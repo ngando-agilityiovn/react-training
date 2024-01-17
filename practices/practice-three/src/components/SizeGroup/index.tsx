@@ -11,7 +11,9 @@ import {
 } from '@chakra-ui/react'
 
 const SizeGroup = () => {
-  const { getRootProps, getRadioProps } = useRadioGroup()
+  const { getRootProps, getRadioProps } = useRadioGroup({
+    defaultValue: 'Small'
+  })
 
   const group = getRootProps()
 

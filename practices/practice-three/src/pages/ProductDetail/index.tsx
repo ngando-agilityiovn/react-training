@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 // Constants
-import { DATA_COLOR, DELIVERY_DATA } from '@/constants'
+import { DELIVERY_DATA } from '@/constants'
 
 // Services
 import { getproductDetail } from '@/services'
@@ -106,7 +106,7 @@ const ProductDetail = () => {
           </Flex>
 
           {/* Colors option */}
-          <ColorGroup colors={DATA_COLOR} />
+          <ColorGroup colors={product?.colors} />
 
           {/* Sizes select */}
           <SizeGroup />
