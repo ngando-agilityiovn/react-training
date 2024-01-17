@@ -17,7 +17,7 @@ type Demo = {
   props: IProduct
 }
 const ProductCard = ({ props }: Demo) => {
-  const { id, images, name, currency, price, quantity, reviews } = props
+  const { id, images, name, currency, price, quantity, reviews } = props || {}
   return (
     <Card maxW="sm" width="305px" overflow="hidden" key={id}>
       <CardBody p="0">
