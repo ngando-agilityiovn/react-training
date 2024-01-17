@@ -23,6 +23,7 @@ const Home = () => {
     selectPage,
     pageIndex
   } = usePagination(totalProduct)
+
   return (
     <>
       <MainLayout />

@@ -1,5 +1,7 @@
-import { useProductList } from '@/hooks'
 import { Button, Flex } from '@chakra-ui/react'
+
+// Hooks
+import { useProductList } from '@/hooks'
 
 interface IPagination {
   handlePrevPage: () => void

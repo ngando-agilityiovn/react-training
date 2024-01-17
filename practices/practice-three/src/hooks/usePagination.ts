@@ -1,5 +1,5 @@
 import useSWR from 'swr'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 // Types
 import { IProduct } from '@/types'
@@ -10,7 +10,6 @@ import { fetchData } from '@/helpers'
 const usePagination = (total: number) => {
   const [pageIndex, setPageIndex] = useState(1)
   const limit = 9
-
   const {
     data: limitedData,
     error,
@@ -46,6 +45,10 @@ const usePagination = (total: number) => {
   const selectPage = (num: number) => {
     setPageIndex(num)
   }
+
+  useMemo(() => {
+    window.scrollTo({ top: 0 })
+  }, [pageIndex])
 
   return {
     limitedData,
