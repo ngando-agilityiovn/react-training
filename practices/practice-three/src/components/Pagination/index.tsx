@@ -1,3 +1,4 @@
+import { productLimit } from '@/constants'
 import { Button, Flex } from '@chakra-ui/react'
 
 interface IPagination {
@@ -17,9 +18,6 @@ const Pagination = ({
   pageIndex,
   total
 }: IPagination) => {
-  // const { products } = useProductList()
-
-  // const totalProduct = products?.length || 0
   return (
     <Flex justifyContent="center" py="8px" mt="63px" gap="8px">
       <Button
@@ -57,7 +55,7 @@ const Pagination = ({
           background: 'blueChalk'
         }}
         onClick={onNextPage}
-        isDisabled={pageIndex <= total / 9 ? false : true}
+        isDisabled={pageIndex <= total / productLimit ? false : true}
       >
         Next
       </Button>
