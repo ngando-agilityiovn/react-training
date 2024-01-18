@@ -2,7 +2,7 @@ import { Button, HStack, Input } from '@chakra-ui/react'
 
 interface INumberPicker {
   quantity?: number
-  onChangeQuantity: () => void
+  onChangeQuantity: (id: string) => void
 }
 
 const NumberPicker = ({ quantity, onChangeQuantity }: INumberPicker) => {
@@ -18,7 +18,7 @@ const NumberPicker = ({ quantity, onChangeQuantity }: INumberPicker) => {
         fontWeight="bold"
         fontSize="22px"
         value={quantity}
-        onChange={onChangeQuantity}
+        onChange={() => onChangeQuantity}
       />
       <Button border="none" fontSize="18px" color="primary" fontWeight="bold">
         +

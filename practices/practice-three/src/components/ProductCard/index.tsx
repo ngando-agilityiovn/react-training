@@ -24,6 +24,7 @@ import { BASE_URL } from '@/constants'
 
 // Components
 import { Heart, InActiveStar, Star } from '../Icons'
+import { cartStore } from '@/stores/ProductStore'
 
 interface IProductCard {
   props: IProduct
@@ -35,6 +36,8 @@ const ProductCard = ({ props }: IProductCard) => {
   const handleHoverCard = () => {
     preload(`${BASE_URL}${id}`, fetchData)
   }
+
+  const { handleAddToCart } = cartStore()
 
   return (
     <Card
@@ -93,7 +96,12 @@ const ProductCard = ({ props }: IProductCard) => {
             </Text>
           </Flex>
 
-          <Button variant="solid" width="50%" my="25px">
+          <Button
+            variant="solid"
+            width="50%"
+            my="25px"
+            onClick={() => handleAddToCart(props)}
+          >
             Add To Cart
           </Button>
         </Stack>

@@ -1,5 +1,4 @@
 import { Button, Text } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
 
 // Icon components
 import { Cart } from '../Icons'
@@ -17,9 +16,7 @@ const CartIcon = ({ quantity }: ICartIcon) => {
       backgroundColor="desertStorm"
       border="none"
     >
-      <Link to="/cartPage">
-        <Cart />
-      </Link>
+      <Cart />
       <Text
         as="span"
         display="block"

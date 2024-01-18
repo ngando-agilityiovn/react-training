@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { theme } from './themes'
 
 // Components
-import { Home, ProductDetail } from '@/pages'
+import { Cart, Home, ProductDetail } from '@/pages'
 
 const pages = [
   {
@@ -15,6 +15,10 @@ const pages = [
   {
     path: '/product-detail/:id',
     element: <ProductDetail />
+  },
+  {
+    path: '/product-cart/',
+    element: <Cart />
   }
 ]
 

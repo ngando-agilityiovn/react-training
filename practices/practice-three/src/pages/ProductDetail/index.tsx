@@ -19,7 +19,10 @@ import {
   SizeGroup,
   WhiteBag
 } from '@/components'
-import { useBearStore } from '@/stores/CartStore'
+
+import { useShallow } from 'zustand/react/shallow'
+
+import { cartStore } from '@/stores/ProductStore'
 
 const ProductDetail = () => {
   const { id } = useParams()
@@ -38,14 +41,21 @@ const ProductDetail = () => {
     information
   } = productDetail || {}
 
-  const { carts, handleAddToCart } = useBearStore()
+  const { carts, handleAddToCart } = cartStore(
+    useShallow((state) => ({
+      carts: state.carts,
+      handleAddToCart: state.handleAddToCart
+    }))
+  )
 
   const handleSubmit = () => {
     // Get information product
 
-    handleAddToCart(name)
+    handleAddToCart(productDetail)
   }
+
   console.log(carts)
+
   const totalView = reviews?.length
 
   const handleChangeColor = (value: string) => console.log(value, 'color') //Note: Handle change product color

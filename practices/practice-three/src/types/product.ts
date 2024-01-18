@@ -1,12 +1,12 @@
 export interface IProduct {
-  id: number
+  id: string
   name: string
   price: number
   category?: string
   brand?: string
   ratings?: number
   size?: string[]
-  currency: string
+  currency?: string
   quantity: number
   reviews: IReviews[]
   colors?: string[]
