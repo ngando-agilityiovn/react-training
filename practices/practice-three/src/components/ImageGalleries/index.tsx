@@ -3,7 +3,7 @@ import { Box, Center, Flex, Image } from '@chakra-ui/react'
 import { useState } from 'react'
 
 interface IDetailProduct {
-  data: string[]
+  data?: string[]
 }
 
 const ImageGalleries = ({ data }: IDetailProduct) => {
@@ -14,14 +14,14 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
   // Handle click next image
   const handleNextClick = () => {
     setIndexImage((prevIndex): number =>
-      prevIndex === data.length - 1 ? 0 : prevIndex + 1
+      prevIndex === data!.length - 1 ? 0 : prevIndex + 1
     )
   }
 
   // Handle click prev image
   const handlePrevClick = () => {
     setIndexImage((prevIndex): number =>
-      prevIndex === 0 ? data.length - 1 : prevIndex - 1
+      prevIndex === 0 ? data!.length - 1 : prevIndex - 1
     )
   }
 
@@ -30,11 +30,21 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
       <Image width="587" height="691" src={currentImage} />
       <Flex mt={37} gap="10px">
         <Center>
-          <ChevronLeftIcon onClick={handlePrevClick} />
+          <ChevronLeftIcon onClick={handlePrevClick} cursor="pointer" />
         </Center>
-        {data?.map((item) => <Image w="115px" h="115px" src={item} />)}
+        {data?.map((item, index) => (
+          <Image
+            w="115px"
+            h="115px"
+            src={item}
+            onClick={() => {
+              setIndexImage(index)
+            }}
+            cursor="pointer"
+          />
+        ))}
         <Center>
-          <ChevronRightIcon onClick={handleNextClick} />
+          <ChevronRightIcon onClick={handleNextClick} cursor="pointer" />
         </Center>
       </Flex>
     </Box>

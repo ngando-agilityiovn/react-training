@@ -1,10 +1,11 @@
 import { Button, Container, Flex, HStack, Text } from '@chakra-ui/react'
+import { useParams } from 'react-router-dom'
 
 // Constants
-import { BENEFIT_DATA, DELIVERY_DATA } from '@/constants'
+import { DELIVERY_DATA } from '@/constants'
 
-// Types
-import { IProduct } from '@/types'
+// Hooks
+import { useProductDetail } from '@/hooks'
 
 // Components
 import {
@@ -19,18 +20,28 @@ import {
   WhiteBag
 } from '@/components'
 
-const ProductDetail = ({
-  name,
-  price,
-  rating,
-  reviews,
-  images,
-  quantity,
-  colors,
-  size,
-  description
-}: IProduct) => {
-  const totalView = reviews.length
+const ProductDetail = () => {
+  const { id } = useParams()
+
+  const { productDetail } = useProductDetail(id)
+
+  const {
+    reviews,
+    images,
+    name,
+    price,
+    currency,
+    ratings,
+    colors,
+    description,
+    information
+  } = productDetail || {}
+
+  const totalView = reviews?.length
+
+  const handleChangeColor = (value: string) => console.log(value, 'color') //Note: Handle change product color
+
+  const handleChangeSize = (value: string) => console.log(value, 'Size') // Note: Handle change product size
 
   return (
     <Container maxW="1280px" pt="49px" px={0}>
@@ -43,18 +54,19 @@ const ProductDetail = ({
           <Text as="span" fontSize={28} fontWeight={600}>
             {name}
           </Text>
-          <Text as="span">Teixeira Design Studio</Text>
+          <Text as="span" borderBottom="1px solid gainsboro" pb="30px">
+            Teixeira Design Studio
+          </Text>
 
           <Flex
-            border="1px solid gainsboro"
-            borderWidth="1px 0px 1px 0px"
-            padding="46px 0 45px 0"
+            borderBottom="1px solid gainsboro"
+            pb="45px"
             gap="41px"
             alignItems="center"
           >
             {/* Product price */}
             <Text as="span" fontSize="34px" fontWeight="bold" color="primary">
-              {price}
+              {currency} {price}
             </Text>
 
             <HStack>
@@ -67,10 +79,11 @@ const ProductDetail = ({
                 justifyContent="center"
                 alignItems="center"
                 w="65px"
+                borderBottom="1px solid gainsboro"
               >
                 <Rating />
                 <Text color="fuelYellow" fontWeight="semibold" as="span">
-                  {rating}
+                  {ratings}
                 </Text>
               </Flex>
 
@@ -91,14 +104,14 @@ const ProductDetail = ({
           </Flex>
 
           {/* Colors option */}
-          <ColorGroup colors={colors} />
+          <ColorGroup colors={colors} onChangeValue={handleChangeColor} />
 
           {/* Sizes select */}
-          <SizeGroup options={size} />
+          <SizeGroup onChangeValue={handleChangeSize} />
 
           <Flex gap="19px">
             {/* Increase or decrease product quantity */}
-            <NumberPicker onChangeQuantity={() => {}} quantity={quantity} />
+            <NumberPicker onChangeQuantity={() => {}} quantity={1} />
 
             {/* Add the product to cart */}
             <Button w="309px" h="59px" variant="solid" gap="10px">
@@ -116,7 +129,7 @@ const ProductDetail = ({
       <DescriptionTab
         title="Product Description"
         text={description}
-        data={BENEFIT_DATA}
+        data={information}
       />
     </Container>
   )

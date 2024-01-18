@@ -5,13 +5,17 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { theme } from './themes'
 
 // Components
-import { Home } from '@/pages'
+import { Home, ProductDetail } from '@/pages'
 
 const pages = [
   {
     path: '/',
-    element: <Home />,
+    element: <Home />
   },
+  {
+    path: '/product-detail/:id',
+    element: <ProductDetail />
+  }
 ]
 
 const App = () => (
