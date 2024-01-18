@@ -2,7 +2,7 @@ name: Practice two - Preview deploy
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-  REACT_APP_API_ENDPOINT: ${{ secrets.REACT_APP_API_ENDPOINT }}
+  # REACT_APP_API_ENDPOINT: ${{ secrets.REACT_APP_API_ENDPOINT }}
 on:
   push:
     branches-ignore:
@@ -15,11 +15,11 @@ jobs:
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
       - name: Pull Vercel Environment Information
-        working-directory: practice-two
+        working-directory: practice-three
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
       - name: Build Project Artifacts/validate-form
-        working-directory: practice-two
+        working-directory: practice-three
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
-        working-directory: practice-two
+        working-directory: practice-thee
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
