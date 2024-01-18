@@ -1,24 +1,25 @@
 import { Button, Flex } from '@chakra-ui/react'
 
-// Hooks
-
 interface IPagination {
-  handlePrevPage: () => void
-  handleNextPage: () => void
+  onPrevPage: () => void
+  onNextPage: () => void
   pageNumbers: number[]
-  selectPage: (num: number) => void
+  onSelectPage: (num: number) => void
   pageIndex: number
   total: number
 }
 
 const Pagination = ({
-  handlePrevPage,
-  handleNextPage,
+  onPrevPage,
+  onNextPage,
   pageNumbers,
-  selectPage,
+  onSelectPage,
   pageIndex,
   total
 }: IPagination) => {
+  // const { products } = useProductList()
+
+  // const totalProduct = products?.length || 0
   return (
     <Flex justifyContent="center" py="8px" mt="63px" gap="8px">
       <Button
@@ -26,10 +27,10 @@ const Pagination = ({
         background="white"
         borderRadius="4px"
         _hover={{
-          background: 'backgroundNumberPagination'
+          background: 'blueChalk'
         }}
-        onClick={handlePrevPage}
-        isDisabled={pageIndex == 1 ? true : false}
+        onClick={onPrevPage}
+        isDisabled={pageIndex === 1 ? true : false}
       >
         Preview
       </Button>
@@ -37,14 +38,12 @@ const Pagination = ({
       {pageNumbers?.map((index) => (
         <Button
           variant="outline"
-          background={
-            pageIndex === index + 1 ? 'backgroundNumberPagination' : 'white'
-          }
+          background={pageIndex === index + 1 ? 'blueChalk' : 'white'}
           borderRadius="4px"
           _hover={{
-            background: 'backgroundNumberPagination'
+            background: 'blueChalk'
           }}
-          onClick={() => selectPage(index + 1)}
+          onClick={() => onSelectPage(index + 1)}
         >
           {index + 1}
         </Button>
@@ -55,9 +54,9 @@ const Pagination = ({
         background="white"
         borderRadius="4px"
         _hover={{
-          background: 'backgroundNumberPagination'
+          background: 'blueChalk'
         }}
-        onClick={handleNextPage}
+        onClick={onNextPage}
         isDisabled={pageIndex <= total / 9 ? false : true}
       >
         Next
