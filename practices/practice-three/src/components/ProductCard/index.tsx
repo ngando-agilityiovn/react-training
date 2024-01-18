@@ -9,18 +9,41 @@ import {
   Stack,
   Text
 } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
-import { Heart, InActiveStar, Star } from '../Icons'
-import { IProduct } from '@/types'
+import { preload } from 'swr'
 import { memo } from 'react'
+import { Link } from 'react-router-dom'
+
+// Types
+import { IProduct } from '@/types'
+
+// Services
+import { fetchData } from '@/services'
+
+// Constants
+import { BASE_URL } from '@/constants'
+
+// Components
+import { Heart, InActiveStar, Star } from '../Icons'
 
 interface IProductCard {
   props: IProduct
 }
+
 const ProductCard = ({ props }: IProductCard) => {
   const { id, images, name, currency, price, quantity, reviews } = props
+
+  const handleHoverCard = () => {
+    preload(`${BASE_URL}${id}`, fetchData)
+  }
+
   return (
-    <Card maxW="sm" width="305px" overflow="hidden" key={id}>
+    <Card
+      onMouseOver={handleHoverCard}
+      maxW="sm"
+      width="305px"
+      overflow="hidden"
+      key={id}
+    >
       <CardBody p="0">
         <Stack>
           <Link to={`/product-detail/${id}`}>

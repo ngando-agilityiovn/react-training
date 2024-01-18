@@ -1,5 +1,3 @@
-import { SIZE_OPTIONS } from '@/constants'
-import { ISise } from '@/types'
 import {
   Box,
   HStack,
@@ -10,14 +8,30 @@ import {
   Text
 } from '@chakra-ui/react'
 
-const SizeGroup = () => {
+// Types
+import { ISise } from '@/types'
+
+// Constants
+import { SIZE_OPTIONS } from '@/constants'
+
+interface ISizeGroup {
+  onChangeValue: (value: string) => void
+}
+
+const SizeGroup = ({ onChangeValue }: ISizeGroup) => {
+  // Handle change value product size
+  const handleChangeValue = (value: string) => {
+    onChangeValue?.(value)
+  }
+
   const { getRootProps, getRadioProps } = useRadioGroup({
-    defaultValue: 'Small'
+    defaultValue: 'Small',
+    onChange: handleChangeValue
   })
 
   const group = getRootProps()
-
   // Calculate color values outside the map function
+
   const boxBackgroundColor = useColorModeValue('whiteSmoke', 'darkModeColor')
   const hoverBackgroundColor = useColorModeValue(
     'lightBlue',
