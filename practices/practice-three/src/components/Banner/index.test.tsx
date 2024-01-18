@@ -4,12 +4,12 @@ import { BrowserRouter } from 'react-router-dom'
 // Components
 import Banner from '.'
 
-describe('CartIcon component', () => {
+describe('Banner component', () => {
   it('Render correcty', () => {
     const container = render(
       <BrowserRouter>
         <Banner />
-      </BrowserRouter>,
+      </BrowserRouter>
     )
     expect(container).toMatchSnapshot()
   })

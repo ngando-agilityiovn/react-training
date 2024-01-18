@@ -1,3 +1,4 @@
+import { Accordion, AccordionItem } from '@chakra-ui/react'
 import { render } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 
@@ -6,7 +7,6 @@ import { FILTER } from '@/constants'
 
 // Components
 import Filter from '.'
-import { Accordion, AccordionItem } from '@chakra-ui/react'
 
 describe('Filter component', () => {
   it('Render correcty', () => {
@@ -17,7 +17,7 @@ describe('Filter component', () => {
             <Filter title="Catogory" data={FILTER.category} />
           </AccordionItem>
         </Accordion>
-      </BrowserRouter>,
+      </BrowserRouter>
     )
     expect(container).toMatchSnapshot()
   })

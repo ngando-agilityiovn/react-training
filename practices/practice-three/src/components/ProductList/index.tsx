@@ -8,7 +8,7 @@ import { IProduct } from '@/types'
 import ProductCard from '../ProductCard'
 
 interface IProductList {
-  data: IProduct[] | undefined
+  data?: IProduct[] | undefined
   productLimit: number
 }
 

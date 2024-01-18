@@ -15,8 +15,8 @@ export default {
       <BrowserRouter>
         <Story />
       </BrowserRouter>
-    ),
-  ],
+    )
+  ]
 } as Meta
 
 type Story = StoryObj<typeof ProductList>
@@ -24,5 +24,6 @@ type Story = StoryObj<typeof ProductList>
 export const Default: Story = {
   args: {
     data: CARD_DATA,
-  },
+    productLimit: 9
+  }
 }

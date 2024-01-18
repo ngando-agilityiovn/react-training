@@ -23,8 +23,8 @@ export default {
           </AccordionItem>
         </Accordion>
       </BrowserRouter>
-    ),
-  ],
+    )
+  ]
 } as Meta
 
 type Story = StoryObj<typeof Filter>
@@ -32,26 +32,26 @@ type Story = StoryObj<typeof Filter>
 export const Category: Story = {
   args: {
     title: Title.CATEGORY,
-    dataFilter: FILTER.category,
-  },
+    data: FILTER.category
+  }
 }
 
 export const Brand: Story = {
   args: {
     title: Title.BRAND,
-    dataFilter: FILTER.brand,
-  },
+    data: FILTER.brand
+  }
 }
 
 export const Size: Story = {
   args: {
     title: Title.SIZE,
-    dataFilter: FILTER.size,
-  },
+    data: FILTER.size
+  }
 }
 
 export const Price: Story = {
   args: {
-    title: Title.PRICE,
-  },
+    title: Title.PRICE
+  }
 }

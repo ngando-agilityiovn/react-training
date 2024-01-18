@@ -13,10 +13,11 @@ import { Link } from 'react-router-dom'
 import { Heart, InActiveStar, Star } from '../Icons'
 import { IProduct } from '@/types'
 import { memo } from 'react'
-type Demo = {
+
+interface IProductCard {
   props: IProduct
 }
-const ProductCard = ({ props }: Demo) => {
+const ProductCard = ({ props }: IProductCard) => {
   const { id, images, name, currency, price, quantity, reviews } = props
   return (
     <Card maxW="sm" width="305px" overflow="hidden" key={id}>

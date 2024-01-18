@@ -1,9 +1,11 @@
 import { render } from '@testing-library/react'
+import { useRadio } from '@chakra-ui/react'
+
+// Constants
+import { DATA_COLOR } from '@/constants'
 
 // Components
 import ColorGroup from '.'
-import { DATA_COLOR } from '@/constants'
-import { useRadio } from '@chakra-ui/react'
 
 jest.mock('@chakra-ui/react', () => ({
   ...jest.requireActual('@chakra-ui/react'),
