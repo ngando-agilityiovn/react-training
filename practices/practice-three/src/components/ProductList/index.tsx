@@ -9,13 +9,14 @@ import ProductCard from '../ProductCard'
 
 interface IProductList {
   data: IProduct[] | undefined
+  productLimit: number
 }
 
-const ProductList = ({ data }: IProductList) => {
+const ProductList = ({ data, productLimit }: IProductList) => {
   return (
     <Flex flexWrap="wrap" gap="5">
       {/* Cart product */}
-      {data?.map(({ ...props }) => {
+      {data?.slice(0, productLimit).map(({ ...props }) => {
         return <ProductCard props={props} />
       })}
     </Flex>
