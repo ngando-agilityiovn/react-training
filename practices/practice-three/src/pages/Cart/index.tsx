@@ -26,6 +26,7 @@ interface ICart {
 }
 
 const Cart = ({ quantity, name, image, currency, price }: ICart) => {
+  const handleChangeColor = (value: string) => console.log(value, 'color') //Note: Handle change product color
   return (
     <Container maxW="1280px" p="0">
       <Box mb="87px">
@@ -69,7 +70,7 @@ const Cart = ({ quantity, name, image, currency, price }: ICart) => {
                 {price}
               </Text>
             </Box>
-            <ColorGroup colors={DATA_COLOR} />
+            <ColorGroup colors={DATA_COLOR} onChangeValue={handleChangeColor} />
             <Flex gap="24px" justifyContent="space-between">
               <HStack>
                 <Select

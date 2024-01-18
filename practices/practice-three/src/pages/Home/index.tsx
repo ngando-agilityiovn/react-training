@@ -9,8 +9,9 @@ import { usePagination, useProductList } from '@/hooks'
 import { Pagination, ProductList, Sidebar } from '@/components'
 
 const Home = () => {
-  const { dataAll } = useProductList()
-  const totalProduct = dataAll?.length || 0
+  const { products } = useProductList()
+
+  const total = products?.length || 0
 
   const {
     limitedData,
@@ -19,10 +20,10 @@ const Home = () => {
     handlePrevPage,
     handleNextPage,
     pageNumbers,
-    limit,
-    selectPage,
+    productLimit,
+    handleSelectPage,
     pageIndex
-  } = usePagination(totalProduct)
+  } = usePagination(total)
 
   return (
     <>
@@ -49,16 +50,18 @@ const Home = () => {
                 Not found data
               </Text>
             ) : (
-              <ProductList data={limitedData} limit={limit} />
+              <ProductList data={limitedData} productLimit={productLimit} />
             )}
-            <Pagination
-              handlePrevPage={handlePrevPage}
-              handleNextPage={handleNextPage}
-              pageNumbers={pageNumbers}
-              selectPage={selectPage}
-              pageIndex={pageIndex}
-              total={totalProduct}
-            />
+            {pageNumbers.length >= 1 && (
+              <Pagination
+                onPrevPage={handlePrevPage}
+                onNextPage={handleNextPage}
+                pageNumbers={pageNumbers}
+                onSelectPage={handleSelectPage}
+                pageIndex={pageIndex}
+                total={total}
+              />
+            )}
           </Box>
         </Flex>
       </Container>

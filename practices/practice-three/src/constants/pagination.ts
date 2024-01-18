@@ -1,3 +1,5 @@
+export const productLimit = 9
+
 export const PAGINATION_DATA = [
   {
     text: '1'

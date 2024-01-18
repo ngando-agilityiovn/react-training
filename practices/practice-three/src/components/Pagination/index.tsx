@@ -1,21 +1,20 @@
+import { productLimit } from '@/constants'
 import { Button, Flex } from '@chakra-ui/react'
 
-// Hooks
-
 interface IPagination {
-  handlePrevPage: () => void
-  handleNextPage: () => void
+  onPrevPage: () => void
+  onNextPage: () => void
   pageNumbers: number[]
-  selectPage: (num: number) => void
+  onSelectPage: (num: number) => void
   pageIndex: number
   total: number
 }
 
 const Pagination = ({
-  handlePrevPage,
-  handleNextPage,
+  onPrevPage,
+  onNextPage,
   pageNumbers,
-  selectPage,
+  onSelectPage,
   pageIndex,
   total
 }: IPagination) => {
@@ -26,10 +25,10 @@ const Pagination = ({
         background="white"
         borderRadius="4px"
         _hover={{
-          background: 'backgroundNumberPagination'
+          background: 'blueChalk'
         }}
-        onClick={handlePrevPage}
-        isDisabled={pageIndex == 1 ? true : false}
+        onClick={onPrevPage}
+        isDisabled={pageIndex === 1}
       >
         Preview
       </Button>
@@ -37,14 +36,12 @@ const Pagination = ({
       {pageNumbers?.map((index) => (
         <Button
           variant="outline"
-          background={
-            pageIndex === index + 1 ? 'backgroundNumberPagination' : 'white'
-          }
+          background={pageIndex === index + 1 ? 'blueChalk' : 'white'}
           borderRadius="4px"
           _hover={{
-            background: 'backgroundNumberPagination'
+            background: 'blueChalk'
           }}
-          onClick={() => selectPage(index + 1)}
+          onClick={() => onSelectPage(index + 1)}
         >
           {index + 1}
         </Button>
@@ -55,10 +52,10 @@ const Pagination = ({
         background="white"
         borderRadius="4px"
         _hover={{
-          background: 'backgroundNumberPagination'
+          background: 'blueChalk'
         }}
-        onClick={handleNextPage}
-        isDisabled={pageIndex <= total / 9 ? false : true}
+        onClick={onNextPage}
+        isDisabled={!(pageIndex <= total / productLimit)}
       >
         Next
       </Button>

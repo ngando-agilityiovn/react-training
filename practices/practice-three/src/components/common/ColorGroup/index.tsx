@@ -3,11 +3,17 @@ import Color from './Color'
 
 interface IColorGroup {
   colors?: string[]
+  onChangeValue: (value: string) => void
 }
 
-const ColorGroup = ({ colors }: IColorGroup) => {
+const ColorGroup = ({ colors, onChangeValue }: IColorGroup) => {
+  const handleChangeValue = (value: string) => {
+    onChangeValue?.(value)
+  }
+
   const { getRadioProps, getRootProps } = useRadioGroup({
-    defaultValue: '#3498db'
+    defaultValue: '#3498db',
+    onChange: handleChangeValue
   })
 
   return (

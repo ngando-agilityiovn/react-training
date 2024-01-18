@@ -7,7 +7,7 @@ import { IMAGE_PRODUCT } from '@/constants'
 // Components
 import ImageGalleries from '.'
 
-describe('ButtonQuantity component', () => {
+describe('ImageGalleries component', () => {
   it('Render correcty', () => {
     const container = render(
       <BrowserRouter>

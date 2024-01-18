@@ -7,22 +7,21 @@ import { IProduct } from '@/types'
 // Services
 import { fetchData } from '@/services'
 
+// Constants
+import { productLimit } from '@/constants'
+
 const usePagination = (total: number) => {
   const [pageIndex, setPageIndex] = useState(1)
-  const limit = 9
-  const {
-    data: limitedData,
-    error,
-    isLoading
-  } = useSWR<IProduct[]>(
-    `https://657c3495853beeefdb98e5f4.mockapi.io/Product?page=${pageIndex}&limit=${limit}`,
+
+  const { data, error, isLoading } = useSWR<IProduct[]>(
+    `https://657c3495853beeefdb98e5f4.mockapi.io/Product?page=${pageIndex}&limit=${productLimit}`,
     fetchData
   )
 
   const pageNumbers = []
 
-  if (limitedData && total) {
-    const totalPage = total / limit
+  if (data && total) {
+    const totalPage = total / productLimit
 
     for (let i = 0; i < totalPage; i++) {
       pageNumbers.push(i)
@@ -37,12 +36,12 @@ const usePagination = (total: number) => {
 
   // Handle next pagination
   const handleNextPage = () => {
-    if (pageIndex < total / limit) {
+    if (pageIndex < total / productLimit) {
       setPageIndex((prevPage) => prevPage + 1)
     }
   }
 
-  const selectPage = (num: number) => {
+  const handleSelectPage = (num: number) => {
     setPageIndex(num)
   }
 
@@ -51,14 +50,14 @@ const usePagination = (total: number) => {
   }, [pageIndex])
 
   return {
-    limitedData,
+    limitedData: data,
     error,
     isLoading,
     handlePrevPage,
     handleNextPage,
     pageNumbers,
-    limit,
-    selectPage,
+    productLimit,
+    handleSelectPage,
     pageIndex
   }
 }

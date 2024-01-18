@@ -1,15 +1,11 @@
 import { Button, Container, Flex, HStack, Text } from '@chakra-ui/react'
-import { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 // Constants
 import { DELIVERY_DATA } from '@/constants'
 
-// Services
-import { getproductDetail } from '@/services'
-
-// Types
-import { IProduct } from '@/types'
+// Hooks
+import { useProductDetail } from '@/hooks'
 
 // Components
 import {
@@ -27,42 +23,45 @@ import { useBearStore } from '@/stores/CartStore'
 
 const ProductDetail = () => {
   const { id } = useParams()
-  const [product, setProduct] = useState<IProduct>()
-  const handleGetProduct = useCallback(async () => {
-    const productData = await getproductDetail(
-      'https://657c3495853beeefdb98e5f4.mockapi.io/Product',
-      id!
-    )
-    setProduct(productData)
-  }, [id])
 
-  useEffect(() => {
-    if (id) {
-      handleGetProduct()
-    }
-  }, [handleGetProduct, id])
+  const { productDetail } = useProductDetail(id)
 
-  const totalView = product?.reviews.length
+  const {
+    reviews,
+    images,
+    name,
+    price,
+    currency,
+    ratings,
+    colors,
+    description,
+    information
+  } = productDetail || {}
 
   const { carts, handleAddToCart } = useBearStore()
 
   const handleSubmit = () => {
     // Get information product
 
-    handleAddToCart(product!.name)
+    handleAddToCart(name)
   }
   console.log(carts)
+  const totalView = reviews?.length
+
+  const handleChangeColor = (value: string) => console.log(value, 'color') //Note: Handle change product color
+
+  const handleChangeSize = (value: string) => console.log(value, 'Size') // Note: Handle change product size
 
   return (
     <Container maxW="1280px" pt="49px" px={0}>
       <Flex padding="40px 0" gap={110} flexGrow={'revert'}>
         {/* Images product */}
-        <ImageGalleries data={product?.images} />
+        <ImageGalleries data={images} />
 
         {/* Information product */}
         <Flex direction={'column'} gap={30}>
           <Text as="span" fontSize={28} fontWeight={600}>
-            {product?.name}
+            {name}
           </Text>
           <Text as="span" borderBottom="1px solid gainsboro" pb="30px">
             Teixeira Design Studio
@@ -76,7 +75,7 @@ const ProductDetail = () => {
           >
             {/* Product price */}
             <Text as="span" fontSize="34px" fontWeight="bold" color="primary">
-              {product?.currency} {product?.price}
+              {currency} {price}
             </Text>
 
             <HStack>
@@ -93,7 +92,7 @@ const ProductDetail = () => {
               >
                 <Rating />
                 <Text color="fuelYellow" fontWeight="semibold" as="span">
-                  {product?.ratings}
+                  {ratings}
                 </Text>
               </Flex>
 
@@ -114,10 +113,10 @@ const ProductDetail = () => {
           </Flex>
 
           {/* Colors option */}
-          <ColorGroup colors={product?.colors} />
+          <ColorGroup colors={colors} onChangeValue={handleChangeColor} />
 
           {/* Sizes select */}
-          <SizeGroup />
+          <SizeGroup onChangeValue={handleChangeSize} />
 
           <Flex gap="19px">
             {/* Increase or decrease product quantity */}
@@ -144,8 +143,8 @@ const ProductDetail = () => {
       {/* Product information */}
       <DescriptionTab
         title="Product Description"
-        text={product?.description}
-        data={product?.information}
+        text={description}
+        data={information}
       />
     </Container>
   )

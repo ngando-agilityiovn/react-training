@@ -1,9 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 
-// Constants
-import { SIZE_DATA } from '@/constants'
-
 // Components
 import SizeGroup from '.'
 
@@ -23,6 +20,6 @@ type Story = StoryObj<typeof SizeGroup>
 
 export const Default: Story = {
   args: {
-    options: SIZE_DATA
+    onChangeValue: () => console.log('Hanlde change value product size')
   }
 }

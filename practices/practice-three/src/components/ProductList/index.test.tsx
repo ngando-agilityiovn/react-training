@@ -8,9 +8,9 @@ import ProductList from '.'
 
 jest.mock('@chakra-ui/react')
 
-describe('Sidebar component', () => {
+describe('Product List component', () => {
   it('Render correcty', () => {
-    const container = render(<ProductList data={CARD_DATA} />)
+    const container = render(<ProductList data={CARD_DATA} productLimit={9} />)
     expect(container).toMatchSnapshot()
   })
 })
