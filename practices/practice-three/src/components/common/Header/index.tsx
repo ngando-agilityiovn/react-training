@@ -1,12 +1,12 @@
 // Constants
+import CartIcon from '@/components/CartIcon'
+import { Logo } from '@/components/Icons'
+import Navbar from '@/components/Navbar'
 import { NAVBAR } from '@/constants'
 
 // Icon components
-import { Logo } from '../Icons'
 
 // Components
-import Navbar from '../Navbar'
-import CartIcon from '../CartIcon'
 import { Flex } from '@chakra-ui/react'
 
 const Header = () => {

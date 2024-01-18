@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 // Components
 import ProductDetail from '.'
-import { BENEFIT_DATA, DATA_COLOR, SIZE_DATA } from '@/constants'
+import { BENEFIT_DATA, DATA_COLOR, SIZE_OPTIONS } from '@/constants'
 
 export default {
   title: 'Components/ProductDetail',
@@ -27,7 +27,7 @@ export const Default: Story = {
     category: 'Accessories',
     brand: 'Adidas',
     rating: 0,
-    size: SIZE_DATA,
+    size: SIZE_OPTIONS,
     currency: '$',
     quantity: 0,
     reviews: [
