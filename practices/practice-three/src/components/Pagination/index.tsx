@@ -28,7 +28,7 @@ const Pagination = ({
           background: 'blueChalk'
         }}
         onClick={onPrevPage}
-        isDisabled={pageIndex === 1 ? true : false}
+        isDisabled={pageIndex === 1}
       >
         Preview
       </Button>
@@ -55,7 +55,7 @@ const Pagination = ({
           background: 'blueChalk'
         }}
         onClick={onNextPage}
-        isDisabled={pageIndex <= total / productLimit ? false : true}
+        isDisabled={!(pageIndex <= total / productLimit)}
       >
         Next
       </Button>

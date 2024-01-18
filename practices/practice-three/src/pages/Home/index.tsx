@@ -52,14 +52,16 @@ const Home = () => {
             ) : (
               <ProductList data={limitedData} productLimit={productLimit} />
             )}
-            <Pagination
-              onPrevPage={handlePrevPage}
-              onNextPage={handleNextPage}
-              pageNumbers={pageNumbers}
-              onSelectPage={handleSelectPage}
-              pageIndex={pageIndex}
-              total={total}
-            />
+            {pageNumbers.length >= 1 && (
+              <Pagination
+                onPrevPage={handlePrevPage}
+                onNextPage={handleNextPage}
+                pageNumbers={pageNumbers}
+                onSelectPage={handleSelectPage}
+                pageIndex={pageIndex}
+                total={total}
+              />
+            )}
           </Box>
         </Flex>
       </Container>
