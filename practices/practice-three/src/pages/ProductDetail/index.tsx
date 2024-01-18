@@ -23,6 +23,7 @@ import {
   SizeGroup,
   WhiteBag
 } from '@/components'
+import { useBearStore } from '@/stores/CartStore'
 
 const ProductDetail = () => {
   const { id } = useParams()
@@ -43,7 +44,14 @@ const ProductDetail = () => {
 
   const totalView = product?.reviews.length
 
-  console.log(typeof product?.size)
+  const { carts, handleAddToCart } = useBearStore()
+
+  const handleSubmit = () => {
+    // Get information product
+
+    handleAddToCart(product!.name)
+  }
+  console.log(carts)
 
   return (
     <Container maxW="1280px" pt="49px" px={0}>
@@ -116,7 +124,13 @@ const ProductDetail = () => {
             <NumberPicker onChangeQuantity={() => {}} quantity={1} />
 
             {/* Add the product to cart */}
-            <Button w="309px" h="59px" variant="solid" gap="10px">
+            <Button
+              w="309px"
+              h="59px"
+              variant="solid"
+              gap="10px"
+              onClick={handleSubmit}
+            >
               <WhiteBag />
               Add To Cart
             </Button>
