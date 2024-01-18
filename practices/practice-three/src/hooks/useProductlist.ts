@@ -7,17 +7,13 @@ import { fetchData } from '@/services'
 import { IProduct } from '@/types'
 
 const useProductList = () => {
-  const {
-    data: dataAll,
-    isLoading,
-    error
-  } = useSWR<IProduct[]>(
+  const { data, isLoading, error } = useSWR<IProduct[]>(
     `https://657c3495853beeefdb98e5f4.mockapi.io/Product`,
     fetchData
   )
 
   return {
-    dataAll,
+    products: data,
     isLoading,
     error
   }
