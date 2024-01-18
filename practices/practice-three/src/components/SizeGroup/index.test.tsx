@@ -5,10 +5,13 @@ import { BrowserRouter } from 'react-router-dom'
 import SizeGroup from '.'
 
 describe('SizeGroup component', () => {
+  const sizeGroupProps = {
+    onChangeValue: jest.fn
+  }
   it('Render correcty', () => {
     const container = render(
       <BrowserRouter>
-        <SizeGroup />
+        <SizeGroup {...sizeGroupProps} />
       </BrowserRouter>
     )
     expect(container).toMatchSnapshot()

@@ -12,6 +12,10 @@ jest.mock('@chakra-ui/react', () => ({
   useRadio: jest.fn()
 }))
 describe('ColorGroup component', () => {
+  const colorGroupProps = {
+    colors: DATA_COLOR,
+    onChangeValue: jest.fn()
+  }
   it('renders Color component correctly', () => {
     const mockUseRadio = jest.fn()
     mockUseRadio.mockReturnValue({
@@ -23,7 +27,7 @@ describe('ColorGroup component', () => {
     })
     ;(useRadio as jest.Mock).mockImplementation(mockUseRadio)
 
-    const { container } = render(<ColorGroup colors={DATA_COLOR} />)
+    const { container } = render(<ColorGroup {...colorGroupProps} />)
     expect(container).toMatchSnapshot()
   })
 })

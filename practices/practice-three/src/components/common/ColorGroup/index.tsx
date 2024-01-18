@@ -10,6 +10,7 @@ const ColorGroup = ({ colors, onChangeValue }: IColorGroup) => {
   const handleChangeValue = (value: string) => {
     onChangeValue?.(value)
   }
+
   const { getRadioProps, getRootProps } = useRadioGroup({
     defaultValue: '#3498db',
     onChange: handleChangeValue
