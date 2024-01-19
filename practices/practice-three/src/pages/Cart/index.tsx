@@ -12,7 +12,7 @@ import {
 import { useState } from 'react'
 
 // Constants
-import { DATA_COLOR, SIZE_OPTIONS } from '@/constants'
+import { SIZE_OPTIONS } from '@/constants'
 
 // Types
 import { IProduct, ISise } from '@/types'
@@ -24,25 +24,32 @@ import { cartStore } from '@/stores'
 import { ColorGroup, NumberPicker, ProductDeleteModal } from '@/components'
 
 const Cart = () => {
-  const [idProduct, setIdProduct] = useState('')
-  const { carts, handleRemoveFromCart } = cartStore()
+  const [removedItem, setRemovedItem] = useState('')
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
 
-  const handleChangeColor = (value: string) => console.log(value, 'color') //Note: Handle change product color
+  const { carts, handleRemoveFromCart, handleChangeColor } = cartStore()
+
+  console.log(carts, 'carrts')
+  const handleChangeColorProduct = (value: string, idProduct: string) => {
+    handleChangeColor(value, idProduct)
+  } //Note: Handle change product color
 
   let total = 0
 
   carts.forEach((item) => (total += item.price * item.quantity))
 
-  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
-
-  const handleToggleDeleteModal = (id: string) => {
-    setIdProduct(id)
+  const handleToggleDeleteModal = () => {
     setIsOpenDeleteModal((prevIsOpenDeleteModal) => !prevIsOpenDeleteModal)
   }
 
+  const handleClickRemove = (id: string) => {
+    handleToggleDeleteModal()
+    setRemovedItem(id)
+  }
+
   const handleRemoveProduct = () => {
-    handleRemoveFromCart(idProduct)
-    setIsOpenDeleteModal(false)
+    handleRemoveFromCart(removedItem)
+    handleToggleDeleteModal()
   }
 
   return (
@@ -65,7 +72,16 @@ const Cart = () => {
         </Box>
 
         {carts.map(
-          ({ id, quantity, name, images, currency, price }: IProduct) => {
+          ({
+            id,
+            quantity,
+            name,
+            images,
+            currency,
+            price,
+            size,
+            color
+          }: IProduct) => {
             return (
               <HStack
                 mt="58px"
@@ -97,20 +113,26 @@ const Cart = () => {
                     </Text>
                   </Box>
                   <ColorGroup
-                    colors={DATA_COLOR}
-                    onChangeValue={handleChangeColor}
+                    color={color}
+                    onChangeValue={(value) =>
+                      handleChangeColorProduct(value, id)
+                    }
                   />
                   <Flex gap="24px" justifyContent="space-between">
                     <HStack>
                       <Select
-                        placeholder="Select option"
                         w="192px"
                         h="40px"
                         borderColor="midnightExpress"
                         border="1px solid"
+                        defaultValue={size}
                       >
                         {SIZE_OPTIONS.map(({ label, value }: ISise) => {
-                          return <option value={value}>Size: {label}</option>
+                          return (
+                            <option value={value} defaultValue={value}>
+                              Size: {label}
+                            </option>
+                          )
                         })}
                       </Select>
                       <NumberPicker
@@ -121,7 +143,7 @@ const Cart = () => {
                     <Button
                       variant="ghost"
                       leftIcon={<DeleteIcon />}
-                      onClick={() => handleToggleDeleteModal(id)}
+                      onClick={() => handleClickRemove(id)}
                     >
                       Remove
                     </Button>
@@ -145,8 +167,8 @@ const Cart = () => {
 
       <ProductDeleteModal
         isOpenDeleteModal={isOpenDeleteModal}
-        setOpenDeteleModal={setIsOpenDeleteModal}
-        deleteProduct={handleRemoveProduct}
+        onDeleteProduct={handleRemoveProduct}
+        onToggleModal={handleToggleDeleteModal}
       />
     </Container>
   )

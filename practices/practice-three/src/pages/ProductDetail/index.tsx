@@ -19,16 +19,15 @@ import {
   SizeGroup,
   WhiteBag
 } from '@/components'
-
-import { useShallow } from 'zustand/react/shallow'
-
-import { cartStore } from '@/stores/CartStore'
+import { useEffect, useState } from 'react'
+import { IProduct } from '@/types'
 
 const ProductDetail = () => {
   const { id } = useParams()
 
   const { productDetail } = useProductDetail(id)
 
+  const [product, setProduct] = useState<IProduct>()
   const {
     reviews,
     images,
@@ -36,31 +35,36 @@ const ProductDetail = () => {
     price,
     currency,
     ratings,
-    colors,
     description,
     information
   } = productDetail || {}
 
-  const { carts, handleAddToCart } = cartStore(
-    useShallow((state) => ({
-      carts: state.carts,
-      handleAddToCart: state.handleAddToCart
-    }))
-  )
-
-  const handleSubmit = () => {
-    // Get information product
-
-    handleAddToCart(productDetail)
-  }
-
-  console.log(carts)
-
   const totalView = reviews?.length
 
-  const handleChangeColor = (value: string) => console.log(value, 'color') //Note: Handle change product color
+  useEffect(() => {
+    if (productDetail) {
+      setProduct(productDetail)
+    }
+  }, [productDetail])
 
-  const handleChangeSize = (value: string) => console.log(value, 'Size') // Note: Handle change product size
+  // Handle change product size
+  const handleChangeSize = (value: string) => {
+    setProduct({ ...product, size: value })
+  }
+
+  // Handle change product color
+  const handleChangeColor = (value: string) => {
+    setProduct({ ...product, color: value })
+  }
+
+  const handleChangeQuantity = (value: number) => {
+    setProduct({ ...product, quantity: value })
+    console.log(value, 'quantity')
+  }
+
+  const handleAddToCart = () => {
+    // addToCart(product)
+  }
 
   return (
     <Container maxW="1280px" pt="49px" px={0}>
@@ -123,14 +127,17 @@ const ProductDetail = () => {
           </Flex>
 
           {/* Colors option */}
-          <ColorGroup colors={colors} onChangeValue={handleChangeColor} />
+          <ColorGroup onChangeValue={handleChangeColor} />
 
           {/* Sizes select */}
           <SizeGroup onChangeValue={handleChangeSize} />
 
           <Flex gap="19px">
             {/* Increase or decrease product quantity */}
-            <NumberPicker onChangeQuantity={() => {}} quantity={1} />
+            <NumberPicker
+              onChangeQuantity={handleChangeQuantity}
+              quantity={1}
+            />
 
             {/* Add the product to cart */}
             <Button
@@ -138,7 +145,7 @@ const ProductDetail = () => {
               h="59px"
               variant="solid"
               gap="10px"
-              onClick={handleSubmit}
+              onClick={handleAddToCart}
             >
               <WhiteBag />
               Add To Cart

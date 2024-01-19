@@ -50,7 +50,7 @@ const ProductCard = ({ props }: IProductCard) => {
       <CardBody p="0">
         <Stack>
           <Link to={`/product-detail/${id}`}>
-            <Image src={images[0]} alt={name} width="100%" height="303px" />
+            <Image src={images?.[0]} alt={name} width="100%" height="303px" />
           </Link>
 
           <IconButton
@@ -92,7 +92,7 @@ const ProductCard = ({ props }: IProductCard) => {
               <InActiveStar />
             </Center>
             <Text color="tertiary" fontSize="sm">
-              ({reviews.length})
+              ({reviews?.length})
             </Text>
           </Flex>
 
