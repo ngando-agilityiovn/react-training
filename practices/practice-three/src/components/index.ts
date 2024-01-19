@@ -6,6 +6,8 @@ export { default as Delivery } from './Delivery'
 export { default as SizeGroup } from './SizeGroup'
 export { default as Pagination } from './Pagination'
 export { default as ProductList } from './ProductList'
+export { default as DeleteModal } from './DeleteModal'
+export { default as ModalCustom } from './ModalCustom'
 export { default as ImageGalleries } from './ImageGalleries'
 export { default as DescriptionTab } from './DescriptionTab'
 

@@ -1,6 +1,6 @@
 export const CARD_DATA = [
   {
-    id: 0,
+    id: '0',
     name: 'T-shirt',
     ratings: 5,
     price: 200,
@@ -31,7 +31,7 @@ export const CARD_DATA = [
     ]
   },
   {
-    id: 1,
+    id: '1',
     name: 'T-shirt',
     ratings: 28,
     price: 340,
