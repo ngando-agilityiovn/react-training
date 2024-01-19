@@ -21,11 +21,14 @@ import {
 } from '@/components'
 import { useEffect, useState } from 'react'
 import { IProduct } from '@/types'
+import { cartStore } from '@/stores'
 
 const ProductDetail = () => {
   const { id } = useParams()
 
   const { productDetail } = useProductDetail(id)
+
+  const { addProduct } = cartStore()
 
   const [product, setProduct] = useState<IProduct>()
   const {
@@ -63,7 +66,7 @@ const ProductDetail = () => {
   }
 
   const handleAddToCart = () => {
-    // addToCart(product)
+    if (product) addProduct(product)
   }
 
   return (

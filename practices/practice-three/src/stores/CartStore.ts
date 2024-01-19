@@ -96,9 +96,15 @@ export const cartStore = create<TState & TActions>((set, get) => ({
       set({
         carts: get().carts.map((item) => ({
           ...item,
-          itemFind: item?.id === itemFind ? product : item?.id
+          size: item?.id === product?.id ? product?.size : item?.size,
+          color: item?.id === product?.id ? product?.color : item?.color,
+          quantity:
+            item?.id === product?.id ? product?.quantity : item?.quantity
         }))
       })
+      setListCart(get().carts)
+    } else {
+      set({ carts: [...get().carts, product] })
       setListCart(get().carts)
     }
   }
