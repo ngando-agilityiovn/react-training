@@ -9,16 +9,19 @@ import {
   Select,
   Text
 } from '@chakra-ui/react'
+import { useState } from 'react'
 
 // Constants
 import { DATA_COLOR, SIZE_OPTIONS } from '@/constants'
 
-// Components
-import { ColorGroup, NumberPicker } from '@/components'
+// Types
 import { IProduct, ISise } from '@/types'
-import { cartStore } from '@/stores/CartStore'
-import { useState } from 'react'
-import ProjectDeleteModal from '@/components/DeleteModal'
+
+// Stores
+import { cartStore } from '@/stores'
+
+// Components
+import { ColorGroup, NumberPicker, ProductDeleteModal } from '@/components'
 
 const Cart = () => {
   const [idProduct, setIdProduct] = useState('')
@@ -140,7 +143,7 @@ const Cart = () => {
         </Button>
       </Flex>
 
-      <ProjectDeleteModal
+      <ProductDeleteModal
         isOpenDeleteModal={isOpenDeleteModal}
         setOpenDeteleModal={setIsOpenDeleteModal}
         deleteProduct={handleRemoveProduct}

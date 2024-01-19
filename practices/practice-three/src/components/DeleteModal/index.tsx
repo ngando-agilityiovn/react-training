@@ -7,7 +7,7 @@ interface IProductDeleteProps {
   deleteProduct: () => void
 }
 
-const ProjectDeleteModal = ({
+const ProductDeleteModal = ({
   isOpenDeleteModal,
   setOpenDeteleModal,
   deleteProduct: deleteProduct
@@ -34,4 +34,4 @@ const ProjectDeleteModal = ({
   )
 }
 
-export default ProjectDeleteModal
+export default ProductDeleteModal
