@@ -1,21 +1,60 @@
 import { create } from 'zustand'
 
-interface BearState {
-  carts: string[]
-  handleAddToCart: (product: string) => void
+// Types
+import { IProduct } from '@/types'
+
+// Helpers
+import { getListCart, setListCart } from '@/helpers'
+
+// Constants
+import { NOTIFY } from '@/constants'
+
+// Define state
+type TState = {
+  carts: IProduct[]
 }
 
-export const useBearStore = create<BearState>()((set) => ({
-  carts: JSON.parse(localStorage.getItem('CartProducts') || '[]'),
-  handleAddToCart: (product: string): void => {
+// Difine props for CartStore
+type TActions = {
+  handleAddToCart: (product: IProduct) => void
+  handleRemoveFromCart: (productId: string) => void
+}
+// Create store using Zustand
+export const cartStore = create<TState & TActions>((set, get) => ({
+  // Initialize shopping cart from data stored in localStorage
+  carts: getListCart(),
+
+  /**
+   * Add product to cart.
+   * @param product - The product needs to be added to the cart
+   */
+  handleAddToCart: (product: IProduct): void => {
     try {
-      set((state) => {
-        const newState = { ...state, carts: [...state.carts, product] }
-        localStorage.setItem('CartProducts', JSON.stringify(newState.carts))
-        return newState
+      const itemFind = get().carts.find((item) => {
+        return item.id == product.id
       })
+
+      if (itemFind) {
+        itemFind.quantity++
+        set({ carts: [...get().carts] })
+        setListCart(get().carts)
+      } else {
+        set({ carts: [...get().carts, { ...product, quantity: 1 }] })
+        setListCart(get().carts)
+      }
     } catch (error) {
-      console.log(error)
+      alert(NOTIFY.ADD_FAILD)
     }
+  },
+
+  handleRemoveFromCart: (productId: string): void => {
+    set((state) => {
+      const newState = {
+        ...state,
+        carts: state.carts.filter((item) => item.id !== productId)
+      }
+      setListCart(newState.carts)
+      return newState
+    })
   }
 }))

@@ -3,7 +3,7 @@ import CartIcon from '@/components/CartIcon'
 import { Logo } from '@/components/Icons'
 import Navbar from '@/components/Navbar'
 import { NAVBAR } from '@/constants'
-import { cartStore } from '@/stores/ProductStore'
+import { cartStore } from '@/stores/CartStore'
 
 // Icon components
 

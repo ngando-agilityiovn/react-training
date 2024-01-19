@@ -16,7 +16,7 @@ import { DATA_COLOR, SIZE_OPTIONS } from '@/constants'
 // Components
 import { ColorGroup, NumberPicker } from '@/components'
 import { IProduct, ISise } from '@/types'
-import { cartStore } from '@/stores/ProductStore'
+import { cartStore } from '@/stores/CartStore'
 import { useState } from 'react'
 import ProjectDeleteModal from '@/components/DeleteModal'
 

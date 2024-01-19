@@ -24,7 +24,7 @@ import { BASE_URL } from '@/constants'
 
 // Components
 import { Heart, InActiveStar, Star } from '../Icons'
-import { cartStore } from '@/stores/ProductStore'
+import { cartStore } from '@/stores/CartStore'
 
 interface IProductCard {
   props: IProduct

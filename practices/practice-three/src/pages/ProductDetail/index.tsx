@@ -22,7 +22,7 @@ import {
 
 import { useShallow } from 'zustand/react/shallow'
 
-import { cartStore } from '@/stores/ProductStore'
+import { cartStore } from '@/stores/CartStore'
 
 const ProductDetail = () => {
   const { id } = useParams()
