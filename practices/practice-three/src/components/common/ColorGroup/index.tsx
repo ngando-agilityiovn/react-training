@@ -17,7 +17,7 @@ const ColorGroup = ({ colors, onChangeValue }: IColorGroup) => {
   })
 
   return (
-    <Stack {...getRootProps()} borderBottom="1px solid gainsboro">
+    <Stack {...getRootProps()}>
       <Text color="backgroundWarning" fontWeight="medium" mb="14px">
         Choose a Color
       </Text>

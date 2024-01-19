@@ -64,7 +64,7 @@
     "vite": "^5.0.0",
     "vite-plugin-environment": "^1.1.3"
   },
-  "description": "This application is using React to a web application Project Information application. Application will manage project information included project name, project magement, status of project, the date the project was created, timeline for project, estimation.",
+  "description": "This application is using React to a web application Product List application. Application will manage product information included product name, product price, product quantity, product size, product color",
   "main": "index.js",
   "keywords": [],
   "author": "",

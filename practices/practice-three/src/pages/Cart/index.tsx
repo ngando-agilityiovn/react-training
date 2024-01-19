@@ -143,7 +143,7 @@ const Cart = () => {
       <ProjectDeleteModal
         isOpenDeleteModal={isOpenDeleteModal}
         setOpenDeteleModal={setIsOpenDeleteModal}
-        deleteProject={handleRemoveProduct}
+        deleteProduct={handleRemoveProduct}
       />
     </Container>
   )

@@ -1,32 +1,32 @@
 import ModalCustom from '@/components/ModalCustom'
 import { Button, Flex, Text } from '@chakra-ui/react'
 
-interface IProjectDeleteProps {
+interface IProductDeleteProps {
   isOpenDeleteModal: boolean
   setOpenDeteleModal: (value: boolean) => void
-  deleteProject: () => void
+  deleteProduct: () => void
 }
 
 const ProjectDeleteModal = ({
   isOpenDeleteModal,
   setOpenDeteleModal,
-  deleteProject
-}: IProjectDeleteProps) => {
+  deleteProduct: deleteProduct
+}: IProductDeleteProps) => {
   return (
     <ModalCustom
-      title="Delete project"
+      title="Delete product"
       isOpen={isOpenDeleteModal}
       onClose={() => setOpenDeteleModal(false)}
     >
       <Text px="6">
-        Are you sure you want to delete this project? If you delete, it will be
+        Are you sure you want to delete this product? If you delete, it will be
         permanently lost.
       </Text>
       <Flex px="6" justifyContent="flex-end" gap="5" mt="8">
-        <Button variant="outline" onClick={() => setOpenDeteleModal(false)}>
+        <Button variant="ghost" onClick={() => setOpenDeteleModal(false)}>
           Cancel
         </Button>
-        <Button variant="error" onClick={() => deleteProject()}>
+        <Button variant="ghost" color="red" onClick={() => deleteProduct()}>
           Delete
         </Button>
       </Flex>
