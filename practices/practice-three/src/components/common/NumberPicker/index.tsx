@@ -7,21 +7,6 @@ interface INumberPicker {
 }
 
 const NumberPicker = ({ quantity, onDecrease, onIncrease }: INumberPicker) => {
-  // const handleClickIncrease = () => {
-  //   setNumber((prevState) => prevState + 1)
-  //   onChangeQuantity(number + 1)
-  // }
-
-  // const handleClickDecrease = () => {
-  //   setNumber((prevState) => prevState - 1)
-  //   onChangeQuantity(number - 1)
-  // }
-
-  // const handleInputChange = (e) => {
-  //   onChangeQuantity(Number(e.target.value))
-  //   setNumber(Number(e.target.value))
-  // }
-
   return (
     <HStack w="130px" borderRadius="100px" background="whiteSmoke">
       <Button

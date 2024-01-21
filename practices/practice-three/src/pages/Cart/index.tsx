@@ -9,7 +9,7 @@ import {
   Select,
   Text
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 // Constants
 import { SIZE_OPTIONS } from '@/constants'
@@ -21,7 +21,7 @@ import { IProduct, ISise } from '@/types'
 import { cartStore } from '@/stores'
 
 // Components
-import { ColorGroup, NumberPicker, ProductDeleteModal } from '@/components'
+import { ColorGroup, NumberPicker, DeleteModal } from '@/components'
 
 const Cart = () => {
   const [removedItem, setRemovedItem] = useState('')
@@ -29,23 +29,23 @@ const Cart = () => {
 
   const {
     carts,
-    handleRemoveFromCart,
-    handleChangeColor,
-    handleChangeSize,
-    handleUpdateQuantity
+    removeProducts,
+    updateProductColor,
+    updateProductSize,
+    updateProductQuantity
   } = cartStore()
 
   const handleChangeColorProduct = (value: string, idProduct: string) => {
-    handleChangeColor(value, idProduct)
+    updateProductColor(value, idProduct)
   }
 
   const handleChangeSizeProduct = (value: string, idProduct: string) => {
-    handleChangeSize(value, idProduct)
+    updateProductSize(value, idProduct)
   }
 
   let total = 0
 
-  carts.forEach((item) => (total += item.price! * item.quantity!))
+  carts?.forEach((item) => (total += item.price! * item.quantity!))
 
   const handleToggleDeleteModal = () => {
     setIsOpenDeleteModal((prevIsOpenDeleteModal) => !prevIsOpenDeleteModal)
@@ -57,9 +57,23 @@ const Cart = () => {
   }
 
   const handleRemoveProduct = () => {
-    handleRemoveFromCart(removedItem)
+    removeProducts(removedItem)
     handleToggleDeleteModal()
   }
+
+  const handleDecrease = useCallback(
+    (productId: string) => {
+      updateProductQuantity(productId, 'decrease')
+    },
+    [updateProductQuantity]
+  )
+
+  const handleIncrease = useCallback(
+    (productId: string) => {
+      updateProductQuantity(productId, 'increase')
+    },
+    [updateProductQuantity]
+  )
 
   return (
     <Container maxW="1280px" p="0">
@@ -80,7 +94,7 @@ const Cart = () => {
           </Text>
         </Box>
 
-        {carts.map(
+        {carts?.map(
           ({
             id,
             quantity,
@@ -97,6 +111,7 @@ const Cart = () => {
                 gap="48px"
                 borderBottom="1px solid gainsboro"
                 flexWrap="wrap"
+                key={id}
               >
                 <Box top="0px" mb="31px">
                   <Image
@@ -141,7 +156,11 @@ const Cart = () => {
                       >
                         {SIZE_OPTIONS.map(({ label, value }: ISise) => {
                           return (
-                            <option value={value} defaultValue={value}>
+                            <option
+                              key={value}
+                              value={value}
+                              defaultValue={value}
+                            >
                               Size: {label}
                             </option>
                           )
@@ -149,8 +168,8 @@ const Cart = () => {
                       </Select>
                       <NumberPicker
                         quantity={quantity!}
-                        onDecrease={() => handleUpdateQuantity(id!, 'decrease')}
-                        onIncrease={() => handleUpdateQuantity(id!, 'increase')}
+                        onDecrease={() => handleDecrease(id!)}
+                        onIncrease={() => handleIncrease(id!)}
                       />
                     </HStack>
                     <Button
@@ -178,8 +197,8 @@ const Cart = () => {
         </Button>
       </Flex>
 
-      <ProductDeleteModal
-        isOpenDeleteModal={isOpenDeleteModal}
+      <DeleteModal
+        onOpenDeleteModal={isOpenDeleteModal}
         onDeleteProduct={handleRemoveProduct}
         onToggleModal={handleToggleDeleteModal}
       />

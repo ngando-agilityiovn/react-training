@@ -40,7 +40,7 @@ const ProductCard = ({ props }: IProductCard) => {
     preload(`${BASE_URL}${id}`, fetchData)
   }
 
-  const { handleAddToCart } = cartStore()
+  const { addSingleProduct } = cartStore()
 
   const renderStar = () => {
     const starNumbers = Array.from({ length: ratings || 0 }).fill(0)
@@ -117,8 +117,7 @@ const ProductCard = ({ props }: IProductCard) => {
             my="25px"
             onClick={(e) => {
               e.preventDefault()
-              handleAddToCart(props)
-              console.log(props, 'props')
+              addSingleProduct(props)
             }}
           >
             Add To Cart

@@ -4,20 +4,20 @@ import { Button, Flex, Text } from '@chakra-ui/react'
 import ModalCustom from '../ModalCustom'
 
 interface IProductDeleteProps {
-  isOpenDeleteModal: boolean
+  onOpenDeleteModal: boolean
   onToggleModal: () => void
   onDeleteProduct: () => void
 }
 
-const ProductDeleteModal = ({
-  isOpenDeleteModal,
+const DeleteModal = ({
+  onOpenDeleteModal,
   onToggleModal,
   onDeleteProduct
 }: IProductDeleteProps) => {
   return (
     <ModalCustom
       title="Delete product"
-      isOpen={isOpenDeleteModal}
+      isOpen={onOpenDeleteModal}
       onClose={onToggleModal}
     >
       <Text px="6">
@@ -36,4 +36,4 @@ const ProductDeleteModal = ({
   )
 }
 
-export default ProductDeleteModal
+export default DeleteModal

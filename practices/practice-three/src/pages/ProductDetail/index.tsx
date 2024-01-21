@@ -32,9 +32,9 @@ const ProductDetail = () => {
 
   const { productDetail } = useProductDetail(id)
 
-  const { addProduct, handleUpdateQuantity } = cartStore()
+  const { addProducts, updateProductQuantity } = cartStore()
 
-  const [product, setProduct] = useState<IProduct>()
+  const [product, setProduct] = useState<IProduct>(productDetail)
 
   const {
     reviews,
@@ -68,7 +68,7 @@ const ProductDetail = () => {
 
   const handleAddToCart = () => {
     if (product) {
-      addProduct(product)
+      addProducts({ ...product, id })
     }
   }
 
@@ -142,8 +142,8 @@ const ProductDetail = () => {
             {/* Increase or decrease product quantity */}
             <NumberPicker
               quantity={quantity}
-              onDecrease={() => handleUpdateQuantity(id!, 'decrease')}
-              onIncrease={() => handleUpdateQuantity(id!, 'increase')}
+              onDecrease={() => updateProductQuantity(id!, 'decrease')}
+              onIncrease={() => updateProductQuantity(id!, 'increase')}
             />
 
             {/* Add the product to cart */}

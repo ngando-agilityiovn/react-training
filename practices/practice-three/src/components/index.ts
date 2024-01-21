@@ -10,7 +10,6 @@ export { default as DeleteModal } from './DeleteModal'
 export { default as ModalCustom } from './ModalCustom'
 export { default as ImageGalleries } from './ImageGalleries'
 export { default as DescriptionTab } from './DescriptionTab'
-export { default as ProductDeleteModal } from './DeleteModal'
 
 export * from './Icons'
 export * from './common'

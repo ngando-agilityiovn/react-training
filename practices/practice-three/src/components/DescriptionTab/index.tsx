@@ -46,9 +46,9 @@ const DescriptionTab = ({ title, text, data }: IDescriptionTagItem) => {
             </Text>
             <Flex mt="21px" gap="14px" flexDirection="column">
               {data?.map((item, index) => (
-                <Flex gap="14px" alignItems="center">
+                <Flex gap="14px" alignItems="center" key={index}>
                   <Check />
-                  <Text key={index}>{item}</Text>
+                  <Text>{item}</Text>
                 </Flex>
               ))}
             </Flex>

@@ -13,12 +13,12 @@ type TState = {
 
 // Difine props for CartStore
 type TActions = {
-  handleAddToCart: (product: IProduct) => void
-  handleRemoveFromCart: (productId: string) => void
-  handleChangeColor: (value: string, productId: string) => void
-  handleChangeSize: (value: string, productId: string) => void
-  handleUpdateQuantity: (productId: string, action: TAction) => void
-  addProduct: (product: IProduct) => void
+  addSingleProduct: (product: IProduct) => void
+  removeProducts: (productId: string) => void
+  updateProductColor: (value: string, productId: string) => void
+  updateProductSize: (value: string, productId: string) => void
+  updateProductQuantity: (productId: string, action: TAction) => void
+  addProducts: (product: IProduct) => void
 }
 
 // Create store using Zustand
@@ -30,7 +30,7 @@ export const cartStore = create<TState & TActions>((set, get) => ({
    * Add product to cart.
    * @param product - The product needs to be added to the cart
    */
-  handleAddToCart: (product: IProduct): void => {
+  addSingleProduct: (product: IProduct): void => {
     const foundItem = get().carts.find((item) => item.id === product.id)
 
     if (foundItem) {
@@ -57,7 +57,7 @@ export const cartStore = create<TState & TActions>((set, get) => ({
     }
   },
 
-  handleRemoveFromCart: (productId: string): void => {
+  removeProducts: (productId: string): void => {
     set((state) => {
       const newState = {
         ...state,
@@ -68,27 +68,25 @@ export const cartStore = create<TState & TActions>((set, get) => ({
     })
   },
 
-  handleChangeColor: (value: string, productId: string): void => {
+  updateProductColor: (value: string, productId: string): void => {
     set({
-      carts: get().carts.map((item) => ({
-        ...item,
-        color: item?.id === productId ? value : item.color
-      }))
+      carts: get().carts.map((item) =>
+        item.id === productId ? { ...item, color: value } : item
+      )
     })
     setListCart(get().carts)
   },
 
-  handleChangeSize: (value: string, productId: string): void => {
+  updateProductSize: (value: string, productId: string): void => {
     set({
-      carts: get().carts.map((item) => ({
-        ...item,
-        size: item?.id === productId ? value : item.size
-      }))
+      carts: get().carts.map((item) =>
+        item.id === productId ? { ...item, size: value } : item
+      )
     })
     setListCart(get().carts)
   },
 
-  handleUpdateQuantity: (productId: string, action: TAction): void => {
+  updateProductQuantity: (productId: string, action: TAction): void => {
     set((state) => {
       const newState = {
         ...state,
@@ -114,7 +112,7 @@ export const cartStore = create<TState & TActions>((set, get) => ({
     })
   },
 
-  addProduct: (product: IProduct): void => {
+  addProducts: (product: IProduct): void => {
     const foundItem = get().carts.find((item) => item.id === product.id)
 
     if (foundItem) {
