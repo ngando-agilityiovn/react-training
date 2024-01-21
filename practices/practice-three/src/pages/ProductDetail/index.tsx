@@ -32,9 +32,19 @@ const ProductDetail = () => {
 
   const { productDetail } = useProductDetail(id)
 
-  const { addProducts, updateProductQuantity } = cartStore()
+  const { addProducts } = cartStore()
 
   const [product, setProduct] = useState<IProduct>(productDetail)
+  const [productQuantity, setProductQuantity] = useState<number>(1)
+
+  const handleIncrease = () => {
+    setProductQuantity(productQuantity + 1)
+    console.log('id', productQuantity)
+  }
+
+  const handleDecrease = () => {
+    setProductQuantity((value: number) => value - 1)
+  }
 
   const {
     reviews,
@@ -44,8 +54,8 @@ const ProductDetail = () => {
     currency,
     ratings,
     description,
-    information,
-    quantity
+    information
+    // quantity
   } = productDetail || {}
 
   const totalView = reviews?.length
@@ -68,7 +78,8 @@ const ProductDetail = () => {
 
   const handleAddToCart = () => {
     if (product) {
-      addProducts({ ...product, id })
+      addProducts({ ...product, id }, productQuantity)
+      // updateProductQuantity(id!, 'increase', productQuantity)
     }
   }
 
@@ -141,9 +152,13 @@ const ProductDetail = () => {
           <Flex gap="19px">
             {/* Increase or decrease product quantity */}
             <NumberPicker
-              quantity={quantity}
-              onDecrease={() => updateProductQuantity(id!, 'decrease')}
-              onIncrease={() => updateProductQuantity(id!, 'increase')}
+              quantity={productQuantity}
+              onDecrease={() => handleDecrease()}
+              onIncrease={() => handleIncrease()}
+              onChangeQuantity={(e) =>
+                setProductQuantity(parseInt(e.target.value))
+              }
+              onBlur={() => setProductQuantity(1)}
             />
 
             {/* Add the product to cart */}

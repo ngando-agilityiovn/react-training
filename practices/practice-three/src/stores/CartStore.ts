@@ -17,8 +17,12 @@ type TActions = {
   removeProducts: (productId: string) => void
   updateProductColor: (value: string, productId: string) => void
   updateProductSize: (value: string, productId: string) => void
-  updateProductQuantity: (productId: string, action: TAction) => void
-  addProducts: (product: IProduct) => void
+  updateProductQuantity: (
+    productId: string,
+    action?: TAction,
+    productQuantity?: number
+  ) => void
+  addProducts: (product: IProduct, productQuantity: number) => void
 }
 
 // Create store using Zustand
@@ -86,18 +90,22 @@ export const cartStore = create<TState & TActions>((set, get) => ({
     setListCart(get().carts)
   },
 
-  updateProductQuantity: (productId: string, action: TAction): void => {
+  updateProductQuantity: (
+    productId: string,
+    action?: TAction,
+    productQuantity?: number
+  ): void => {
     set((state) => {
       const newState = {
         ...state,
         carts: state.carts.map((item) => {
           if (item.id === productId) {
             const increment = action === 'increase' ? 1 : -1
-            const newQuantity = item.quantity! + increment
+            const newQuantity = productQuantity! + increment
 
             const updatedItem = {
               ...item,
-              quantity: newQuantity >= 1 ? newQuantity : 1
+              quantity: newQuantity
             }
 
             return updatedItem
@@ -112,7 +120,8 @@ export const cartStore = create<TState & TActions>((set, get) => ({
     })
   },
 
-  addProducts: (product: IProduct): void => {
+  addProducts: (product: IProduct, productQuantity: number): void => {
+    console.log(productQuantity, 'pp')
     const foundItem = get().carts.find((item) => item.id === product.id)
 
     if (foundItem) {
@@ -120,7 +129,7 @@ export const cartStore = create<TState & TActions>((set, get) => ({
         item.id === product.id
           ? {
               ...item,
-              quantity: item.quantity! + 1,
+              quantity: productQuantity + foundItem.quantity! || 0,
               color: item.color,
               size: item.size
             }
@@ -129,12 +138,13 @@ export const cartStore = create<TState & TActions>((set, get) => ({
       set({
         carts: updatedCart
       })
+
       setListCart(updatedCart)
     } else {
       set({
-        carts: [...get().carts, product]
+        carts: [...get().carts, { ...product, quantity: productQuantity }]
       })
-      setListCart([...get().carts, product])
+      setListCart(get().carts)
     }
   }
 }))
