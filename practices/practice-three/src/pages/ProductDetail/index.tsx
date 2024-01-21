@@ -1,11 +1,18 @@
 import { Button, Container, Flex, HStack, Text } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 // Constants
 import { DELIVERY_DATA } from '@/constants'
 
 // Hooks
 import { useProductDetail } from '@/hooks'
+
+// Types
+import { IProduct } from '@/types'
+
+// Stores
+import { cartStore } from '@/stores'
 
 // Components
 import {
@@ -19,18 +26,16 @@ import {
   SizeGroup,
   WhiteBag
 } from '@/components'
-import { useEffect, useState } from 'react'
-import { IProduct } from '@/types'
-import { cartStore } from '@/stores'
 
 const ProductDetail = () => {
   const { id } = useParams()
 
   const { productDetail } = useProductDetail(id)
 
-  const { addProduct } = cartStore()
+  const { addProduct, handleUpdateQuantity } = cartStore()
 
   const [product, setProduct] = useState<IProduct>()
+
   const {
     reviews,
     images,
@@ -39,7 +44,8 @@ const ProductDetail = () => {
     currency,
     ratings,
     description,
-    information
+    information,
+    quantity
   } = productDetail || {}
 
   const totalView = reviews?.length
@@ -60,13 +66,10 @@ const ProductDetail = () => {
     setProduct({ ...product, color: value })
   }
 
-  const handleChangeQuantity = (value: number) => {
-    setProduct({ ...product, quantity: value })
-    console.log(value, 'quantity')
-  }
-
   const handleAddToCart = () => {
-    if (product) addProduct(product)
+    if (product) {
+      addProduct(product)
+    }
   }
 
   return (
@@ -138,8 +141,9 @@ const ProductDetail = () => {
           <Flex gap="19px">
             {/* Increase or decrease product quantity */}
             <NumberPicker
-              onChangeQuantity={handleChangeQuantity}
-              quantity={1}
+              quantity={quantity}
+              onDecrease={() => handleUpdateQuantity(id!, 'decrease')}
+              onIncrease={() => handleUpdateQuantity(id!, 'increase')}
             />
 
             {/* Add the product to cart */}

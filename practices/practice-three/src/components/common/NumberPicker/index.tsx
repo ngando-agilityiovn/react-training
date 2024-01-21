@@ -1,28 +1,26 @@
 import { Button, HStack, Input } from '@chakra-ui/react'
-import { useState } from 'react'
 
 interface INumberPicker {
   quantity: number
-  onChangeQuantity: (value: number) => void
+  onDecrease: () => void
+  onIncrease: () => void
 }
 
-const NumberPicker = ({ quantity, onChangeQuantity }: INumberPicker) => {
-  const [number, setNumber] = useState(quantity)
+const NumberPicker = ({ quantity, onDecrease, onIncrease }: INumberPicker) => {
+  // const handleClickIncrease = () => {
+  //   setNumber((prevState) => prevState + 1)
+  //   onChangeQuantity(number + 1)
+  // }
 
-  const handleClickIncrease = () => {
-    setNumber((prevState) => prevState + 1)
-    onChangeQuantity(number + 1)
-  }
+  // const handleClickDecrease = () => {
+  //   setNumber((prevState) => prevState - 1)
+  //   onChangeQuantity(number - 1)
+  // }
 
-  const handleClickDecrease = () => {
-    setNumber((prevState) => prevState - 1)
-    onChangeQuantity(number - 1)
-  }
-
-  const handleInputChange = (e) => {
-    onChangeQuantity(Number(e.target.value))
-    setNumber(Number(e.target.value))
-  }
+  // const handleInputChange = (e) => {
+  //   onChangeQuantity(Number(e.target.value))
+  //   setNumber(Number(e.target.value))
+  // }
 
   return (
     <HStack w="130px" borderRadius="100px" background="whiteSmoke">
@@ -31,7 +29,7 @@ const NumberPicker = ({ quantity, onChangeQuantity }: INumberPicker) => {
         color="darkGray"
         fontSize="18px"
         fontWeight="bold"
-        onClick={handleClickDecrease}
+        onClick={onDecrease}
       >
         -
       </Button>
@@ -41,15 +39,14 @@ const NumberPicker = ({ quantity, onChangeQuantity }: INumberPicker) => {
         color="primary"
         fontWeight="bold"
         fontSize="22px"
-        value={number}
-        onChange={handleInputChange}
+        value={quantity}
       />
       <Button
         border="none"
         fontSize="18px"
         color="primary"
         fontWeight="bold"
-        onClick={handleClickIncrease}
+        onClick={onIncrease}
       >
         +
       </Button>

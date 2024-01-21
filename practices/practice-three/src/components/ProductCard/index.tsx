@@ -22,22 +22,40 @@ import { fetchData } from '@/services'
 // Constants
 import { BASE_URL } from '@/constants'
 
+// Stores
+import { cartStore } from '@/stores'
+
 // Components
 import { Heart, InActiveStar, Star } from '../Icons'
-import { cartStore } from '@/stores/CartStore'
 
 interface IProductCard {
   props: IProduct
 }
 
 const ProductCard = ({ props }: IProductCard) => {
-  const { id, images, name, currency, price, quantity, reviews } = props
+  const { id, images, name, currency, price, quantity, reviews, ratings } =
+    props
 
   const handleHoverCard = () => {
     preload(`${BASE_URL}${id}`, fetchData)
   }
 
   const { handleAddToCart } = cartStore()
+
+  const renderStar = () => {
+    const starNumbers = Array.from({ length: ratings || 0 }).fill(0)
+
+    return (
+      <Center>
+        {starNumbers.map((_, index) => (
+          <Star key={index} />
+        ))}
+        {Array.from({ length: 5 - (ratings || 0) }).map((_, index) => (
+          <InActiveStar key={index} />
+        ))}
+      </Center>
+    )
+  }
 
   return (
     <Card
@@ -75,22 +93,19 @@ const ProductCard = ({ props }: IProductCard) => {
         <Stack mt="22px" pl="21px" pr="17px">
           <Flex justify="space-between">
             <Text variant="primary">{name}</Text>
+
             <Text fontSize="lg" fontWeight="bold" color="textInactive">
               {currency} {price}
             </Text>
           </Flex>
+
           <Text color="tertiary" fontWeight="normal" lineHeight="20px">
             {quantity} types of shoos available
           </Text>
+
           <Flex gap="6px">
-            <Center>
-              {/* TODO: Implement handle after */}
-              <Star />
-              <Star />
-              <Star />
-              <Star />
-              <InActiveStar />
-            </Center>
+            <Center>{renderStar()}</Center>
+
             <Text color="tertiary" fontSize="sm">
               ({reviews?.length})
             </Text>
@@ -100,7 +115,11 @@ const ProductCard = ({ props }: IProductCard) => {
             variant="solid"
             width="50%"
             my="25px"
-            onClick={() => handleAddToCart(props)}
+            onClick={(e) => {
+              e.preventDefault()
+              handleAddToCart(props)
+              console.log(props, 'props')
+            }}
           >
             Add To Cart
           </Button>

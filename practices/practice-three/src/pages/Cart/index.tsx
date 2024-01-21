@@ -27,16 +27,25 @@ const Cart = () => {
   const [removedItem, setRemovedItem] = useState('')
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
 
-  const { carts, handleRemoveFromCart, handleChangeColor } = cartStore()
+  const {
+    carts,
+    handleRemoveFromCart,
+    handleChangeColor,
+    handleChangeSize,
+    handleUpdateQuantity
+  } = cartStore()
 
-  console.log(carts, 'carrts')
   const handleChangeColorProduct = (value: string, idProduct: string) => {
     handleChangeColor(value, idProduct)
-  } //Note: Handle change product color
+  }
+
+  const handleChangeSizeProduct = (value: string, idProduct: string) => {
+    handleChangeSize(value, idProduct)
+  }
 
   let total = 0
 
-  carts.forEach((item) => (total += item.price * item.quantity))
+  carts.forEach((item) => (total += item.price! * item.quantity!))
 
   const handleToggleDeleteModal = () => {
     setIsOpenDeleteModal((prevIsOpenDeleteModal) => !prevIsOpenDeleteModal)
@@ -91,7 +100,7 @@ const Cart = () => {
               >
                 <Box top="0px" mb="31px">
                   <Image
-                    src={images[0]}
+                    src={images?.[0]}
                     alt={name}
                     width="100%"
                     height="303px"
@@ -115,7 +124,7 @@ const Cart = () => {
                   <ColorGroup
                     color={color}
                     onChangeValue={(value) =>
-                      handleChangeColorProduct(value, id)
+                      handleChangeColorProduct(value, id!)
                     }
                   />
                   <Flex gap="24px" justifyContent="space-between">
@@ -126,6 +135,9 @@ const Cart = () => {
                         borderColor="midnightExpress"
                         border="1px solid"
                         defaultValue={size}
+                        onChange={(e) =>
+                          handleChangeSizeProduct(e.target.value, id!)
+                        }
                       >
                         {SIZE_OPTIONS.map(({ label, value }: ISise) => {
                           return (
@@ -136,14 +148,15 @@ const Cart = () => {
                         })}
                       </Select>
                       <NumberPicker
-                        quantity={quantity}
-                        onChangeQuantity={() => {}}
+                        quantity={quantity!}
+                        onDecrease={() => handleUpdateQuantity(id!, 'decrease')}
+                        onIncrease={() => handleUpdateQuantity(id!, 'increase')}
                       />
                     </HStack>
                     <Button
                       variant="ghost"
                       leftIcon={<DeleteIcon />}
-                      onClick={() => handleClickRemove(id)}
+                      onClick={() => handleClickRemove(id!)}
                     >
                       Remove
                     </Button>
