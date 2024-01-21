@@ -1,5 +1,5 @@
-import { cartStore } from '@/stores'
-import { IProduct, ISise } from '@/types'
+import { useState } from 'react'
+import { DeleteIcon } from '@chakra-ui/icons'
 import {
   Box,
   Button,
@@ -9,10 +9,18 @@ import {
   Select,
   Text
 } from '@chakra-ui/react'
-import { useState } from 'react'
-import { ColorGroup, NumberPicker } from '../common'
+
+// Stores
+import { cartStore } from '@/stores'
+
+// Types
+import { IProduct, ISise } from '@/types'
+
+// Constants
 import { SIZE_OPTIONS } from '@/constants'
-import { DeleteIcon } from '@chakra-ui/icons'
+
+// Components
+import { ColorGroup, NumberPicker } from '../common'
 import DeleteModal from '../DeleteModal'
 
 export const ListCart = () => {

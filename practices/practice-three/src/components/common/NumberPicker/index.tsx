@@ -1,4 +1,3 @@
-// import { IProduct } from '@/types'
 import { Button, HStack, Input } from '@chakra-ui/react'
 
 interface INumberPicker {

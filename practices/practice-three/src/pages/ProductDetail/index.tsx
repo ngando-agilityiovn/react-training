@@ -79,7 +79,6 @@ const ProductDetail = () => {
   const handleAddToCart = () => {
     if (product) {
       addProducts({ ...product, id }, productQuantity)
-      // updateProductQuantity(id!, 'increase', productQuantity)
     }
   }
 
