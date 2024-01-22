@@ -39,12 +39,16 @@ const ProductDetail = () => {
 
   const handleIncrease = () => {
     setProductQuantity(productQuantity + 1)
-    console.log('id', productQuantity)
   }
 
   const handleDecrease = () => {
     setProductQuantity((value: number) => value - 1)
   }
+
+  const handleBlur = () => setProductQuantity(1)
+
+  const handleChangeQuantity = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setProductQuantity(parseInt(e.target.value))
 
   const {
     reviews,
@@ -152,12 +156,10 @@ const ProductDetail = () => {
             {/* Increase or decrease product quantity */}
             <NumberPicker
               quantity={productQuantity}
-              onDecrease={() => handleDecrease()}
-              onIncrease={() => handleIncrease()}
-              onChangeQuantity={(e) =>
-                setProductQuantity(parseInt(e.target.value))
-              }
-              onBlur={() => setProductQuantity(1)}
+              onDecrease={handleDecrease}
+              onIncrease={handleIncrease}
+              onChangeQuantity={handleChangeQuantity}
+              onBlur={handleBlur}
             />
 
             {/* Add the product to cart */}

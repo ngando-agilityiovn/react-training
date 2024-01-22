@@ -35,11 +35,13 @@ export const cartStore = create<TState & TActions>((set, get) => ({
    * @param product - The product needs to be added to the cart
    */
   addSingleProduct: (product: IProduct): void => {
-    const foundItem = get().carts.find((item) => item.id === product.id)
+    const originalCarts = get().carts
+
+    const foundItem = originalCarts.find((item) => item.id === product.id)
 
     if (foundItem) {
       // If the product is already in the cart
-      const updatedCart = get().carts.map((item) =>
+      const updatedCart = originalCarts.map((item) =>
         item.id === product.id
           ? {
               ...item,
@@ -55,9 +57,9 @@ export const cartStore = create<TState & TActions>((set, get) => ({
     } else {
       // If the product is not in the cart
       set({
-        carts: [...get().carts, { ...product, quantity: 1 }]
+        carts: [...originalCarts, { ...product, quantity: 1 }]
       })
-      setListCart(get().carts)
+      setListCart(originalCarts)
     }
   },
 
@@ -73,21 +75,25 @@ export const cartStore = create<TState & TActions>((set, get) => ({
   },
 
   updateProductColor: (value: string, productId: string): void => {
+    const originalCarts = get().carts
+
     set({
-      carts: get().carts.map((item) =>
+      carts: originalCarts.map((item) =>
         item.id === productId ? { ...item, color: value } : item
       )
     })
-    setListCart(get().carts)
+    setListCart(originalCarts)
   },
 
   updateProductSize: (value: string, productId: string): void => {
+    const originalCarts = get().carts
+
     set({
-      carts: get().carts.map((item) =>
+      carts: originalCarts.map((item) =>
         item.id === productId ? { ...item, size: value } : item
       )
     })
-    setListCart(get().carts)
+    setListCart(originalCarts)
   },
 
   updateProductQuantity: (
@@ -121,11 +127,12 @@ export const cartStore = create<TState & TActions>((set, get) => ({
   },
 
   addProducts: (product: IProduct, productQuantity: number): void => {
-    console.log(productQuantity, 'pp')
-    const foundItem = get().carts.find((item) => item.id === product.id)
+    const originalCarts = get().carts
+
+    const foundItem = originalCarts.find((item) => item.id === product.id)
 
     if (foundItem) {
-      const updatedCart = get().carts.map((item) =>
+      const updatedCart = originalCarts.map((item) =>
         item.id === product.id
           ? {
               ...item,
@@ -142,9 +149,9 @@ export const cartStore = create<TState & TActions>((set, get) => ({
       setListCart(updatedCart)
     } else {
       set({
-        carts: [...get().carts, { ...product, quantity: productQuantity }]
+        carts: [...originalCarts, { ...product, quantity: productQuantity }]
       })
-      setListCart(get().carts)
+      setListCart(originalCarts)
     }
   }
 }))

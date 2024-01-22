@@ -1,10 +1,11 @@
-import React, { Suspense, memo } from 'react'
-import { Flex, Spinner } from '@chakra-ui/react'
+import { memo } from 'react'
+import { Flex } from '@chakra-ui/react'
 
 // Types
 import { IProduct } from '@/types'
 
-const ProductCard = React.lazy(() => import('@/components/ProductCard'))
+// Components
+import ProductCard from '../ProductCard'
 
 interface IProductList {
   data?: IProduct[] | undefined
@@ -16,21 +17,7 @@ const ProductList = ({ data, productLimit }: IProductList) => {
     <Flex flexWrap="wrap" gap="5">
       {/* Cart product */}
       {data?.slice(0, productLimit).map(({ ...props }) => {
-        return (
-          <Suspense
-            fallback={
-              <Spinner
-                thickness="4px"
-                speed="0.65s"
-                emptyColor="gray.200"
-                color="blue.500"
-                size="xl"
-              />
-            }
-          >
-            <ProductCard props={props} />
-          </Suspense>
-        )
+        return <ProductCard props={props} />
       })}
     </Flex>
   )
