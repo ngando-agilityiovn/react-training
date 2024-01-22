@@ -121,7 +121,6 @@ export const cartStore = create<TState & TActions>((set, get) => ({
   },
 
   addProducts: (product: IProduct, productQuantity: number): void => {
-    console.log(productQuantity, 'pp')
     const foundItem = get().carts.find((item) => item.id === product.id)
 
     if (foundItem) {
