@@ -126,7 +126,13 @@ const CartItem = ({ props }: ICartItem) => {
                     parseInt(e.target.value)
                   )
                 }
-                onBlur={() => updateProductQuantity(id!, 'increase', 0)}
+                onBlur={(e) =>
+                  updateProductQuantity(
+                    id!,
+                    'increase',
+                    quantity !== parseInt(e.target.value) ? 0 : quantity - 1
+                  )
+                }
               />
             </HStack>
             <Button

@@ -5,7 +5,7 @@ interface INumberPicker {
   onDecrease?: () => void
   onIncrease?: () => void
   onChangeQuantity?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onBlur?: () => void
+  onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const NumberPicker = ({
