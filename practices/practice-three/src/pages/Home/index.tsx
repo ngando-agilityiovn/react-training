@@ -5,8 +5,12 @@ import MainLayout from '@/MainLayout'
 // Hooks
 import { usePagination, useProductList } from '@/hooks'
 
+// Types
+import { IProduct } from '@/types'
+
 // Components
 import { Pagination, ProductList, Sidebar } from '@/components'
+import { useEffect, useState } from 'react'
 
 const Home = () => {
   const { products } = useProductList()
@@ -22,15 +26,43 @@ const Home = () => {
     pageNumbers,
     productLimit,
     handleSelectPage,
-    pageIndex
+    pageIndex,
+    handleFilterCategory,
+    handleFilterBrand,
+    handleFilterSize
   } = usePagination(total)
+
+  const [transformData, setTransformData] = useState<IProduct[]>([])
+
+  const totalTransformData = transformData.length || 0
+
+  const pageNumberTransformData = []
+  const pageNumberFilter = totalTransformData / productLimit
+
+  for (let i = 0; i < pageNumberFilter; i++) {
+    pageNumberTransformData.push(i)
+  }
+
+  useEffect(() => {
+    limitedData && setTransformData(limitedData)
+  }, [limitedData])
+
+  const handleFilterPrice = (value: number) => {
+    const dataFilter = products?.filter((item) => item.price! <= value)
+    dataFilter?.length && setTransformData(dataFilter)
+  }
 
   return (
     <>
       <MainLayout />
       <Container maxW="1280px" pt="49px" px={0}>
         <Flex gap={21}>
-          <Sidebar />
+          <Sidebar
+            handleFilterCategory={handleFilterCategory}
+            handleFilterBrand={handleFilterBrand}
+            handleFilterSize={handleFilterSize}
+            handleFilterPrice={handleFilterPrice}
+          />
           <Box>
             <Text pt="10px" mb="33" variant="title">
               Showing 12 Result from total 230
@@ -50,16 +82,18 @@ const Home = () => {
                 Not found data
               </Text>
             ) : (
-              <ProductList data={limitedData} productLimit={productLimit} />
+              <ProductList data={transformData} productLimit={productLimit} />
             )}
             {pageNumbers.length >= 1 && (
               <Pagination
                 onPrevPage={handlePrevPage}
                 onNextPage={handleNextPage}
-                pageNumbers={pageNumbers}
+                pageNumbers={
+                  transformData?.length ? pageNumberTransformData : pageNumbers
+                }
                 onSelectPage={handleSelectPage}
                 pageIndex={pageIndex}
-                total={total}
+                total={totalTransformData ? totalTransformData : total}
               />
             )}
           </Box>
