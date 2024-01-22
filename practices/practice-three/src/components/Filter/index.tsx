@@ -9,7 +9,7 @@ import {
   Text,
   VStack
 } from '@chakra-ui/react'
-import SliderCustom from '../SliderCustom'
+import CustomSlider from '../CustomSlider'
 
 interface IFilter {
   name: string
@@ -33,7 +33,7 @@ const Filter = ({
   handleFilterSize,
   handleFilterPrice
 }: IFilterGroup) => {
-  const handleOnChangeCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     handleFilterCategory?.(e)
     handleFilterBrand?.(e)
     handleFilterSize?.(e)
@@ -59,7 +59,7 @@ const Filter = ({
       <AccordionPanel pb={4}>
         {title === 'Price' ? (
           <>
-            <SliderCustom onSliderChange={handleFilterPrice} />
+            <CustomSlider onSliderChange={handleFilterPrice} />
           </>
         ) : (
           <CheckboxGroup colorScheme="blue" defaultValue={[]}>
@@ -72,7 +72,7 @@ const Filter = ({
                     fontWeight="normal"
                     lineHeight="7"
                   >
-                    <Checkbox value={name} onChange={handleOnChangeCheckbox}>
+                    <Checkbox value={name} onChange={handleCheckboxChange}>
                       {name}
                     </Checkbox>
                     <Text>({quantity})</Text>

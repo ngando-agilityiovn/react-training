@@ -14,7 +14,7 @@ interface SliderCustomProps {
   onSliderChange?: (value: number) => void
 }
 
-const SliderCustom = ({ onSliderChange }: SliderCustomProps) => {
+const CustomSlider = ({ onSliderChange }: SliderCustomProps) => {
   const [sliderValue, setSliderValue] = useState(0)
 
   const handleSetValue = (value: number) => {
@@ -74,4 +74,4 @@ const SliderCustom = ({ onSliderChange }: SliderCustomProps) => {
   )
 }
 
-export default SliderCustom
+export default CustomSlider

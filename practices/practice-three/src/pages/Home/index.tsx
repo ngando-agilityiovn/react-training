@@ -1,7 +1,5 @@
 import { Box, Container, Flex, Spinner, Text } from '@chakra-ui/react'
 
-import MainLayout from '@/MainLayout'
-
 // Hooks
 import { usePagination, useProductList } from '@/hooks'
 
@@ -54,7 +52,6 @@ const Home = () => {
 
   return (
     <>
-      <MainLayout />
       <Container maxW="1280px" pt="49px" px={0}>
         <Flex gap={21}>
           <Sidebar

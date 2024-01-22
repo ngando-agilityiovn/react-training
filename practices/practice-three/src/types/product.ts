@@ -5,7 +5,7 @@ export interface IProduct {
   category?: string
   brand?: string
   ratings?: number
-  size?: string
+  size: string
   currency?: string
   quantity?: number
   reviews?: IReviews[]
