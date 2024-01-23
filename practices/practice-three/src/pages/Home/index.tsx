@@ -7,7 +7,7 @@ import { usePagination, useProductList } from '@/hooks'
 import { IProduct } from '@/types'
 
 // Components
-import { Pagination, ProductList, Sidebar } from '@/components'
+import { Banner, Pagination, ProductList, Sidebar } from '@/components'
 import { useEffect, useState } from 'react'
 
 const Home = () => {
@@ -46,12 +46,13 @@ const Home = () => {
   }, [limitedData])
 
   const handleFilterPrice = (value: number) => {
-    const dataFilter = products?.filter((item) => item.price! <= value)
+    const dataFilter = limitedData?.filter((item) => item.price! <= value)
     dataFilter?.length && setTransformData(dataFilter)
   }
 
   return (
     <>
+      <Banner />
       <Container maxW="1280px" pt="49px" px={0}>
         <Flex gap={21}>
           <Sidebar
@@ -62,7 +63,7 @@ const Home = () => {
           />
           <Box>
             <Text pt="10px" mb="33" variant="title">
-              Showing 12 Result from total 230
+              Showing {limitedData?.length} result from total {total}
             </Text>
             {isLoading ? (
               <Box py="6" textAlign="center">

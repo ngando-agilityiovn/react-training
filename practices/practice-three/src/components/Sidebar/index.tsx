@@ -25,6 +25,7 @@ const Sidebar = ({
   const { category, size, brand } = FILTER
 
   const { SIZE, CATEGORY, BRAND, PRICE } = Title
+
   return (
     <Flex flexDirection="column">
       <Flex justifyContent={'space-between'} mb={'23px'}>

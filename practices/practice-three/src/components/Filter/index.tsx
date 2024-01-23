@@ -9,6 +9,8 @@ import {
   Text,
   VStack
 } from '@chakra-ui/react'
+
+// Components
 import CustomSlider from '../CustomSlider'
 
 interface IFilter {
