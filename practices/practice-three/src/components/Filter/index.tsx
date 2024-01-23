@@ -6,14 +6,10 @@ import {
   Checkbox,
   CheckboxGroup,
   Flex,
-  Input,
-  Slider,
-  SliderFilledTrack,
-  SliderThumb,
-  SliderTrack,
   Text,
-  VStack,
+  VStack
 } from '@chakra-ui/react'
+import CustomSlider from '../CustomSlider'
 
 interface IFilter {
   name: string
@@ -23,9 +19,26 @@ interface IFilter {
 interface IFilterGroup {
   title: string
   data?: IFilter[]
+  handleFilterCategory?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  handleFilterBrand?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  handleFilterSize?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  handleFilterPrice?: (value: number) => void
 }
 
-const Filter = ({ title, data }: IFilterGroup) => {
+const Filter = ({
+  title,
+  data,
+  handleFilterCategory,
+  handleFilterBrand,
+  handleFilterSize,
+  handleFilterPrice
+}: IFilterGroup) => {
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleFilterCategory?.(e)
+    handleFilterBrand?.(e)
+    handleFilterSize?.(e)
+  }
+
   return (
     <>
       <h2>
@@ -46,16 +59,7 @@ const Filter = ({ title, data }: IFilterGroup) => {
       <AccordionPanel pb={4}>
         {title === 'Price' ? (
           <>
-            <Slider aria-label="slider-ex-1" defaultValue={200}>
-              <SliderTrack>
-                <SliderFilledTrack />
-              </SliderTrack>
-              <SliderThumb />
-            </Slider>
-            <Flex gap={25}>
-              <Input variant="outline" value={`$${0}`} p="10px" w="75px" />
-              <Input variant="outline" value={`$${200}`} p="10px" w="75px" />
-            </Flex>
+            <CustomSlider onSliderChange={handleFilterPrice} />
           </>
         ) : (
           <CheckboxGroup colorScheme="blue" defaultValue={[]}>
@@ -68,7 +72,9 @@ const Filter = ({ title, data }: IFilterGroup) => {
                     fontWeight="normal"
                     lineHeight="7"
                   >
-                    <Checkbox value={name}>{name}</Checkbox>
+                    <Checkbox value={name} onChange={handleCheckboxChange}>
+                      {name}
+                    </Checkbox>
                     <Text>({quantity})</Text>
                   </Flex>
                 )

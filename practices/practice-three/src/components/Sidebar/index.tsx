@@ -9,7 +9,22 @@ import { Title } from '@/types'
 // Components
 import { Filter } from '@/components'
 
-const Sidebar = () => {
+type TSidebar = {
+  handleFilterCategory: (e: React.ChangeEvent<HTMLInputElement>) => void
+  handleFilterBrand: (e: React.ChangeEvent<HTMLInputElement>) => void
+  handleFilterSize: (e: React.ChangeEvent<HTMLInputElement>) => void
+  handleFilterPrice: (value: number) => void
+}
+
+const Sidebar = ({
+  handleFilterCategory,
+  handleFilterBrand,
+  handleFilterSize,
+  handleFilterPrice
+}: TSidebar) => {
+  const { category, size, brand } = FILTER
+
+  const { SIZE, CATEGORY, BRAND, PRICE } = Title
   return (
     <Flex flexDirection="column">
       <Flex justifyContent={'space-between'} mb={'23px'}>
@@ -28,16 +43,28 @@ const Sidebar = () => {
         allowMultiple
       >
         <AccordionItem>
-          <Filter data={FILTER.category} title={Title.CATEGORY} />
+          <Filter
+            data={category}
+            title={CATEGORY}
+            handleFilterCategory={handleFilterCategory}
+          />
         </AccordionItem>
         <AccordionItem>
-          <Filter data={FILTER.brand} title={Title.BRAND} />
+          <Filter
+            data={brand}
+            title={BRAND}
+            handleFilterBrand={handleFilterBrand}
+          />
         </AccordionItem>
         <AccordionItem>
-          <Filter data={FILTER.size} title={Title.SIZE} />
+          <Filter
+            data={size}
+            title={SIZE}
+            handleFilterSize={handleFilterSize}
+          />
         </AccordionItem>
         <AccordionItem>
-          <Filter title={Title.PRICE} />
+          <Filter title={PRICE} handleFilterPrice={handleFilterPrice} />
         </AccordionItem>
       </Accordion>
     </Flex>

@@ -1,6 +1,8 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+import MainLayout from './MainLayout'
+
 // Themes
 import { theme } from './themes'
 
@@ -27,7 +29,11 @@ const App = () => (
     <BrowserRouter>
       <Routes>
         {pages.map(({ path, element }) => (
-          <Route key={path} path={path} element={element} />
+          <Route
+            key={path}
+            path={path}
+            element={<MainLayout>{element}</MainLayout>}
+          />
         ))}
       </Routes>
     </BrowserRouter>

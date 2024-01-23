@@ -1,11 +1,18 @@
-import { Banner, Header } from '@/components'
-import { Container } from '@chakra-ui/react'
+import { Box, Container } from '@chakra-ui/react'
+import { ReactNode } from 'react'
 
-const MainLayout = () => {
+// Components
+import { Header } from '@/components'
+
+interface IMainLayout {
+  children: ReactNode
+}
+
+const MainLayout = ({ children }: IMainLayout) => {
   return (
     <Container maxW="1280px" px={0}>
       <Header />
-      <Banner />
+      <Box>{children}</Box>
     </Container>
   )
 }
