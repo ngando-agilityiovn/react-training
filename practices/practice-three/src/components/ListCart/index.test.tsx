@@ -2,13 +2,13 @@ import { render } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 
 // Components
-import Cart from '.'
+import { ListCart } from '.'
 
-describe('ProductCart component', () => {
+describe('ListCart component', () => {
   it('Render correcty', () => {
     const container = render(
       <BrowserRouter>
-        <Cart />
+        <ListCart />
       </BrowserRouter>
     )
     expect(container).toMatchSnapshot()

@@ -1,9 +1,7 @@
-import { colors } from '@/themes/colors'
-
 export const DATA_COLOR = [
-  colors.pearlLusta,
-  colors.paleCornflowerBlue,
-  colors.deco,
-  colors.lavenderBlush,
-  colors.mistyRose
+  '#ffd3d3',
+  '#ffd3f8',
+  '#bbd278',
+  '#ecdecc',
+  '#bbc1f8'
 ]

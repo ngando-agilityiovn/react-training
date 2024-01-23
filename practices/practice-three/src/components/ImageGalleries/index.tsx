@@ -34,6 +34,7 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
         </Center>
         {data?.map((item, index) => (
           <Image
+            key={index}
             w="115px"
             h="115px"
             src={item}

@@ -1,18 +1,19 @@
 export interface IProduct {
-  id: number
-  name: string
-  price: number
+  id?: string
+  name?: string
+  price?: number
   category?: string
   brand?: string
   ratings?: number
-  size?: string[]
-  currency: string
-  quantity: number
-  reviews: IReviews[]
+  size?: string
+  currency?: string
+  quantity?: number
+  reviews?: IReviews[]
   colors?: string[]
   description?: string
   information?: string[]
-  images: string[]
+  images?: string[]
+  color?: string
 }
 
 export interface IReviews {

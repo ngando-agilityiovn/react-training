@@ -22,6 +22,9 @@ import { fetchData } from '@/services'
 // Constants
 import { BASE_URL } from '@/constants'
 
+// Stores
+import { cartStore } from '@/stores'
+
 // Components
 import { Heart, InActiveStar, Star } from '../Icons'
 
@@ -30,10 +33,28 @@ interface IProductCard {
 }
 
 const ProductCard = ({ props }: IProductCard) => {
-  const { id, images, name, currency, price, quantity, reviews } = props
+  const { id, images, name, currency, price, quantity, reviews, ratings } =
+    props
 
   const handleHoverCard = () => {
     preload(`${BASE_URL}${id}`, fetchData)
+  }
+
+  const { addSingleProduct } = cartStore()
+
+  const renderStar = () => {
+    const starNumbers = Array.from({ length: ratings || 0 }).fill(0)
+
+    return (
+      <Center>
+        {starNumbers.map((_, index) => (
+          <Star key={index} />
+        ))}
+        {Array.from({ length: 5 - (ratings || 0) }).map((_, index) => (
+          <InActiveStar key={index} />
+        ))}
+      </Center>
+    )
   }
 
   return (
@@ -47,7 +68,7 @@ const ProductCard = ({ props }: IProductCard) => {
       <CardBody p="0">
         <Stack>
           <Link to={`/product-detail/${id}`}>
-            <Image src={images[0]} alt={name} width="100%" height="303px" />
+            <Image src={images?.[0]} alt={name} width="100%" height="303px" />
           </Link>
 
           <IconButton
@@ -72,28 +93,33 @@ const ProductCard = ({ props }: IProductCard) => {
         <Stack mt="22px" pl="21px" pr="17px">
           <Flex justify="space-between">
             <Text variant="primary">{name}</Text>
+
             <Text fontSize="lg" fontWeight="bold" color="textInactive">
               {currency} {price}
             </Text>
           </Flex>
+
           <Text color="tertiary" fontWeight="normal" lineHeight="20px">
             {quantity} types of shoos available
           </Text>
+
           <Flex gap="6px">
-            <Center>
-              {/* TODO: Implement handle after */}
-              <Star />
-              <Star />
-              <Star />
-              <Star />
-              <InActiveStar />
-            </Center>
+            <Center>{renderStar()}</Center>
+
             <Text color="tertiary" fontSize="sm">
-              ({reviews.length})
+              ({reviews?.length})
             </Text>
           </Flex>
 
-          <Button variant="solid" width="50%" my="25px">
+          <Button
+            variant="solid"
+            width="50%"
+            my="25px"
+            onClick={(e) => {
+              e.preventDefault()
+              addSingleProduct(props)
+            }}
+          >
             Add To Cart
           </Button>
         </Stack>

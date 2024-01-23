@@ -1,11 +1,18 @@
 import { Button, Container, Flex, HStack, Text } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 // Constants
 import { DELIVERY_DATA } from '@/constants'
 
 // Hooks
 import { useProductDetail } from '@/hooks'
+
+// Types
+import { IProduct } from '@/types'
+
+// Stores
+import { cartStore } from '@/stores'
 
 // Components
 import {
@@ -25,6 +32,24 @@ const ProductDetail = () => {
 
   const { productDetail } = useProductDetail(id)
 
+  const { addProducts } = cartStore()
+
+  const [product, setProduct] = useState<IProduct>(productDetail)
+  const [productQuantity, setProductQuantity] = useState<number>(1)
+
+  const handleIncrease = () => {
+    setProductQuantity(productQuantity + 1)
+  }
+
+  const handleDecrease = () => {
+    setProductQuantity((value: number) => value - 1)
+  }
+
+  const handleBlur = () => setProductQuantity(1)
+
+  const handleChangeQuantity = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setProductQuantity(parseInt(e.target.value))
+
   const {
     reviews,
     images,
@@ -32,16 +57,34 @@ const ProductDetail = () => {
     price,
     currency,
     ratings,
-    colors,
     description,
     information
+    // quantity
   } = productDetail || {}
 
   const totalView = reviews?.length
 
-  const handleChangeColor = (value: string) => console.log(value, 'color') //Note: Handle change product color
+  useEffect(() => {
+    if (productDetail) {
+      setProduct(productDetail)
+    }
+  }, [productDetail])
 
-  const handleChangeSize = (value: string) => console.log(value, 'Size') // Note: Handle change product size
+  // Handle change product size
+  const handleChangeSize = (value: string) => {
+    setProduct({ ...product, size: value })
+  }
+
+  // Handle change product color
+  const handleChangeColor = (value: string) => {
+    setProduct({ ...product, color: value })
+  }
+
+  const handleAddToCart = () => {
+    if (product) {
+      addProducts({ ...product, id }, productQuantity)
+    }
+  }
 
   return (
     <Container maxW="1280px" pt="49px" px={0}>
@@ -104,17 +147,29 @@ const ProductDetail = () => {
           </Flex>
 
           {/* Colors option */}
-          <ColorGroup colors={colors} onChangeValue={handleChangeColor} />
+          <ColorGroup onChangeValue={handleChangeColor} />
 
           {/* Sizes select */}
           <SizeGroup onChangeValue={handleChangeSize} />
 
           <Flex gap="19px">
             {/* Increase or decrease product quantity */}
-            <NumberPicker onChangeQuantity={() => {}} quantity={1} />
+            <NumberPicker
+              quantity={productQuantity}
+              onDecrease={handleDecrease}
+              onIncrease={handleIncrease}
+              onChangeQuantity={handleChangeQuantity}
+              onBlur={handleBlur}
+            />
 
             {/* Add the product to cart */}
-            <Button w="309px" h="59px" variant="solid" gap="10px">
+            <Button
+              w="309px"
+              h="59px"
+              variant="solid"
+              gap="10px"
+              onClick={handleAddToCart}
+            >
               <WhiteBag />
               Add To Cart
             </Button>

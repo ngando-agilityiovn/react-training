@@ -43,8 +43,13 @@ const SizeGroup = ({ onChangeValue }: ISizeGroup) => {
   )
 
   return (
-    <Stack {...getRootProps()} borderBottom="1px solid gainsboro" pb="30px">
-      <Text color="backgroundWarning" fontWeight="medium" mb="14px">
+    <Stack
+      {...getRootProps()}
+      borderBottom="1px solid gainsboro"
+      pb="30px"
+      borderTop="1px solid gainsboro"
+    >
+      <Text color="backgroundWarning" fontWeight="medium" mb="14px" mt="30px">
         Choose a Size
       </Text>
       <HStack {...group}>
