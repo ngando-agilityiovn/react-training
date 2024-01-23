@@ -6,8 +6,12 @@ import MainLayout from './MainLayout'
 // Themes
 import { theme } from './themes'
 
-// Components
+// Pages
 import { Cart, Home, ProductDetail } from '@/pages'
+import NotFoundPage from './pages/404'
+
+// Components
+import { ErrorBoundary } from './components'
 
 const pages = [
   {
@@ -21,21 +25,27 @@ const pages = [
   {
     path: '/product-cart/',
     element: <Cart />
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />
   }
 ]
 
 const App = () => (
   <ChakraProvider theme={theme}>
     <BrowserRouter>
-      <Routes>
-        {pages.map(({ path, element }) => (
-          <Route
-            key={path}
-            path={path}
-            element={<MainLayout>{element}</MainLayout>}
-          />
-        ))}
-      </Routes>
+      <ErrorBoundary>
+        <Routes>
+          {pages.map(({ path, element }) => (
+            <Route
+              key={path}
+              path={path}
+              element={<MainLayout>{element}</MainLayout>}
+            />
+          ))}
+        </Routes>
+      </ErrorBoundary>
     </BrowserRouter>
   </ChakraProvider>
 )

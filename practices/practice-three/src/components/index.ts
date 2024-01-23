@@ -12,6 +12,7 @@ export { default as CustomModal } from './CustomModal'
 export { default as ImageGalleries } from './ImageGalleries'
 export { default as DescriptionTab } from './DescriptionTab'
 export { default as CustomSlider } from './CustomSlider'
+export { default as ErrorBoundary } from './ErrorBoundary'
 
 export * from './Icons'
 export * from './common'
