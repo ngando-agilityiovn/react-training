@@ -22,6 +22,9 @@ const Sidebar = ({
   handleFilterSize,
   handleFilterPrice
 }: TSidebar) => {
+  const { category, size, brand } = FILTER
+
+  const { SIZE, CATEGORY, BRAND, PRICE } = Title
   return (
     <Flex flexDirection="column">
       <Flex justifyContent={'space-between'} mb={'23px'}>
@@ -41,27 +44,27 @@ const Sidebar = ({
       >
         <AccordionItem>
           <Filter
-            data={FILTER.category}
-            title={Title.CATEGORY}
+            data={category}
+            title={CATEGORY}
             handleFilterCategory={handleFilterCategory}
           />
         </AccordionItem>
         <AccordionItem>
           <Filter
-            data={FILTER.brand}
-            title={Title.BRAND}
+            data={brand}
+            title={BRAND}
             handleFilterBrand={handleFilterBrand}
           />
         </AccordionItem>
         <AccordionItem>
           <Filter
-            data={FILTER.size}
-            title={Title.SIZE}
+            data={size}
+            title={SIZE}
             handleFilterSize={handleFilterSize}
           />
         </AccordionItem>
         <AccordionItem>
-          <Filter title={Title.PRICE} handleFilterPrice={handleFilterPrice} />
+          <Filter title={PRICE} handleFilterPrice={handleFilterPrice} />
         </AccordionItem>
       </Accordion>
     </Flex>

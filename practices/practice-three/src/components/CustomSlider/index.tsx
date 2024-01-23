@@ -10,14 +10,14 @@ import {
   Box
 } from '@chakra-ui/react'
 
-interface SliderCustomProps {
+interface CustomSliderProps {
   onSliderChange?: (value: number) => void
 }
 
-const CustomSlider = ({ onSliderChange }: SliderCustomProps) => {
+const CustomSlider = ({ onSliderChange }: CustomSliderProps) => {
   const [sliderValue, setSliderValue] = useState(0)
 
-  const handleSetValue = (value: number) => {
+  const handleSliderChange = (value: number) => {
     setSliderValue(value)
     onSliderChange?.(value)
   }
@@ -31,7 +31,7 @@ const CustomSlider = ({ onSliderChange }: SliderCustomProps) => {
           min={0}
           max={2000}
           step={100}
-          onChange={handleSetValue}
+          onChange={handleSliderChange}
         >
           {sliderValue !== 0 && sliderValue !== 2000 && (
             <SliderMark
