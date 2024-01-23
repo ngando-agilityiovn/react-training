@@ -1,9 +1,6 @@
-import { render } from '@testing-library/react'
-
 // Components
+import { fireEvent, render } from '@/helpers'
 import Pagination from '.'
-
-jest.mock('@chakra-ui/react')
 
 describe('Pagination component', () => {
   const paginationProps = {
@@ -17,5 +14,13 @@ describe('Pagination component', () => {
   it('Render correcty', () => {
     const container = render(<Pagination {...paginationProps} />)
     expect(container).toMatchSnapshot()
+  })
+
+  it('handleClick updates indexImage correctly', () => {
+    const { getByText } = render(<Pagination {...paginationProps} />)
+
+    fireEvent.click(getByText('2'))
+
+    expect(getByText('2').textContent).toEqual('2')
   })
 })

@@ -27,10 +27,19 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
 
   return (
     <Box>
-      <Image width="587" height="691" src={currentImage} />
+      <Image
+        data-testid="currentImage"
+        width="587"
+        height="691"
+        src={currentImage}
+      />
       <Flex mt={37} gap="10px">
         <Center>
-          <ChevronLeftIcon onClick={handlePrevClick} cursor="pointer" />
+          <ChevronLeftIcon
+            onClick={handlePrevClick}
+            cursor="pointer"
+            data-testid="prevClick"
+          />
         </Center>
         {data?.map((item, index) => (
           <Image
@@ -45,7 +54,11 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
           />
         ))}
         <Center>
-          <ChevronRightIcon onClick={handleNextClick} cursor="pointer" />
+          <ChevronRightIcon
+            onClick={handleNextClick}
+            cursor="pointer"
+            data-testid="nextClick"
+          />
         </Center>
       </Flex>
     </Box>

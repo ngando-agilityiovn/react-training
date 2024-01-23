@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Sidebar component Render correcty 1`] = `
+exports[`Product List component Render correcty 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>

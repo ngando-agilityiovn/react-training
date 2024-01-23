@@ -8,13 +8,22 @@ import { FILTER } from '@/constants'
 // Components
 import Filter from '.'
 
+jest.mock('@chakra-ui/react')
 describe('Filter component', () => {
+  const mockProps = {
+    title: 'Category',
+    data: FILTER.category,
+    handleFilterCategory: jest.fn(),
+    handleFilterBrand: jest.fn(),
+    handleFilterSize: jest.fn(),
+    handleFilterPrice: jest.fn()
+  }
   it('Render correcty', () => {
     const container = render(
       <BrowserRouter>
         <Accordion>
           <AccordionItem>
-            <Filter title="Catogory" data={FILTER.category} />
+            <Filter {...mockProps} />
           </AccordionItem>
         </Accordion>
       </BrowserRouter>

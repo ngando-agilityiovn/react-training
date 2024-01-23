@@ -2,20 +2,19 @@ import { render } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 
 // Components
-import NumberPicker from '.'
+import CustomModal from '.'
 
-describe('NumberPicker component', () => {
-  const mockProps = {
-    onChangeQuantity: jest.fn(),
-    quantity: 5,
-    onIncrease: jest.fn(),
-    onDecrease: jest.fn(),
-    onBlur: jest.fn()
+describe('CustomModal component', () => {
+  const modalProps = {
+    children: <p>Test</p>,
+    title: 'Delete product',
+    isOpen: true,
+    onClose: jest.fn
   }
   it('Render correcty', () => {
     const container = render(
       <BrowserRouter>
-        <NumberPicker {...mockProps} />
+        <CustomModal {...modalProps} />
       </BrowserRouter>
     )
     expect(container).toMatchSnapshot()

@@ -1,21 +1,16 @@
 import { render } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 
-// Components
-import NumberPicker from '.'
+import MainLayout from '.'
 
-describe('NumberPicker component', () => {
-  const mockProps = {
-    onChangeQuantity: jest.fn(),
-    quantity: 5,
-    onIncrease: jest.fn(),
-    onDecrease: jest.fn(),
-    onBlur: jest.fn()
-  }
+// Components
+import { Banner } from '@/components'
+
+describe('MainLayout component', () => {
   it('Render correcty', () => {
     const container = render(
       <BrowserRouter>
-        <NumberPicker {...mockProps} />
+        <MainLayout children={<Banner />} />
       </BrowserRouter>
     )
     expect(container).toMatchSnapshot()
