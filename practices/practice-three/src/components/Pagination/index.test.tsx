@@ -1,5 +1,7 @@
 // Components
-import { fireEvent, render } from '@/helpers'
+import { fireEvent, render } from '@testing-library/react'
+
+// Components
 import Pagination from '.'
 
 describe('Pagination component', () => {
