@@ -31,6 +31,7 @@ const Home = () => {
   } = usePagination(total)
 
   const [transformData, setTransformData] = useState<IProduct[]>([])
+  const [priceFilter, setPriceFilter] = useState<number>(0)
 
   const totalTransformData = transformData.length || 0
 
@@ -42,11 +43,18 @@ const Home = () => {
   }
 
   useEffect(() => {
-    limitedData && setTransformData(limitedData)
-  }, [limitedData])
+    limitedData &&
+      setTransformData(
+        priceFilter > 0
+          ? limitedData?.filter((item) => item.price! <= priceFilter)
+          : limitedData
+      )
+  }, [limitedData, priceFilter])
 
   const handleFilterPrice = (value: number) => {
+    setPriceFilter(value)
     const dataFilter = limitedData?.filter((item) => item.price! <= value)
+
     dataFilter?.length && setTransformData(dataFilter)
   }
 
