@@ -7,10 +7,11 @@ import { BASE_URL } from '@/constants'
 import { fetchData } from '@/services'
 
 const useProductDetail = (id?: string) => {
-  const { data } = useSWR(`${BASE_URL}${id}`, fetchData)
+  const { data, isLoading } = useSWR(`${BASE_URL}${id}`, fetchData)
 
   return {
-    productDetail: data
+    productDetail: data,
+    isLoading
   }
 }
 

@@ -41,7 +41,13 @@ const App = () => (
             <Route
               key={path}
               path={path}
-              element={<MainLayout>{element}</MainLayout>}
+              element={
+                path === '*' ? (
+                  <NotFoundPage />
+                ) : (
+                  <MainLayout>{element}</MainLayout>
+                )
+              }
             />
           ))}
         </Routes>
