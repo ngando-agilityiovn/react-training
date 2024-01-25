@@ -1,30 +1,32 @@
-import { Component, ErrorInfo } from 'react'
-import { Box, Flex, Text, Image, Link } from '@chakra-ui/react'
-
-// Constants
+// Libraries
+import { Component } from 'react'
+import { Box, Flex, Link, Heading } from '@chakra-ui/react'
 import { NOTIFICATIONS } from '@/constants'
 
+// Constants
+
 interface State {
-  error: Error | null
-  errorInfo: ErrorInfo | null
+  hasError: boolean
 }
 
 interface Props {
   children: JSX.Element[] | JSX.Element
 }
 
-class ErrorBoundary extends Component<Props, State> {
-  state: State = { error: null, errorInfo: null }
+export class ErrorBoundary extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props)
+    this.state = { hasError: false }
+  }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    this.setState({
-      error,
-      errorInfo
-    })
+  static getDerivedStateFromError() {
+    return { hasError: true }
   }
 
   render() {
-    if (this.state.error) {
+    const { hasError } = this.state
+    const { children } = this.props
+    if (hasError) {
       return (
         <Box
           minH="100vh"
@@ -32,36 +34,23 @@ class ErrorBoundary extends Component<Props, State> {
           alignItems="center"
           justifyContent="center"
           px="10px"
-          bgColor="background"
         >
           <Flex flexDir="column" justifyContent="center" alignItems="center">
-            {/* Box containing the error image */}
-            <Box className="error-image">
-              {/* Display the error image */}
-              <Image
-                width="full"
-                src="https://firebasestorage.googleapis.com/v0/b/brand-1b5b2.appspot.com/o/error-image.webp?alt=media&token=5ce06fce-ce11-49bc-aac8-7475909d12d6"
-                alt="This is the error image"
-              />
-            </Box>
-            <Text
+            <Heading
+              data-testid="errorboundary"
+              fontSize="20px"
               as="h2"
-              variant="fontPrimaryBold"
-              fontSize="medium"
-              color="primary"
-              textAlign="center"
+              color="emperor"
             >
               {NOTIFICATIONS.API_ERROR}
-            </Text>
-            <br />
-            <Link href="/">{NOTIFICATIONS.BACK_TO_HOMEPAGE}</Link>
+            </Heading>
+            <Link href="/">
+              <Link color="black">{NOTIFICATIONS.BACK_TO_HOMEPAGE}</Link>
+            </Link>
           </Flex>
         </Box>
       )
     }
-
-    return this.props.children
+    return children
   }
 }
-
-export default ErrorBoundary

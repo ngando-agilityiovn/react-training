@@ -59,7 +59,6 @@ const ProductDetail = () => {
     ratings,
     description,
     information
-    // quantity
   } = productDetail || {}
 
   const totalView = reviews?.length

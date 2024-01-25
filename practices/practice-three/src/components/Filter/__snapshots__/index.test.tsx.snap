@@ -1,12 +1,240 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Filter component Render correcty 1`] = `
+exports[`Filter Component Render correcty 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
-    <div />
+    <div>
+      <div
+        class="chakra-accordion css-0"
+      >
+        <div
+          class="chakra-accordion__item css-1fsnuue"
+        >
+          <h2>
+            <button
+              aria-controls="accordion-panel-:r0:"
+              aria-expanded="false"
+              class="chakra-accordion__button css-ubg1nw"
+              data-index="0"
+              id="accordion-button-:r0:"
+              type="button"
+            >
+              <span
+                class="css-u058mz"
+              >
+                Test Filter
+              </span>
+              <svg
+                aria-hidden="true"
+                class="chakra-icon chakra-accordion__icon css-8o5ky2"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </h2>
+          <div
+            class="chakra-collapse"
+            style="overflow: hidden; display: none; opacity: 0; height: 0px;"
+          >
+            <div
+              aria-labelledby="accordion-button-:r0:"
+              class="chakra-accordion__panel css-b0qdn7"
+              id="accordion-panel-:r0:"
+              role="region"
+            >
+              <div
+                class="chakra-stack css-nczau2"
+              >
+                <div
+                  class="css-kky022"
+                >
+                  <label
+                    class="chakra-checkbox css-1elxtiq"
+                    data-testid="checkbox"
+                  >
+                    <input
+                      class="chakra-checkbox__input"
+                      style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                      type="checkbox"
+                      value="Option1"
+                    />
+                    <span
+                      aria-hidden="true"
+                      class="chakra-checkbox__control css-dnty2r"
+                    />
+                    <span
+                      class="chakra-checkbox__label css-1oeb2oe"
+                    >
+                      Option1
+                    </span>
+                  </label>
+                  <p
+                    class="chakra-text css-0"
+                  >
+                    (
+                    5
+                    )
+                  </p>
+                </div>
+                <div
+                  class="css-kky022"
+                >
+                  <label
+                    class="chakra-checkbox css-1elxtiq"
+                    data-testid="checkbox"
+                  >
+                    <input
+                      class="chakra-checkbox__input"
+                      style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                      type="checkbox"
+                      value="Option2"
+                    />
+                    <span
+                      aria-hidden="true"
+                      class="chakra-checkbox__control css-dnty2r"
+                    />
+                    <span
+                      class="chakra-checkbox__label css-1oeb2oe"
+                    >
+                      Option2
+                    </span>
+                  </label>
+                  <p
+                    class="chakra-text css-0"
+                  >
+                    (
+                    8
+                    )
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>,
-  "container": <div />,
+  "container": <div>
+    <div
+      class="chakra-accordion css-0"
+    >
+      <div
+        class="chakra-accordion__item css-1fsnuue"
+      >
+        <h2>
+          <button
+            aria-controls="accordion-panel-:r0:"
+            aria-expanded="false"
+            class="chakra-accordion__button css-ubg1nw"
+            data-index="0"
+            id="accordion-button-:r0:"
+            type="button"
+          >
+            <span
+              class="css-u058mz"
+            >
+              Test Filter
+            </span>
+            <svg
+              aria-hidden="true"
+              class="chakra-icon chakra-accordion__icon css-8o5ky2"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </h2>
+        <div
+          class="chakra-collapse"
+          style="overflow: hidden; display: none; opacity: 0; height: 0px;"
+        >
+          <div
+            aria-labelledby="accordion-button-:r0:"
+            class="chakra-accordion__panel css-b0qdn7"
+            id="accordion-panel-:r0:"
+            role="region"
+          >
+            <div
+              class="chakra-stack css-nczau2"
+            >
+              <div
+                class="css-kky022"
+              >
+                <label
+                  class="chakra-checkbox css-1elxtiq"
+                  data-testid="checkbox"
+                >
+                  <input
+                    class="chakra-checkbox__input"
+                    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                    type="checkbox"
+                    value="Option1"
+                  />
+                  <span
+                    aria-hidden="true"
+                    class="chakra-checkbox__control css-dnty2r"
+                  />
+                  <span
+                    class="chakra-checkbox__label css-1oeb2oe"
+                  >
+                    Option1
+                  </span>
+                </label>
+                <p
+                  class="chakra-text css-0"
+                >
+                  (
+                  5
+                  )
+                </p>
+              </div>
+              <div
+                class="css-kky022"
+              >
+                <label
+                  class="chakra-checkbox css-1elxtiq"
+                  data-testid="checkbox"
+                >
+                  <input
+                    class="chakra-checkbox__input"
+                    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                    type="checkbox"
+                    value="Option2"
+                  />
+                  <span
+                    aria-hidden="true"
+                    class="chakra-checkbox__control css-dnty2r"
+                  />
+                  <span
+                    class="chakra-checkbox__label css-1oeb2oe"
+                  >
+                    Option2
+                  </span>
+                </label>
+                <p
+                  class="chakra-text css-0"
+                >
+                  (
+                  8
+                  )
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
   "findAllByDisplayValue": [Function],

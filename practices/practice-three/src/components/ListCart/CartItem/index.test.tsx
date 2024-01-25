@@ -6,6 +6,8 @@ import { IMAGE_PRODUCT } from '@/constants'
 
 // Components
 import CartItem from '.'
+// import { act } from 'react-dom/test-utils'
+// import { ColorGroup } from '@/components/common'
 
 describe('CartItem component', () => {
   const props = {
