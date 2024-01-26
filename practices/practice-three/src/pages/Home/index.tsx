@@ -1,4 +1,5 @@
 import { Box, Container, Flex, Spinner, Text } from '@chakra-ui/react'
+import { Suspense, lazy, useEffect, useState } from 'react'
 
 // Hooks
 import { usePagination, useProductList } from '@/hooks'
@@ -7,8 +8,9 @@ import { usePagination, useProductList } from '@/hooks'
 import { IProduct } from '@/types'
 
 // Components
-import { Banner, Pagination, ProductList, Sidebar } from '@/components'
-import { useEffect, useState } from 'react'
+import { Banner, ErrorBoundary, Pagination, Sidebar } from '@/components'
+
+const ProductList = lazy(() => import('@/components/ProductList'))
 
 const Home = () => {
   const { products } = useProductList()
@@ -88,7 +90,24 @@ const Home = () => {
                 Not found data
               </Text>
             ) : (
-              <ProductList data={transformData} productLimit={productLimit} />
+              <Suspense
+                fallback={
+                  <Spinner
+                    thickness="4px"
+                    speed="0.65s"
+                    emptyColor="gray.200"
+                    color="blue.500"
+                    size="xl"
+                  />
+                }
+              >
+                <ErrorBoundary>
+                  <ProductList
+                    data={transformData}
+                    productLimit={productLimit}
+                  />
+                </ErrorBoundary>
+              </Suspense>
             )}
             {pageNumbers.length >= 1 && (
               <Pagination

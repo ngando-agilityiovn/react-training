@@ -4,6 +4,9 @@ import { Box, Button, Container, Flex, Spinner, Text } from '@chakra-ui/react'
 // Stores
 import { cartStore } from '@/stores'
 
+// Components
+import { ErrorBoundary } from '@/components'
+
 const ListCart = lazy(() => import('@/components/ListCart'))
 
 const Cart = () => {
@@ -43,7 +46,9 @@ const Cart = () => {
             />
           }
         >
-          <ListCart />
+          <ErrorBoundary>
+            <ListCart />
+          </ErrorBoundary>
         </Suspense>
       </Box>
 

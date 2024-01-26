@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react'
+import { act, renderHook, waitFor } from '@testing-library/react'
 
 // Services
 import { fetchData } from '@/services'
@@ -22,7 +22,9 @@ describe('useProductList', () => {
     await act(async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000))
     })
-    console.log(result, 'test result')
+
+    await waitFor(() => expect(result.current.isLoading).toEqual(false))
+
     expect(result.current.products).toEqual(data)
   })
 })

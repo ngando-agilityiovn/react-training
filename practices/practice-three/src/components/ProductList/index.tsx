@@ -6,6 +6,7 @@ import { IProduct } from '@/types'
 
 // Components
 import ProductCard from '../ProductCard'
+import { ErrorBoundary } from '../ErrorBoundary'
 
 interface IProductList {
   data?: IProduct[] | undefined
@@ -17,7 +18,11 @@ const ProductList = ({ data, productLimit }: IProductList) => {
     <Flex flexWrap="wrap" gap="5">
       {/* Cart product */}
       {data?.slice(0, productLimit).map(({ ...props }) => {
-        return <ProductCard props={props} />
+        return (
+          <ErrorBoundary>
+            <ProductCard props={props} />
+          </ErrorBoundary>
+        )
       })}
     </Flex>
   )
