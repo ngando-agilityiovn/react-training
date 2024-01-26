@@ -37,11 +37,13 @@ export const cartStore = create<TState & TActions>((set, get) => ({
   addSingleProduct: (product: IProduct): void => {
     const originalCarts = get().carts
 
-    const foundItem = originalCarts.find((item) => item.id === product.id)
+    const foundItem = originalCarts.find(
+      (item: IProduct) => item.id === product.id
+    )
 
     if (foundItem) {
       // If the product is already in the cart
-      const updatedCart = originalCarts.map((item) =>
+      const updatedCart = originalCarts.map((item: IProduct) =>
         item.id === product.id
           ? {
               ...item,
@@ -59,7 +61,7 @@ export const cartStore = create<TState & TActions>((set, get) => ({
       set({
         carts: [...originalCarts, { ...product, quantity: 1 }]
       })
-      setListCart(originalCarts)
+      setListCart([...originalCarts, { ...product, quantity: 1 }])
     }
   },
 
@@ -137,8 +139,8 @@ export const cartStore = create<TState & TActions>((set, get) => ({
           ? {
               ...item,
               quantity: productQuantity + foundItem.quantity! || 0,
-              color: item.color,
-              size: item.size
+              color: product.color,
+              size: product.size
             }
           : item
       )

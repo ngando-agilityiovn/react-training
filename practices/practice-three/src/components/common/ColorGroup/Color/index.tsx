@@ -1,4 +1,5 @@
 import { Box, BoxProps, chakra, useRadio } from '@chakra-ui/react'
+import { memo } from 'react'
 
 interface CustomRadioProps extends BoxProps {
   color: string
@@ -51,4 +52,4 @@ const Color = (props: CustomRadioProps) => {
   )
 }
 
-export default Color
+export default memo(Color)

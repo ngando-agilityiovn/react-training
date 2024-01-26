@@ -2,12 +2,10 @@ import { Button, Text } from '@chakra-ui/react'
 
 // Icon components
 import { Cart } from '../Icons'
+import { cartStore } from '@/stores'
 
-interface ICartIcon {
-  quantity: number
-}
-
-const CartIcon = ({ quantity }: ICartIcon) => {
+const CartIcon = () => {
+  const { carts } = cartStore()
   return (
     <Button
       w="50px"
@@ -28,7 +26,7 @@ const CartIcon = ({ quantity }: ICartIcon) => {
         borderRadius="50%"
         color="white"
       >
-        {quantity}
+        {carts.length}
       </Text>
     </Button>
   )

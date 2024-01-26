@@ -1,6 +1,6 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import { Box, Center, Flex, Image } from '@chakra-ui/react'
-import { useState } from 'react'
+import { memo, useCallback, useState } from 'react'
 
 interface IDetailProduct {
   data?: string[]
@@ -12,18 +12,18 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
   const currentImage = data?.[indexImage]
 
   // Handle click next image
-  const handleNextClick = () => {
+  const handleNextClick = useCallback(() => {
     setIndexImage((prevIndex): number =>
       prevIndex === data!.length - 1 ? 0 : prevIndex + 1
     )
-  }
+  }, [data])
 
   // Handle click prev image
-  const handlePrevClick = () => {
+  const handlePrevClick = useCallback(() => {
     setIndexImage((prevIndex): number =>
       prevIndex === 0 ? data!.length - 1 : prevIndex - 1
     )
-  }
+  }, [data])
 
   return (
     <Box>
@@ -65,4 +65,4 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
   )
 }
 
-export default ImageGalleries
+export default memo(ImageGalleries)

@@ -8,7 +8,7 @@ import { usePagination, useProductList } from '@/hooks'
 import { IProduct } from '@/types'
 
 // Components
-import { Banner, ErrorBoundary, Pagination, Sidebar } from '@/components'
+import { ErrorBoundary, Pagination, Sidebar } from '@/components'
 
 const ProductList = lazy(() => import('@/components/ProductList'))
 
@@ -62,7 +62,6 @@ const Home = () => {
 
   return (
     <>
-      <Banner />
       <Container maxW="1280px" pt="49px" px={0}>
         <Flex gap={21}>
           <Sidebar
@@ -102,10 +101,7 @@ const Home = () => {
                 }
               >
                 <ErrorBoundary>
-                  <ProductList
-                    data={transformData}
-                    productLimit={productLimit}
-                  />
+                  <ProductList data={transformData} />
                 </ErrorBoundary>
               </Suspense>
             )}

@@ -1,23 +1,20 @@
 // Stores
-import { cartStore } from '@/stores'
+// import { cartStore } from '@/stores'
 
 // Types
 import { IProduct } from '@/types'
 
 // Components
 import CartItem from './CartItem'
+import { cartStore } from '@/stores'
 
 export const ListCart = () => {
   const { carts } = cartStore()
 
-  let total = 0
-
-  carts?.forEach((item) => (total += item.price! * item.quantity!))
-
   return (
     <>
       {carts?.map(({ ...props }: IProduct) => {
-        return <CartItem props={props} />
+        return <CartItem key={props.id} props={props} />
       })}
     </>
   )

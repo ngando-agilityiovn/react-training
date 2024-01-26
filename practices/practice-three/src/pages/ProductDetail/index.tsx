@@ -84,6 +84,7 @@ const ProductDetail = () => {
       addProducts({ ...product, id }, productQuantity)
     }
   }
+  console.log('product', product)
 
   return (
     <Container maxW="1280px" pt="49px" px={0}>
