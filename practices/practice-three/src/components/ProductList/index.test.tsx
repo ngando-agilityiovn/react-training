@@ -1,16 +1,16 @@
-import { render } from '@testing-library/react'
+import { render } from '@testing-library/react';
 
 // Constants
-import { CARD_DATA } from '@/constants'
+import { CARD_DATA } from '@/constants';
 
 // Components
-import ProductList from '.'
+import ProductList from '.';
 
-jest.mock('@chakra-ui/react')
+jest.mock('@chakra-ui/react');
 
 describe('Product List component', () => {
   it('Render correcty', () => {
-    const container = render(<ProductList data={CARD_DATA} productLimit={9} />)
-    expect(container).toMatchSnapshot()
-  })
-})
+    const container = render(<ProductList data={CARD_DATA} />);
+    expect(container).toMatchSnapshot();
+  });
+});

@@ -16,6 +16,8 @@
     "prepare": "cd ../../ && husky install practices/practice-two/.husky"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.23.9",
+    "@babel/preset-react": "^7.23.3",
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11",
@@ -25,6 +27,7 @@
     "@testing-library/react": "^14.1.2",
     "framer-motion": "^6",
     "jest-environment-jsdom": "^29.7.0",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-fast-compare": "^3.2.2",

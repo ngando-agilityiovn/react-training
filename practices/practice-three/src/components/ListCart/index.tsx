@@ -1,23 +1,21 @@
-// Stores
-// import { cartStore } from '@/stores'
-
 // Types
-import { IProduct } from '@/types'
+import { IProduct } from '@/types';
 
 // Components
-import CartItem from './CartItem'
-import { cartStore } from '@/stores'
+import CartItem from './CartItem';
 
-export const ListCart = () => {
-  const { carts } = cartStore()
-
-  return (
-    <>
-      {carts?.map(({ ...props }: IProduct) => {
-        return <CartItem key={props.id} props={props} />
-      })}
-    </>
-  )
+interface IListCartProps {
+  data: IProduct[];
 }
 
-export default ListCart
+export const ListCart = ({ data }: IListCartProps) => {
+  return (
+    <>
+      {data?.map(({ ...props }: IProduct) => {
+        return <CartItem key={props.id} props={props} />;
+      })}
+    </>
+  );
+};
+
+export default ListCart;

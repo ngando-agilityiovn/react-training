@@ -1,16 +1,16 @@
-import Bag from '@/components/Icons/bag'
-import Car from '@/components/Icons/car'
-import { Box, Flex, Text } from '@chakra-ui/react'
+import Bag from '@/components/Icons/bag';
+import Car from '@/components/Icons/car';
+import { Box, Flex, Text } from '@chakra-ui/react';
 
 // Icon components
 
 interface IDeliveryItem {
-  title: string
-  description: string
+  title: string;
+  description: string;
 }
 
 interface IDelivery {
-  data: IDeliveryItem[]
+  data: IDeliveryItem[];
 }
 
 const Delivery = ({ data }: IDelivery) => {
@@ -26,7 +26,7 @@ const Delivery = ({ data }: IDelivery) => {
         <>
           <Flex gap="14px">
             <Box>{title === 'Free Delivery' ? <Car /> : <Bag />}</Box>
-            <Box>
+            <Box key={title}>
               <Text
                 mb="7px"
                 color="secondary"
@@ -42,7 +42,7 @@ const Delivery = ({ data }: IDelivery) => {
         </>
       ))}
     </Box>
-  )
-}
+  );
+};
 
-export default Delivery
+export default Delivery;

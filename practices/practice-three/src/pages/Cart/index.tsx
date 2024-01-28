@@ -1,21 +1,20 @@
-import { Box, Button, Container, Flex, Spinner, Text } from '@chakra-ui/react'
-import { Suspense, lazy } from 'react'
+import { Box, Button, Container, Flex, Spinner, Text } from '@chakra-ui/react';
+import { Suspense, lazy } from 'react';
 
 // Stores
-import { cartStore } from '@/stores'
+import { cartStore } from '@/stores';
 
 // Components
-import { ErrorBoundary } from '@/components'
-import { IProduct } from '@/types'
+import { ErrorBoundary } from '@/components';
+import { IProduct } from '@/types';
 
-const ListCart = lazy(() => import('@/components/ListCart'))
+const ListCart = lazy(() => import('@/components/ListCart'));
 
 const Cart = () => {
-  const { carts } = cartStore()
+  const { carts } = cartStore();
+  let total = 0;
 
-  let total = 0
-
-  carts?.forEach((item: IProduct) => (total += item.price! * item.quantity!))
+  carts?.forEach((item: IProduct) => (total += item.price! * item.quantity!));
 
   return (
     <Container maxW="1280px" p="0">
@@ -48,7 +47,7 @@ const Cart = () => {
           }
         >
           <ErrorBoundary>
-            <ListCart />
+            <ListCart data={carts} />
           </ErrorBoundary>
         </Suspense>
       </Box>
@@ -63,7 +62,7 @@ const Cart = () => {
         </Button>
       </Flex>
     </Container>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;

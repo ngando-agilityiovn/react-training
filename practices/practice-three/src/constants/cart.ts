@@ -6,6 +6,7 @@ export const CARD_DATA = [
     price: 200,
     currency: '$',
     quantity: 2,
+    colors: ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6'],
     size: 'Medium',
     color: '#ffd3d3',
     reviews: [
@@ -40,6 +41,7 @@ export const CARD_DATA = [
     currency: '$',
     quantity: 20,
     size: 'Medium',
+    colors: ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6'],
     color: '#ffd3d3',
     reviews: [
       {
@@ -65,4 +67,4 @@ export const CARD_DATA = [
       'https://source.unsplash.com/random/587x691/?adidas'
     ]
   }
-]
+];
