@@ -13,7 +13,7 @@ const useProductList = () => {
   const { data, isLoading, error } = useSWR<IProduct[]>(BASE_URL, fetchData)
 
   return {
-    products: data || [],
+    products: data,
     isLoading,
     error
   }

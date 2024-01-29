@@ -37,6 +37,7 @@
     "jsx",
     "node"
   ],
+  "setupFilesAfterEnv": ["<rootDir>/setup-jest.js"],
   "resetMocks": true,
   "coverageThreshold": {
     "global": {

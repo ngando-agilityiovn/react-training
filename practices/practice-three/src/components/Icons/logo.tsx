@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 const Logo = () => (
   <svg
     width="194"
@@ -13,4 +15,4 @@ const Logo = () => (
   </svg>
 )
 
-export default Logo
+export default memo(Logo)

@@ -30,9 +30,10 @@ exports[`CartIcon component Render correcty 1`] = `
           </g>
         </svg>
         <span
+          aria-label="cartNumber"
           class="chakra-text css-1anq8ub"
         >
-          6
+          1
         </span>
       </button>
     </div>
@@ -63,9 +64,10 @@ exports[`CartIcon component Render correcty 1`] = `
         </g>
       </svg>
       <span
+        aria-label="cartNumber"
         class="chakra-text css-1anq8ub"
       >
-        6
+        1
       </span>
     </button>
   </div>,

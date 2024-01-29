@@ -1,18 +1,46 @@
-import { render } from '@testing-library/react'
+import { fireEvent, render } from '@testing-library/react';
 
 // Components
-import DeleteModal from '.'
-
-jest.mock('@chakra-ui/react')
+import DeleteModal from '.';
 
 describe('DeleteModal component', () => {
+  const mockOnToggleModal = jest.fn();
+  const mockOnDeleteModal = jest.fn();
+
   const mockProps = {
-    onOpenDeleteModal: false,
-    onToggleModal: jest.fn,
-    onDeleteProduct: jest.fn
-  }
+    isOpenDeleteModal: true,
+    onToggleModal: mockOnToggleModal,
+    onDeleteProduct: mockOnDeleteModal
+  };
+  let container: ReturnType<typeof render>;
+
+  beforeEach(() => {
+    container = render(<DeleteModal {...mockProps} />);
+  });
   it('Render correcty', () => {
-    const container = render(<DeleteModal {...mockProps} />)
-    expect(container).toMatchSnapshot()
-  })
-})
+    expect(container).toMatchSnapshot();
+  });
+
+  it('Should onToggleModal is called when cliked on cancel button', () => {
+    const cancelButton = container.getByRole('button', { name: 'Cancel' });
+    fireEvent.click(cancelButton);
+    expect(mockOnToggleModal).toHaveBeenCalled();
+  });
+
+  it('Should onDeleteProduct is called when cliked on delete button', () => {
+    const deleteButton = container.getByRole('button', { name: 'Delete' });
+    fireEvent.click(deleteButton);
+    expect(mockOnDeleteModal).toHaveBeenCalled();
+  });
+
+  it('onToggleModal should be called when calling onClose', () => {
+    const mockOpenDeleteModalProps = { ...mockProps, onOpenDeleteModal: true };
+    const { getByRole } = render(<DeleteModal {...mockOpenDeleteModalProps} />);
+
+    const closeButton = getByRole('button', { name: 'Close' });
+
+    fireEvent.click(closeButton);
+
+    expect(mockOnToggleModal).toHaveBeenCalled();
+  });
+});

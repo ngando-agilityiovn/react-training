@@ -1,13 +1,13 @@
-import { Button, Text } from '@chakra-ui/react'
+import { Button, Text } from '@chakra-ui/react';
+
+// Store
+import { cartStore } from '@/stores';
 
 // Icon components
-import { Cart } from '../Icons'
+import { Cart } from '../Icons';
 
-interface ICartIcon {
-  quantity: number
-}
-
-const CartIcon = ({ quantity }: ICartIcon) => {
+const CartIcon = () => {
+  const { carts } = cartStore((state) => state);
   return (
     <Button
       w="50px"
@@ -27,11 +27,12 @@ const CartIcon = ({ quantity }: ICartIcon) => {
         w="28px"
         borderRadius="50%"
         color="white"
+        aria-label="cartNumber"
       >
-        {quantity}
+        {carts.length}
       </Text>
     </Button>
-  )
-}
+  );
+};
 
-export default CartIcon
+export default CartIcon;

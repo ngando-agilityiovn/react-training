@@ -6,61 +6,61 @@ import {
   Image,
   Select,
   Text
-} from '@chakra-ui/react'
-import { useState } from 'react'
-import { DeleteIcon } from '@chakra-ui/icons'
+} from '@chakra-ui/react';
+import { memo, useState } from 'react';
+import { DeleteIcon } from '@chakra-ui/icons';
 
 // Constants
-import { SIZE_OPTIONS } from '@/constants'
+import { SIZE_OPTIONS } from '@/constants';
 
 // Types
-import { IProduct, ISise } from '@/types'
+import { IProduct, ISise } from '@/types';
 
 // Stores
-import { cartStore } from '@/stores'
+import { cartStore } from '@/stores';
 
 // Components
-import { ColorGroup, NumberPicker } from '@/components/common'
-import DeleteModal from '@/components/DeleteModal'
+import { ColorGroup, NumberPicker } from '@/components/common';
+import DeleteModal from '@/components/DeleteModal';
 
 interface ICartItem {
-  props: IProduct
+  props: IProduct;
 }
 
 const CartItem = ({ props }: ICartItem) => {
-  const { id, images, name, currency, price, quantity, color, size } = props
+  const { id, images, name, currency, price, quantity, color, size } = props;
 
-  const [removedItem, setRemovedItem] = useState('')
-  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
+  const [removedItem, setRemovedItem] = useState('');
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
 
   const {
     removeProducts,
     updateProductColor,
     updateProductSize,
     updateProductQuantity
-  } = cartStore()
+  } = cartStore();
 
   const handleChangeColorProduct = (value: string, idProduct: string) => {
-    updateProductColor(value, idProduct)
-  }
+    updateProductColor(value, idProduct);
+  };
 
   const handleChangeSizeProduct = (value: string, idProduct: string) => {
-    updateProductSize(value, idProduct)
-  }
-
-  const handleClickRemove = (id: string) => {
-    handleToggleDeleteModal()
-    setRemovedItem(id)
-  }
+    updateProductSize(value, idProduct);
+  };
 
   const handleToggleDeleteModal = () => {
-    setIsOpenDeleteModal((prevIsOpenDeleteModal) => !prevIsOpenDeleteModal)
-  }
+    setIsOpenDeleteModal((prevIsOpenDeleteModal) => !prevIsOpenDeleteModal);
+  };
+
+  const handleClickRemove = (id: string) => {
+    handleToggleDeleteModal();
+    setRemovedItem(id);
+  };
 
   const handleRemoveProduct = () => {
-    removeProducts(removedItem)
-    handleToggleDeleteModal()
-  }
+    removeProducts(removedItem);
+    handleToggleDeleteModal();
+  };
 
   return (
     <>
@@ -108,7 +108,7 @@ const CartItem = ({ props }: ICartItem) => {
                     <option key={value} value={value} defaultValue={value}>
                       Size: {label}
                     </option>
-                  )
+                  );
                 })}
               </Select>
               <NumberPicker
@@ -147,12 +147,12 @@ const CartItem = ({ props }: ICartItem) => {
       </HStack>
 
       <DeleteModal
-        onOpenDeleteModal={isOpenDeleteModal}
+        isOpenDeleteModal={isOpenDeleteModal}
         onDeleteProduct={handleRemoveProduct}
         onToggleModal={handleToggleDeleteModal}
       />
     </>
-  )
-}
+  );
+};
 
-export default CartItem
+export default memo(CartItem);
