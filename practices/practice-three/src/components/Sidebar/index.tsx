@@ -32,7 +32,7 @@ const Sidebar = ({
         <Text fontSize="20px" fontWeight="medium" color="dark">
           Filters
         </Text>
-        <Button textTransform="capitalize" disabled>
+        <Button textTransform="capitalize" isDisabled={true}>
           clear all
         </Button>
       </Flex>

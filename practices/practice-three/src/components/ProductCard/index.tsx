@@ -90,10 +90,7 @@ const ProductCard = ({ props }: IProductCard) => {
             position="absolute"
             background="white"
             border="none"
-            disabled
-            _hover={{
-              background: 'backgroundSuccess '
-            }}
+            isDisabled={true}
             icon={<Heart />}
           />
         </Stack>
