@@ -93,7 +93,7 @@ const ProductDetail = () => {
 
         {/* Information product */}
         <Flex direction={'column'} gap={30}>
-          <Text as="span" fontSize={28} fontWeight={600}>
+          <Text as="span" fontSize={28} fontWeight={600} color="black">
             {name}
           </Text>
           <Text as="span" borderBottom="1px solid gainsboro" pb="30px">

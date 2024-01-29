@@ -1,29 +1,29 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
-import { Box, Center, Flex, Image } from '@chakra-ui/react'
-import { memo, useCallback, useState } from 'react'
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { Box, Center, Flex, Image } from '@chakra-ui/react';
+import { memo, useCallback, useState } from 'react';
 
 interface IDetailProduct {
-  data?: string[]
+  data?: string[];
 }
 
 const ImageGalleries = ({ data }: IDetailProduct) => {
-  const [indexImage, setIndexImage] = useState(0)
+  const [indexImage, setIndexImage] = useState(0);
 
-  const currentImage = data?.[indexImage]
+  const currentImage = data?.[indexImage];
 
   // Handle click next image
   const handleNextClick = useCallback(() => {
     setIndexImage((prevIndex): number =>
       prevIndex === data!.length - 1 ? 0 : prevIndex + 1
-    )
-  }, [data])
+    );
+  }, [data]);
 
   // Handle click prev image
   const handlePrevClick = useCallback(() => {
     setIndexImage((prevIndex): number =>
       prevIndex === 0 ? data!.length - 1 : prevIndex - 1
-    )
-  }, [data])
+    );
+  }, [data]);
 
   return (
     <Box>
@@ -32,6 +32,7 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
         width="587"
         height="691"
         src={currentImage}
+        borderRadius="17px"
       />
       <Flex mt={37} gap="10px">
         <Center>
@@ -48,9 +49,10 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
             h="115px"
             src={item}
             onClick={() => {
-              setIndexImage(index)
+              setIndexImage(index);
             }}
             cursor="pointer"
+            borderRadius="14px"
           />
         ))}
         <Center>
@@ -62,7 +64,7 @@ const ImageGalleries = ({ data }: IDetailProduct) => {
         </Center>
       </Flex>
     </Box>
-  )
-}
+  );
+};
 
-export default memo(ImageGalleries)
+export default memo(ImageGalleries);
