@@ -10,7 +10,7 @@ import {
   Text
 } from '@chakra-ui/react';
 import { preload } from 'swr';
-import { memo } from 'react';
+import { MouseEventHandler, memo } from 'react';
 import { Link } from 'react-router-dom';
 
 // Types
@@ -56,8 +56,8 @@ const ProductCard = ({ props }: IProductCard) => {
       </Center>
     );
   };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleAddSingleProduct = (e: any) => {
+
+  const handleAddSingleProduct: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
     addSingleProduct(props);
   };
@@ -90,9 +90,7 @@ const ProductCard = ({ props }: IProductCard) => {
             position="absolute"
             background="white"
             border="none"
-            _hover={{
-              background: 'backgroundSuccess '
-            }}
+            isDisabled={true}
             icon={<Heart />}
           />
         </Stack>

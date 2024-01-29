@@ -1,20 +1,20 @@
-import { Accordion, AccordionItem, Button, Flex, Text } from '@chakra-ui/react'
+import { Accordion, AccordionItem, Button, Flex, Text } from '@chakra-ui/react';
 
 // Constants
-import { FILTER } from '@/constants'
+import { FILTER } from '@/constants';
 
 // Types
-import { Title } from '@/types'
+import { Title } from '@/types';
 
 // Components
-import { Filter } from '@/components'
+import { Filter } from '@/components';
 
 type TSidebar = {
-  handleFilterCategory: (e: React.ChangeEvent<HTMLInputElement>) => void
-  handleFilterBrand: (e: React.ChangeEvent<HTMLInputElement>) => void
-  handleFilterSize: (e: React.ChangeEvent<HTMLInputElement>) => void
-  handleFilterPrice: (value: number) => void
-}
+  handleFilterCategory: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleFilterBrand: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleFilterSize: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleFilterPrice: (value: number) => void;
+};
 
 const Sidebar = ({
   handleFilterCategory,
@@ -22,9 +22,9 @@ const Sidebar = ({
   handleFilterSize,
   handleFilterPrice
 }: TSidebar) => {
-  const { category, size, brand } = FILTER
+  const { category, size, brand } = FILTER;
 
-  const { SIZE, CATEGORY, BRAND, PRICE } = Title
+  const { SIZE, CATEGORY, BRAND, PRICE } = Title;
 
   return (
     <Flex flexDirection="column">
@@ -32,7 +32,9 @@ const Sidebar = ({
         <Text fontSize="20px" fontWeight="medium" color="dark">
           Filters
         </Text>
-        <Button textTransform="capitalize">clear all</Button>
+        <Button textTransform="capitalize" isDisabled={true}>
+          clear all
+        </Button>
       </Flex>
       <Accordion
         w="304px"
@@ -69,7 +71,7 @@ const Sidebar = ({
         </AccordionItem>
       </Accordion>
     </Flex>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

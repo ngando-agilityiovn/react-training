@@ -7,7 +7,7 @@ import { cartStore } from '@/stores';
 import { Cart } from '../Icons';
 
 const CartIcon = () => {
-  const { carts } = cartStore((state) => state);
+  const { carts } = cartStore();
   return (
     <Button
       w="50px"

@@ -14,10 +14,9 @@ This application is using React to a web application Product List application. A
 - Learn to work with a large codebase, and derive best practices to implement high-quality React components.
 - Apply React Router to update the URL from a link click without making another request for another document from the server.
 
-
 # Requirements
 
-- Users can  increase/decrease the quantities and add products to the Cart Page for the payment
+- Users can increase/decrease the quantities and add products to the Cart Page for the payment
 - Users can delete a product with a confirmation popup
 - Users can search a product by category, brand, size, price product
 
@@ -31,11 +30,12 @@ This application is using React to a web application Product List application. A
 - [Eslint](https://eslint.org/) v8.45.0 (ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs.)
 - [Chakra UI](https://chakra-ui.com/) v2.8.2 (Chakra UI is a simple, modular and accessible component library that gives you the building blocks you need to build your React applications.)
 - [Node](https://nodejs.org/en/) v18.18.0 (Node.js® is an open-source, cross-platform JavaScript runtime environment.)
-- [Jest](https://jestjs.io/) v7.4.5 (Jest is a delightful JavaScript Testing Framework with a focus on simplicity.) 
+- [Jest](https://jestjs.io/) v7.4.5 (Jest is a delightful JavaScript Testing Framework with a focus on simplicity.)
 - [SWR](https://swr.vercel.app/) v7.4.5 (React Hooks for Data Fetching.)
 - [React-Testing-Library](https://testing-library.com/docs/react-testing-library/intro/) v7.4.5
- (React Testing Library builds on top of DOM Testing Library by adding APIs for working with React components.)
+  (React Testing Library builds on top of DOM Testing Library by adding APIs for working with React components.)
 - [React Router v6](https://reactrouter.com/) v7.4.5 (React Router enables "client side routing".)
+- [Zustand](https://www.npmjs.com/package/zustand) v4.4.7 (A small, fast and scalable bearbones state-management solution using simplified flux principles.)
 
 # Developer tool
 
@@ -62,16 +62,18 @@ This application is using React to a web application Product List application. A
 ```
 ├── .husky
 ├── .storybook
-├── json-server
+├── coverage
 ├── src
     ├── components
     ├── constants
-    ├── layouts
+    ├── helpers
+    ├── hooks
+    ├── mainlayout
     ├── pages
     ├── services
+    ├── stores
     ├── themes
     ├── types
-    ├── utils
     ├── App.tsx
     └── main.tsx
 ├── .env
@@ -84,6 +86,7 @@ This application is using React to a web application Product List application. A
 ├── index.html
 ├── package.json
 ├── README.md
+├── setup-jest.js
 ├── tsconfig.json
 └── vite.config.ts
 ```
@@ -103,25 +106,11 @@ git clone git@gitlab.asoft-python.com:ngan.do/react-training.git
 Make sure you are stay at the root of application (`practice-three`), execute the command
 to install package dependencies
 
+Add .env file with path: https://657c3495853beeefdb98e5f4.mockapi.io/Product/
+
 ```bash
 pnpm install
 pnpm i vite-plugin-environment
-```
-
-## Start the web server
-
-Execute the following command to start the web server
-
-```bash
-pnpm start
-```
-
-Execute the following command to start the json-server
-
-```bash
-cd json-server
-pnpm install
-pnpm start
 ```
 
 Happy path: Open the web server http://localhost:3000

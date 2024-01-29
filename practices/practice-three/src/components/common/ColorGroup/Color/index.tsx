@@ -9,6 +9,7 @@ const Color = (props: CustomRadioProps) => {
   const { color, ...radioProps } = props;
   const { state, getInputProps, getRadioProps, htmlProps, getLabelProps } =
     useRadio(radioProps);
+
   return (
     <chakra.label aria-label={`radio-${color}`} {...htmlProps} cursor="pointer">
       <input {...getInputProps({})} />
