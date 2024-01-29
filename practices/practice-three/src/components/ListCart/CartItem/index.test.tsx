@@ -1,15 +1,22 @@
-import { render } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
+import { fireEvent, render } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 
 // Contants
-import { IMAGE_PRODUCT } from '@/constants'
+import { IMAGE_PRODUCT } from '@/constants';
 
 // Components
-import CartItem from '.'
-// import { act } from 'react-dom/test-utils'
-// import { ColorGroup } from '@/components/common'
+import CartItem from '.';
+
+import { cartStore } from '@/stores/CartStore';
+
+jest.mock('@/stores/CartStore');
 
 describe('CartItem component', () => {
+  const mockRemoveProduct = jest.fn();
+  const mockUpdateProductColor = jest.fn();
+  const mockUpdateProductSize = jest.fn();
+  const mockUpdateProductQuantity = jest.fn();
+
   const props = {
     id: '1',
     name: 'Jeans',
@@ -19,13 +26,37 @@ describe('CartItem component', () => {
     quantity: 1,
     color: 'red',
     size: 'Medium'
-  }
-  it('Render correcty', () => {
-    const container = render(
+  };
+
+  let container: ReturnType<typeof render>;
+
+  beforeEach(() => {
+    (cartStore as unknown as jest.Mock).mockReturnValue({
+      removeProducts: mockRemoveProduct,
+      updateProductColor: mockUpdateProductColor,
+      updateProductSize: mockUpdateProductSize,
+      updateProductQuantity: mockUpdateProductQuantity
+    });
+
+    container = render(
       <BrowserRouter>
         <CartItem props={props} />
       </BrowserRouter>
-    )
-    expect(container).toMatchSnapshot()
-  })
-})
+    );
+  });
+  it('Render correcty', () => {
+    expect(container).toMatchSnapshot();
+  });
+
+  it('UpdateProductColor should be called when clicking on radio button', () => {
+    const radioColor = container.getByLabelText('radio-#ffd3f8');
+    fireEvent.click(radioColor);
+    expect(mockUpdateProductColor).toHaveBeenCalledWith('#ffd3f8', '1');
+  });
+
+  it('UpdateProductSize should be called when selecting option', () => {
+    const select = container.getByRole('combobox');
+    fireEvent.change(select, { target: { value: 'Small' } });
+    expect(mockUpdateProductSize).toHaveBeenCalledWith('Small', '1');
+  });
+});

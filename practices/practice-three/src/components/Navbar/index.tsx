@@ -1,4 +1,5 @@
 import { Flex, ListItem, UnorderedList } from '@chakra-ui/react'
+import { memo } from 'react'
 import { Link } from 'react-router-dom'
 
 interface INavbarItem {
@@ -24,4 +25,4 @@ const Navbar = ({ data }: INavbar) => {
   )
 }
 
-export default Navbar
+export default memo(Navbar)

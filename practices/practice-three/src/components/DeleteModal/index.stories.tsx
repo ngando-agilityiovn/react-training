@@ -1,8 +1,8 @@
-import { Meta, StoryObj } from '@storybook/react'
-import { BrowserRouter } from 'react-router-dom'
+import { Meta, StoryObj } from '@storybook/react';
+import { BrowserRouter } from 'react-router-dom';
 
 // Components
-import DeleteModal from '.'
+import DeleteModal from '.';
 
 export default {
   title: 'Components/DeleteModal',
@@ -14,14 +14,14 @@ export default {
       </BrowserRouter>
     )
   ]
-} as Meta
+} as Meta;
 
-type Story = StoryObj<typeof DeleteModal>
+type Story = StoryObj<typeof DeleteModal>;
 
 export const Default: Story = {
   args: {
-    onOpenDeleteModal: true,
+    isOpenDeleteModal: true,
     onToggleModal: () => console.log('Toggle modal'),
     onDeleteProduct: () => console.log('Click to delete product')
   }
-}
+};

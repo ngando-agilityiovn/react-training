@@ -5,7 +5,6 @@ import { Flex } from '@chakra-ui/react'
 import { NAVBAR } from '@/constants'
 
 // Stores
-import { cartStore } from '@/stores/CartStore'
 
 // Icon components
 import CartIcon from '@/components/CartIcon'
@@ -15,7 +14,6 @@ import { Logo } from '@/components/Icons'
 import Navbar from '@/components/Navbar'
 
 const Header = () => {
-  const { carts } = cartStore()
   return (
     <Flex py="7" alignItems="center" justifyContent="space-between">
       <Flex gap="60px">
@@ -25,7 +23,7 @@ const Header = () => {
         <Navbar data={NAVBAR} />
       </Flex>
       <Link to={`/product-cart/`}>
-        <CartIcon quantity={carts.length} />
+        <CartIcon />
       </Link>
     </Flex>
   )

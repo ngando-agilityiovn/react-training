@@ -8,42 +8,42 @@ import {
   Image,
   Stack,
   Text
-} from '@chakra-ui/react'
-import { preload } from 'swr'
-import { memo } from 'react'
-import { Link } from 'react-router-dom'
+} from '@chakra-ui/react';
+import { preload } from 'swr';
+import { memo } from 'react';
+import { Link } from 'react-router-dom';
 
 // Types
-import { IProduct } from '@/types'
+import { IProduct } from '@/types';
 
 // Services
-import { fetchData } from '@/services'
+import { fetchData } from '@/services';
 
 // Constants
-import { BASE_URL } from '@/constants'
+import { BASE_URL } from '@/constants';
 
 // Stores
-import { cartStore } from '@/stores'
+import { cartStore } from '@/stores';
 
 // Components
-import { Heart, InActiveStar, Star } from '../Icons'
+import { Heart, InActiveStar, Star } from '../Icons';
 
 interface IProductCard {
-  props: IProduct
+  props: IProduct;
 }
 
 const ProductCard = ({ props }: IProductCard) => {
   const { id, images, name, currency, price, quantity, reviews, ratings } =
-    props
+    props;
 
   const handleHoverCard = () => {
-    preload(`${BASE_URL}${id}`, fetchData)
-  }
+    preload(`${BASE_URL}${id}`, fetchData);
+  };
 
-  const { addSingleProduct } = cartStore()
+  const { addSingleProduct } = cartStore();
 
   const renderStar = () => {
-    const starNumbers = Array.from({ length: ratings || 0 }).fill(0)
+    const starNumbers = Array.from({ length: ratings || 0 }).fill(0);
 
     return (
       <Center>
@@ -54,12 +54,18 @@ const ProductCard = ({ props }: IProductCard) => {
           <InActiveStar key={index} />
         ))}
       </Center>
-    )
-  }
+    );
+  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleAddSingleProduct = (e: any) => {
+    e.preventDefault();
+    addSingleProduct(props);
+  };
 
   return (
     <Card
       onMouseOver={handleHoverCard}
+      aria-label="cardItem"
       maxW="sm"
       width="305px"
       overflow="hidden"
@@ -115,17 +121,14 @@ const ProductCard = ({ props }: IProductCard) => {
             variant="solid"
             width="50%"
             my="25px"
-            onClick={(e) => {
-              e.preventDefault()
-              addSingleProduct(props)
-            }}
+            onClick={handleAddSingleProduct}
           >
             Add To Cart
           </Button>
         </Stack>
       </CardBody>
     </Card>
-  )
-}
+  );
+};
 
-export default memo(ProductCard)
+export default memo(ProductCard);

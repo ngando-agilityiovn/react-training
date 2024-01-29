@@ -1,16 +1,17 @@
-import { Box, BoxProps, chakra, useRadio } from '@chakra-ui/react'
+import { Box, BoxProps, chakra, useRadio } from '@chakra-ui/react';
+import { memo } from 'react';
 
 interface CustomRadioProps extends BoxProps {
-  color: string
+  color: string;
 }
 
 const Color = (props: CustomRadioProps) => {
-  const { color, ...radioProps } = props
+  const { color, ...radioProps } = props;
   const { state, getInputProps, getRadioProps, htmlProps, getLabelProps } =
-    useRadio(radioProps)
+    useRadio(radioProps);
   return (
-    <chakra.label {...htmlProps} cursor="pointer">
-      <input {...getInputProps({})} hidden />
+    <chakra.label aria-label={`radio-${color}`} {...htmlProps} cursor="pointer">
+      <input {...getInputProps({})} />
       <Box
         w="16"
         h="16"
@@ -20,7 +21,6 @@ const Color = (props: CustomRadioProps) => {
       >
         <Box
           _hover={{ background: color }}
-          aria-label=""
           bg={color}
           w={16}
           h={16}
@@ -48,7 +48,7 @@ const Color = (props: CustomRadioProps) => {
         />
       </Box>
     </chakra.label>
-  )
-}
+  );
+};
 
-export default Color
+export default memo(Color);
