@@ -1,11 +1,11 @@
-import { Meta, StoryObj } from '@storybook/react'
-import { BrowserRouter } from 'react-router-dom'
+import { Meta, StoryObj } from '@storybook/react';
+import { BrowserRouter } from 'react-router-dom';
 
 //  Constants
-import { CARD_DATA } from '@/constants'
+import { CARD_DATA } from '@/constants';
 
 // Components
-import ProductList from '.'
+import ProductList from '.';
 
 export default {
   title: 'Components/ProductList',
@@ -17,13 +17,12 @@ export default {
       </BrowserRouter>
     )
   ]
-} as Meta
+} as Meta;
 
-type Story = StoryObj<typeof ProductList>
+type Story = StoryObj<typeof ProductList>;
 
 export const Default: Story = {
   args: {
-    data: CARD_DATA,
-    productLimit: 9
+    data: CARD_DATA
   }
-}
+};
