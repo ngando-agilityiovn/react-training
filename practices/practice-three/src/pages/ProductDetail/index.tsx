@@ -1,18 +1,18 @@
-import { Button, Container, Flex, HStack, Text } from '@chakra-ui/react'
-import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { Button, Container, Flex, HStack, Text } from '@chakra-ui/react';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 // Constants
-import { DELIVERY_DATA } from '@/constants'
+import { DELIVERY_DATA } from '@/constants';
 
 // Hooks
-import { useProductDetail } from '@/hooks'
+import { useProductDetail } from '@/hooks';
 
 // Types
-import { IProduct } from '@/types'
+import { IProduct } from '@/types';
 
 // Stores
-import { cartStore } from '@/stores'
+import { cartStore } from '@/stores';
 
 // Components
 import {
@@ -25,30 +25,30 @@ import {
   Rating,
   SizeGroup,
   WhiteBag
-} from '@/components'
+} from '@/components';
 
 const ProductDetail = () => {
-  const { id } = useParams()
+  const { id } = useParams();
 
-  const { productDetail } = useProductDetail(id)
+  const { productDetail } = useProductDetail(id);
 
-  const { addProducts } = cartStore()
+  const { addProducts } = cartStore();
 
-  const [product, setProduct] = useState<IProduct>(productDetail)
-  const [productQuantity, setProductQuantity] = useState<number>(1)
+  const [product, setProduct] = useState<IProduct>(productDetail);
+  const [productQuantity, setProductQuantity] = useState<number>(1);
 
   const handleIncrease = () => {
-    setProductQuantity(productQuantity + 1)
-  }
+    setProductQuantity(productQuantity + 1);
+  };
 
   const handleDecrease = () => {
-    setProductQuantity((value: number) => value - 1)
-  }
+    setProductQuantity((value: number) => value - 1);
+  };
 
-  const handleBlur = () => setProductQuantity(1)
+  const handleBlur = () => setProductQuantity(1);
 
   const handleChangeQuantity = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setProductQuantity(parseInt(e.target.value))
+    setProductQuantity(parseInt(e.target.value));
 
   const {
     reviews,
@@ -59,32 +59,31 @@ const ProductDetail = () => {
     ratings,
     description,
     information
-  } = productDetail || {}
+  } = productDetail || {};
 
-  const totalView = reviews?.length
+  const totalView = reviews?.length;
 
   useEffect(() => {
     if (productDetail) {
-      setProduct(productDetail)
+      setProduct(productDetail);
     }
-  }, [productDetail])
+  }, [productDetail]);
 
   // Handle change product size
   const handleChangeSize = (value: string) => {
-    setProduct({ ...product, size: value })
-  }
+    setProduct({ ...product, size: value });
+  };
 
   // Handle change product color
   const handleChangeColor = (value: string) => {
-    setProduct({ ...product, color: value })
-  }
+    setProduct({ ...product, color: value });
+  };
 
   const handleAddToCart = () => {
     if (product) {
-      addProducts({ ...product, id }, productQuantity)
+      addProducts({ ...product, id }, productQuantity);
     }
-  }
-  console.log('product', product)
+  };
 
   return (
     <Container maxW="1280px" pt="49px" px={0}>
@@ -187,7 +186,7 @@ const ProductDetail = () => {
         data={information}
       />
     </Container>
-  )
-}
+  );
+};
 
-export default ProductDetail
+export default ProductDetail;
