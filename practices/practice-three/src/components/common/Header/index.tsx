@@ -1,22 +1,27 @@
+import { Link } from 'react-router-dom'
+import { Flex } from '@chakra-ui/react'
+
 // Constants
-import CartIcon from '@/components/CartIcon'
-import { Logo } from '@/components/Icons'
-import Navbar from '@/components/Navbar'
 import { NAVBAR } from '@/constants'
+
+// Stores
 import { cartStore } from '@/stores/CartStore'
 
 // Icon components
+import CartIcon from '@/components/CartIcon'
+import { Logo } from '@/components/Icons'
 
 // Components
-import { Flex } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
+import Navbar from '@/components/Navbar'
 
 const Header = () => {
   const { carts } = cartStore()
   return (
     <Flex py="7" alignItems="center" justifyContent="space-between">
       <Flex gap="60px">
-        <Logo />
+        <Link to={'/'}>
+          <Logo />
+        </Link>
         <Navbar data={NAVBAR} />
       </Flex>
       <Link to={`/product-cart/`}>

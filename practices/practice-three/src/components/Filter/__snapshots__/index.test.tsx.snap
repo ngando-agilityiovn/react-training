@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Filter component Render correcty 1`] = `
+exports[`Filter Component Render correcty 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -23,7 +23,7 @@ exports[`Filter component Render correcty 1`] = `
               <span
                 class="css-u058mz"
               >
-                Catogory
+                Test Filter
               </span>
               <svg
                 aria-hidden="true"
@@ -56,12 +56,13 @@ exports[`Filter component Render correcty 1`] = `
                 >
                   <label
                     class="chakra-checkbox css-1elxtiq"
+                    data-testid="checkbox"
                   >
                     <input
                       class="chakra-checkbox__input"
                       style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
                       type="checkbox"
-                      value="Kid"
+                      value="Option1"
                     />
                     <span
                       aria-hidden="true"
@@ -70,14 +71,14 @@ exports[`Filter component Render correcty 1`] = `
                     <span
                       class="chakra-checkbox__label css-1oeb2oe"
                     >
-                      Kid
+                      Option1
                     </span>
                   </label>
                   <p
                     class="chakra-text css-0"
                   >
                     (
-                    17
+                    5
                     )
                   </p>
                 </div>
@@ -86,12 +87,13 @@ exports[`Filter component Render correcty 1`] = `
                 >
                   <label
                     class="chakra-checkbox css-1elxtiq"
+                    data-testid="checkbox"
                   >
                     <input
                       class="chakra-checkbox__input"
                       style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
                       type="checkbox"
-                      value="Man"
+                      value="Option2"
                     />
                     <span
                       aria-hidden="true"
@@ -100,134 +102,14 @@ exports[`Filter component Render correcty 1`] = `
                     <span
                       class="chakra-checkbox__label css-1oeb2oe"
                     >
-                      Man
+                      Option2
                     </span>
                   </label>
                   <p
                     class="chakra-text css-0"
                   >
                     (
-                    17
-                    )
-                  </p>
-                </div>
-                <div
-                  class="css-kky022"
-                >
-                  <label
-                    class="chakra-checkbox css-1elxtiq"
-                  >
-                    <input
-                      class="chakra-checkbox__input"
-                      style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
-                      type="checkbox"
-                      value="Woman"
-                    />
-                    <span
-                      aria-hidden="true"
-                      class="chakra-checkbox__control css-dnty2r"
-                    />
-                    <span
-                      class="chakra-checkbox__label css-1oeb2oe"
-                    >
-                      Woman
-                    </span>
-                  </label>
-                  <p
-                    class="chakra-text css-0"
-                  >
-                    (
-                    17
-                    )
-                  </p>
-                </div>
-                <div
-                  class="css-kky022"
-                >
-                  <label
-                    class="chakra-checkbox css-1elxtiq"
-                  >
-                    <input
-                      class="chakra-checkbox__input"
-                      style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
-                      type="checkbox"
-                      value="Casual"
-                    />
-                    <span
-                      aria-hidden="true"
-                      class="chakra-checkbox__control css-dnty2r"
-                    />
-                    <span
-                      class="chakra-checkbox__label css-1oeb2oe"
-                    >
-                      Casual
-                    </span>
-                  </label>
-                  <p
-                    class="chakra-text css-0"
-                  >
-                    (
-                    17
-                    )
-                  </p>
-                </div>
-                <div
-                  class="css-kky022"
-                >
-                  <label
-                    class="chakra-checkbox css-1elxtiq"
-                  >
-                    <input
-                      class="chakra-checkbox__input"
-                      style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
-                      type="checkbox"
-                      value="Sport"
-                    />
-                    <span
-                      aria-hidden="true"
-                      class="chakra-checkbox__control css-dnty2r"
-                    />
-                    <span
-                      class="chakra-checkbox__label css-1oeb2oe"
-                    >
-                      Sport
-                    </span>
-                  </label>
-                  <p
-                    class="chakra-text css-0"
-                  >
-                    (
-                    17
-                    )
-                  </p>
-                </div>
-                <div
-                  class="css-kky022"
-                >
-                  <label
-                    class="chakra-checkbox css-1elxtiq"
-                  >
-                    <input
-                      class="chakra-checkbox__input"
-                      style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
-                      type="checkbox"
-                      value="Rainbow"
-                    />
-                    <span
-                      aria-hidden="true"
-                      class="chakra-checkbox__control css-dnty2r"
-                    />
-                    <span
-                      class="chakra-checkbox__label css-1oeb2oe"
-                    >
-                      Rainbow
-                    </span>
-                  </label>
-                  <p
-                    class="chakra-text css-0"
-                  >
-                    (
-                    17
+                    8
                     )
                   </p>
                 </div>
@@ -257,7 +139,7 @@ exports[`Filter component Render correcty 1`] = `
             <span
               class="css-u058mz"
             >
-              Catogory
+              Test Filter
             </span>
             <svg
               aria-hidden="true"
@@ -290,12 +172,13 @@ exports[`Filter component Render correcty 1`] = `
               >
                 <label
                   class="chakra-checkbox css-1elxtiq"
+                  data-testid="checkbox"
                 >
                   <input
                     class="chakra-checkbox__input"
                     style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
                     type="checkbox"
-                    value="Kid"
+                    value="Option1"
                   />
                   <span
                     aria-hidden="true"
@@ -304,14 +187,14 @@ exports[`Filter component Render correcty 1`] = `
                   <span
                     class="chakra-checkbox__label css-1oeb2oe"
                   >
-                    Kid
+                    Option1
                   </span>
                 </label>
                 <p
                   class="chakra-text css-0"
                 >
                   (
-                  17
+                  5
                   )
                 </p>
               </div>
@@ -320,12 +203,13 @@ exports[`Filter component Render correcty 1`] = `
               >
                 <label
                   class="chakra-checkbox css-1elxtiq"
+                  data-testid="checkbox"
                 >
                   <input
                     class="chakra-checkbox__input"
                     style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
                     type="checkbox"
-                    value="Man"
+                    value="Option2"
                   />
                   <span
                     aria-hidden="true"
@@ -334,134 +218,14 @@ exports[`Filter component Render correcty 1`] = `
                   <span
                     class="chakra-checkbox__label css-1oeb2oe"
                   >
-                    Man
+                    Option2
                   </span>
                 </label>
                 <p
                   class="chakra-text css-0"
                 >
                   (
-                  17
-                  )
-                </p>
-              </div>
-              <div
-                class="css-kky022"
-              >
-                <label
-                  class="chakra-checkbox css-1elxtiq"
-                >
-                  <input
-                    class="chakra-checkbox__input"
-                    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
-                    type="checkbox"
-                    value="Woman"
-                  />
-                  <span
-                    aria-hidden="true"
-                    class="chakra-checkbox__control css-dnty2r"
-                  />
-                  <span
-                    class="chakra-checkbox__label css-1oeb2oe"
-                  >
-                    Woman
-                  </span>
-                </label>
-                <p
-                  class="chakra-text css-0"
-                >
-                  (
-                  17
-                  )
-                </p>
-              </div>
-              <div
-                class="css-kky022"
-              >
-                <label
-                  class="chakra-checkbox css-1elxtiq"
-                >
-                  <input
-                    class="chakra-checkbox__input"
-                    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
-                    type="checkbox"
-                    value="Casual"
-                  />
-                  <span
-                    aria-hidden="true"
-                    class="chakra-checkbox__control css-dnty2r"
-                  />
-                  <span
-                    class="chakra-checkbox__label css-1oeb2oe"
-                  >
-                    Casual
-                  </span>
-                </label>
-                <p
-                  class="chakra-text css-0"
-                >
-                  (
-                  17
-                  )
-                </p>
-              </div>
-              <div
-                class="css-kky022"
-              >
-                <label
-                  class="chakra-checkbox css-1elxtiq"
-                >
-                  <input
-                    class="chakra-checkbox__input"
-                    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
-                    type="checkbox"
-                    value="Sport"
-                  />
-                  <span
-                    aria-hidden="true"
-                    class="chakra-checkbox__control css-dnty2r"
-                  />
-                  <span
-                    class="chakra-checkbox__label css-1oeb2oe"
-                  >
-                    Sport
-                  </span>
-                </label>
-                <p
-                  class="chakra-text css-0"
-                >
-                  (
-                  17
-                  )
-                </p>
-              </div>
-              <div
-                class="css-kky022"
-              >
-                <label
-                  class="chakra-checkbox css-1elxtiq"
-                >
-                  <input
-                    class="chakra-checkbox__input"
-                    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
-                    type="checkbox"
-                    value="Rainbow"
-                  />
-                  <span
-                    aria-hidden="true"
-                    class="chakra-checkbox__control css-dnty2r"
-                  />
-                  <span
-                    class="chakra-checkbox__label css-1oeb2oe"
-                  >
-                    Rainbow
-                  </span>
-                </label>
-                <p
-                  class="chakra-text css-0"
-                >
-                  (
-                  17
+                  8
                   )
                 </p>
               </div>

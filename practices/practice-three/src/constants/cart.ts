@@ -6,6 +6,8 @@ export const CARD_DATA = [
     price: 200,
     currency: '$',
     quantity: 2,
+    size: 'Medium',
+    color: '#ffd3d3',
     reviews: [
       {
         id: 1,
@@ -37,6 +39,8 @@ export const CARD_DATA = [
     price: 340,
     currency: '$',
     quantity: 20,
+    size: 'Medium',
+    color: '#ffd3d3',
     reviews: [
       {
         id: 1,

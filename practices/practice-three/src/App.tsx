@@ -1,13 +1,12 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
 import MainLayout from './MainLayout'
 
 // Themes
 import { theme } from './themes'
 
-// Components
-import { Cart, Home, ProductDetail } from '@/pages'
+// Pages
+import { Cart, Home, NotFoundPage, ProductDetail } from './pages'
 
 const pages = [
   {
@@ -21,6 +20,10 @@ const pages = [
   {
     path: '/product-cart/',
     element: <Cart />
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />
   }
 ]
 
@@ -32,7 +35,13 @@ const App = () => (
           <Route
             key={path}
             path={path}
-            element={<MainLayout>{element}</MainLayout>}
+            element={
+              path === '*' ? (
+                <NotFoundPage />
+              ) : (
+                <MainLayout>{element}</MainLayout>
+              )
+            }
           />
         ))}
       </Routes>

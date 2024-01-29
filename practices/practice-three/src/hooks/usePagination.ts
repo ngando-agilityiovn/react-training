@@ -30,27 +30,27 @@ const usePagination = (total: number) => {
   )
 
   const handleFilterCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCategory((prevCategory) =>
-      e?.target?.checked && prevCategory?.includes(e.target.value)
+    setCategory((prevCategory) => {
+      return e?.target?.checked
         ? [...prevCategory, e.target.value]
         : prevCategory.filter((value) => value !== e.target.value)
-    )
+    })
   }
 
   const handleFilterBrand = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setBrand((prevBrand) =>
-      e?.target?.checked && prevBrand?.includes(e.target.value)
+    setBrand((prevBrand) => {
+      return e?.target?.checked
         ? [...prevBrand, e.target.value]
         : prevBrand.filter((value) => value !== e.target.value)
-    )
+    })
   }
 
   const handleFilterSize = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSize((prevSize) =>
-      e?.target?.checked && prevSize?.includes(e.target.value)
+    setSize((prevSize) => {
+      return e?.target?.checked
         ? [...prevSize, e.target.value]
         : prevSize.filter((value) => value !== e.target.value)
-    )
+    })
   }
 
   const pageNumbers = []

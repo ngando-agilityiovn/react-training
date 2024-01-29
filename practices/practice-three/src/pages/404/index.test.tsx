@@ -2,20 +2,14 @@ import { render } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 
 // Components
-import NumberPicker from '.'
+import NotFoundPage from '.'
 
-describe('NumberPicker component', () => {
-  const mockProps = {
-    onChangeQuantity: jest.fn(),
-    quantity: 5,
-    onIncrease: jest.fn(),
-    onDecrease: jest.fn(),
-    onBlur: jest.fn()
-  }
+jest.mock('@chakra-ui/react')
+describe('Home component', () => {
   it('Render correcty', () => {
     const container = render(
       <BrowserRouter>
-        <NumberPicker {...mockProps} />
+        <NotFoundPage />
       </BrowserRouter>
     )
     expect(container).toMatchSnapshot()
