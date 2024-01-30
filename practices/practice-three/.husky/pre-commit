@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
-cd practices/practice-two
+cd practices/practice-three
 npx lint-staged
