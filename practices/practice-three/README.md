@@ -30,9 +30,9 @@ This application is using React to a web application Product List application. A
 - [Eslint](https://eslint.org/) v8.45.0 (ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs.)
 - [Chakra UI](https://chakra-ui.com/) v2.8.2 (Chakra UI is a simple, modular and accessible component library that gives you the building blocks you need to build your React applications.)
 - [Node](https://nodejs.org/en/) v18.18.0 (Node.js® is an open-source, cross-platform JavaScript runtime environment.)
-- [Jest](https://jestjs.io/) v7.4.5 (Jest is a delightful JavaScript Testing Framework with a focus on simplicity.)
+- [Jest](https://jestjs.io/) v29.1.1 (Jest is a delightful JavaScript Testing Framework with a focus on simplicity.)
 - [SWR](https://swr.vercel.app/) v2.2.4 (React Hooks for Data Fetching.)
-- [React-Testing-Library](https://testing-library.com/docs/react-testing-library/intro/) v7.4.5
+- [React-Testing-Library](https://testing-library.com/docs/react-testing-library/intro/) v14.1.2
   (React Testing Library builds on top of DOM Testing Library by adding APIs for working with React components.)
 - [React Router](https://reactrouter.com/) v6.21.1 (React Router enables "client side routing".)
 - [Zustand](https://www.npmjs.com/package/zustand) v4.4.7 (A small, fast and scalable bearbones state-management solution using simplified flux principles.)
