@@ -1,12 +1,12 @@
-import { ChakraProvider } from '@chakra-ui/react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import MainLayout from './MainLayout'
+import { ChakraProvider } from '@chakra-ui/react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import MainLayout from './MainLayout';
 
 // Themes
-import { theme } from './themes'
+import { theme } from './themes';
 
 // Pages
-import { Cart, Home, NotFoundPage, ProductDetail } from './pages'
+import { Cart, Home, NotFoundPage, ProductDetail } from './pages';
 
 const pages = [
   {
@@ -20,12 +20,8 @@ const pages = [
   {
     path: '/product-cart/',
     element: <Cart />
-  },
-  {
-    path: '*',
-    element: <NotFoundPage />
   }
-]
+];
 
 const App = () => (
   <ChakraProvider theme={theme}>
@@ -35,18 +31,13 @@ const App = () => (
           <Route
             key={path}
             path={path}
-            element={
-              path === '*' ? (
-                <NotFoundPage />
-              ) : (
-                <MainLayout>{element}</MainLayout>
-              )
-            }
+            element={<MainLayout>{element}</MainLayout>}
           />
         ))}
+        <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </BrowserRouter>
   </ChakraProvider>
-)
+);
 
-export default App
+export default App;
