@@ -1,23 +1,24 @@
-import { Meta, StoryObj } from '@storybook/react'
-import { BrowserRouter } from 'react-router-dom'
+import Storybook from '@storybook/react';
+import { useState } from 'react';
 
 // Components
-import NumberPicker from '.'
+import NumberPicker from '.';
 
 export default {
   title: 'Components/NumberPicker',
-  component: NumberPicker,
-  decorators: [
-    (Story) => (
-      <BrowserRouter>
-        <Story />
-      </BrowserRouter>
-    )
-  ]
-} as Meta
+  component: NumberPicker
+} as Storybook.ComponentMeta<typeof NumberPicker>;
 
-type Story = StoryObj<typeof NumberPicker>
+const Template: Storybook.ComponentStory<typeof NumberPicker> = () => {
+  const [quantity, setQuantity] = useState(10);
+  return (
+    <NumberPicker
+      quantity={quantity}
+      onDecrease={() => setQuantity(quantity - 1)}
+      onIncrease={() => setQuantity(quantity + 1)}
+      onChangeQuantity={(e) => setQuantity(parseInt(e.target.value))}
+    />
+  );
+};
 
-export const Default: Story = {
-  args: {}
-}
+export const NumberPickerComponent = Template.bind({});
