@@ -14,10 +14,7 @@ import { DeleteIcon } from '@chakra-ui/icons';
 import { SIZE_OPTIONS } from '@/constants';
 
 // Types
-import { IProduct, ISise } from '@/types';
-
-// Stores
-import { cartStore } from '@/stores';
+import { IProduct, ISise, TUpdateProductQuantity } from '@/types';
 
 // Components
 import { ColorGroup, NumberPicker } from '@/components/common';
@@ -25,20 +22,27 @@ import DeleteModal from '@/components/DeleteModal';
 
 interface ICartItem {
   props: IProduct;
+  removeProducts: (productId: string) => void;
+  updateProductColor: (value: string, productId: string) => void;
+  updateProductSize: (value: string, productId: string) => void;
+  updateProductQuantity: ({
+    productId,
+    action,
+    productQuantity
+  }: TUpdateProductQuantity) => void;
 }
 
-const CartItem = ({ props }: ICartItem) => {
+const CartItem = ({
+  props,
+  removeProducts,
+  updateProductColor,
+  updateProductSize,
+  updateProductQuantity
+}: ICartItem) => {
   const { id, images, name, currency, price, quantity, color, size } = props;
 
   const [removedItem, setRemovedItem] = useState('');
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
-
-  const {
-    removeProducts,
-    updateProductColor,
-    updateProductSize,
-    updateProductQuantity
-  } = cartStore();
 
   const handleChangeColorProduct = (value: string, idProduct: string) => {
     updateProductColor(value, idProduct);
@@ -60,6 +64,37 @@ const CartItem = ({ props }: ICartItem) => {
   const handleRemoveProduct = () => {
     removeProducts(removedItem);
     handleToggleDeleteModal();
+  };
+
+  const handleDecrease = () => {
+    updateProductQuantity({
+      productId: id,
+      action: 'decrease',
+      productQuantity: quantity
+    });
+  };
+
+  const handleIncrease = () => {
+    updateProductQuantity({
+      productId: id,
+      action: 'increase',
+      productQuantity: quantity
+    });
+  };
+
+  const handleChangeQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
+    updateProductQuantity({
+      productId: id,
+      productQuantity: parseInt(e.target.value)
+    });
+  };
+
+  const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
+    updateProductQuantity({
+      productId: id,
+      action: 'increase',
+      productQuantity: quantity !== parseInt(e.target.value) ? 0 : quantity - 1
+    });
   };
 
   return (
@@ -113,26 +148,10 @@ const CartItem = ({ props }: ICartItem) => {
               </Select>
               <NumberPicker
                 quantity={quantity!}
-                onDecrease={() =>
-                  updateProductQuantity(id!, 'decrease', quantity)
-                }
-                onIncrease={() =>
-                  updateProductQuantity(id!, 'increase', quantity)
-                }
-                onChangeQuantity={(e) =>
-                  updateProductQuantity(
-                    id!,
-                    undefined,
-                    parseInt(e.target.value)
-                  )
-                }
-                onBlur={(e) =>
-                  updateProductQuantity(
-                    id!,
-                    'increase',
-                    quantity !== parseInt(e.target.value) ? 0 : quantity - 1
-                  )
-                }
+                onDecrease={handleDecrease}
+                onIncrease={handleIncrease}
+                onChangeQuantity={handleChangeQuantity}
+                onBlur={handleBlur}
               />
             </HStack>
             <Button
@@ -155,4 +174,9 @@ const CartItem = ({ props }: ICartItem) => {
   );
 };
 
-export default memo(CartItem);
+const isEqual = (prevPrpos: ICartItem, nextProps: ICartItem) => {
+  console.log(JSON.stringify(prevPrpos) === JSON.stringify(nextProps));
+  return JSON.stringify(prevPrpos) === JSON.stringify(nextProps);
+};
+
+export default memo(CartItem, isEqual);

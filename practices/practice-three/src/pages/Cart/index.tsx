@@ -4,14 +4,23 @@ import { Suspense, lazy } from 'react';
 // Stores
 import { cartStore } from '@/stores';
 
+// Types
+import { IProduct } from '@/types';
+
 // Components
 import { ErrorBoundary } from '@/components';
-import { IProduct } from '@/types';
 
 const ListCart = lazy(() => import('@/components/ListCart'));
 
 const Cart = () => {
-  const { carts } = cartStore();
+  const {
+    carts,
+    removeProducts,
+    updateProductColor,
+    updateProductSize,
+    updateProductQuantity
+  } = cartStore();
+
   let total = 0;
 
   carts?.forEach((item: IProduct) => (total += item.price! * item.quantity!));
@@ -47,7 +56,13 @@ const Cart = () => {
           }
         >
           <ErrorBoundary>
-            <ListCart data={carts} />
+            <ListCart
+              data={carts}
+              removeProducts={removeProducts}
+              updateProductColor={updateProductColor}
+              updateProductSize={updateProductSize}
+              updateProductQuantity={updateProductQuantity}
+            />
           </ErrorBoundary>
         </Suspense>
       </Box>
