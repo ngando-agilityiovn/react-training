@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, Spinner, Text } from '@chakra-ui/react';
+import { Box, Button, Container, Flex, Text } from '@chakra-ui/react';
 import { Suspense, lazy } from 'react';
 
 // Stores
@@ -8,7 +8,7 @@ import { cartStore } from '@/stores';
 import { IProduct } from '@/types';
 
 // Components
-import { ErrorBoundary } from '@/components';
+import { ErrorBoundary, Loading } from '@/components';
 
 const ListCart = lazy(() => import('@/components/ListCart'));
 
@@ -44,17 +44,7 @@ const Cart = () => {
           </Text>
         </Box>
 
-        <Suspense
-          fallback={
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="blue.500"
-              size="xl"
-            />
-          }
-        >
+        <Suspense fallback={<Loading />}>
           <ErrorBoundary>
             <ListCart
               data={carts}

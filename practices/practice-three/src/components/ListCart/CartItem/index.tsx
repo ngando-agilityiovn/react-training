@@ -175,7 +175,6 @@ const CartItem = ({
 };
 
 const isEqual = (prevPrpos: ICartItem, nextProps: ICartItem) => {
-  console.log(JSON.stringify(prevPrpos) === JSON.stringify(nextProps));
   return JSON.stringify(prevPrpos) === JSON.stringify(nextProps);
 };
 

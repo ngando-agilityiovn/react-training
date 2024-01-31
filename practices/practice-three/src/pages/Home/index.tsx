@@ -1,21 +1,21 @@
-import { Box, Container, Flex, Spinner, Text } from '@chakra-ui/react'
-import { Suspense, lazy, useEffect, useState } from 'react'
+import { Box, Container, Flex, Text } from '@chakra-ui/react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 
 // Hooks
-import { usePagination, useProductList } from '@/hooks'
+import { usePagination, useProductList } from '@/hooks';
 
 // Types
-import { IProduct } from '@/types'
+import { IProduct } from '@/types';
 
 // Components
-import { ErrorBoundary, Pagination, Sidebar } from '@/components'
+import { ErrorBoundary, Loading, Pagination, Sidebar } from '@/components';
 
-const ProductList = lazy(() => import('@/components/ProductList'))
+const ProductList = lazy(() => import('@/components/ProductList'));
 
 const Home = () => {
-  const { products } = useProductList()
+  const { products } = useProductList();
 
-  const total = products?.length || 0
+  const total = products?.length || 0;
 
   const {
     limitedData,
@@ -30,18 +30,18 @@ const Home = () => {
     handleFilterCategory,
     handleFilterBrand,
     handleFilterSize
-  } = usePagination(total)
+  } = usePagination(total);
 
-  const [transformData, setTransformData] = useState<IProduct[]>([])
-  const [priceFilter, setPriceFilter] = useState<number>(0)
+  const [transformData, setTransformData] = useState<IProduct[]>([]);
+  const [priceFilter, setPriceFilter] = useState<number>(0);
 
-  const totalTransformData = transformData.length || 0
+  const totalTransformData = transformData.length || 0;
 
-  const pageNumberTransformData = []
-  const pageNumberFilter = totalTransformData / productLimit
+  const pageNumberTransformData = [];
+  const pageNumberFilter = totalTransformData / productLimit;
 
   for (let i = 0; i < pageNumberFilter; i++) {
-    pageNumberTransformData.push(i)
+    pageNumberTransformData.push(i);
   }
 
   useEffect(() => {
@@ -50,15 +50,15 @@ const Home = () => {
         priceFilter > 0
           ? limitedData?.filter((item) => item.price! <= priceFilter)
           : limitedData
-      )
-  }, [limitedData, priceFilter])
+      );
+  }, [limitedData, priceFilter]);
 
   const handleFilterPrice = (value: number) => {
-    setPriceFilter(value)
-    const dataFilter = limitedData?.filter((item) => item.price! <= value)
+    setPriceFilter(value);
+    const dataFilter = limitedData?.filter((item) => item.price! <= value);
 
-    dataFilter?.length && setTransformData(dataFilter)
-  }
+    dataFilter?.length && setTransformData(dataFilter);
+  };
 
   return (
     <>
@@ -76,30 +76,14 @@ const Home = () => {
             </Text>
             {isLoading ? (
               <Box py="6" textAlign="center">
-                <Spinner
-                  thickness="4px"
-                  speed="0.65s"
-                  emptyColor="gray.200"
-                  color="blue.500"
-                  size="xl"
-                />
+                <Loading />
               </Box>
             ) : error ? (
               <Text variant="primary" color="red">
                 Not found data
               </Text>
             ) : (
-              <Suspense
-                fallback={
-                  <Spinner
-                    thickness="4px"
-                    speed="0.65s"
-                    emptyColor="gray.200"
-                    color="blue.500"
-                    size="xl"
-                  />
-                }
-              >
+              <Suspense fallback={<Loading />}>
                 <ErrorBoundary>
                   <ProductList data={transformData} />
                 </ErrorBoundary>
@@ -121,7 +105,7 @@ const Home = () => {
         </Flex>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
