@@ -1,30 +1,39 @@
-import { Meta, StoryObj } from '@storybook/react'
-import { BrowserRouter } from 'react-router-dom'
+import Storybook from '@storybook/react';
 
 // Components
-import Pagination from '.'
+import Pagination from '.';
+import { usePagination, useProductList } from '@/hooks';
+
+// Constants
 
 export default {
   title: 'Components/Pagination',
-  component: Pagination,
-  decorators: [
-    (Story) => (
-      <BrowserRouter>
-        <Story />
-      </BrowserRouter>
-    )
-  ]
-} as Meta
+  component: Pagination
+} as Storybook.ComponentMeta<typeof Pagination>;
 
-type Story = StoryObj<typeof Pagination>
+const Template: Storybook.ComponentStory<typeof Pagination> = () => {
+  const { products } = useProductList();
 
-export const Default: Story = {
-  args: {
-    total: 35,
-    onSelectPage: () => console.log('Interactive with each number button'),
-    onNextPage: () => console.log('Handle next page'),
-    onPrevPage: () => console.log('Handle preview page'),
-    pageNumbers: [0, 1, 2],
-    pageIndex: 0
-  }
-}
+  const total = products?.length || 0;
+
+  const {
+    handlePrevPage,
+    handleNextPage,
+    pageNumbers,
+    handleSelectPage,
+    pageIndex
+  } = usePagination(total);
+
+  return (
+    <Pagination
+      onPrevPage={handlePrevPage}
+      onNextPage={handleNextPage}
+      pageNumbers={pageNumbers}
+      onSelectPage={handleSelectPage}
+      pageIndex={pageIndex}
+      total={total}
+    />
+  );
+};
+
+export const PaginationComponent = Template.bind({});
