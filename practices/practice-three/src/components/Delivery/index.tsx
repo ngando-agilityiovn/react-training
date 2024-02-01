@@ -1,5 +1,5 @@
-import Bag from '@/components/Icons/bag';
-import Car from '@/components/Icons/car';
+import Bag from '@/components/Icons/Bag';
+import Car from '@/components/Icons/Car';
 import { Box, Flex, Text } from '@chakra-ui/react';
 
 // Icon components
