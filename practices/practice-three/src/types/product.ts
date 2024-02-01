@@ -1,18 +1,21 @@
-export interface IProduct {
+export interface IProductCard {
   id: string;
-  name?: string;
+  images: string[];
+  name: string;
+  currency: string;
   price: number;
+  quantity: number;
+  reviews: string[];
+  ratings: number;
+}
+
+export interface IProduct extends IProductCard {
   category?: string;
   brand?: string;
-  ratings?: number;
   size: string;
-  currency?: string;
-  quantity: number;
-  reviews?: IReviews[];
   colors?: string[];
   description?: string;
   information?: string[];
-  images?: string[];
   color: string;
 }
 
